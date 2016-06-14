@@ -1,0 +1,98 @@
+@media (max-width: 1070px) {
+    .mdl-layout-title{
+      display: none;
+    }
+
+    .jme-header.top .logo{
+        margin-top: 0px;
+        margin-left: -50px;
+    }
+
+    .jme-header.top .jme-title{
+        top:20px;
+        left:70px;
+        font-size: 2.5em;
+    }
+
+    .content-column.brand-container, .brand{
+        display: none;
+    }
+
+
+    body{
+        background-position: center;
+    }
+
+    .content-column{
+        display: flex;
+        width:100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        margin: 10px;
+    }
+
+    .row{
+        display: flex;
+        width:100%;
+        flex-direction: row;
+        justify-content: center;
+        margin: 10px;
+    }
+
+    .col{
+        display: flex;
+        width:100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 10px;
+    }
+
+    .graphics .jme-card, .utils .jme-card{
+        width: 30%;
+        height: 100%;
+    }
+
+    .book{
+        height: 150px;
+    }
+
+
+    .jme-card .mdl-card__title{
+    //background-color: #dddddd;
+    }
+
+    .jme-card{
+        width:100%;
+        height:30%;
+        margin: 10px;
+    }
+
+    .intro{
+        margin-top: 50vh;
+    }
+    .graphics{
+        margin-top: 30vh;
+    }
+
+    .utils{
+        margin-top: 30vh;
+    }
+
+    .footer{
+        margin-top: 30vh;
+    }
+    footer{
+        width:100%;
+    }
+
+    .footer-content{
+        width:141px;
+        margin: auto;
+    }
+
+    .mdl-mega-footer__drop-down-section{
+        width: 30%;
+    }
+
+}
