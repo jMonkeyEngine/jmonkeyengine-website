@@ -32,12 +32,12 @@
         margin: 10px;
     }
 
-    .row{
+    .row{/*
         display: flex;
         width:100%;
         flex-direction: row;
         justify-content: center;
-        margin: 10px;
+        margin: 10px;*/
     }
 
     .col{
@@ -45,12 +45,11 @@
         width:100%;
         flex-direction: column;
         justify-content: flex-start;
-        margin: 10px;
+        margin-bottom: : 10px;
     }
 
     .graphics .jme-card, .utils .jme-card{
         width: 30%;
-        height: 100%;
     }
 
     .book{
@@ -64,7 +63,6 @@
 
     .jme-card{
         width:100%;
-        height:30%;
         margin: 10px;
     }
 
