@@ -1,6 +1,6 @@
 @media (max-width: 1070px) {
     .mdl-layout-title{
-      display: none;
+        display: none;
     }
 
     .jme-header.top .logo{
@@ -32,22 +32,13 @@
         margin: 10px;
     }
 
-    .row{/*
-        display: flex;
-        width:100%;
-        flex-direction: row;
-        justify-content: center;
-        margin: 10px;*/
+    .content .title {    
+        width: 90%;
     }
-
-    .col{
-        display: flex;
-        width:100%;
-        flex-direction: column;
-        justify-content: flex-start;
-        margin-bottom: : 10px;
+    
+    .content.intro .title {
+        margin-left: auto;
     }
-
     .graphics .jme-card, .utils .jme-card{
         width: 30%;
     }
@@ -58,7 +49,7 @@
 
 
     .jme-card .mdl-card__title{
-    //background-color: #dddddd;
+        /*background-color: #dddddd;*/
     }
 
     .jme-card{
@@ -113,7 +104,7 @@
     }
 
     .content-column{
-	margin:0;
+        margin:0;
     }
 
     .jme-card{
@@ -127,7 +118,7 @@
     }
 
     .jme-header.top .jme-title{
-	top:15px;
+        top:15px;
     }
 
     .jme-header .jme-title{
