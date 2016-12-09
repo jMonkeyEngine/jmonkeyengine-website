@@ -40,6 +40,10 @@
     left:100px;
 }
 
+.mdl-tooltip {
+   will-change: auto;
+}
+
 body{
     background: url("../img/bg.jpg");
 }
