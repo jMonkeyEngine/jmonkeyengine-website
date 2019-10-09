@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors on jMonkeyEngine</title>
+    <link>https://jmonkeyengine.org/authors/</link>
+    <description>Recent content in Authors on jMonkeyEngine</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Oct 2019 06:27:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jmonkeyengine.org/authors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://jmonkeyengine.org/authors/jayfella/</link>
+      <pubDate>Tue, 08 Oct 2019 06:27:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/authors/jayfella/</guid>
+      <description>Code butcherer Specialist. A development enthusiast with with a heavy client/server/web-based background. My fascination with maths is beautifully visualised with jMonkey.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://jmonkeyengine.org/authors/riccardobl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/authors/riccardobl/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

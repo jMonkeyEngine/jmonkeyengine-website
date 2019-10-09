@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    
+    <meta name="description" content="A cross-platform game engine for adventurous Java developers."> 
+    
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/fomantic/semantic.min.css">
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/fomantic/semantic.min.js"></script>
+    <script src="/js/custom.js" defer></script>
+
+    
+        <link rel="alternate" type="application/rss+xml" href="/start/index.xml" title="jMonkeyEngine">
+
+</head>
+
+<body>
+    <header>
+    
+    <div class="ui stackable inverted secondary menu" style="background-color: #222222;">
+        <div class="ui container">
+            <div class="item">
+                <a href="/"><img class="ui image" src="/images/jme-logo.png"/></a>
+            </div>
+
+            
+                
+                <a class="item" id="Blog" href="/blog/">Blog</a>
+                
+                <a class="item" id="Documentation" href="/docs/">Documentation</a>
+                
+                <a class="item" id="License" href="/license/">License</a>
+                
+            
+
+            <a class="item" href="https://hub.jmonkeyengine.org">Community</a>
+            <a class="item" href="https://jmonkeystore.com">Store</a>
+
+
+            <div class="right menu">
+                
+    <a class="item" href="https://github.com/jMonkeyEngine/jmonkeyengine" id="git-menu-item"><i class="github icon"></i>Github</a>
+
+
+
+    <a href="https://discord.gg/JdjhsRw" class="item" id="discord-menu-item"><i class="discord icon"></i>Discord</a>
+ 
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+    
+    
+    
+    <div class="ui container">
+        <br />
+        <h1></h1>    
+        
+
+<h1 id="quick-start">Quick Start</h1>
+
+<p>There are a variety of ways to use jMonkeyEngine:</p>
+
+<ul>
+<li>Download the SDK</li>
+<li>Download the engine</li>
+<li>Add the libraries to a build script</li>
+</ul>
+
+<p>Using the Netbeans-based SDK is by far the quickest solution to get you up and running. Everything needed is provided, along with extra tools and integrations, and is generally the place most users start their endevour.
+<a href="https://github.com/jMonkeyEngine/sdk/releases">Download the SDK</a>.</p>
+
+<p>jMonkeyEngine is not bound to any specific IDE or SDK, though, and if you feel comfortable in the Java environment you can use any IDE. The engine itself and it&rsquo;s dependencies can be downloaded directly and you can include them just like any other library in your java project.
+<a href="https://github.com/jMonkeyEngine/jmonkeyengine/releases">Download the Engine</a>.</p>
+
+<p>If you prefer to use online dependencies you can include them in your project from jcenter. This is the most common approach for users that use an IDE such as intellij.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">repositories <span style="color:#f92672">{</span>
+    jcenter<span style="color:#f92672">()</span>
+<span style="color:#f92672">}</span>
+
+dependencies <span style="color:#f92672">{</span>
+    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-core:3.2.3-stable&#34;</span>
+    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-desktop:3.2.3-stable&#34;</span>
+    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-lwjgl:3.2.3-stable&#34;</span>
+<span style="color:#f92672">}</span></code></pre></div>
+
+<h2 id="creating-a-game">Creating a Game</h2>
+
+<p>All games created with jmonkey start by extending <code>SimpleApplication</code>. Below is the most basic setup required to start your game and show a cube.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> <span style="color:#a6e22e">my</span>.<span style="color:#a6e22e">game</span>;
+
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">SimpleApplication</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">material</span>.<span style="color:#a6e22e">Material</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">ColorRGBA</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">scene</span>.<span style="color:#a6e22e">Geometry</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">scene</span>.<span style="color:#a6e22e">shape</span>.<span style="color:#a6e22e">Box</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">system</span>.<span style="color:#a6e22e">AppSettings</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Main <span style="color:#a6e22e">extends</span> SimpleApplication {
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String[] <span style="color:#a6e22e">args</span>) {
+
+        Main <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Main();
+
+        AppSettings <span style="color:#a6e22e">settings</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AppSettings(<span style="color:#66d9ef">true</span>);
+        settings.<span style="color:#a6e22e">setTitle</span>(<span style="color:#e6db74">&#34;My Awesome Game&#34;</span>);
+        app.<span style="color:#a6e22e">setSettings</span>(settings);
+
+        app.<span style="color:#a6e22e">start</span>();
+
+    }
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> simpleInitApp() {
+
+        Box <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Box(1, 1, 1);
+        Geometry <span style="color:#a6e22e">geom</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Geometry(<span style="color:#e6db74">&#34;Box&#34;</span>, b);
+
+        Material <span style="color:#a6e22e">mat</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Material(assetManager, <span style="color:#e6db74">&#34;Common/MatDefs/Misc/Unshaded.j3md&#34;</span>);
+        mat.<span style="color:#a6e22e">setColor</span>(<span style="color:#e6db74">&#34;Color&#34;</span>, ColorRGBA.<span style="color:#a6e22e">Blue</span>);
+        geom.<span style="color:#a6e22e">setMaterial</span>(mat);
+
+        rootNode.<span style="color:#a6e22e">attachChild</span>(geom);
+
+    }
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> simpleUpdate(<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">tpf</span>) {
+        <span style="color:#75715e">//TODO: add update code
+</span><span style="color:#75715e"></span>    }
+
+}</code></pre></div>
+
+<p>Running this class will start your first game and display a blue box on the screen, and you can move around using your mouse and WASD keys. Congratulations! You&rsquo;re running your first JME game!</p>
+
+<p>For a more thorough tutorial on jMonkey browse through our <a href="https://wiki.jmonkeyengine.org">wiki</a>. The wiki provides extended documentation as well as tutorials on how to develop your game effectively using jmonkey practices. Tutorials start from the basics all the way up to collision detection, input mapping and shaders, and will be your go-to place for most of the information you require.</p>
+
+<p>If you ever find yourself confused or wondering how something is done, head over to our <a href="https://hub.jmonkeyengine.org">community hub</a> and create a new thread. Our ultra-helpful team and community will be more than happy to give you a hand in getting you back on track.</p>
+
+        <br />
+    </div>
+
+	
+
+
+    <footer>
+    <div class="ui inverted segment footer" style="border-radius: 0px; margin-bottom: 0px;">
+        <div class="ui container">
+            <br />
+
+            <div class="ui two column stackable grid">
+
+                <div class="column">
+                    <p>
+                        &copy; 2019 <a href="https://jmonkeyengine.org/">jMonkeyEngine</a>.
+                        A free open-source game engine licensed under the <a href="https://choosealicense.com/licenses/bsd-3-clause/">BSD 3-Clause license</a>.
+                        All rights reserved.
+                    </p> 
+                </div>
+
+                <div class="column">
+                    <a href="https://www.patreon.com/jmonkey">
+                        <img style="float: right; width: 217px; height: 51px;" class="ui rounded fluid image" src="/images/become_a_patron_button.png">
+                    </a>
+                </div>
+
+            </div>
+
+            
+            <br />
+        </div>
+    </div>
+    
+</footer>
+    
+</body>
+
+</html>

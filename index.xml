@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jMonkeyEngine</title>
+    <link>https://jmonkeyengine.org/</link>
+    <description>Recent content on jMonkeyEngine</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Oct 2019 06:27:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jmonkeyengine.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>jMonkeyStore is Now Open!</title>
+      <link>https://jmonkeyengine.org/blog/new-store/</link>
+      <pubDate>Tue, 08 Oct 2019 06:27:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/blog/new-store/</guid>
+      <description>After years of requests and attempts, a software store (a.k.a an asset store) for jmonkey has finally been created and is now open to registration. Everybody can register and submit their software!
+https://jmonkeystore.com/  Currently only free open-source software can be submitted. Once we have the sponsorship required for the legal documentation and setup fees we will be able to allow selling (payment required to use it) and sponsoring (pay the developer if you want to as a thank you) software.</description>
+    </item>
+    
+  </channel>
+</rss>

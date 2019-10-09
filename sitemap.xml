@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://jmonkeyengine.org/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/jayfella/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/asset-store/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/blog/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/blog/new-store/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/software/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/riccardobl/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/contribute/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/start/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/license/</loc>
+  </url>
+  
+</urlset>
