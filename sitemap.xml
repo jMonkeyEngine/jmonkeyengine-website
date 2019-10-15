@@ -4,8 +4,73 @@
   
   <url>
     <loc>https://jmonkeyengine.org/</loc>
-    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/dancso/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/glh3586/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/grizeldi/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/moffkalast/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/showcase/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/jmonkey/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/showcase/ls_frontier/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/lightspeed-frontier/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/showcase/spoxel/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/spoxel/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/steam/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
   </url>
   
   <url>
@@ -15,11 +80,6 @@
   
   <url>
     <loc>https://jmonkeyengine.org/tags/asset-store/</loc>
-    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/</loc>
     <lastmod>2019-10-08T06:27:00+00:00</lastmod>
   </url>
   
@@ -35,11 +95,6 @@
   
   <url>
     <loc>https://jmonkeyengine.org/tags/software/</loc>
-    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/</loc>
     <lastmod>2019-10-08T06:27:00+00:00</lastmod>
   </url>
   
