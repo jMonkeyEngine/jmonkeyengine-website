@@ -10,10 +10,12 @@
     <meta name="description" content="A cross-platform game engine for adventurous Java developers."> 
     
     <link rel="stylesheet" href="/css/custom.css">
-    <link rel="stylesheet" href="/fomantic/semantic.min.css">
+    <link rel="stylesheet" href="/lib/fomantic/semantic.min.css">
+    <link rel="stylesheet" href="/lib/blueimp-gallery/2.35.0/css/blueimp-gallery.min.css" />
     
     <script src="/js/jquery.min.js"></script>
-    <script src="/fomantic/semantic.min.js"></script>
+    <script src="/lib/fomantic/semantic.min.js"></script>
+    <script src="/lib/blueimp-gallery/2.35.0/js/blueimp-gallery.min.js" defer></script>
     <script src="/js/custom.js" defer></script>
 
     
@@ -82,60 +84,73 @@
 
 <p>Explore the vast world of spoxel and delve into a wide variety of biomes in your quest for power, loot, or maybe just the best chicken sandwich.</p>
 
-<div class="ui embed" data-url="https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm?t=1553753590" ></div>
-
-<hr />
-
-<div class="ui embed" data-url="https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm?t=1553753600" ></div>
-
-<figure class="ui fluid image">
-    <img src="/images/showcase/spoxel/1.jpg"/> 
-</figure>
-
-
-<figure class="ui fluid image">
-    <img src="/images/showcase/spoxel/2.jpg"/> 
-</figure>
-
-
-<figure class="ui fluid image">
-    <img src="/images/showcase/spoxel/3.jpg"/> 
-</figure>
-
-
-<figure class="ui fluid image">
-    <img src="/images/showcase/spoxel/4.jpg"/> 
-</figure>
-
-
-<figure class="ui fluid image">
-    <img src="/images/showcase/spoxel/5.jpg"/> 
-</figure>
-
-
-<figure class="ui fluid image">
-    <img src="/images/showcase/spoxel/6.jpg"/> 
-</figure>
-
-
-<figure class="ui fluid image">
-    <img src="/images/showcase/spoxel/7.jpg"/> 
-</figure>
-
-
-<figure class="ui fluid image">
-    <img src="/images/showcase/spoxel/8.jpg"/> 
-</figure>
-
-
         </p>
+
         <br />
+        <hr class="ui divider" />
+        <br />
+
+
+        <div id="gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>
+    
+        <div id="carousel-links">
+            
+            
+            
+                    <a
+                        href="https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm"
+                        type="video/webm"
+                        data-gallery
+                    ></a>
+                
+                    <a
+                        href="https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm"
+                        type="video/webm"
+                        data-gallery
+                    ></a>
+                
+            
+
+            
+
+            
+                
+                    <a href="/images/showcase/spoxel/1.jpg"></a>
+                
+                    <a href="/images/showcase/spoxel/2.jpg"></a>
+                
+                    <a href="/images/showcase/spoxel/3.jpg"></a>
+                
+                    <a href="/images/showcase/spoxel/4.jpg"></a>
+                
+                    <a href="/images/showcase/spoxel/5.jpg"></a>
+                
+                    <a href="/images/showcase/spoxel/6.jpg"></a>
+                
+                    <a href="/images/showcase/spoxel/7.jpg"></a>
+                
+                    <a href="/images/showcase/spoxel/8.jpg"></a>
+                
+            
+
+        </div>
+
+        <br />
+
     </div>
 
     <script>
         $("#Blog").addClass("active");
-        $('.ui.embed').embed();
     </script>
+
+    <script src="/js/showcase.js" defer></script>
 	
 
 

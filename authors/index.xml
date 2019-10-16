@@ -6,10 +6,28 @@
     <description>Recent content in Authors on jMonkeyEngine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Oct 2019 06:27:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Oct 2019 08:27:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jmonkeyengine.org/authors/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title></title>
+      <link>https://jmonkeyengine.org/authors/pspeed/</link>
+      <pubDate>Wed, 16 Oct 2019 08:27:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/authors/pspeed/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://jmonkeyengine.org/authors/frozenshade/</link>
+      <pubDate>Wed, 16 Oct 2019 08:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/authors/frozenshade/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title></title>
@@ -44,7 +62,7 @@
       <pubDate>Tue, 15 Oct 2019 06:27:00 +0000</pubDate>
       
       <guid>https://jmonkeyengine.org/authors/moffkalast/</guid>
-      <description>Code butcherer Specialist. A development enthusiast with with a heavy client/server/web-based background. My fascination with maths is beautifully visualised with jMonkey.</description>
+      <description></description>
     </item>
     
     <item>

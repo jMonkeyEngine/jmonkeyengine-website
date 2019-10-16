@@ -6,10 +6,29 @@
     <description>Recent content on jMonkeyEngine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Oct 2019 06:27:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Oct 2019 08:27:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jmonkeyengine.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mythruna</title>
+      <link>https://jmonkeyengine.org/showcase/mythruna/</link>
+      <pubDate>Wed, 16 Oct 2019 08:27:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/showcase/mythruna/</guid>
+      <description>Mythruna (myth + rune + a) is a game under development attempting to combine serious role playing elements with an endless, living, and completely modifiable randomly generated sandbox world. When completed, Mythruna will be a unique gaming experience.</description>
+    </item>
+    
+    <item>
+      <title>Skullstone</title>
+      <link>https://jmonkeyengine.org/showcase/skullstone/</link>
+      <pubDate>Wed, 16 Oct 2019 08:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/showcase/skullstone/</guid>
+      <description>Skullstone – a retro styled grid-based dungeon crawler RPG inspired by the good old titles such as Dungeon Master, Stonekeep, Eye of Beholder and many other classics.
+In a few words – a party of mercenaries explore a dungeon. They fight monsters, solve puzzles, find equipment, gather experience and level up while progressing through increasingly difficult levels. And there’s a story behind all that, are you ready to discover the truth behind Skullstone ?</description>
+    </item>
     
     <item>
       <title>Lightspeed Frontier</title>

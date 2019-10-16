@@ -4,8 +4,63 @@
   
   <url>
     <loc>https://jmonkeyengine.org/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/pspeed/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/showcase/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/jmonkey/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/showcase/mythruna/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/mythruna/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/frozenshade/</loc>
+    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/showcase/skullstone/</loc>
+    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/skullstone/</loc>
+    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/steam/</loc>
+    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -29,21 +84,6 @@
   </url>
   
   <url>
-    <loc>https://jmonkeyengine.org/showcase/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/jmonkey/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jmonkeyengine.org/showcase/ls_frontier/</loc>
     <lastmod>2019-10-15T06:27:00+00:00</lastmod>
   </url>
@@ -60,16 +100,6 @@
   
   <url>
     <loc>https://jmonkeyengine.org/tags/spoxel/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/steam/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/</loc>
     <lastmod>2019-10-15T06:27:00+00:00</lastmod>
   </url>
   
