@@ -41,3 +41,16 @@ pre {
 figure {
     margin: 10px 0px;
 }
+
+#top-shadow {
+    background-color: #2185d0;
+    height:5px;
+    box-shadow: 0px 3px 5px #000;
+}
+
+#bottom-shadow {
+    margin-bottom: -14px;
+    background-color: #2185d0;
+    height:5px;
+    box-shadow: 0px -3px 5px #000;
+}
