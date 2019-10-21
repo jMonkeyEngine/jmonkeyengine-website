@@ -54,3 +54,24 @@ figure {
     height:5px;
     box-shadow: 0px -3px 5px #000;
 }
+
+/* Global message */
+.global-message {
+  padding: 5px;
+  font-size: 0.9em;
+}
+
+#global-message-error {
+  background: #912d2b;
+  color: #fff6f6;
+}
+
+#global-message-warning {
+  background: #b58105;
+  color: #fff8db;
+}
+
+#global-message-info {
+  background: #dff0ff;
+  color: #2185d0;
+}
