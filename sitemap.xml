@@ -4,27 +4,52 @@
   
   <url>
     <loc>https://jmonkeyengine.org/</loc>
-    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://jmonkeyengine.org/authors/pspeed/</loc>
-    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+    <loc>https://jmonkeyengine.org/authors/grizeldi/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://jmonkeyengine.org/showcase/</loc>
-    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://jmonkeyengine.org/authors/</loc>
-    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/graphics/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://jmonkeyengine.org/tags/jmonkey/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/pbr/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/showcase/pbr_tutorial/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/pspeed/</loc>
     <lastmod>2019-10-16T08:27:00+00:00</lastmod>
   </url>
   
@@ -35,11 +60,6 @@
   
   <url>
     <loc>https://jmonkeyengine.org/tags/mythruna/</loc>
-    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/</loc>
     <lastmod>2019-10-16T08:27:00+00:00</lastmod>
   </url>
   
@@ -70,11 +90,6 @@
   
   <url>
     <loc>https://jmonkeyengine.org/authors/glh3586/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/grizeldi/</loc>
     <lastmod>2019-10-15T06:27:00+00:00</lastmod>
   </url>
   

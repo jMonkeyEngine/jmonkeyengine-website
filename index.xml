@@ -6,10 +6,21 @@
     <description>Recent content on jMonkeyEngine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Oct 2019 08:27:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Oct 2019 08:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jmonkeyengine.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PBR Tutorial</title>
+      <link>https://jmonkeyengine.org/showcase/pbr_tutorial/</link>
+      <pubDate>Mon, 21 Oct 2019 08:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/showcase/pbr_tutorial/</guid>
+      <description>A continuing YouTube series helping users take leap from using the regular Lighting.j3md material to PbrLighting.j3md.
+First part of my tutorial series in which I explain how to use jmonkeyengine&amp;rsquo;s Physically Based Rendering pipeline. Intended for people who already understand how to use the regular Lighting.j3md shader, but have no idea how PBR works.
+Second part of my tutorial series in which I explain how to use jmonkeyengine&amp;rsquo;s Physically Based Rendering pipeline.</description>
+    </item>
     
     <item>
       <title>Mythruna</title>
