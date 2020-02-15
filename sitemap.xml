@@ -3,29 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jmonkeyengine.org/</loc>
-    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/sgold/</loc>
-    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/</loc>
-    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/blog/</loc>
-    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/library/</loc>
-    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
+    <loc>https://jmonkeyengine.org/blog/interview-jayfella/</loc>
+    <lastmod>2020-02-15T12:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -34,53 +13,8 @@
   </url>
   
   <url>
-    <loc>https://jmonkeyengine.org/tags/physics/</loc>
-    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/software/</loc>
-    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/</loc>
-    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/grizeldi/</loc>
-    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/showcase/</loc>
-    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/graphics/</loc>
-    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/jmonkey/</loc>
-    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/pbr/</loc>
-    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jmonkeyengine.org/showcase/pbr_tutorial/</loc>
     <lastmod>2019-10-21T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/pspeed/</loc>
-    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
   </url>
   
   <url>
@@ -89,52 +23,12 @@
   </url>
   
   <url>
-    <loc>https://jmonkeyengine.org/tags/mythruna/</loc>
-    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/frozenshade/</loc>
-    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jmonkeyengine.org/showcase/skullstone/</loc>
     <lastmod>2019-10-16T08:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jmonkeyengine.org/tags/skullstone/</loc>
-    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/steam/</loc>
-    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/dancso/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/glh3586/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/authors/moffkalast/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jmonkeyengine.org/showcase/ls_frontier/</loc>
-    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmonkeyengine.org/tags/lightspeed-frontier/</loc>
     <lastmod>2019-10-15T06:27:00+00:00</lastmod>
   </url>
   
@@ -144,8 +38,33 @@
   </url>
   
   <url>
-    <loc>https://jmonkeyengine.org/tags/spoxel/</loc>
+    <loc>https://jmonkeyengine.org/blog/new-store/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/</loc>
+    <lastmod>2020-02-15T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/dancso/</loc>
     <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/frozenshade/</loc>
+    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/glh3586/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/grizeldi/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -154,13 +73,13 @@
   </url>
   
   <url>
-    <loc>https://jmonkeyengine.org/tags/asset-store/</loc>
-    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+    <loc>https://jmonkeyengine.org/authors/moffkalast/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jmonkeyengine.org/blog/new-store/</loc>
-    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+    <loc>https://jmonkeyengine.org/authors/pspeed/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
   </url>
   
   <url>
@@ -168,7 +87,17 @@
   </url>
   
   <url>
+    <loc>https://jmonkeyengine.org/authors/sgold/</loc>
+    <lastmod>2020-02-15T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jmonkeyengine.org/contribute/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/showcase/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -176,11 +105,106 @@
   </url>
   
   <url>
+    <loc>https://jmonkeyengine.org/tags/asset-store/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/blog/</loc>
+    <lastmod>2020-02-15T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jmonkeyengine.org/docs/</loc>
   </url>
   
   <url>
+    <loc>https://jmonkeyengine.org/tags/graphics/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/interview/</loc>
+    <lastmod>2020-02-15T12:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/jmonkey/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/library/</loc>
+    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://jmonkeyengine.org/license/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/lightspeed-frontier/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/mythruna/</loc>
+    <lastmod>2019-10-16T08:27:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/pbr/</loc>
+    <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/physics/</loc>
+    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/skullstone/</loc>
+    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/software/</loc>
+    <lastmod>2020-02-09T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/spoxel/</loc>
+    <lastmod>2019-10-15T06:27:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/steam/</loc>
+    <lastmod>2019-10-16T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/</loc>
+    <lastmod>2019-10-08T06:27:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jMonkeyEngine</title>
+    <link>https://jmonkeyengine.org/authors/sgold/</link>
+    <description>Recent content on jMonkeyEngine</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 Feb 2020 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jmonkeyengine.org/authors/sgold/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sgold interviews Jayfella</title>
+      <link>https://jmonkeyengine.org/blog/interview-jayfella/</link>
+      <pubDate>Sat, 15 Feb 2020 12:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/blog/interview-jayfella/</guid>
+      <description>Sgold:
+Thank you for agreeing to be interviewed.
+First question: When did you first hear about JMonkeyEngine?
+   Jayfella:
+Way back in 2014, after a long period of developing desktop applications, servers, and minecraft plugins, I decided to look into writing games. At that time I was more into C#, but XNA was a sinking ship, so looked at alternatives. I found jMonkey and gave it a shot.</description>
+    </item>
+    
+    <item>
+      <title>Minie Physics Library Version 1.4 Released!</title>
+      <link>https://jmonkeyengine.org/blog/minie14/</link>
+      <pubDate>Sun, 09 Feb 2020 08:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/blog/minie14/</guid>
+      <description>Minie version 1.4 is an exciting new add-on for the JMonkeyEngine (JME) game engine.
+  Minie provides an open-source physics engine for desktop games. It gives software developers using JME access to the proven technology of the Bullet Physics SDK version 2.89, including:
+ rigid-body dynamics, soft bodies, collision detection, vehicle and character controllers, ray and sweep tests, and dynamic constraints.  Minie incorporates DynamicAnimControl technology for ragdoll simulation and inverse kinematics.</description>
+    </item>
+    
+  </channel>
+</rss>
