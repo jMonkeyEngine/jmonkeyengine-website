@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>jMonkeyEngine</title>
+    
+    <meta name="description" content="A cross-platform game engine for adventurous Java developers.">
+    
+    
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/lib/fomantic/semantic.min.css">
+    <link rel="stylesheet" href="/lib/blueimp-gallery/2.35.0/css/blueimp-gallery.min.css" />
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/lib/fomantic/semantic.min.js"></script>
+    <script src="/lib/blueimp-gallery/2.35.0/js/blueimp-gallery.min.js" defer></script>
+    <script src="/js/custom.js" defer></script>
+
+    
+
+</head>
+
+<body>
+    
+
+
+
+
+
+
+<header>
+
+    <div class="ui stackable inverted secondary menu" style="background-color: #222222;">
+        <div class="ui container">
+            <div class="item">
+                <a href="/"><img class="ui image" src="/images/jme-logo.png"/></a>
+            </div>
+
+            
+                
+                <a class="item" id="Blog" href="/blog/">Blog</a>
+                
+                <a class="item" id="Documentation" href="/docs/">Documentation</a>
+                
+                <a class="item" id="License" href="/license/">License</a>
+                
+            
+
+            <a class="item" href="https://hub.jmonkeyengine.org">Community</a>
+            <a class="item" href="https://jmonkeystore.com">Store</a>
+
+
+            <div class="right menu">
+                
+    <a class="item" href="https://github.com/jMonkeyEngine/jmonkeyengine" id="git-menu-item"><i class="github icon"></i>Github</a>
+
+
+
+    <a href="https://discord.gg/JdjhsRw" class="item" id="discord-menu-item"><i class="discord icon"></i>Discord</a>
+
+            </div>
+        </div>
+    </div>
+
+</header>
+
+    
+    
+    
+    <div class="ui container">
+        <br />
+        <h1>Sgold interviews Daniel Perano</h1>    
+        <p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>Thank you for agreeing to be interviewed.</p>
+
+<p>First question: Do you remember when you first encountered JMonkeyEngine?
+What was your first impression?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>I started learning jME back in the 3.0 days, as I recall,
+and I was impressed with the features it offered.
+The scene-graph control and appstate design made a lot of sense to me &mdash;
+at the time both were novel concepts.</p>
+
+<p>Not long after that, I adopted jME for a project called “OpenWorld.”</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>What sort of project was it?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>OpenWorld was the precursor to MyWorld &mdash;
+a platform for real-time, 3-D social virtual worlds and MMO games.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>What got you interested in social virtual worlds?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>I first heard of them from
+a magazine article about Second Life, over a decade ago.
+I was fascinated, and despite being underage
+(accounts were restricted to users 18 and over), I created an account.</p>
+
+<p>Since I was underage my adventures there did not last long, but
+I was hooked from the start.
+It was like a game, but there were so many things to do and places to explore,
+and the built-in creation system blew my mind.</p>
+
+<p>A couple years later, I discovered OpenSimulator,
+an open-source server that’s compatible with Second Life clients (viewers).
+Since then, I’ve been a member of various OpenSimulator virtual worlds (or grids, as they’re called).</p>
+
+<p>During my second year in OpenSimulator, I began to keenly notice
+some limitations that OpenSimulator inherited from Second Life.
+Compared to multi-player games, virtual worlds always felt slow and bloated,
+and the architecture was fundamentally limiting.</p>
+
+<p>At that point I had the idea that grew into MyWorld:
+apply multiplayer game technology to social virtual worlds.
+Later on, I realized that a social virtual-world platform
+could also be a powerful MMO gaming platform, and
+since then I’ve worked towards the dual goal of supporting
+social virtual worlds and MMO games as first-class citizens on MyWorld.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>How many people are working on MyWorld?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>We have three people on the project.
+Right now I’m the sole developer &mdash;
+the other two handle business management,
+social media, and aesthetics (art and design).</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>How is the project funded?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>We’re fully self-funded: no investor or venture-capital backing.
+We see this as an advantage, for two reasons:</p>
+
+<ol>
+<li>We’re not beholden to shareholders,
+so we’re free to make decisions that bring the best experience to our users.</li>
+<li>Our runway is infinitely long &mdash; we have no pressure to grow rapidly to avoid bankruptcy.
+We can grow organically and sustainably.</li>
+</ol>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>When’s the next release of MyWorld due out?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>Our first alpha/preview release
+will come out around the end of March of this year (2020).</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>What features will it provide?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>The feature set will depend on what we have time to finish.
+Dynamic asset delivery/loading, the entity system, and scripting
+are in pretty good shape,
+but the user interface still needs work
+and there are many small “detail features” that need attention.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>In the long run, what will differentiate MyWorld from other virtual worlds?
+Specifically, how would you compare it to Minecraft and Second Life?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>Unlike Minecraft, MyWorld is not a game itself &mdash;
+it’s a platform that supports dynamic content creation and scripting,
+and unlike games more generally, MyWorld provides first-class support
+for uploading 3D models, textures, audio, etcetera
+and distributing them to clients on an as-needed basis.
+It also has a professional-grade scripting language you can use
+to add custom behavior to your creations.</p>
+
+<p>Unlike current-generation virtual worlds,
+MyWorld was designed from Day One to satisfy
+the performance requirements of multiplayer action games.
+This means that exploring a virtual world can have the same fast,
+fluid feel as playing a well-designed multiplayer game.</p>
+
+<p>Another difference is that we support scripting on both client and server,
+allowing scripted effects and latency-elimination techniques
+that are impossible in current virtual worlds.</p>
+
+<p>In addition, our internal systems can be extended via plugins
+that can integrate into the entity system and
+host or call HTTP endpoints (for custom REST APIs, for example).
+Plugins can even extend the core network protocol
+with jME’s fast, intuitive, and efficient RMI implementation.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>What’s the financial model? Will the client be freely downloadable?
+Will there be paid subscriptions? Free-to-play accounts?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>Our vision for MyWorld has always been to release it open-source,
+so the client will always be free to download and use, as will the core server.
+We may eventually release some commercial plugins for professional use,
+but these would be extensions to the core server,
+not permanently built-in proprietary code.</p>
+
+<p>In a project like MyWorld,
+there are many opportunities to provide value to users,
+so there are many potential revenue streams.
+Initially we’re looking at a revenue model similar to Second Life:
+users can rent space in the virtual world to build homes,
+businesses, workshops, etcetera.
+We may also introduce a subscription model that offers
+extra benefits to heavy users.</p>
+
+<p>We’re also investigating how we can monetize
+by offering professional hosting and support services to game developers
+and those interested in running MyWorld servers.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>I’ve heard that Second Life has its own currency.
+Do you have plans in that area?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>While MyWorld needs a virtual currency to effectively operate,
+issuing one ourselves is not currently a viable choice for a couple of reasons:</p>
+
+<ol>
+<li><p>Issuing in-house currency is a large financial liability &mdash;
+there are many ways to destabilize an economy, virtual or otherwise,
+that are largely or completely outside the control of the currency issuer,
+which would present a risk both to us and our users.</p></li>
+
+<li><p>Governments have begun regulating virtual currencies,
+making it expensive and difficult to issue them.</p></li>
+</ol>
+
+<p>Fortunately, we’re not the only ones with this need
+and there are several good virtual currency services,
+some of which allow the same currency to be used across many games or virtual worlds.</p>
+
+<p>So yes, we will have a virtual currency,
+but we’re not planning on issuing it ourselves.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>You mentioned earlier that Second Life was age-restricted.
+Will MyWorld have similar restrictions?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>Initially yes, unfortunately.
+Allowing minors requires extra legal compliance
+and stringent moderation of content and user interactions.</p>
+
+<p>I don’t see this as a notable limitation, especially early on.
+Most of our initial user base will be developers and creators,
+not general users,
+so I expect the overwhelming majority of interest to be coming from adults.</p>
+
+<p>I want to allow minors to access at least some areas within MyWorld
+as soon as it makes sense for us as an organization and community,
+but for now we need to focus on the technical aspects.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>Does MyWorld use JMonkeyEngine for the client, the server, or both?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>The client is a typical jME application &mdash;
+AppStates tie MyWorld-specific libraries (such as our in-house entity system)
+to other systems and the scene graph.</p>
+
+<p>The server uses jME’s network stack,
+and we’re transitioning from jME’s physics to Minie, but that’s about all.
+The server’s systems and heartbeat/event dispatch loop are all custom &mdash;
+we don’t use jME’s application structure serverside.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>What technologies does MyWorld use besides JMonkeyEngine?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>It uses JavaFX, Lemur, Chipmunk (our in-house scripting language),
+Jetty (an embedded HTTP server), and CockroachDB (a distributed SQL database).</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>What prompted you to create Chipmunk?
+What other scripting languages did you consider?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>Chipmunk was born out of necessity.</p>
+
+<p>Like Second Life,
+MyWorld allows content creators to script anything they create.
+Scripting can include physics, movement, particle/sound/animation effects,
+HTTP calls, etcetera.</p>
+
+<p>The problems here are security and resource use.
+Since anyone with creation privileges can upload scripts to a server
+(and scripts can also run client side), sandboxing is a must.</p>
+
+<p>My first choice for scripting was Groovy.
+It’s a powerful, well-known language with many features,
+and the compiler supports AST transformations for customizing compiled code.
+I spent a great deal of time pursuing this route,
+but the shoe always pinched in the same spots: preemption and checkpointing.</p>
+
+<p>Preemption means that the script engine can stop a running script at any time.
+This is necessary to ensure that misbehaving (or resource-intensive) scripts
+don’t overuse CPU resources.
+Preemption is also necessary for checkpointing:
+freezing a script so it can be persisted to disk or sent to another server.</p>
+
+<p>Java was not designed for preemption.
+Every mechanism I could think of to fit preemption support
+into Java’s compiled bytecode came with substantial overhead and other nasty limitations.</p>
+
+<p>I also experimented with an assembly-like language for scripting,
+but it was too difficult to read to be suitable for anything more than trivial scripts.</p>
+
+<p>I designed Chipmunk to fit a unique place in the language spectrum &mdash;
+easy for a first-time programmer to pick up,
+but powerful enough for an experienced developer to hit the ground running.
+For example, classes declare state that’s shared between all instances
+via the “shared” keyword,
+which is semantically identical to Java’s “static” keyword,
+but expresses the concept in terms that make intuitive sense
+to inexperienced programmers.</p>
+
+<p>In terms of features, Chipmunk supports modules, classes, polymorphism,
+first-class functions, anonymous (lambda) functions, exceptions,
+and dynamic typing.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>Chipmunk sounds like it might have many uses.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>I hope so! I’m looking forward to seeing what else it’s used for.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>Is there any published documentation for it?
+Is it open-source?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>Chipmunk is developed separately from MyWorld and will be released
+open-source as soon as we’ve finalized the v1.0 language spec
+and finished implementing the standard library.</p>
+
+<p>The main language features are functional, but it needs more attention
+on things like string manipulation, collection operations, and libraries.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>Part of the appeal of an open world, I think,
+is having a place to exhibit digital creations.</p>
+
+<p>What skills/tools would someone need to create and upload a 3-D model?
+Do you envision people using Blender 3D?</p>
+
+<p>What audio formats will MyWorld support?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>MyWorld is built around the assumption that users will create digital content.
+One of the first things I wrote was the dynamic asset upload/download mechanism.</p>
+
+<p>Our initial creation pipeline is based around the GLTF format.
+Thanks to jME’s GLTF importer, most modern GLTF files should import seamlessly.
+Our primary interest in external tools is Blender 3D,
+but anything that exports to GLTF should do fine.</p>
+
+<p>Later on, we plan to support in-world creation via constructive solid geometry
+with procedural extensions, as a supplement to the GLTF pipeline.</p>
+
+<p>Any audio format supported by jME (OGG &amp; WAV in particular)
+can be opened by the client for upload.
+Streaming media can be in any format supported by JavaFX’s media framework.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>If someone wants to develop games for MyWorld, where should they begin?
+Is there an e-mail list for announcements?
+A website they should monitor?
+A chatroom they should join?</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>The best place to go is our <a href="https://discordapp.com/invite/WccnrWg">Discord server</a>.
+We have an active community there,
+and we often discuss planned or requested features.
+It’s also the first place we share development updates
+and news about the project.
+For anyone wishing to participate in the alpha-test release,
+this is the place to be.</p>
+
+<p>Our <a href="https://www.facebook.com/MyWorld-LLC-228751528045088">Facebook</a>
+and <a href="https://twitter.com/MyWorldLLC">Twitter</a> pages
+cover major news items and announcements,
+and liking/following us there helps us get the word out to more people!</p>
+
+<p>For general project information, blog posts, and press releases,
+the <a href="https://myworldvw.com/">MyWorld website</a> is the place to go.
+We archive the notes from our monthly “MyWorld Meetup” sessions on the blog &mdash;
+these are a great resource for finding out details about the project.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/user_avatar/hub.jmonkeyengine.org/sgold/45/1430_2.png" height="45px" />
+    
+    
+</figure>
+
+Sgold:</p>
+
+<p>I’ve run out of questions.
+Unless there’s something more you’d like to discuss, let’s wrap this up.</p>
+
+<p>Thank you very much for your detailed answers
+and all the time and care you put into them.</p>
+
+<p>
+<figure>
+    
+        <img src="https://jme-hub-cdn-jmonkeyengineor.netdna-ssl.com/letter_avatar_proxy/v4/letter/d/82dd89/120.png" height="45px" />
+    
+    
+</figure>
+
+Daniel Perano:</p>
+
+<p>Thank you! I enjoyed the interview, and I’m looking forward to seeing how jME continues to grow and improve – there’s a lot of great talent behind this project!</p>
+
+        <br />
+    </div>
+
+    <script>
+        $("#Blog").addClass("active");
+    </script>
+	
+
+
+    <footer>
+        <div id="bottom-shadow"></div>
+    <div class="ui inverted segment footer" style="border-radius: 0px; margin-bottom: 0px;">
+            
+        <div class="ui container">
+            <br />
+
+            <div class="ui two column stackable grid">
+
+                <div class="column">
+                    <p>
+                        &copy; 2020 <a href="https://jmonkeyengine.org/">jMonkeyEngine</a>.
+                        A free open-source game engine licensed under the <a href="https://choosealicense.com/licenses/bsd-3-clause/">BSD 3-Clause license</a>.
+                        All rights reserved.
+                    </p> 
+                </div>
+
+                <div class="column">
+                    <a href="https://www.patreon.com/jmonkey">
+                        <img style="float: right; width: 217px; height: 51px;" class="ui rounded fluid image" src="/images/become_a_patron_button.png">
+                    </a>
+                </div>
+
+            </div>
+
+            
+            <br />
+        </div>
+    </div>
+    
+</footer>
+    
+</body>
+
+</html>

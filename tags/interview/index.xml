@@ -6,10 +6,23 @@
     <description>Recent content in Interview on jMonkeyEngine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Feb 2020 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 18:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jmonkeyengine.org/tags/interview/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sgold interviews Daniel Perano</title>
+      <link>https://jmonkeyengine.org/blog/interview-danielp/</link>
+      <pubDate>Tue, 25 Feb 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/blog/interview-danielp/</guid>
+      <description>Sgold:
+Thank you for agreeing to be interviewed.
+First question: Do you remember when you first encountered JMonkeyEngine? What was your first impression?
+   Daniel Perano:
+I started learning jME back in the 3.0 days, as I recall, and I was impressed with the features it offered. The scene-graph control and appstate design made a lot of sense to me &amp;mdash; at the time both were novel concepts.</description>
+    </item>
     
     <item>
       <title>Sgold interviews Jayfella</title>
