@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jmonkeyengine.org/blog/jme3-3beta2/</loc>
+    <lastmod>2020-03-24T12:44:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jmonkeyengine.org/blog/interview-danielp/</loc>
     <lastmod>2020-02-25T18:00:00+00:00</lastmod>
   </url>
@@ -49,7 +54,7 @@
   
   <url>
     <loc>https://jmonkeyengine.org/</loc>
-    <lastmod>2020-02-25T18:00:00+00:00</lastmod>
+    <lastmod>2020-03-24T12:44:00+00:00</lastmod>
   </url>
   
   <url>
@@ -70,6 +75,11 @@
   <url>
     <loc>https://jmonkeyengine.org/authors/grizeldi/</loc>
     <lastmod>2019-10-21T08:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/authors/itsmike54/</loc>
+    <lastmod>2020-03-24T12:44:00+00:00</lastmod>
   </url>
   
   <url>
@@ -123,7 +133,13 @@
   
   <url>
     <loc>https://jmonkeyengine.org/blog/</loc>
-    <lastmod>2020-02-25T18:00:00+00:00</lastmod>
+    <lastmod>2020-03-24T12:44:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jmonkeyengine.org/tags/development/</loc>
+    <lastmod>2020-03-24T12:44:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
