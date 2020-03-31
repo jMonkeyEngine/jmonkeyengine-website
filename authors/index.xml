@@ -6,17 +6,44 @@
     <description>Recent content in Authors on jMonkeyEngine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Oct 2019 06:27:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2020 12:44:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jmonkeyengine.org/authors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://jmonkeyengine.org/authors/dancso/</link>
-      <pubDate>Tue, 15 Oct 2019 06:27:00 +0000</pubDate>
+      <link>https://jmonkeyengine.org/authors/itsmike54/</link>
+      <pubDate>Tue, 24 Mar 2020 12:44:00 +0000</pubDate>
       
-      <guid>https://jmonkeyengine.org/authors/dancso/</guid>
+      <guid>https://jmonkeyengine.org/authors/itsmike54/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://jmonkeyengine.org/authors/sgold/</link>
+      <pubDate>Tue, 25 Feb 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/authors/sgold/</guid>
+      <description>Sky, animation editing, quaternions, and now physics. What’ll be my next side project?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://jmonkeyengine.org/authors/grizeldi/</link>
+      <pubDate>Mon, 21 Oct 2019 08:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/authors/grizeldi/</guid>
+      <description>Code butcherer Specialist. A development enthusiast with with a heavy client/server/web-based background. My fascination with maths is beautifully visualised with jMonkey.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://jmonkeyengine.org/authors/pspeed/</link>
+      <pubDate>Wed, 16 Oct 2019 08:27:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/authors/pspeed/</guid>
       <description></description>
     </item>
     
@@ -31,6 +58,15 @@
     
     <item>
       <title></title>
+      <link>https://jmonkeyengine.org/authors/dancso/</link>
+      <pubDate>Tue, 15 Oct 2019 06:27:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/authors/dancso/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://jmonkeyengine.org/authors/glh3586/</link>
       <pubDate>Tue, 15 Oct 2019 06:27:00 +0000</pubDate>
       
@@ -40,19 +76,10 @@
     
     <item>
       <title></title>
-      <link>https://jmonkeyengine.org/authors/grizeldi/</link>
-      <pubDate>Mon, 21 Oct 2019 08:00:00 +0000</pubDate>
+      <link>https://jmonkeyengine.org/authors/moffkalast/</link>
+      <pubDate>Tue, 15 Oct 2019 06:27:00 +0000</pubDate>
       
-      <guid>https://jmonkeyengine.org/authors/grizeldi/</guid>
-      <description>Code butcherer Specialist. A development enthusiast with with a heavy client/server/web-based background. My fascination with maths is beautifully visualised with jMonkey.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://jmonkeyengine.org/authors/itsmike54/</link>
-      <pubDate>Tue, 24 Mar 2020 12:44:00 +0000</pubDate>
-      
-      <guid>https://jmonkeyengine.org/authors/itsmike54/</guid>
+      <guid>https://jmonkeyengine.org/authors/moffkalast/</guid>
       <description></description>
     </item>
     
@@ -67,38 +94,11 @@
     
     <item>
       <title></title>
-      <link>https://jmonkeyengine.org/authors/moffkalast/</link>
-      <pubDate>Tue, 15 Oct 2019 06:27:00 +0000</pubDate>
-      
-      <guid>https://jmonkeyengine.org/authors/moffkalast/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://jmonkeyengine.org/authors/pspeed/</link>
-      <pubDate>Wed, 16 Oct 2019 08:27:00 +0000</pubDate>
-      
-      <guid>https://jmonkeyengine.org/authors/pspeed/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://jmonkeyengine.org/authors/riccardobl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jmonkeyengine.org/authors/riccardobl/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://jmonkeyengine.org/authors/sgold/</link>
-      <pubDate>Tue, 25 Feb 2020 18:00:00 +0000</pubDate>
-      
-      <guid>https://jmonkeyengine.org/authors/sgold/</guid>
-      <description>Sky, animation editing, quaternions, and now physics. What’ll be my next side project?</description>
     </item>
     
   </channel>
