@@ -30,7 +30,7 @@ Today, engine leader Paul Speed successfully released jMonkeyEngine 3.3.0-beta2,
       <description>Sgold:
 Thank you for agreeing to be interviewed.
 First question: Do you remember when you first encountered JMonkeyEngine? What was your first impression?
-  Daniel Perano:
+   Daniel Perano:
 I started learning jME back in the 3.0 days, as I recall, and I was impressed with the features it offered. The scene-graph control and appstate design made a lot of sense to me &amp;mdash; at the time both were novel concepts.</description>
     </item>
     
@@ -43,7 +43,7 @@ I started learning jME back in the 3.0 days, as I recall, and I was impressed wi
       <description>Sgold:
 Thank you for agreeing to be interviewed.
 First question: When did you first hear about JMonkeyEngine?
-  Jayfella:
+   Jayfella:
 Way back in 2014, after a long period of developing desktop applications, servers, and minecraft plugins, I decided to look into writing games. At that time I was more into C#, but XNA was a sinking ship, so looked at alternatives. I found jMonkey and gave it a shot.</description>
     </item>
     

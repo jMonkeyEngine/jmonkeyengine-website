@@ -2,31 +2,32 @@
 <html lang="en-us">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>jMonkeyEngine</title>
+  <title>jMonkeyEngine</title>
 
-    <meta name="description" content="A cross-platform game engine for adventurous Java developers.">
-    
+  
+  <meta name="description" content="A cross-platform game engine for adventurous Java developers.">
+  
 
-    <link rel="stylesheet" href="/css/custom.css">
-    <link rel="stylesheet" href="/lib/fomantic/semantic.min.css">
-    <link rel="stylesheet" href="/lib/blueimp-gallery/2.36.0/css/blueimp-gallery.min.css" />
+  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/lib/fomantic/semantic.min.css">
+  <link rel="stylesheet" href="/lib/blueimp-gallery/2.41.0/css/blueimp-gallery.min.css" />
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/lib/fomantic/semantic.min.js"></script>
-    <script src="/lib/blueimp-gallery/2.36.0/js/blueimp-gallery.min.js" defer></script>
-    <script src="/js/custom.js" defer></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/lib/fomantic/semantic.min.js"></script>
+  <script src="/lib/blueimp-gallery/2.41.0/js/blueimp-gallery.min.js" defer></script>
+  <script src="/js/custom.js" defer></script>
 
-    
-        <link rel="alternate" type="application/rss+xml" href="/start/index.xml" title="jMonkeyEngine">
+  
+        <link rel="alternate" type="application/rss" href="/start/index.xml" title="jMonkeyEngine">
 
 </head>
 
 <body>
-    
+  
 
 
 
@@ -46,6 +47,8 @@
                 <a class="item" id="Blog" href="/blog/">Blog</a>
                 
                 <a class="item" id="Documentation" href="/docs/">Documentation</a>
+                
+                <a class="item" id="Features" href="/features/">Features</a>
                 
                 <a class="item" id="License" href="/license/">License</a>
                 
@@ -70,7 +73,7 @@
 </header>
 
 
-    
+  
     
     <div class="ui container">
         <br />
@@ -100,58 +103,58 @@
 <span style="color:#f92672">}</span>
 
 dependencies <span style="color:#f92672">{</span>
-    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-core:3.2.3-stable&#34;</span>
-    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-desktop:3.2.3-stable&#34;</span>
-    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-lwjgl:3.2.3-stable&#34;</span>
+    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-core:3.3.2-stable&#34;</span>
+    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-desktop:3.3.2-stable&#34;</span>
+    implementation <span style="color:#e6db74">&#34;org.jmonkeyengine:jme3-lwjgl:3.3.2-stable&#34;</span> 
 <span style="color:#f92672">}</span></code></pre></div>
 
 <h2 id="creating-a-game">Creating a Game</h2>
 
 <p>All games created with jmonkey start by extending <code>SimpleApplication</code>. Below is the most basic setup required to start your game and show a cube.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> <span style="color:#a6e22e">my</span>.<span style="color:#a6e22e">game</span>;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> my.game<span style="color:#f92672">;</span>
 
-<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">SimpleApplication</span>;
-<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">material</span>.<span style="color:#a6e22e">Material</span>;
-<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">ColorRGBA</span>;
-<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">scene</span>.<span style="color:#a6e22e">Geometry</span>;
-<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">scene</span>.<span style="color:#a6e22e">shape</span>.<span style="color:#a6e22e">Box</span>;
-<span style="color:#f92672">import</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">jme3</span>.<span style="color:#a6e22e">system</span>.<span style="color:#a6e22e">AppSettings</span>;
+<span style="color:#f92672">import</span> com.jme3.app.SimpleApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.jme3.material.Material<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.jme3.math.ColorRGBA<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.jme3.scene.Geometry<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.jme3.scene.shape.Box<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.jme3.system.AppSettings<span style="color:#f92672">;</span>
 
-<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Main <span style="color:#a6e22e">extends</span> SimpleApplication {
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#66d9ef">extends</span> SimpleApplication <span style="color:#f92672">{</span>
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String[] <span style="color:#a6e22e">args</span>) {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 
-        Main <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Main();
+        Main app <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Main<span style="color:#f92672">();</span>
 
-        AppSettings <span style="color:#a6e22e">settings</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AppSettings(<span style="color:#66d9ef">true</span>);
-        settings.<span style="color:#a6e22e">setTitle</span>(<span style="color:#e6db74">&#34;My Awesome Game&#34;</span>);
-        app.<span style="color:#a6e22e">setSettings</span>(settings);
+        AppSettings settings <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AppSettings<span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+        settings<span style="color:#f92672">.</span><span style="color:#a6e22e">setTitle</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;My Awesome Game&#34;</span><span style="color:#f92672">);</span>
+        app<span style="color:#f92672">.</span><span style="color:#a6e22e">setSettings</span><span style="color:#f92672">(</span>settings<span style="color:#f92672">);</span>
 
-        app.<span style="color:#a6e22e">start</span>();
+        app<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
 
-    }
-
-    <span style="color:#a6e22e">@Override</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> simpleInitApp() {
-
-        Box <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Box(1, 1, 1);
-        Geometry <span style="color:#a6e22e">geom</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Geometry(<span style="color:#e6db74">&#34;Box&#34;</span>, b);
-
-        Material <span style="color:#a6e22e">mat</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Material(assetManager, <span style="color:#e6db74">&#34;Common/MatDefs/Misc/Unshaded.j3md&#34;</span>);
-        mat.<span style="color:#a6e22e">setColor</span>(<span style="color:#e6db74">&#34;Color&#34;</span>, ColorRGBA.<span style="color:#a6e22e">Blue</span>);
-        geom.<span style="color:#a6e22e">setMaterial</span>(mat);
-
-        rootNode.<span style="color:#a6e22e">attachChild</span>(geom);
-
-    }
+    <span style="color:#f92672">}</span>
 
     <span style="color:#a6e22e">@Override</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> simpleUpdate(<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">tpf</span>) {
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">simpleInitApp</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+
+        Box b <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Box<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> 1<span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
+        Geometry geom <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Geometry<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Box&#34;</span><span style="color:#f92672">,</span> b<span style="color:#f92672">);</span>
+
+        Material mat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Material<span style="color:#f92672">(</span>assetManager<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Common/MatDefs/Misc/Unshaded.j3md&#34;</span><span style="color:#f92672">);</span>
+        mat<span style="color:#f92672">.</span><span style="color:#a6e22e">setColor</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Color&#34;</span><span style="color:#f92672">,</span> ColorRGBA<span style="color:#f92672">.</span><span style="color:#a6e22e">Blue</span><span style="color:#f92672">);</span>
+        geom<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaterial</span><span style="color:#f92672">(</span>mat<span style="color:#f92672">);</span>
+
+        rootNode<span style="color:#f92672">.</span><span style="color:#a6e22e">attachChild</span><span style="color:#f92672">(</span>geom<span style="color:#f92672">);</span>
+
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">simpleUpdate</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> tpf<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
         <span style="color:#75715e">//TODO: add update code
-</span><span style="color:#75715e"></span>    }
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
 
-}</code></pre></div>
+<span style="color:#f92672">}</span></code></pre></div>
 
 <p>Running this class will start your first game and display a blue box on the screen, and you can move around using your mouse and WASD keys. Congratulations! You&rsquo;re running your first JME game!</p>
 
@@ -165,7 +168,7 @@ dependencies <span style="color:#f92672">{</span>
 	
 
 
-    <footer>
+  <footer>
         <div id="bottom-shadow"></div>
     <div class="ui inverted segment footer" style="border-radius: 0px; margin-bottom: 0px;">
             
