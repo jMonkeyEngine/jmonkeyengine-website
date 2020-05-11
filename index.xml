@@ -6,10 +6,21 @@
     <description>Recent content on jMonkeyEngine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Mar 2020 12:44:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2020 08:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jmonkeyengine.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>jMonkeyEngine 3.3.2 released</title>
+      <link>https://jmonkeyengine.org/blog/jme332/</link>
+      <pubDate>Sun, 10 May 2020 08:00:00 +0000</pubDate>
+      
+      <guid>https://jmonkeyengine.org/blog/jme332/</guid>
+      <description>JMonkeyEngine version 3.3.2 is here!
+After 3 months of beta testing, the Java game engine&amp;rsquo;s long-awaited v3.3 release arrived on 30 March. With it came exciting new features: AppState ids, light-probe blending, a better ragdoll control, and an animation system rewritten from the ground up.
+As often happens, a few key bugfixes missed the cutoff for v3.3.0-stable. In its wake, the JMonkeyEngine team came together and identified a handful of existing fixes that could be safely backported into v3.</description>
+    </item>
     
     <item>
       <title>jMonkeyEngine 3.3.0-beta2 is out!</title>
