@@ -1,0 +1,33 @@
+
+{{ if isset .Params "tags" }}
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        {{ range  .Params.tags  }}
+        <li><a class="{{ urlize . }}" href="/tags/{{ urlize . }}"><i class="fas fa-hashtag"></i>{{ . }}</a></li>
+        {{ end }}
+    </ul>
+{{ end }}
+{{ if isset .Params "authors" }}
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        {{ range  .Params.authors  }}
+        <li><a class="{{ urlize . }}" href="/authors/{{ urlize . }}"><i class="fas fa-at"></i>{{ . }}</a></li>
+        {{ end }}
+    </ul>
+    {{ end }}
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="{{ .Date}}"><i class="fas fa-calendar"></i>{{ .Date.Format "02 January 2006" }}</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+

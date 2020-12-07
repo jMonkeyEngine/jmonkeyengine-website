@@ -1,0 +1,60 @@
+
+{{ $paginator := .Paginator }}
+
+{{ if $paginator.HasPrev }}
+    "prev":"{{ .Paginator.Prev.URL }}",
+{{ else}}
+    "prev":"",
+{{ end }}
+{{ if $paginator.HasNext }}
+    "next":"{{ .Paginator.Next.URL }}",
+{{ else}}
+    "next":"",
+{{ end }}
+
+
+"articles":[
+{{ range $i,$e := $paginator.Pages }}
+    {{ if $i }} , {{end}}
+    {
+        {{ if .Params.cover }} 
+        "cover":"{{ .Params.cover }}",
+        {{else}}
+        "cover":"",        
+        {{end}}
+
+        {{ if .Params.ytcover }}
+        "ytcover":"{{ .Params.ytcover }}" ,
+        {{ else }}
+        "ytcover":"",
+        {{end}}
+
+        "date":"{{ .Date}}",
+        
+        "url":"{{ .RelPermalink }}",
+
+        {{ if .Params.summarytitle }}
+        "title":"{{ .Params.summarytitle }}",
+        {{ else }}
+        "title":"{{ .Title }}",
+        {{ end }}
+
+        
+        {{ if .Params.summary }}
+        "summary":"{{ .Params.summary }}",
+    
+        {{ end }}
+
+        "tags":[
+        {{ range $i, $e  :=  .Params.tags  }}
+             {{ if $i }} , {{end}}
+             "{{ $e }}"
+        {{ end }}
+        ]
+
+    }
+{{ end }}
+
+]
+
+

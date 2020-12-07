@@ -1,0 +1,20 @@
+<article >
+
+    {{ if not .Params.hidetitle}}
+    <h1>
+        {{ .Title }}
+    </h1>
+    {{end }}
+
+    <div>
+
+
+    {{ .Content }}
+
+</div>
+    <time datetime="{{ .Date}}">{{ .Date.Format "02 January 2006" }}</time>
+
+{{ partial "tagsView.html" . }}      
+{{ partial "comments.html" . }}      
+
+</article>

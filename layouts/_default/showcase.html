@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ partial "showcase.html" . }}
+<section class="game full responsiveWidth">
+
+    <article>
+        <h1>
+            {{ partial "postIcon.html" . }}
+            {{ .Title }}</h1>
+            <div class="content">
+                <span>
+                {{ .Content }}
+                </span>
+            {{ partial "articleNavGame.html" . }}
+
+        </div>
+
+
+
+    </article>
+</section>
+{{ end }}

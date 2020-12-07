@@ -1,0 +1,9 @@
+{{ if   in  .Params.tags  "devlog" }}
+<i class="fas fa-code useless"></i>        
+  {{ else if   in  .Params.tags  "communitylog" }}
+<i class="fas fa-bullhorn useless"></i>
+{{ else if   in  .Params.tags  "showcase" }}
+<i class="fas fa-cubes useless"></i>
+{{else}}
+<i class="fas fa-paragraph useless"></i>
+{{ end }}

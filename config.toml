@@ -1,0 +1,29 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "jMonkeyEngine"
+paginate=9
+summarylength = 60
+enableRobotsTXT = true
+ignoreErrors = ["error-output-taxonomy"]
+pygmentsCodeFences=false
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[params]
+  favicon = "favicon.ico"
+  custom_css = ["/css/style.css"]
+  custom_js=["/js/script.js"]
+
+[taxonomies]
+  tag = "tags"
+  author = "authors"
+
+[outputs]
+  home = ["HTML"]
+  page = ["HTML","JSON"]
+  taxonomy = ["HTML","JSON"]
+  term=["HTML","JSON"]
+

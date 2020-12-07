@@ -1,0 +1,41 @@
+
+<article  
+{{ if not .Params.youtubevideo }}
+onclick="document.location='{{ .RelPermalink }}';"
+{{end}}
+style=" {{ if .Params.cover }} background-image:url(' {{ .Params.cover }}'); {{end}} '" 
+class='{{ if  (or (isset .Params "cover") (isset .Params "ytcover")) }} cover {{ end }}{{ if   (isset .Params "ytcover") }} interactive {{ end }}'
+>
+
+        {{ if .Params.ytcover }}
+          <iframe  src="{{ .Params.ytcover }}" frameborder="0" 
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" a
+          llowfullscreen></iframe>
+        {{ end }}
+        <h1>
+          {{ partial "postIcon.html" . }}
+
+        {{ if .Params.summarytitle }}
+         <a href="{{ .RelPermalink }}">{{ .Params.summarytitle }}</a>
+        {{ else }}
+        {{ if .Title }}  <a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
+        {{ end }}
+
+      </h1>
+      <div class="content">
+
+        <span>
+
+          {{ if .Params.summary }}
+        {{ .Params.summary | truncate 200}}
+        {{ else }}
+        {{ .Summary |  safeHTML }} {{ if .Truncated }} … 
+        <a class="more readMore" href="{{ .RelPermalink }}">Read
+            More... </a> {{ end }}
+            {{ end }}
+          </span>
+          {{ partial "articleNavPost.html" . }}
+
+        </div>
+      </article>
+

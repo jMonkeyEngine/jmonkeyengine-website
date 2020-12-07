@@ -1,0 +1,11 @@
+{{ define "main" }}
+{{ .Scratch.Set "asBanner" "true" }}
+{{ $filter := slice "showcase" }}
+    {{ range first 1 (shuffle  (where   .Site.Pages  "Params.tags"  "intersect" $filter    ) ) }}
+    {{ partial "showcase.html" . }}
+{{ end }}
+
+{{ partial "listTags.html" . }}
+{{ partial "articlesList.html" . }}
+{{ end }}
+

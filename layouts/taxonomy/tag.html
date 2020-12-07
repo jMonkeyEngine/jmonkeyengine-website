@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{ $filter := slice "showcase" }}
+    {{ range first 1 (shuffle  (where   .Site.Pages  "Params.tags"  "intersect" $filter    ) ) }}
+    {{ partial "showcaseBanner.html" . }}
+{{ end }}
+
+<h1><i class="fas fa-hashtag"></i>{{upper .Data.Term }}</h1>
+<section class="list responsiveWidth">
+        {{ $paginator := .Paginator }}
+        {{ range $paginator.Pages }}
+            {{ partial "articlePreview.html" . }}      
+        {{ end }}
+</section>
+
+{{ $paginator := .Paginator }}
+<section class="pagination responsiveWidth">
+    {{ if $paginator.HasPrev }}
+        <a href="{{ .Paginator.Prev.URL }}"><i class="fas fa-caret-left"></i></a>
+    {{ end }}
+  Page  {{ $paginator.PageNumber }} of {{$paginator.TotalPages }}
+    {{ if $paginator.HasNext }}
+        <a href="{{ .Paginator.Next.URL }}"><i class="fas fa-caret-right"></i></a>
+    {{ end }}    
+</section>
+
+
+
+<h1>Tags</h1>
+<section class="list hlist responsiveWidth">
+    {{ range $key, $value := .Site.Taxonomies.tags }}
+    <a href="/tags/{{ $key  }}">  <i class="fas fa-hashtag"></i>{{ $key  }} </a>
+    {{ end }}
+</section>
+{{ end }}

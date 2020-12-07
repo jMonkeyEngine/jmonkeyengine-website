@@ -1,0 +1,62 @@
+{
+    "responseTitle":"{{ block "title" . }}{{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}{{ end }}",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+{{ $paginator := .Paginator }}
+
+{{ if $paginator.HasPrev }}
+    "prev":"{{ .Paginator.Prev.URL }}",
+{{ else}}
+    "prev":"",
+{{ end }}
+{{ if $paginator.HasNext }}
+    "next":"{{ .Paginator.Next.URL }}",
+{{ else}}
+    "next":"",
+{{ end }}
+
+
+"articles":[
+{{ range $i,$e := $paginator.Pages }}
+    {{ if $i }} , {{end}}
+    {
+     
+        "date":"{{ .Date}}",
+        
+        "url":{{ .Permalink  | jsonify }},
+
+        {{ if .Params.summarytitle }}
+        "title":{{ .Params.summarytitle | plainify  | jsonify  }},
+        {{ else }}
+        "title":{{ .Title | plainify  | jsonify }},
+        {{ end }}
+
+   
+        {{ if .Params.summary }}
+        "summary":{{ .Params.summary | plainify  | jsonify }},
+        {{else}}
+        "summary":{{.Summary | plainify | jsonify }}   ,
+        {{ end }}
+      
+        "tags":[
+        {{ range $i, $e  :=  .Params.tags  }}
+             {{ if $i }} , {{end}}
+             "{{ $e }}"
+        {{ end }}
+        ],
+        "authors":[
+            {{ range $i, $e  :=  .Params.authors  }}
+                 {{ if $i }} , {{end}}
+                 "{{ $e }}"
+            {{ end }}
+            ]
+
+    }
+{{ end }}
+
+]
+
+
+
+}

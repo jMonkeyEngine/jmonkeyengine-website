@@ -1,0 +1,52 @@
+{{ define "main" }}
+{{ $filter := slice "showcase" }}
+    {{ range first 1 (shuffle  (where   .Site.Pages  "Params.tags"  "intersect" $filter    ) ) }}
+    {{ partial "showcaseBanner.html" . }}
+{{ end }}
+
+<section class="list hlist responsiveWidth">
+
+<figure class="githubUser " github-user="{{ .Data.Term }}">
+    <img src="https://avatars.githubusercontent.com/{{  lower .Data.Term }}">
+    <figcaption>  
+        <h2>
+            <span class="ghname">{{ .Data.Term }}</span>
+        </h2>
+            <span class="ghbio"></span>
+        <div>
+            <a href="https://github.com/{{ lower .Data.Term }}"><i class="fab fa-github"></i></a>
+            <a class="ghtwitter_link" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a class="ghblog" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+
+</section>
+
+<section class="list responsiveWidth">
+        {{ $paginator := .Paginator }}
+        {{ range $paginator.Pages }}
+            {{ partial "articlePreview.html" . }}      
+        {{ end }}
+</section>
+
+{{ $paginator := .Paginator }}
+<section class="pagination responsiveWidth">
+    {{ if $paginator.HasPrev }}
+        <a href="{{ .Paginator.Prev.URL }}"><i class="fas fa-caret-left"></i></a>
+    {{ end }}
+  Page  {{ $paginator.PageNumber }} of {{$paginator.TotalPages }}
+    {{ if $paginator.HasNext }}
+        <a href="{{ .Paginator.Next.URL }}"><i class="fas fa-caret-right"></i></a>
+    {{ end }}    
+</section>
+
+
+
+<h1>Authors</h1>
+<section class="list hlist responsiveWidth">
+    {{ range $key, $value := .Site.Taxonomies.authors }}
+    <a href="/authors/{{ $key  }}"><i class="fas fa-at"></i> {{ $key  }}</a>
+    {{ end }}
+</section>
+{{ end }}

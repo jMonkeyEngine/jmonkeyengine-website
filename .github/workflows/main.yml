@@ -1,0 +1,62 @@
+#   CLOUDFLARE_API_KEY="XXXX"
+#   CLOUDFLARE_ZONE="XXXX"
+
+name: Build
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  push:
+    branches:
+      - master
+
+jobs:
+ 
+  build:
+    runs-on: ubuntu-18.04    
+    container:
+      image: riccardoblb/buildenvs:hugo
+    
+    steps: 
+    - name: Clone master
+      run: |
+          git config --global user.name "GithubActions"
+          git config --global user.email "actions@robot.frk.wf"
+          git clone --single-branch  --depth 1 --recurse-submodules  --branch master https://github.com/${GITHUB_REPOSITORY}.git project
+
+    - name: Clone gh-pages
+      run: |
+          git config --global user.name "GithubActions"
+          git config --global user.email "actions@robot.frk.wf"
+          git clone --no-checkout --single-branch --branch gh-pages https://github.com/${GITHUB_REPOSITORY}.git generated    
+          cd generated
+          git reset --hard `git rev-list --max-parents=0 HEAD`
+          cd ..
+
+    - name: Build
+      run: |
+        cd project
+        chmod +x ./make.sh
+        NO_CONTAINER=1 HEADLESS=1 ./make.sh         
+        mkdir -p public
+        echo "1" > public/.nojekyll
+
+    - name: Deploy   
+      shell: bash  
+      run: |
+        shopt -s dotglob
+        cp -Rf project/public/* generated/
+        cd generated
+        git add .
+        git commit -m "Update data - `date`"        
+        header=$(echo -n "ad-m:${{ secrets.GITHUB_TOKEN }}" | base64)
+        set +e
+        (git -c http.extraheader="AUTHORIZATION: basic $header" push origin master --force )
+
+    - name: Purge Cloudflare Cache
+      shell: bash
+      run: |
+        curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/purge_cache" \
+        -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_KEY }}" \
+        -H "Content-Type: application/json"  --data '{"purge_everything":true}' 
+
+        

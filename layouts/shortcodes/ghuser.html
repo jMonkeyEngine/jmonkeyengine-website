@@ -1,0 +1,13 @@
+<figure class="githubUser {{ .Get "mode" }} " github-user="{{ .Get "user" }}">
+    <img src="https://avatars.githubusercontent.com/{{ lower ( .Get "user" ) }}">
+    <figcaption>  
+        <h2>
+            <span class="ghname">{{ .Get "user" }}</span>
+        </h2>
+        <span class="ghbio"></span>
+        <br />
+        <a href="https://github.com/{{ lower ( .Get "user" )  }}"><i class="fab fa-github"></i></a>
+        <a class="ghtwitter_link" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+        <a class="ghblog" href="" style="display:none"><i class="fas fa-globe"></i></a>
+    </figcaption>
+</figure> 

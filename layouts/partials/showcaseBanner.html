@@ -1,0 +1,36 @@
+<section id="showcase" mode="banner">
+
+  {{ $permUrl :=  .RelPermalink }}
+
+    {{ partial "showCaseCommon.html" . }}
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      A free, open source game engine, made especially for Java game developers who want to create 3D games
+      using modern technology. The software is programmed entirely in Java, intended for wide accessibility
+      and quick deployment.
+      <br />
+      <br />
+      <a href="/start/#content"><button> Get Started... </button></a>
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> {{ .Params.Title  }} powered by jMonkeyEngine</h2>
+      {{ if .Params.summary }}
+      {{ .Params.summary | truncate 200}}
+      {{ else }}
+      {{ .Summary | plainify | safeHTML  | truncate 200 }} {{ if .Truncated }}
+      {{ end }}
+      <br />
+      <a class="readMore" href="{{ .RelPermalink }}">See game page </a> {{ end }}
+    </div>
+  </div>
+
+</section>
+
+
+
+{{ partial "backerMessages.html" . }}
