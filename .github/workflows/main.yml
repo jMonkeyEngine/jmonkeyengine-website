@@ -50,7 +50,7 @@ jobs:
         git commit -m "Update data - `date`"        
         header=$(echo -n "ad-m:${{ secrets.GITHUB_TOKEN }}" | base64)
         set +e
-        (git -c http.extraheader="AUTHORIZATION: basic $header" push origin master --force )
+        (git -c http.extraheader="AUTHORIZATION: basic $header" push origin gh-pages --force )
 
     - name: Purge Cloudflare Cache
       shell: bash
