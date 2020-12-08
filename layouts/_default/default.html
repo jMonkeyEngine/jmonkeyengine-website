@@ -15,7 +15,6 @@
             <div class="content">
                 <span>
                 {{ .Content }}
-                {{ partial "comments.html" . }}
 
                 </span>
             {{ partial "articleNavPost.html" . }}
@@ -26,5 +25,10 @@
 
     </article>
 </section>
+
+<section class="full responsiveWidth">
+{{ partial "comments.html" . }}
+</section>
+
 
 {{ end }}
