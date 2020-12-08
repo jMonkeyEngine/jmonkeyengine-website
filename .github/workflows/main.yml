@@ -32,11 +32,13 @@ jobs:
           git reset --hard `git rev-list --max-parents=0 HEAD`
           cd ..
 
+
+
     - name: Build
       run: |
         cd project
         chmod +x ./make.sh
-        NO_CONTAINER=1 HEADLESS=1 ./make.sh         
+        NO_CONTAINER=1 HEADLESS=1  ./make.sh         
         mkdir -p public
         echo "1" > public/.nojekyll
 

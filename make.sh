@@ -24,6 +24,11 @@ then
 fi
 
 
+if [ "$DONT_COMPILE_LESS" = "" ];
+then
+    export CMD="npm install less -g&&lessc static/css/style.less static/css/style.css&&$CMD"    
+fi
+
 
 if [ "$ARGS" = "" ];
 then
@@ -61,6 +66,8 @@ if [ "$PORT" != "" ];
 then
     export ARGS="$ARGS -p$PORT:1313"
 fi
+
+
 
 if [ "$1"  = "server" ];
 then
