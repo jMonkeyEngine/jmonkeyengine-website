@@ -103,7 +103,7 @@ class GithubService{
 }
 
 
-window.addEventListener("load", function () {
+window.addEventListener("DOMContentLoaded", function () {
 	OpenCollectiveService.init();
 	GithubService.init();
 });

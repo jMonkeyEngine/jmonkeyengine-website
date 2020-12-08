@@ -58,7 +58,7 @@ PROGRESS_BAR_INTERVAL = setInterval(function () {
 }, 20);
 
 
-window.addEventListener("load", function () {
+window.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".toggleNavOnPortraitButton").forEach(el=>{
         const toggleId=el.getAttribute("toggle");
         if(!toggleId)return;

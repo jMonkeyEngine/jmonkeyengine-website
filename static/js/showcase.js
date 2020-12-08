@@ -129,6 +129,6 @@ const ShowCase=function(showCaseEl){
 
 
 }
-window.addEventListener("load", function () {
+window.addEventListener("DOMContentLoaded", function () {
 	document.querySelectorAll("#showcase").forEach(el=>new ShowCase(el));
 });
