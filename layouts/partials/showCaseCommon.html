@@ -9,7 +9,7 @@
                     frameborder="0" allow="accelerometer; autoplay;  encrypted-media; gyroscope; fullscreen"></iframe>
                 {{ else if (strings.HasSuffix . ".webm" ) }}
                   <video class="showcaseElement cover"  style='display:{{ if not $index }} block  {{else}} none {{end}} '  autoplay loop muted class="cover">
-                    <source lazy="true" lazy-src=" {{ safeURL .}}" type="video/webm">
+                    <source lazy="true" lazy-src="{{ safeURL .}}" type="video/webm">
                   </video>
                 {{ else if (strings.HasSuffix . ".mp4" ) }}
                     <video  class="showcaseElement cover"   style='display:{{ if not $index }} block  {{else}} none {{end}} '  autoplay loop muted class="cover">
