@@ -196,14 +196,28 @@ nav li:before {
 
 .textShadowedIntense {
     text-shadow:
-        0 0 @textShadowIntense @textShadowColor,
-        0 0 @textShadowIntense @textShadowColor,
-        0 0 @textShadowIntense @textShadowColor,
-        0 0 @textShadowIntense @textShadowColor,
-        0 0 (@textShadowIntense*2) @textShadowColor,
-        0 0 (@textShadowIntense*2) @textShadowColor,
-        0 0 @textShadowIntense @textShadowColor;
+    0 0 (@textShadowIntense/2) @textShadowColor,
+    0 0 (@textShadowIntense/2) @textShadowColor,
+    0 0 (@textShadowIntense/2) @textShadowColor,
+
+
+    0 0 @textShadowIntense @textShadowColor,
+
+    0 0 (@textShadowIntense*2) @textShadowColor,
+    0 0 (@textShadowIntense*2) @textShadowColor,
+    0 0 (@textShadowIntense*4) @textShadowColor,
+    0 0 (@textShadowIntense*4) @textShadowColor,
+
+    
+        0 0 (@textShadowIntense/4) @foreground,
+        0 0 (@textShadowIntense/4) @foreground,
+        0 0 (@textShadowIntense/4) @foreground,
+        0 0 (@textShadowIntense/4) @foreground
+        
+
+        ;
 }
+
 
 
 #topmenu {
