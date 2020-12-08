@@ -8,12 +8,12 @@
                     lazy="true" lazy-src="https://www.youtube-nocookie.com/embed/{{ index ( last 1 ( split . ":" )) 0 }}"
                     frameborder="0" allow="accelerometer; autoplay;  encrypted-media; gyroscope; fullscreen"></iframe>
                 {{ else if (strings.HasSuffix . ".webm" ) }}
-                  <video class="showcaseElement cover"  style='display:{{ if not $index }} block  {{else}} none {{end}} '  autoplay loop muted class="cover">
-                    <source lazy="true" lazy-src="{{ safeURL .}}" type="video/webm">
+                  <video class="showcaseElement cover"  style='display:{{ if not $index }} block  {{else}} none {{end}} '  preload="none" autoplay loop muted class="cover">
+                    <source src="{{ safeURL .}}" type="video/webm">
                   </video>
                 {{ else if (strings.HasSuffix . ".mp4" ) }}
-                    <video  class="showcaseElement cover"   style='display:{{ if not $index }} block  {{else}} none {{end}} '  autoplay loop muted class="cover">
-                      <source lazy="true" lazy-src="{{ safeURL .}}" type="video/mp4">
+                    <video  class="showcaseElement cover"   style='display:{{ if not $index }} block  {{else}} none {{end}} '  preload="none" autoplay loop muted class="cover">
+                      <source type="video/mp4">
                     </video>
                 {{ else }}      
                 <div class="showcaseElement"  style='display:{{ if not $index }} block  {{else}} none {{end}} ' >
