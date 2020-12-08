@@ -23,7 +23,9 @@
 	--codeColor: #a01e1e;
 	--discordColor: #44013b;
 	--storeColor: #686602;
-	--donateColor: #835518;
+    --donateColor: #835518;
+    --highlightedColor: #ffbb00;
+    --highlightedColorFg:#242424;
 }
 
 @foreground: var(--foreground);
@@ -42,6 +44,8 @@
 @discordColor: var(--discordColor);
 @storeColor: var(--storeColor);
 @donateColor: var(--donateColor);
+@highlightedColor: var(--highlightedColor);
+@highlightedColorFg: var(--highlightedColorFg);
 
 @textShadowColor: @background3;
 @boxShadowColor:@background2;
@@ -404,6 +408,12 @@ h3 {
     background: @buttonColor  !important;
     color: @foreground  !important;
     font-weight: bold;
+}
+
+.highlightedCl{
+    .genericCl();
+    background: @highlightedColor  !important;
+    color: @highlightedColorFg!important;
 }
 
 .donateCl {
@@ -924,6 +934,9 @@ section#contribute {
 
 
 
+button#startbtn{
+    font-size:1.6rem;
+}
 
 
 section#showcase {
@@ -956,7 +969,7 @@ position:relative;
     }
 
     #engineDescription {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         text-align: center;
         width: 100%;
         display: block;
