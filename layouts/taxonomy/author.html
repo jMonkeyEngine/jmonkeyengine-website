@@ -9,14 +9,14 @@
 <figure class="githubUser " github-user="{{ .Data.Term }}">
     <img src="https://avatars.githubusercontent.com/{{  lower .Data.Term }}">
     <figcaption>  
-        <h2>
-            <span class="ghname">{{ .Data.Term }}</span>
+        <h2 alt="{{ .Data.Term }}" class="ghname" ghresolve-name="innerText">
+            {{ .Data.Term }}
         </h2>
-            <span class="ghbio"></span>
+            <span ghresolve-bio="innerText"  class="ghbio"></span>
         <div>
-            <a href="https://github.com/{{ lower .Data.Term }}"><i class="fab fa-github"></i></a>
-            <a class="ghtwitter_link" href="" style="display:none"><i class="fab fa-twitter"></i></a>
-            <a class="ghblog" href="" style="display:none"><i class="fas fa-globe"></i></a>
+            <a alt="github link" title="Github" href="https://github.com/{{ lower .Data.Term }}"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a alt="website link"  title="Website"  ghresolve-blog="href"  class="ghblog" href="" style="display:none"><i class="fas fa-globe"></i></a>
         </div>
     </figcaption>
 </figure> 
@@ -45,8 +45,16 @@
 
 <h1>Authors</h1>
 <section class="list hlist responsiveWidth">
-    {{ range $key, $value := .Site.Taxonomies.authors }}
-    <a href="/authors/{{ $key  }}"><i class="fas fa-at"></i> {{ $key  }}</a>
-    {{ end }}
+    <ul class="list hlist">
+
+        {{ range $key, $value := .Site.Taxonomies.authors }}
+
+        <li>
+        <a href="/authors/{{ $key  }}"><i class="fas fa-at"></i> {{ $key  }}</a>
+    </li>
+
+        {{ end }}
+    </ul>
+
 </section>
 {{ end }}

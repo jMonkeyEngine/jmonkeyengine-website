@@ -17,38 +17,48 @@
 	--background3: rgb(20, 20, 20);
 	--background4: rgb(37, 37, 37);
 	--twitter: #1DA1F2;
-	--buttonColor: #2f2f2f;
-	--docsColor: #168530;
-	--bugsColor: #185e94;
-	--codeColor: #a01e1e;
+
+    --buttonColor: #2f2f2f;
+    --buttonColorFg:var(--foreground);
+
+    --docsColor: #0c5858;
+    --docsColorFg:var(--foreground);
+
+	--bugsColor: #680404;
+    --bugsColorFg:var(--foreground);
+
+    --codeColor: #6d003f;
+    --codeColorFg:var(--foreground);
+
+
 	--discordColor: #44013b;
-	--storeColor: #686602;
-    --donateColor: #835518;
+    --discordColorFg:var(--foreground);
+
+    --storeColor: #686602;
+    --storeColorFg:var(--foreground);
+
+    --donateColor: #8cc800;
+    --donateColorFg: #212700;
+
+
+    --itchColor: #b11f38;
+    --itchColorFg:var(--foreground);
+
+    --youtubeColor: #c4302b;
+    --youtubeColorFg:var(--foreground);
+
+    --twitterColor:#1475b1;
+    --twitterColorFg:var(--foreground);
+
     --highlightedColor: #ffbb00;
     --highlightedColorFg:#242424;
+
+    --textShadowColor: var(--background3);
+    --boxShadowColor:var(--background2);
 }
 
-@foreground: var(--foreground);
-@foreground2: var(--foreground2);
-@highlightFg: var(--highlightFg);
-@highlightFg2: var(--highlightFg2);
-@background: var(--background);
-@background2:var(--background2);
-@background3: var(--background3);
-@background4: var(--background4);
-@twitter: var(--twitter);
-@buttonColor: var(--buttonColor);
-@docsColor:var(--docsColor);
-@bugsColor: var(--bugsColor);
-@codeColor: var(--codeColor);
-@discordColor: var(--discordColor);
-@storeColor: var(--storeColor);
-@donateColor: var(--donateColor);
-@highlightedColor: var(--highlightedColor);
-@highlightedColorFg: var(--highlightedColorFg);
 
-@textShadowColor: @background3;
-@boxShadowColor:@background2;
+
 
 @borderRoundness: 0.3rem;
 @borderRoundnessVeryRound: 2rem;
@@ -58,6 +68,17 @@
 @portrait: ~"only screen and (max-width:1000px), only screen and (orientation:portrait)";
 @boxShadowBlur: 0.8rem;
 @boxShadowSpread: 0.3rem;
+
+img {
+    max-width: 100%;
+}
+p{
+    display:inline-block;
+    margin-top:0.2rem;
+    margin-bottom:0.2rem;
+}
+
+
 
 blockquote {
     display: flex;
@@ -95,13 +116,13 @@ progress#pageLoadingProgress::-webkit-progress-bar {
     -webkit-appearance: none;
     appearance: none;
     -moz-appearance: none;
-    background: @background2;
+    background: var(--background2);
     border: none
 }
 
 progress#pageLoadingProgress::-webkit-progress-value,
 progress#pageLoadingProgress::-moz-progress-bar {
-    background: @highlightFg;
+    background: var(--highlightFg);
 }
 
 // ### GENERIC STUFF
@@ -130,13 +151,13 @@ code {
     user-select: none;
 
     text-align: right;
-    color: @highlightFg;
+    color: var(--highlightFg);
     vertical-align: top;
 
 }
 
 .hljs-ln tr:nth-child(odd) {
-    background-color: @background2;
+    background-color: var(--background2);
 }
 
 
@@ -158,8 +179,16 @@ li {
     list-style-type: none;
     padding-left: 0.5rem;
     margin: 0;
+
 }
 
+
+li{
+    margin-top:0.1rem;
+    p{
+        display:inline;
+    }
+}
 nav ul,
 nav li {
     text-align: left;
@@ -178,41 +207,41 @@ nav li:before {
 }
 
 .shadowed {
-    box-shadow: 0 0 @boxShadowBlur @boxShadowSpread @boxShadowColor;
+    box-shadow: 0 0 @boxShadowBlur @boxShadowSpread var(--boxShadowColor);
 }
 
 .textShadowed {
     text-shadow:
-        0 0 @textShadow @textShadowColor,
-        0 0 @textShadow @textShadowColor,
-        0 0 @textShadow @textShadowColor,
-        0 0 @textShadow @textShadowColor,
-        0 0 @textShadow @textShadowColor,
-        0 0 @textShadow @textShadowColor,
-        0 0 @textShadow @textShadowColor,
-        0 0 @textShadow @textShadowColor,
-        0 0 @textShadow @textShadowColor;
+        0 0 @textShadow var(--textShadowColor),
+        0 0 @textShadow var(--textShadowColor),
+        0 0 @textShadow var(--textShadowColor),
+        0 0 @textShadow var(--textShadowColor),
+        0 0 @textShadow var(--textShadowColor),
+        0 0 @textShadow var(--textShadowColor),
+        0 0 @textShadow var(--textShadowColor),
+        0 0 @textShadow var(--textShadowColor),
+        0 0 @textShadow var(--textShadowColor);
 }
 
 .textShadowedIntense {
     text-shadow:
-    0 0 (@textShadowIntense/2) @textShadowColor,
-    0 0 (@textShadowIntense/2) @textShadowColor,
-    0 0 (@textShadowIntense/2) @textShadowColor,
+    0 0 (@textShadowIntense/2) var(--textShadowColor),
+    0 0 (@textShadowIntense/2) var(--textShadowColor),
+    0 0 (@textShadowIntense/2) var(--textShadowColor),
 
 
-    0 0 @textShadowIntense @textShadowColor,
+    0 0 @textShadowIntense var(--textShadowColor),
 
-    0 0 (@textShadowIntense*2) @textShadowColor,
-    0 0 (@textShadowIntense*2) @textShadowColor,
-    0 0 (@textShadowIntense*4) @textShadowColor,
-    0 0 (@textShadowIntense*4) @textShadowColor,
+    0 0 (@textShadowIntense*2) var(--textShadowColor),
+    0 0 (@textShadowIntense*2) var(--textShadowColor),
+    0 0 (@textShadowIntense*4) var(--textShadowColor),
+    0 0 (@textShadowIntense*4) var(--textShadowColor),
 
     
-        0 0 (@textShadowIntense/4) @foreground,
-        0 0 (@textShadowIntense/4) @foreground,
-        0 0 (@textShadowIntense/4) @foreground,
-        0 0 (@textShadowIntense/4) @foreground
+        0 0 (@textShadowIntense/4) var(--foreground),
+        0 0 (@textShadowIntense/4) var(--foreground),
+        0 0 (@textShadowIntense/4) var(--foreground),
+        0 0 (@textShadowIntense/4) var(--foreground)
         
 
         ;
@@ -222,7 +251,7 @@ nav li:before {
 
 #topmenu {
 
-    background-color: @background;
+    background-color: var(--background);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -233,26 +262,36 @@ nav li:before {
     padding-left: 1rem;
     padding-right: 1rem;
 
+    button.icon{
+        min-width:1.7rem;
+    }
+
     >div {
         flex-direction: row;
 
         @media @portrait {
             flex-direction: column;
         }
+        margin-right:0.3rem;
 
     }
+    >div:nth-child(2) {
+        // The last ul is on the right.
+        margin-left: auto;
 
+    }
+    >div:last-child{
+        margin-right:0;
+    }
 
 
     >div:first-child {
         // The first ul is on the left
         margin-right: auto;
+        margin-left:0;
     }
 
-    >div:last-child {
-        // The last ul is on the right.
-        margin-left: auto;
-    }
+
 
 
 }
@@ -261,10 +300,10 @@ nav li:before {
 
     all: unset;
     appearance: none;
-    background-color: @background2  !important;
-    border: 0.1rem solid @background3  !important;
+    background-color: var(--background2)  !important;
+    border: 0.1rem solid var(--background3)  !important;
     border-radius: @borderRoundness;
-    color: @highlightFg;
+    color: var(--highlightFg);
     padding: 0.3rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -295,6 +334,19 @@ button:hover {
 
 }
 
+button.icon{
+    i{
+        margin:0!important;
+        padding:0!important;
+    }
+    padding:0.5rem;
+    padding-left:0.7rem;
+    padding-right:0.7rem;
+    
+    text-align: center;
+    font-size: 1.2rem;
+}
+
 
 nav {
     display: flex;
@@ -316,7 +368,7 @@ a:hover,
 a:visited {
     color: inherit;
     text-decoration: inherit;
-    color: @highlightFg;
+    color: var(--highlightFg);
 }
 
 a:hover {
@@ -357,7 +409,7 @@ h3 {
     margin: 0;
     padding: 0;
     margin-bottom: 1rem;
-    color: @highlightFg;
+    color: var(--highlightFg);
 }
 
 h2,
@@ -371,11 +423,11 @@ h3 {
     font-size: 2rem;
 
     display: none;
-    color: @highlightFg;
+    color: var(--highlightFg);
     cursor: pointer;
 
     &:hover {
-        color: @highlightFg2;
+        color: var(--highlightFg2);
     }
 }
 
@@ -412,53 +464,85 @@ h3 {
 *>i.fas:first-child,
 *>i.fab:first-child {
     // This is the icon
-    padding-right: .4rem;
+    padding-right: .2rem;
 }
+
 
 // #####
 
 
 .genericCl {
-    background: @buttonColor  !important;
-    color: @foreground  !important;
+    background: var(--buttonColor)  !important;
+    color: var(--buttonColorFg)  !important;
     font-weight: bold;
 }
 
 .highlightedCl{
     .genericCl();
-    background: @highlightedColor  !important;
-    color: @highlightedColorFg!important;
+    background: var(--highlightedColor)  !important;
+    color: var(--highlightedColorFg)!important;
 }
 
 .donateCl {
     .genericCl();
-    background: @donateColor  !important;
+    background: var(--donateColor)  !important;
+    color: var(--donateColorFg)  !important;
+
 }
 
 .docsCl {
     .genericCl();
-    background: @docsColor  !important;
+    background: var(--docsColor)  !important;
+    color: var(--docsColorFg)  !important;
+
 }
 
 .bugsCl {
     .genericCl();
-    background: @bugsColor  !important;
+    background: var(--bugsColor)  !important;
+    color: var(--bugsColorFg)  !important;
+
 }
 
 
 .codeCl {
     .genericCl();
-    background: @codeColor  !important;
+    background: var(--codeColor)  !important;
+    color: var(--codeColorFg)  !important;
+
 }
 
 .discordCl {
     .genericCl();
-    background: @discordColor  !important;
+    background: var(--discordColor)  !important;
+    color: var(--discordColorFg)  !important;
+
 }
 
 .storeCl {
     .genericCl();
-    background: @storeColor  !important;
+    background: var(--storeColor)  !important;
+    color: var(--storeColorFg)  !important;
+
+}
+
+.twitterCl {
+    .genericCl();
+    background: var(--twitterColor)  !important;
+    color: var(--twitterColorFg)  !important;
+
+}
+.youtubeCl {
+    .genericCl();
+    background: var(--youtubeColor)  !important;
+    color: var(--youtubeColorFg)  !important;
+
+}
+.itchCl {
+    .genericCl();
+    background: var(--itchColor)  !important;
+    color: var(--itchColorFg)  !important;
+
 }
 
 figure.githubUser {
@@ -469,28 +553,6 @@ figure.githubUser {
     padding: 0;
     margin: 2rem;
 
-    &.inline {
-        margin: 0;
-
-        >img {
-            max-height: 3rem;
-
-        }
-
-        h2 {
-            font-size: 1.2rem;
-
-        }
-
-        >.githubBio {
-            display: none;
-        }
-
-        margin-top:2rem;
-        margin-bottom:.5rem;
-        padding-bottom:1rem;
-        border-bottom: 0.1rem solid @highlightFg;
-    }
 
     >* {
         padding: 0;
@@ -498,7 +560,7 @@ figure.githubUser {
     }
 
     >img {
-        box-shadow: 0 0 0.2rem 0.01rem @highlightFg;
+        box-shadow: 0 0 0.2rem 0.01rem var(--highlightFg);
         border-radius: 8rem;
         max-height: 6rem;
     }
@@ -514,6 +576,32 @@ figure.githubUser {
         display:flex;
         flex-direction: column;
     }
+
+
+    &.inline {
+        margin: 0;
+
+        >img {
+            max-height: 3rem;
+
+        }
+
+        h2 {
+            font-size: 1.2rem;
+
+        }
+        .ghbio{
+            display:none!important;
+        }
+       
+        margin-top:2rem;
+        margin-bottom:.5rem;
+        padding-bottom:1rem;
+        border-bottom: 0.1rem solid var(--highlightFg);
+        >figcaption {
+         
+        }
+    }
 }
 
 body {
@@ -523,8 +611,8 @@ body {
 
     font-family: 'Ubuntu', sans-serif;	// font-family: 'JetBrains Mono', monospace;
 	// font-family: 'Padauk', sans-serif;
-    background: @background  !important;
-    color: @foreground  !important;
+    background: var(--background)  !important;
+    color: var(--foreground)  !important;
     min-height: 100%;
     width: 100%;
     position: relative;
@@ -574,14 +662,14 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: @background2;
+        background-color: var(--background2);
         box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
         width: 100%;
         margin: 0;
         padding: 0;
 
         #siteTitle {
-            color: @highlightFg;
+            color: var(--highlightFg);
             display: flex;
             flex-direction: row;
             text-align: center;
@@ -651,7 +739,7 @@ body {
     z-index: -1;
     object-fit: cover;
     pointer-events: none;
-    box-shadow: 0 0 0.3rem 0.04rem @background2;
+    box-shadow: 0 0 0.3rem 0.04rem var(--background2);
 
     &.gallery {
         background-size: contain;
@@ -692,12 +780,18 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    >article{
+        p{
+            display:inline;
 
+        }
+    }
     &.hlist {
         flex-direction: row;
 
         >article {
             flex-basis: 30%;
+          
         }
 
 
@@ -762,7 +856,7 @@ section {
         // An article, is the content.
         .shadowed();
         text-align: left;
-        background: @background2;
+        background: var(--background2);
         border-radius: @borderRoundness;
         margin: 1rem;
 
@@ -778,8 +872,8 @@ section {
         >h1:first-of-type {
             // This is the top bar in the article. The main title basically.
             border-radius: @borderRoundness;
-            background: @background4;
-            color: @foreground2;
+            background: var(--background4);
+            color: var(--foreground2);
             margin: 0;
             padding: 0;
             display: block;
@@ -837,7 +931,7 @@ section {
                 flex-direction: column;
                 align-items: baseline;
                 flex-wrap: wrap;
-                color: @highlightFg;
+                color: var(--highlightFg);
 
                 >ul {
                     width: 100%;
@@ -995,7 +1089,7 @@ position:relative;
         display: block;
         cursor: pointer;
         position: absolute;
-        color: @highlightFg;
+        color: var(--highlightFg);
 
     }
 

@@ -27,8 +27,17 @@
 
 <h1>Tags</h1>
 <section class="list hlist responsiveWidth">
+    <ul class="list hlist">
+
     {{ range $key, $value := .Site.Taxonomies.tags }}
+    <li>
+
     <a href="/tags/{{ $key  }}">  <i class="fas fa-hashtag"></i>{{ $key  }} </a>
+</li>
+
     {{ end }}
+</ul>
+
 </section>
+
 {{ end }}
