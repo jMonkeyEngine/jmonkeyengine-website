@@ -17,7 +17,6 @@ class OpenCollectiveService{
 		this.cycleMessage();
 		setInterval(() =>{
 			this.cycleBackers();
-			this.cycleMessage();
 		}, 5000);
 	}
 
@@ -77,7 +76,7 @@ class GithubService{
 			console.log("Found user needing resolution",el,user)
 
 			GithubUtils.resolveUser(user).then(user=>{
-				console.log(user,"resolved!");
+				// console.log(user,"read for resolution!");
 				const properties={};
 				properties.name=user.name;
 				if(!properties.name)properties.name=user.login;
@@ -93,9 +92,19 @@ class GithubService{
 				for(let k in properties){
 					const v=properties[k];
 					if(!v)continue;
-					el.querySelectorAll(".gh"+k).forEach(eel=>eel.style.display="inline-block");
-					el.querySelectorAll("a.gh"+k).forEach(eel=>eel.setAttribute("href",v));
-					el.querySelectorAll("span.gh"+k).forEach(eel=>eel.innerText=v);					
+					const attr="ghresolve-"+k;
+					el.querySelectorAll("["+attr+"]").forEach(eel=>{
+						const realattr=eel.getAttribute(attr);
+						eel.style.display="inline-block";
+						if(realattr==="innerText"){
+							eel.innerText=v;
+						}else{
+							eel.setAttribute(realattr,v);
+						}
+					})
+					// el.querySelectorAll(".gh"+k).forEach(eel=>eel.style.display="inline-block");
+					// el.querySelectorAll("a.gh"+k).forEach(eel=>eel.setAttribute("href",v));
+					// el.querySelectorAll("span.gh"+k).forEach(eel=>eel.innerText=v);					
 				}
 			});
 		});

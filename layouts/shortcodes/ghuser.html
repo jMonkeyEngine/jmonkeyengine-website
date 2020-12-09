@@ -1,13 +1,14 @@
 <figure class="githubUser {{ .Get "mode" }} " github-user="{{ .Get "user" }}">
-    <img src="https://avatars.githubusercontent.com/{{ lower ( .Get "user" ) }}">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/{{ lower ( .Get "user" )  }}">
     <figcaption>  
-        <h2>
-            <span class="ghname">{{ .Get "user" }}</span>
+        <h2 ghresolve-bio="title" alt="{{ .Get "user" }}" class="ghname" ghresolve-name="innerText">
+            {{ .Get "user" }}
         </h2>
-        <span class="ghbio"></span>
-        <br />
-        <a href="https://github.com/{{ lower ( .Get "user" )  }}"><i class="fab fa-github"></i></a>
-        <a class="ghtwitter_link" href="" style="display:none"><i class="fab fa-twitter"></i></a>
-        <a class="ghblog" href="" style="display:none"><i class="fas fa-globe"></i></a>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/{{ lower ( .Get "user" )  }}" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
     </figcaption>
 </figure> 
