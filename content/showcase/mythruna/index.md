@@ -6,7 +6,7 @@ type: "default"
 layout: "showcase"
 
 authors:
-    - "pspeed"
+    - "pspeed42"
 tags:
     - "mythruna"
     - "showcase"

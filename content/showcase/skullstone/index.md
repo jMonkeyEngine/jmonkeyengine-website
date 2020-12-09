@@ -6,7 +6,7 @@ type: "default"
 layout: "showcase"
 
 authors:
-    - "frozenshade"
+    - "FrozenShade666"
 tags:
     - "skullstone"
     - "showcase"

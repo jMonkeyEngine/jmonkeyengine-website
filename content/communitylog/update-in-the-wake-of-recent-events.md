@@ -1,5 +1,5 @@
 ---
-title: "Community Update: Update in the wake of recent events"
+title: "Update in the wake of recent events"
 date: 2020-10-29T08:00:00+00:00
 draft: false
 type: "default"

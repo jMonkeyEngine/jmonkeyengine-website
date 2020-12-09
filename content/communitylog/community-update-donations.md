@@ -1,5 +1,5 @@
 ---
-title: "Community Update: Donations"
+title: "Donations Update"
 date: 2020-11-09T08:00:00+00:00
 draft: false
 type: "default"
@@ -14,9 +14,10 @@ tags:
     - "opencollective"
 ---
 
-Hello fellow community members, this is the promised followup of https://hub.jmonkeyengine.org/t/update-in-the-wake-of-recent-events/43808/6.
+Hello fellow community members, this is the promised followup of [Update in the wake of recent events](/communitylog/update-in-the-wake-of-recent-events/)
 
 As planned, we opted for creating a collective at [opencollective.com/jmonkeyengine](https://opencollective.com/jmonkeyengine), since this is the most future proof and community oriented alternative out there. 
+<!--more-->
 
 OpenCollective is a trusted platform that provides funds managment and fiscal hosting for many opensource organizations like us. This comes also with full transparency for the community as it is possible to see where donations go and to whom. 
 OpenCollective should cover pretty much all the options, since it has one-time, monthly, yearly and custom tiers and accepts bank transfer, credit card and paypal. However I am also planning to re-enable donations through Github Sponsor that will be also connected to OpenCollective, this will require some extra integration so it will be done at a later time.

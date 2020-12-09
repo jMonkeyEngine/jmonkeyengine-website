@@ -5,7 +5,7 @@ draft: false
 type: "default"
 layout: "default"
 authors:
-    - "sgold"
+    - "stephengold"
 
 tags:
     - "interview"
