@@ -8,7 +8,7 @@ layout: "showcase"
 authors:
     - "moffkalast"
     - "grizeldi"
-    - "dancso"
+    - "poshdan"
 tags:
     - "steam"
     - "lightspeed frontier"

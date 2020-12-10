@@ -6,7 +6,7 @@ type: "default"
 layout: "showcase"
 
 authors:
-    - "glh3586"
+    - "Jeddic"
 
 tags:
     - "steam"
