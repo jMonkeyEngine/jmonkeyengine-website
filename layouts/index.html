@@ -103,14 +103,16 @@
         <h1><i class="fas fa-network-wired"></i> Networking</h1>
         <div class="content">
             <span>
-                jMonkeyEngine comes with <a href="https://wiki.jmonkeyengine.org/docs/3.3/networking/networking.html">spidermonkey</a>, a feature rich java client-server networking API that 
-                supports :
+                There are multiple options to write netcode in jMonkeyEngine:
                 <ul>
-                    <li>Reliable messaging via TCP</li>
-                    <li>Unreliable fast messaging via UDP</li>
-                    <li>Remote Method Invocation (RMI)</li>
-                    <li>Fast Object Serialization</li>
-                </ul>
+                    <li><a href="https://wiki.jmonkeyengine.org/docs/3.3/networking/networking.html">Spidermonkey</a>:  A feature rich java 
+                        client-server networking API that uses TCP and UDP packets. With support for RMI and Object Serialization.
+                    </li>
+                    <li><a href="https://github.com/Simsilica/SimEthereal">SimEthereal <i class="fas fa-puzzle-piece" title="Available as Plugin or community contribution"></i></a>: 
+                        A high performance library for real-time networked object synching</li>
+                        <li><a href="https://store.jmonkeyengine.org/929c156b-3b0e-42c7-8474-f6c58ed8a1d5">Monkey Netty <i class="fas fa-puzzle-piece" title="Available as Plugin or community contribution"></i></a>: 
+                            A implementation of a server-client system using Netty.IO that utilizes both TCP and UDP.</li>                  
+                </ul>        
             </span>
         </div>
 
