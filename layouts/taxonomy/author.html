@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $filter := slice "showcase" }}
-    {{ range first 1 (shuffle  (where   .Site.Pages  "Params.tags"  "intersect" $filter    ) ) }}
+{{ range first 1 (shuffle  (where  (where   .Site.Pages  "Params.authors"  "intersect" (slice .Data.Term)  )  "Params.tags"  "intersect" $filter ))}}
     {{ partial "showcaseBanner.html" . }}
 {{ end }}
 
