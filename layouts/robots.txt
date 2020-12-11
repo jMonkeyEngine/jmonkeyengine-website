@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://{{.Site.Params.hostname}}/sitemap.xml

@@ -13,9 +13,7 @@ pygmentsCodeFences=false
   filename = "sitemap.xml"
 
 [params]
-  favicon = "favicon.ico"
-  custom_css = ["/css/style.css"]
-  custom_js=["/js/script.js"]
+  hostname="jmonkeyengine.org"
 
 [taxonomies]
   tag = "tags"
