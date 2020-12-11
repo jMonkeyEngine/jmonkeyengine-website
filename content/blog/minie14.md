@@ -4,6 +4,7 @@ date: 2020-02-09T08:00:00+00:00
 draft: false
 type: "default"
 layout: "default"
+enable_comments: true
 
 authors:
     - "stephengold"
@@ -19,7 +20,7 @@ tags:
 Minie version 1.4 is an exciting new add-on for
 [the JMonkeyEngine (JME) game engine](https://jmonkeyengine.org).
 
-{{< figure src="https://i.imgur.com/YdoHlbf.jpg" height="120px" >}}
+{{< figure src="https://i.imgur.com/YdoHlbf.jpg"  >}}
 
 Minie provides an [open-source](https://en.wikipedia.org/wiki/Open-source_software)
 physics [engine](https://en.wikipedia.org/wiki/Physics_engine) for desktop games.

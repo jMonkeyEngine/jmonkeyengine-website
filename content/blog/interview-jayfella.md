@@ -6,6 +6,7 @@ type: "default"
 layout: "default"
 authors:
     - "stephengold"
+enable_comments: true
 
 tags:
     - "interview"

@@ -4,6 +4,7 @@ date: 2020-02-25T18:00:00+00:00
 draft: false
 type: "default"
 layout: "default"
+enable_comments: true
 
 authors:
     - "stephengold"

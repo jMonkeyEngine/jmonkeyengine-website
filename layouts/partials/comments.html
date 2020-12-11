@@ -1,7 +1,8 @@
+{{ if .Params.enable_comments }}
 <section class="full responsiveWidth">
 
   <article>
-    <h1 id="comments">Comments</h1>
+    <h1 id="comments"><i class="useless fas fa-comments"></i> Comments</h1>
       <div class="content" id='discourse-comments'></div>
 
       <script type="text/javascript">
@@ -17,3 +18,4 @@
 
 </article>
 </section>
+{{end}}

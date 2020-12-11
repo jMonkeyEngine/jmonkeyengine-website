@@ -13,7 +13,7 @@ tags:
     - "tutorials"
     - "blog"
 
-feature_image: "/images/showcase/pbr_tutorial/main-image.jpg"
+enable_comments: true
 
 videos_youtube: [
     "miXbF6cBsSw",
