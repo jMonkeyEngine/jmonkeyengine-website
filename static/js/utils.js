@@ -59,24 +59,31 @@ PROGRESS_BAR_INTERVAL = setInterval(function () {
 
 
 window.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".toggleNavOnPortraitButton").forEach(el=>{
+    document.querySelectorAll("[toggle]").forEach(el=>{
         const toggleId=el.getAttribute("toggle");
         if(!toggleId)return;
         const parent=document.querySelector("#"+toggleId);
         if(!parent)return;
         el.addEventListener("click",()=>{
-            let toggled=el.getAttribute("toggled");
-            console.log("Toggle ",toggled?"on":"off'")
-            parent.querySelectorAll("div").forEach(el2=>{
+           
+            parent.querySelectorAll(".toggleable").forEach(el2=>{
+                let toggled=el2.classList.contains("toggledOn");
+                let toggledPortrait=el2.classList.contains("toggledOnPortrait");
+                let notToggledPortrait=el2.classList.contains("toggledOffPortrait");
+                toggled=toggled||toggledPortrait;
+                const portrait=notToggledPortrait||toggledPortrait;
+                console.log("Toggle ",toggled?"on":"off'")
                 if(toggled){
-                    el.removeAttribute("toggled",false);
-                    el2.classList.add("toggledOff");
+                    // el.removeAttribute("toggled",false);
+                    el2.classList.add(portrait?"toggledOffPortrait":"toggledOff");
                     el2.classList.remove("toggledOn");
+                    el2.classList.remove("toggledOnPortrait");
 
                 }else{
-                    el.setAttribute("toggled",true);
+                    // el.setAttribute("toggled",true);
                     el2.classList.remove("toggledOff");
-                    el2.classList.add("toggledOn");
+                    el2.classList.remove("toggledOffPortrait");
+                    el2.classList.add(portrait?"toggledOnPortrait":"toggledOn");
 
                 }
             });

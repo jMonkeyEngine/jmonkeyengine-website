@@ -257,45 +257,46 @@ nav li:before {
 
 
 #topmenu {
-
     background-color: var(--background);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
     border-bottom-left-radius: @borderRoundness;
     border-bottom-right-radius: @borderRoundness;
     padding: 0.2rem;
     padding-left: 1rem;
     padding-right: 1rem;
 
+
     a {
         text-decoration: none !important;
     }
 
-    button.icon {
-        min-width: 1.7rem;
-    }
+
 
     >div {
+        display:flex;
+        align-items: center;
         flex-direction: row;
-
-        @media @portrait {
-            flex-direction: column;
-        }
-
+        flex-wrap: wrap; 
+        justify-content: space-around; 
         margin-right:0.3rem;
 
     }
 
-    >div:nth-child(2) {
-        // The last ul is on the right.
-        margin-left: auto;
-
-    }
 
     >div:last-child {
         margin-right: 0;
+        >div{
+            margin-left:0.3rem;
+        }
+
+        @media @portrait {
+            margin:auto;
+        }
+
+
+    
     }
 
 
@@ -305,9 +306,12 @@ nav li:before {
         margin-left: 0;
 
         @media @portrait {
-            button {
-                width: 100%;
-            }
+            margin:auto;
+        }
+        @media @portrait {
+            // button {
+            //     width: 100%;
+            // }
         }
     }
 
@@ -354,21 +358,85 @@ button:hover {
     filter: brightness(130%);
 
 }
+@keyframes buttonIconExpand {
+    0% {  
+   
+   
+    }
+    100% {
+      
+        position:initial;
+    }
 
-button.icon {
+  }
+  
+  @keyframes buttonIconExpandR {
+
+ 0%{
+    }
+    
+    100% {  
+    
+
+    }
+  }
+  
+.clickableIcon{
+
     i {
         margin: 0 !important;
         padding: 0 !important;
-    }
+        display:inline-block;
+        margin-right:-0.25rem!important;
+        transition: margin 0.6s linear;
 
+    }
+    >span{
+        opacity: 0;
+        letter-spacing: -0.9rem;
+        font-size:0px;
+        margin:0;
+        padding:0;
+        
+        transition: letter-spacing .8s linear, opacity .3s linear 0.6s,font-size 0.3s linear;
+    }
+    @media @portrait{
+        >span{
+            display:none;
+        }
+        i{
+            margin:0!important;
+
+        }
+    }
+    &.hover,&:hover{
+        i{
+            margin:0!important;
+        }
+        >span{
+            font-size:inherit;
+            letter-spacing: 0px;
+            opacity:1;
+        }
+    }
+    
     padding:0.5rem;
     padding-left:0.7rem;
     padding-right:0.7rem;
-
+    min-width:1.8rem;
     text-align: center;
     font-size: 1.2rem;
 }
 
+button.icon {
+    .clickableIcon();
+
+}
+button.responsiveIcon {
+    @media @portrait{
+    .clickableIcon();
+    }
+}
 
 nav {
     display: flex;
@@ -451,6 +519,10 @@ h3 {
     &:hover {
         color: var(--highlightFg2);
     }
+
+@media @portrait {
+        display: block;
+    }
 }
 
 // Useless things are hidden inportrait mode.
@@ -459,27 +531,24 @@ h3 {
         display: none;
     }
 }
-
-@media @portrait {
-    .toggleNavOnPortraitButton {
-        display: block;
+    .toggleable.toggledOn {
+        display: flex;
+    }
+    .toggleable.toggledOff {
+        display: none!important;
     }
 
-    nav.toggleOnPortrait {
-
-        >* {
-            flex-direction: column;
-            display: none;
+    .toggleable.toggledOnPortrait{
+        @media @portrait {
+            .toggleable.toggledOn();
         }
-
-        >.toggledOn {
-            flex-direction: column;
-            display: flex;
-        }
-
-        align-items: center;
     }
-}
+    .toggleable.toggledOffPortrait{
+        @media @portrait {
+            .toggleable.toggledOff();
+        }
+    }
+
 
 
 // Give padding to all the icons (from font awesome)
@@ -1120,15 +1189,21 @@ section#showcase {
 
     }
 
+    &.gallery{
+        min-height:80vh;
+    }
     #showCasePrev {
         font-size: 4rem;
-        bottom: 1rem;
+        top: 50%;
+        margin-top:-2rem;
         left: 1rem;
     }
 
     #showCaseNext {
         font-size: 4rem;
-        bottom: 1rem;
+        margin-top:-2rem;
+
+        top: 50%;
         right: 1rem;
     }
 
