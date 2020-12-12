@@ -1,0 +1,7 @@
+<section class="list vlist" >
+    {{ $filter := split  (.Get "tags")  "," }}
+    {{ $pages :=  (where  .Site.Pages  "Params.tags"  "intersect" $filter )}}
+    {{ range first 4 $pages  }}
+    {{ partial "articlePreview.html" . }}
+    {{ end }}     
+</section>

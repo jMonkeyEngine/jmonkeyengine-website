@@ -7,6 +7,9 @@ enableRobotsTXT = true
 ignoreErrors = ["error-output-taxonomy"]
 pygmentsCodeFences=false
 
+[markup.goldmark.renderer]
+  hardWraps = true
+
 [sitemap]
   changefreq = "monthly"
   priority = 0.5

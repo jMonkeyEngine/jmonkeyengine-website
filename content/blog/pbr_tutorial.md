@@ -15,10 +15,6 @@ tags:
 
 enable_comments: true
 
-videos_youtube: [
-    "miXbF6cBsSw",
-    "6isyfPudDfc"
-]
 
 ---
 
@@ -26,4 +22,14 @@ A continuing YouTube series helping users take leap from using the regular `Ligh
 
 First part of my tutorial series in which I explain how to use jmonkeyengine's Physically Based Rendering pipeline. Intended for people who already understand how to use the regular Lighting.j3md shader, but have no idea how PBR works.
 
+
+
+
+{{< youtube miXbF6cBsSw >}}
+
+-------
+
 Second part of my tutorial series in which I explain how to use jmonkeyengine's Physically Based Rendering pipeline. In this part we answer the question what are the light probes and why do we need them.
+
+
+{{< youtube 6isyfPudDfc >}}
