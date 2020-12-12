@@ -27,7 +27,8 @@
     <ul class="share">
         <h3 class="share">Share</h3>
         <li>
-            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw&text={{ if .Params.summary }}{{ .Params.summary   |  htmlUnescape | plainify | truncate 150}} {{ else }}{{ .Summary | htmlUnescape| plainify  | truncate 150 }} {{end}} "  >
+                <i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
     </ul>
 
 
