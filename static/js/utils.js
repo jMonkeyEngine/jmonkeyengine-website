@@ -65,7 +65,12 @@ window.addEventListener("DOMContentLoaded", function () {
         const parent=document.querySelector("#"+toggleId);
         if(!parent)return;
         el.addEventListener("click",()=>{
-           
+           parent.querySelectorAll(".expandable").forEach(el2=>{
+               if(el2.classList.contains("expandedOnPortrait"))
+                el2.classList.remove("expandedOnPortrait");
+                else el2.classList.add("expandedOnPortrait");
+
+           });
             parent.querySelectorAll(".toggleable").forEach(el2=>{
                 let toggled=el2.classList.contains("toggledOn");
                 let toggledPortrait=el2.classList.contains("toggledOnPortrait");
