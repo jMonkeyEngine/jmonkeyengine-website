@@ -1,4 +1,8 @@
 export default class Cache {
+    static getCacheId(){
+        return "dQL5aNkS";
+
+    }
     static buildFullKey(key){
         key="jme-"+key+"-cache";
         return key;
@@ -11,6 +15,7 @@ export default class Cache {
             if(!item) throw key+" not cached!";
             item=JSON.parse(item);
             if(!item.date|| (Date.now()-item.date )>cacheExpiration)    throw key+" expired!";
+            if(!item.cache_id|| item.cache_id !=this.getCacheId())    throw key+" invalidated! "+ item.cache_id+" got but "+this.getCacheId()+" expected!";            
             return item.content;            
         }catch(e){
             console.warn(e);
@@ -44,7 +49,9 @@ export default class Cache {
             key=this.buildFullKey(key);
             localStorage.setItem(key,JSON.stringify({
                 date: Date.now(),
-                content:value
+                content:value,
+                cache_id:this.getCacheId()
+
             }));          
         }catch(e){
             console.warn(e);
