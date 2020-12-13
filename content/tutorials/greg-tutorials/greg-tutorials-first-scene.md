@@ -21,6 +21,6 @@ In this second part, we will learn how to import a model, how to use the scene c
 
 {{< youtube Ow6te57Bq4Y >}}
 
-[Follow the serie at #gregstutorials](tags/gregstutorials)
+[Follow the serie at #gregstutorials](/tags/gregstutorials)
 
    

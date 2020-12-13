@@ -21,5 +21,5 @@ Here's a new tutorial serie about jMonkeyEngine that i'm using for one of my gam
 
 {{< youtube MWB0h9U6bxA >}}
 
-[Follow the serie at #gregstutorials](tags/gregstutorials)
+[Follow the serie at #gregstutorials](/tags/gregstutorials)
    
