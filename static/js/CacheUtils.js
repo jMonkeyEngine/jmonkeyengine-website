@@ -1,7 +1,8 @@
+import _buildId from "./build-id.js";
+
 export default class Cache {
     static getCacheId(){
-        return "dQL5aNkS";
-
+        return _buildId;
     }
     static buildFullKey(key){
         key="jme-"+key+"-cache";
