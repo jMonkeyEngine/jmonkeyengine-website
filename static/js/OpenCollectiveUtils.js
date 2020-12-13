@@ -3,39 +3,34 @@ import CacheUtils from "./CacheUtils.js"
 const OPEN_COLLECTIVE_ENDPOINT= ()=>"https://api.opencollective.com/graphql/v2";
 const OPEN_COLLECTIVE_BACKER_QUERY = (org) => `
 query collective ($offset: Int, $limit: Int){
-    collective(slug: "${org}") {
-      name
-      backers: members(role: BACKER, offset: $offset, limit: $limit) {
-        limit
-        totalCount
-        nodes {
-          publicMessage
-          totalDonations {
-            value
-            currency
-            valueInCents
+  collective(slug: "${org}") {
+    name
+    backers: members(role: BACKER, offset: $offset, limit: $limit) {
+      limit
+      totalCount
+      nodes {
+        publicMessage
+        totalDonations {
+          value
+          currency
+          valueInCents
+        }
+        account {
+          slug
+          type
+          name
+          imageUrl
+          website
+          twitterHandle
+          ... on Individual {
+            email
           }
-          account {
-            slug
-            type
-          
-            
-            ... on Individual {
-              email
-              name
-              website
-              imageUrl
-            }
-            ... on Organization {
-              admins: members(role: ADMIN) {
-                nodes {
-                  account {
-                    ... on Individual {
-                      email
-                      name
-                      website
-                      imageUrl
-                    }
+          ... on Organization {
+            admins: members(role: ADMIN) {
+              nodes {
+                account {
+                  ... on Individual {
+                    email
                   }
                 }
               }
@@ -45,6 +40,8 @@ query collective ($offset: Int, $limit: Int){
       }
     }
   }
+}
+
   `;
 export default class OpenCollectiveUtils {
   static async    getBackers(collective) {
@@ -94,21 +91,27 @@ export default class OpenCollectiveUtils {
       let account = backer.account;
       entry.accountUrl = "https://opencollective.com/" + account.slug;
 
-      const subAccounts = [];
-      if (account.type == "ORGANIZATION") {
-        account.admins.nodes.forEach(admin => subAccounts.push(admin.account));
-      } else {
-        subAccounts.push(account);
-      }
+      // const subAccounts = [];
+      // if (account.type == "ORGANIZATION") {
+      //   account.admins.nodes.forEach(admin => subAccounts.push(admin.account));
+      // } else {
+      //   subAccounts.push(account);
+      // }
 
-      subAccounts.forEach(account => {
-        const subEntry = { ...entry };
-        subEntry.name = account.name;
-        subEntry.website = account.website;
-        subEntry.avatar = account.imageUrl;
-        backers.push(subEntry);
-      });
-
+      // subAccounts.forEach(account => {
+        // const subEntry = { ...entry };
+        // subEntry.name = account.name;
+        // subEntry.website = account.website;
+        // subEntry.avatar = account.imageUrl;
+        // backers.push(subEntry);
+      // });
+        entry.name = account.name;
+        entry.website = account.website;
+        entry.avatar = account.imageUrl;
+        entry.twitter = account.twitterHandle;
+        entry.slug = account.slug;
+        entry.type=account.type;
+        backers.push(entry);
     }
 
     if(!cached&&modifier)backers=modifier(backers);
