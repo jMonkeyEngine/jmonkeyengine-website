@@ -47,10 +47,10 @@ A slideshow explaining how to use vectors and quaternions in jMonkey. This guide
 - How to combine rotations.
 - How to use `lookAt` to create rotations.
 
-### {{< icon "far fa-images" >}} [Transparency for Dummies](https://hub.jmonkeyengine.org/t/alpha-transparency-sorting-your-z-buffer-and-you/33709)
+### {{< icon "far fa-images" >}} [Transparency for Dummies](https://hub.jmonkeyengine.org/t/alpha-transparency-sorting-your-z-buffer-and-you/33709) 
 
 This document explains some of the issues surrounding transparency, what sorting means and how to solve common problems surrounding transparency.
 
 ### {{< icon "fas fa-comments" >}} [Community tutorials](/tags/tutorials)
-This is a list of usually more advances/specific tutorials provided by the community
+This is a list of tutorials provided by the community
 {{< articlelist tags="tutorial,tutorials,docs"  >}}

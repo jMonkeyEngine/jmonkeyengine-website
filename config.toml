@@ -9,7 +9,8 @@ pygmentsCodeFences=false
 
 [markup.goldmark.renderer]
   hardWraps = true
-
+  unsafe= true
+  
 [sitemap]
   changefreq = "monthly"
   priority = 0.5

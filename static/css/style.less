@@ -932,6 +932,9 @@ body {
     &.blur {
         filter: blur(100vh);
         margin-top: 40vh;
+        @media @portrait{
+            display:none;
+        }
     }
 }
 
@@ -1037,12 +1040,12 @@ section {
 
     >article {
         // An article, is the content.
+      
         .shadowed();
         text-align: left;
         background: var(--background2);
         border-radius: @borderRoundness;
         margin: 1rem;
-
         display: flex;
         flex-direction: column;
         text-shadow: none;
@@ -1087,11 +1090,16 @@ section {
             align-items: stretch;
             min-width: 0;
             width: 100%;
-
+            a {
+                word-break: break-all;
+                word-break: break-word;
+                
+            }
             @media @portrait {
                 display: flex;
                 flex-direction: column;
             }
+
 
             li {
                 // Adds little arrows before the li. 
@@ -1114,10 +1122,13 @@ section {
             >span {
                 display: block;
                 overflow-wrap: break-word;
-
+                flex-grow: 1;
+                width:100%;
             }
 
             >nav {
+                flex-grow: 0;
+
                 margin-left: 2rem;
                 flex-direction: column;
                 align-items: baseline;

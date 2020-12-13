@@ -9,8 +9,8 @@ jMonkeyEngine is licensed under the very permissive [BSD 3-Clause License](https
 
 Below is a copy of the BSD 3-Clause license used by this engine.
 
-{{< highlight text >}}
-Copyright (c) 2009-2019 jMonkeyEngine
+
+**Copyright (c) 2009-2020 jMonkeyEngine**
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -38,5 +38,4 @@ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
 PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-{{< / highlight >}}
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*

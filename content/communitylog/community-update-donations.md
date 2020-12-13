@@ -31,5 +31,5 @@ Last but not least I want to thank @adi.barda for the valuable contribution of 5
 
 That's all for now. A new thread will follow this one when I will have more updates to communicate.
 
+### TL;DR: We are accepting donations at https://opencollective.com/jmonkeyengine
 
-TL;DR: We are accepting donations at https://opencollective.com/jmonkeyengine

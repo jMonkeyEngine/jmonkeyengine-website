@@ -12,7 +12,8 @@ authors:
 tags:
     - "asset-store"
     - "software"
-    - "devlog"
+    - "website"
+    - "communitylog"
 ---
 
 After years of requests and attempts, a software store (a.k.a an asset store) for jmonkey has finally been created and is now open to registration. Everybody can register and submit their software!

@@ -5,7 +5,7 @@
 {{ end }}
 
 <h1><i class="fas fa-hashtag"></i>{{upper .Data.Term }}</h1>
-<section class="list responsiveWidth">
+<section class="list responsiveWidth list vlist">
         {{ $paginator := .Paginator }}
         {{ range $paginator.Pages }}
             {{ partial "articlePreview.html" . }}      
