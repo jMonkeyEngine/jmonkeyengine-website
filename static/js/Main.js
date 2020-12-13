@@ -1,7 +1,7 @@
 import CacheUtils from "./CacheUtils.js";
 import GithubUtils from "./GithubUtils.js";
 import OpenCollectiveUtils from "./OpenCollectiveUtils.js";
-
+// import Christmas from "./Christmas.js";
 
 class OpenCollectiveService{
 	 static async init(){
@@ -59,7 +59,7 @@ class GithubService{
 	}
 
 	 static async cycleContributors () {
-		this.shownContributor=CacheUtils.cachedCycle("contribs",0,this.contributors.length-1,10000);
+		this.shownContributor=CacheUtils.cachedCycle("contribs",0,this.contributors.length-1,20000);
 		
 		let contributor = this.contributors[this.shownContributor];
 		contributor=await GithubUtils.resolveUser(contributor.login);
@@ -115,6 +115,7 @@ class GithubService{
 window.addEventListener("DOMContentLoaded", function () {
 	OpenCollectiveService.init();
 	GithubService.init();
+	// Christmas.init();
 });
 
 
