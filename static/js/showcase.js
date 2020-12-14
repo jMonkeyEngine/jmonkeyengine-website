@@ -4,12 +4,12 @@ const ShowCase=function(showCaseEl){
 
 
 	this.getYoutubeVideos=()=>{
-		const els = showCaseEl.querySelectorAll("iframe.showcaseElement.youtubeVid");
+		const els = showCaseEl.querySelectorAll("iframe.youtubeVid");
 		return els;
 	};
 
 	this.getVideos=()=>{
-		const els = showCaseEl.querySelectorAll("video.showcaseElement");
+		const els = showCaseEl.querySelectorAll("video");
 		return els;
 	};
 
@@ -19,41 +19,60 @@ const ShowCase=function(showCaseEl){
 		return els;
 	};
 
+	this.showPlayButton=(v)=>{
+		const playButton=showCaseEl.querySelector("#playButton");
+		if(playButton){
+				playButton.style.display=v?"flex":"none";
+		}
+	}
 	this.playCurrent=()=>{
 		if(mode=="gallery"){
-			this.getImages().forEach(el=>el.classList.add("gallery"));
+			this.getImages().forEach(el=>{
+				if(!el.getAttribute("enableRequestFullScreen")){
+					el.setAttribute("enableRequestFullScreen",true);
+					el.addEventListener("click", () => el.requestFullscreen());
+				}
+				el.classList.add("gallery")
+			});
+				
 		}else{
 			this.getImages().forEach(el=>el.classList.remove("gallery"));
 		}
 
 		lazyLoad(showCaseEl);
 
+		let showPlayButton=false;
 		this.getVideos().forEach(el=>{
 		
 			if(isVisible(el)){
 				if(mode=="gallery"){
+					showPlayButton=true;
 					el.classList.add("gallery");
-					el.setAttribute("controls", "");
-					el.removeAttribute("loop");
-					el.removeAttribute("autoplay");
-					el.removeAttribute("muted");
 					el.volume=1.0;
 					el.muted = false;
+					el.controls=true;
+					el.loop=false;
+					if(!el.getAttribute("enableHidePlayButtonOnPlay")){
+						el.setAttribute("enableHidePlayButtonOnPlay",true);
+						el.addEventListener("play",()=>this.showPlayButton(false));
+					}
 				}else{
-					el.play();
-					el.removeAttribute("controls", "");
-					el.setAttribute("loop");
-					el.setAttribute("muted");
-					el.setAttribute("autoplay");
 					el.classList.remove("gallery");
 					el.muted = true;
+					el.controls=false;
+					el.loop=true;
+					el.play();
 
 				}
 			}else{
+				console.log("Disable video",el);
 				el.pause();
-				el.currentTime=0;
 			} 
 		});
+
+		this.showPlayButton(showPlayButton);
+
+
 
 		this.ytReloadInc=0;
 		this.getYoutubeVideos().forEach(el=>{
@@ -124,7 +143,6 @@ const ShowCase=function(showCaseEl){
 			this.cycleShowCase(1)
 		});
 
-		showCaseEl.addEventListener("click", () => showCaseEl.requestFullscreen());
 	}
 
 	this.playCurrent();

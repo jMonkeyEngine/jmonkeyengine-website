@@ -1,27 +1,34 @@
+
 {{ if   .Params.gallery }}
-              {{ range  $index, $value :=  (shuffle  .Params.gallery ) }}
+<i id="playButton" class=" fas fa-play"></i>
+{{ range  $index, $value :=  (shuffle  .Params.gallery ) }}
 
 
 
-                {{ if or (strings.HasPrefix  . "youtube:" )    }}
-                    <iframe loading="lazy" class="showcaseElement cover youtubeVid"   style='display: {{ if not $index }} block  {{else}} none {{end}}' 
-                    lazy="true" lazy-src="https://www.youtube-nocookie.com/embed/{{ index ( last 1 ( split . ":" )) 0 }}"
-                    frameborder="0" allow="accelerometer; autoplay;  encrypted-media; gyroscope; fullscreen"></iframe>
-                {{ else if (strings.HasSuffix . ".webm" ) }}
-                  <video class="showcaseElement cover"  style='display:{{ if not $index }} block  {{else}} none {{end}} '  preload="none" autoplay loop muted class="cover">
-                    <source src="{{ safeURL .}}" type="video/webm">
-                  </video>
-                {{ else if (strings.HasSuffix . ".mp4" ) }}
-                    <video  class="showcaseElement cover"   style='display:{{ if not $index }} block  {{else}} none {{end}} '  preload="none" autoplay loop muted class="cover">
-                      <source type="video/mp4">
-                    </video>
-                {{ else }}      
-                <div class="showcaseElement"  style='display:{{ if not $index }} block  {{else}} none {{end}} ' >
-                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('{{ safeURL .  }}'); " style=" "></div>
-                  <div    class="cover" lazy="true" lazy-style="background-image: url('{{ safeURL .  }}'); " style="  "></div>
-                </div>
-                {{ end }}    
-              {{end}}
-            
-  {{end}}
 
+{{ if or (strings.HasPrefix  . "youtube:" )    }}
+<iframe loading="lazy" class="showcaseElement cover youtubeVid"
+  style='display: {{ if not $index }} block  {{else}} none {{end}}' lazy="true"
+  lazy-src="https://www.youtube-nocookie.com/embed/{{ index ( last 1 ( split . ":" )) 0 }}" frameborder="0"
+  allow="accelerometer; autoplay;  encrypted-media; gyroscope; fullscreen"></iframe>
+{{ else if (strings.HasSuffix . ".webm" ) }}
+  <video class="showcaseElement cover" style='display:{{ if not $index }} block  {{else}} none {{end}} ' preload="none"
+    class="cover">
+    <source src="{{ safeURL .}}" type="video/webm">
+  </video>
+</div>
+{{ else if (strings.HasSuffix . ".mp4" ) }}
+
+  <video class="showcaseElement cover" style='display:{{ if not $index }} block  {{else}} none {{end}} ' preload="none"
+     class="cover">
+    <source type="video/mp4">
+  </video>
+{{ else }}
+<div class="showcaseElement" style='display:{{ if not $index }} block  {{else}} none {{end}} '>
+  <div class="cover blur" lazy="true" lazy-style="background-image: url('{{ safeURL .  }}'); " style=" "></div>
+  <div class="cover" lazy="true" lazy-style="background-image: url('{{ safeURL .  }}'); " style="  "></div>
+</div>
+{{ end }}
+{{end}}
+
+{{end}}
