@@ -42,65 +42,68 @@ window.shuffleArray = function (array) {
 
 
 window.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("[toggle]").forEach(el=>{
-        const toggleId=el.getAttribute("toggle");
-        if(!toggleId)return;
-        const parent=document.querySelector("#"+toggleId);
-        if(!parent)return;
-        el.addEventListener("click",()=>{
-           parent.querySelectorAll(".expandable").forEach(el2=>{
-               if(el2.classList.contains("expandedOnPortrait"))
-                el2.classList.remove("expandedOnPortrait");
+    document.querySelectorAll("[toggle]").forEach(el => {
+        const toggleId = el.getAttribute("toggle");
+        if (!toggleId) return;
+        const parent = document.querySelector("#" + toggleId);
+        if (!parent) return;
+        el.addEventListener("click", () => {
+            parent.querySelectorAll(".expandable").forEach(el2 => {
+                if (el2.classList.contains("expandedOnPortrait"))
+                    el2.classList.remove("expandedOnPortrait");
                 else el2.classList.add("expandedOnPortrait");
 
-           });
-            parent.querySelectorAll(".toggleable").forEach(el2=>{
-                let toggled=el2.classList.contains("toggledOn");
-                let toggledPortrait=el2.classList.contains("toggledOnPortrait");
-                let notToggledPortrait=el2.classList.contains("toggledOffPortrait");
-                toggled=toggled||toggledPortrait;
-                const portrait=notToggledPortrait||toggledPortrait;
-                console.log("Toggle ",toggled?"on":"off'")
-                if(toggled){
+            });
+            parent.querySelectorAll(".toggleable").forEach(el2 => {
+                let toggled = el2.classList.contains("toggledOn");
+                let toggledPortrait = el2.classList.contains("toggledOnPortrait");
+                let notToggledPortrait = el2.classList.contains("toggledOffPortrait");
+                toggled = toggled || toggledPortrait;
+                const portrait = notToggledPortrait || toggledPortrait;
+                console.log("Toggle ", toggled ? "on" : "off'")
+                if (toggled) {
                     // el.removeAttribute("toggled",false);
-                    el2.classList.add(portrait?"toggledOffPortrait":"toggledOff");
+                    el2.classList.add(portrait ? "toggledOffPortrait" : "toggledOff");
                     el2.classList.remove("toggledOn");
                     el2.classList.remove("toggledOnPortrait");
 
-                }else{
+                } else {
                     // el.setAttribute("toggled",true);
                     el2.classList.remove("toggledOff");
                     el2.classList.remove("toggledOffPortrait");
-                    el2.classList.add(portrait?"toggledOnPortrait":"toggledOn");
+                    el2.classList.add(portrait ? "toggledOnPortrait" : "toggledOn");
 
                 }
             });
         });
     })
-    document.getElementById("pageLoadingProgress").style.display = "none";
-    if (PROGRESS_BAR_INTERVAL) {
-        clearInterval(PROGRESS_BAR_INTERVAL);
-        PROGRESS_BAR_INTERVAL = null;
-    }
+
 });
 
 
-function lazyLoad(parent){
-    parent.querySelectorAll('[lazy]').forEach(el=>{
-        console.log("Lazy load",el);
-        const attributeKeys=el.getAttributeNames();
-        attributeKeys.forEach(akey=>{
-            
-            if(akey.startsWith("lazy-")){
-                console.log("Load attribute "+akey);
-                const realkey=akey.substring(5);
-                const value=el.getAttribute(akey);
-                el.setAttribute(realkey,value);
-                console.log("Set",realkey,"=",value);
+function isVisible(el){
+    return !!el.offsetParent;
+}
 
-            }else{
-                console.log("Skip attribute",akey,"not lazy");
-            }
-        })
+function lazyLoad(parent) {
+    parent.querySelectorAll('[lazy]').forEach(el => {
+        if (isVisible(el)) {
+            console.log("Lazy load", el,isVisible(el));
+
+            const attributeKeys = el.getAttributeNames();
+            attributeKeys.forEach(akey => {
+
+                if (akey.startsWith("lazy-")) {
+                    console.log("Load attribute " + akey);
+                    const realkey = akey.substring(5);
+                    const value = el.getAttribute(akey);
+                    el.setAttribute(realkey, value);
+                    console.log("Set", realkey, "=", value);
+
+                } else {
+                    console.log("Skip attribute", akey, "not lazy");
+                }
+            });
+        }
     });
 }

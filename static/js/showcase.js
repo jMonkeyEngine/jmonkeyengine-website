@@ -30,7 +30,7 @@ const ShowCase=function(showCaseEl){
 
 		this.getVideos().forEach(el=>{
 		
-			if(el.style.display!="none"){
+			if(isVisible(el)){
 				if(mode=="gallery"){
 					el.classList.add("gallery");
 					el.setAttribute("controls", "");
@@ -59,10 +59,12 @@ const ShowCase=function(showCaseEl){
 		this.getYoutubeVideos().forEach(el=>{
 			let osrc=el.getAttribute("osrc");
 			if(!osrc){
-				osrc=el.getAttribute("src");
+				const src=el.getAttribute("src");
+				if(!src)return;
+				osrc=src;
 				el.setAttribute("osrc",osrc);
 			}
-			if(el.style.display!="none"){
+			if(isVisible(el)){
 				if(mode=="gallery"){
 					el.src = osrc+"?controls=1&autoplay=0&mute=0&modestbranding=1&disablekb=1&"+(this.ytReloadInc++);
 				}else{
