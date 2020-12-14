@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | Update in the wake of recent events</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <link rel="stylesheet" href="/css/style.css"> 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script>
+
+  <script src="/highlight/highlight.pack.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  
+</head>
+
+<body>
+  <progress onload="startCyclingProgressBar()" max=100 value=0 id="pageLoadingProgress"></progress>
+
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div>
+        <a href="/">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon" >
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://store.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-puzzle-piece"></i> <span>Store</span>
+            </button>
+        </a>
+
+        <a href="/docs">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+         </a>
+
+        <a href="/license">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+
+    <div>
+        <a href="https://github.com/jMonkeyEngine/jmonkeyengine"  rel='noopener noreferrer' target="_blank">
+            <button class="icon codeCl" title="Github">
+                <i class="fab fa-github-square"></i> <span>Github</span>
+            </button>
+        </a>
+        <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon twitterCl" title="Follow on Twitter"> 
+                <i class="fab fa-twitter"></i> <span>Twitter</span>
+            </button>
+        </a>
+
+        <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer' target="_blank">
+            <button class="icon youtubeCl" title="Follow on Youtube">
+                <i class="fab fa-youtube"></i> <span>Youtube</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.itch.io/jMonkeyEngine" rel='noopener noreferrer' target="_blank">
+            <button class="icon itchCl" title="Itch.io">
+                <i class="fab fa-itch-io"></i> <span>Itch.io</span>
+            </button>
+        </a>
+        <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+            <button class="icon discordCl" title="Discord"> 
+                <i class="fab fa-discord"></i> <span>Discord</span>
+            </button>
+        </a>
+        <a href="https://opencollective.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon donateCl" title="Donate"> 
+                <i class="fas fa-donate"></i> <span>Donate!</span>
+            </button>
+        </a>
+
+    </div>
+</nav>
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <br />
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+              
+                      
+                <div class="showcaseElement"  style='display: block   ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/9.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/9.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/11.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/11.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/10.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/10.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/5.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/5.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/3.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/3.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/6.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/6.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/7.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/7.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/4.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/4.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/1.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/1.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                
+                  <video class="showcaseElement cover"  style='display: none  '  preload="none" autoplay loop muted class="cover">
+                    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256676876/movie_max.webm" type="video/webm">
+                  </video>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/8.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/8.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/2.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/2.jpg'); " style="  "></div>
+                </div>
+                    
+              
+            
+  
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+      <a href="/start/#content"><button  id="startbtn" class="highlightedCl"><i class="fas fa-rocket"></i> Get Started... </button></a>
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Lightspeed Frontier powered by jMonkeyEngine</h2>
+      
+      Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize it piece by piece to tackle whatever adventures await you. Take on crime lords and space pirates … 
+      
+      <br />
+      <a class="readMore" href="/showcase/ls_frontier/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+
+<section class="full responsiveWidth">
+   
+<article>
+        <h1 id="content">
+            
+<i class="fas fa-bullhorn useless"></i>
+
+           
+            Update in the wake of recent events</h1>
+            <div class="content">
+                <span>
+                <h2 id="hello-fellow-community-members">Hello fellow community members.</h2>
+<p>Probably most of you know already, but one of the team members left the community due to an internal disagreement.</p>
+<p>From his departure I took over his role, reconfigured our services to use easily redeployable docker containers, tested for different configurations and load and migrated everything to a different cloud provider with a plan that I believe is more suitable to our needs.</p>
+<p>As part of my commitment to the community I am also making sure all the configurations are available to the core team and to the community itself, in this regard I published the scripts that allow to deploy an exact clone of our server at <a href="https://github.com/jMonkeyEngine/jmonkeyengine-webservices">https://github.com/jMonkeyEngine/jmonkeyengine-webservices</a> .</p>
+<p>As part of the migration process, we also decided that it was more adequate to have the store accessible from a subdomain of jmonkeyengine.org, rather than from a different first-level domain.
+For this reason it was moved to <a href="https://store.jmonkeyengine.org">https://store.jmonkeyengine.org</a>
+As an added bonus, the original author allowed us to opensource it.
+The source code is now available on this repo: <a href="https://github.com/jMonkeyEngine/SoftwareStore">https://github.com/jMonkeyEngine/SoftwareStore</a></p>
+<p>Regarding the <strong>donations</strong>, they are still suspended for now, since they were handled personally by the team member that left. This time we are looking into reintroducing them via the Github Sponsor partner <a href="https://opencollective.com">OpenCollective</a>, that will provide a more suitable, stable and community oriented alternative in the long run.</p>
+<p><strong>If for some reasons your donations are still going out somewhere, please cancel them, since they are not reaching us anymore.</strong></p>
+<p>A successive post will report the details regarding the donations and donors once they are finalized.</p>
+<p>Thank you for your attention, and sorry for the inconveniences.
+-RB</p>
+<h3 id="other-resources">Other resources:</h3>
+<ul>
+<li>Mirrors  of the personal repos that were deleted: <a href="https://github.com/jMonkeyEngine-mirrors">https://github.com/jMonkeyEngine-mirrors</a></li>
+<li>Health monitor bot: <a href="https://github.com/jMonkeyEngine/jmonkeyengine-webservices-healthmonitor">https://github.com/jMonkeyEngine/jmonkeyengine-webservices-healthmonitor</a></li>
+<li>Discord/Notification bot: <a href="https://github.com/jMonkeyEngine/jmonkeyengine-webservices-discordbot">https://github.com/jMonkeyEngine/jmonkeyengine-webservices-discordbot</a></li>
+<li><a href="https://hub.jmonkeyengine.org/t/further-development-of-the-advanced-vehicles-project/43774">https://hub.jmonkeyengine.org/t/further-development-of-the-advanced-vehicles-project/43774</a></li>
+</ul>
+
+
+                </span>
+            <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="communitylog" href="/tags/communitylog"><i class="fas fa-hashtag"></i>communitylog</a></li>
+        
+        <li><a class="donations" href="/tags/donations"><i class="fas fa-hashtag"></i>donations</a></li>
+        
+        <li><a class="opencollective" href="/tags/opencollective"><i class="fas fa-hashtag"></i>opencollective</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="riccardobl" href="/authors/riccardobl"><i class="fas fa-at"></i>riccardobl</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2020-10-29 08:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>29 October 2020</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+
+            </div>
+
+
+
+    </article>
+</section>
+
+
+
+
+
+  </main>
+  <footer></footer>
+</body>
+</html>

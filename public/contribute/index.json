@@ -1,0 +1,25 @@
+{
+    "responseTitle":"jMonkeyEngine ",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+  
+    "title":"",
+    "content":"\u003ch1 id=\"contributing-to-jmonkeyengine\"\u003eContributing to jMonkeyEngine\u003c/h1\u003e\n\u003cp\u003eThere are several ways to contribute toward the jMonkey project. All of the jmonkey source code is hosted on github and follows the git procedure.\u003c/p\u003e\n\u003ch2 id=\"contributing-to-the-engine\"\u003eContributing to the Engine\u003c/h2\u003e\n\u003cp\u003eTo contribute to the engine you must clone the jMonkeyEngine repository, commit your changes and submit a Pull Request (PR). Pull Requests are reviewed by staff members and contributors before it is determined whether they will be approved and merged.\u003c/p\u003e\n\u003cp\u003eVisit the \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine\"\u003ejMonkeyEngine repository\u003c/a\u003e to clone the repository.\u003c/p\u003e\n\u003ch2 id=\"contributing-to-documentation\"\u003eContributing to Documentation\u003c/h2\u003e\n\u003cp\u003eDocumentation comes in two forms: \u003ca href=\"https://javadoc.jmonkeyengine.org\"\u003eJavaDoc\u003c/a\u003e and the \u003ca href=\"https://wiki.jmonkeyengine.org\"\u003eWiki\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eTo submit changes to the JavaDoc you must follow the same procedure as \u003cstrong\u003eContributing to the Engine\u003c/strong\u003e. To submit changes or add new pages to the wiki you must clone the \u003ca href=\"https://github.com/jMonkeyEngine/wiki\"\u003ewiki repository\u003c/a\u003e and follow the same procedure as \u003cstrong\u003eContrubuting to the Engine\u003c/strong\u003e.\u003c/p\u003e\n\u003ch2 id=\"reporting-bugs\"\u003eReporting Bugs\u003c/h2\u003e\n\u003cp\u003eTo report any bugs in the engine or errors in documentation you can submit a new issue in the corresponding repository.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://github.com/jMonkeyEngine/wiki/issues/new\"\u003eReport an issue with the wiki\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/issues/new\"\u003eReport an issue with the engine\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n",
+    "contentPlain":"Contributing to jMonkeyEngine There are several ways to contribute toward the jMonkey project. All of the jmonkey source code is hosted on github and follows the git procedure.\nContributing to the Engine To contribute to the engine you must clone the jMonkeyEngine repository, commit your changes and submit a Pull Request (PR). Pull Requests are reviewed by staff members and contributors before it is determined whether they will be approved and merged.\nVisit the jMonkeyEngine repository to clone the repository.\nContributing to Documentation Documentation comes in two forms: JavaDoc and the Wiki.\nTo submit changes to the JavaDoc you must follow the same procedure as Contributing to the Engine. To submit changes or add new pages to the wiki you must clone the wiki repository and follow the same procedure as Contrubuting to the Engine.\nReporting Bugs To report any bugs in the engine or errors in documentation you can submit a new issue in the corresponding repository.\n Report an issue with the wiki Report an issue with the engine  " ,
+    
+    "summaryTitle":"",
+    
+
+
+    
+    "summary":"Contributing to jMonkeyEngine There are several ways to contribute toward the jMonkey project. All of the jmonkey source code is hosted on github and follows the git procedure.\nContributing to the Engine To contribute to the engine you must clone the jMonkeyEngine repository, commit your changes and submit a Pull Request (PR). Pull Requests are reviewed by staff members and contributors before it is determined whether they will be approved and merged."   ,
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}

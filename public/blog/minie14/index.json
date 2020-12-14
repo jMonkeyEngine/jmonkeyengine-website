@@ -1,0 +1,43 @@
+{
+    "responseTitle":"jMonkeyEngine  | Minie Physics Library Version 1.4 Released!",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+  
+    "title":"Minie Physics Library Version 1.4 Released!",
+    "content":"\u003cp\u003eMinie version 1.4 is an exciting new add-on for\n\u003ca href=\"https://jmonkeyengine.org\"\u003ethe JMonkeyEngine (JME) game engine\u003c/a\u003e.\u003c/p\u003e\n\u003cfigure\u003e\n    \u003cimg src=\"https://i.imgur.com/YdoHlbf.jpg\"/\u003e \n\u003c/figure\u003e\n\n\u003cp\u003eMinie provides an \u003ca href=\"https://en.wikipedia.org/wiki/Open-source_software\"\u003eopen-source\u003c/a\u003e\nphysics \u003ca href=\"https://en.wikipedia.org/wiki/Physics_engine\"\u003eengine\u003c/a\u003e for desktop games.\nIt gives software developers using JME access to the proven technology of\n\u003ca href=\"https://github.com/bulletphysics/bullet3/releases/tag/2.89\"\u003ethe Bullet Physics SDK version 2.89\u003c/a\u003e,\nincluding:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://en.wikipedia.org/wiki/Rigid_body_dynamics\"\u003erigid-body dynamics\u003c/a\u003e,\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://en.wikipedia.org/wiki/Soft-body_dynamics\"\u003esoft bodies\u003c/a\u003e,\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://en.wikipedia.org/wiki/Collision_detection\"\u003ecollision detection\u003c/a\u003e,\u003c/li\u003e\n\u003cli\u003evehicle and character controllers,\u003c/li\u003e\n\u003cli\u003eray and sweep tests, and\u003c/li\u003e\n\u003cli\u003edynamic constraints.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eMinie incorporates \u003ca href=\"https://hub.jmonkeyengine.org/t/introducing-dynamicanimcontrol/41075\"\u003eDynamicAnimControl\u003c/a\u003e\ntechnology for \u003ca href=\"https://en.wikipedia.org/wiki/Ragdoll_physics\"\u003eragdoll simulation\u003c/a\u003e\nand \u003ca href=\"http://radiomonash.com/inverse-kinematics-video-games-thing-happens-games-never-knew-word/\"\u003einverse kinematics\u003c/a\u003e.\nIt supports the use of\n\u003ca href=\"https://kmamou.blogspot.com/2011/10/hacd-hierarchical-approximate-convex.html\"\u003eKhaled Mamou V-HACD algorithm\u003c/a\u003e\nto decompose complicated shapes for efficient simulation.\u003c/p\u003e\n\u003cp\u003eMinie\u0026rsquo;s \u003ca href=\"https://en.wikipedia.org/wiki/Application_programming_interface\"\u003eAPI\u003c/a\u003e\nclosely mimics those of JME\u0026rsquo;s official physics libraries:\njme3-bullet and jme3-jbullet, so existing JME applications\nshould require little or no modification to work with Minie.\u003c/p\u003e\n\u003cp\u003eMinie\u0026rsquo;s documentation starts with a\n\u003ca href=\"https://github.com/stephengold/Minie/blob/master/README.md\"\u003e70-KB README file\u003c/a\u003e.\nIt comes with a dozen demo applications, some tutorials,\nand an extensive test suite, all open-source.\nIts Javadoc describes all public methods and their arguments,\nand the source code includes additional inline documentation.\u003c/p\u003e\n\u003cp\u003eThe release of Minie 1.4 was first announced\n\u003ca href=\"https://hub.jmonkeyengine.org/t/the-minie-physics-library/41839/119\"\u003eon 8 February 2020 at the JME Forum\u003c/a\u003e.\nThe software can easily be obtained for free.\nPre-built Maven artifacts are served by\n\u003ca href=\"https://bintray.com/stephengold/com.github.stephengold/Minie\"\u003eJCenter\u003c/a\u003e.\nIts complete source code and build scripts are in\n\u003ca href=\"https://github.com/stephengold/Minie/releases/tag/1.4.0for32\"\u003ea public GitHub repository\u003c/a\u003e.\nAnd of course it has its own\n\u003ca href=\"https://jmonkeystore.com/38308161-c3cf-4e23-8754-528ca8387c11\"\u003epage at Jmonkeystore\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eWhether you\u0026rsquo;re starting a new game project,\ndissatisfied with the official physics libraries,\nor simply curious about the future of open-source game physics,\nyou owe it to yourself to try Minie!\u003c/p\u003e\n",
+    "contentPlain":"Minie version 1.4 is an exciting new add-on for the JMonkeyEngine (JME) game engine.\n  Minie provides an open-source physics engine for desktop games. It gives software developers using JME access to the proven technology of the Bullet Physics SDK version 2.89, including:\n rigid-body dynamics, soft bodies, collision detection, vehicle and character controllers, ray and sweep tests, and dynamic constraints.  Minie incorporates DynamicAnimControl technology for ragdoll simulation and inverse kinematics. It supports the use of Khaled Mamou V-HACD algorithm to decompose complicated shapes for efficient simulation.\nMinie\u0026rsquo;s API closely mimics those of JME\u0026rsquo;s official physics libraries: jme3-bullet and jme3-jbullet, so existing JME applications should require little or no modification to work with Minie.\nMinie\u0026rsquo;s documentation starts with a 70-KB README file. It comes with a dozen demo applications, some tutorials, and an extensive test suite, all open-source. Its Javadoc describes all public methods and their arguments, and the source code includes additional inline documentation.\nThe release of Minie 1.4 was first announced on 8 February 2020 at the JME Forum. The software can easily be obtained for free. Pre-built Maven artifacts are served by JCenter. Its complete source code and build scripts are in a public GitHub repository. And of course it has its own page at Jmonkeystore.\nWhether you\u0026rsquo;re starting a new game project, dissatisfied with the official physics libraries, or simply curious about the future of open-source game physics, you owe it to yourself to try Minie!\n" ,
+    
+    "summaryTitle":"Minie Physics Library Version 1.4 Released!",
+    
+
+
+    
+    "summary":"Minie version 1.4 is an exciting new add-on for the JMonkeyEngine (JME) game engine.\n  Minie provides an open-source physics engine for desktop games. It gives software developers using JME access to the proven technology of the Bullet Physics SDK version 2.89, including:\n rigid-body dynamics, soft bodies, collision detection, vehicle and character controllers, ray and sweep tests, and dynamic constraints."   ,
+    
+    "tags":[
+        
+             
+             "library"
+        
+              , 
+             "physics"
+        
+              , 
+             "software"
+        
+              , 
+             "minie"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+
+}

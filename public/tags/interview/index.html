@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | interview</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <link rel="stylesheet" href="/css/style.css"> 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script>
+
+  <script src="/highlight/highlight.pack.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  
+</head>
+
+<body>
+  <progress onload="startCyclingProgressBar()" max=100 value=0 id="pageLoadingProgress"></progress>
+
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div>
+        <a href="/">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon" >
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://store.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-puzzle-piece"></i> <span>Store</span>
+            </button>
+        </a>
+
+        <a href="/docs">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+         </a>
+
+        <a href="/license">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+
+    <div>
+        <a href="https://github.com/jMonkeyEngine/jmonkeyengine"  rel='noopener noreferrer' target="_blank">
+            <button class="icon codeCl" title="Github">
+                <i class="fab fa-github-square"></i> <span>Github</span>
+            </button>
+        </a>
+        <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon twitterCl" title="Follow on Twitter"> 
+                <i class="fab fa-twitter"></i> <span>Twitter</span>
+            </button>
+        </a>
+
+        <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer' target="_blank">
+            <button class="icon youtubeCl" title="Follow on Youtube">
+                <i class="fab fa-youtube"></i> <span>Youtube</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.itch.io/jMonkeyEngine" rel='noopener noreferrer' target="_blank">
+            <button class="icon itchCl" title="Itch.io">
+                <i class="fab fa-itch-io"></i> <span>Itch.io</span>
+            </button>
+        </a>
+        <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+            <button class="icon discordCl" title="Discord"> 
+                <i class="fab fa-discord"></i> <span>Discord</span>
+            </button>
+        </a>
+        <a href="https://opencollective.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon donateCl" title="Donate"> 
+                <i class="fas fa-donate"></i> <span>Donate!</span>
+            </button>
+        </a>
+
+    </div>
+</nav>
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <br />
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+              
+                      
+                <div class="showcaseElement"  style='display: block   ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/9.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/9.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/18.png'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/18.png'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/10.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/10.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/11.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/11.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/14.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/14.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/19.png'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/19.png'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/16.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/16.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/1.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/1.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/3.png'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/3.png'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/13.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/13.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/5.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/5.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/20.png'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/20.png'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/4.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/4.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/2.png'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/2.png'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/12.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/12.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/7.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/7.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/15.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/15.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/8.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/8.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/6.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/6.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/17.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/mythruna/17.jpg'); " style="  "></div>
+                </div>
+                    
+              
+            
+  
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+      <a href="/start/#content"><button  id="startbtn" class="highlightedCl"><i class="fas fa-rocket"></i> Get Started... </button></a>
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Mythruna powered by jMonkeyEngine</h2>
+      
+      Mythruna (myth + rune + a) is a game under development attempting to combine serious role playing elements with an endless, living, and completely modifiable randomly generated sandbox world. When … 
+      <br />
+      <a class="readMore" href="/showcase/mythruna/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+
+<h1><i class="fas fa-hashtag"></i>INTERVIEW</h1>
+<section class="list responsiveWidth">
+        
+        
+            
+<article  
+
+onclick="document.location='\/blog\/interview-danielp\/';"
+
+style="  '" 
+class=''
+>
+
+        
+        <h1>
+          
+<i class="fas fa-paragraph useless"></i>
+
+
+        
+          <a href="/blog/interview-danielp/">Sgold interviews Daniel Perano</a> 
+        
+
+      </h1>
+      <div class="content">
+
+        <span>
+
+          
+        stephengold          Thank you for agreeing to be interviewed.
+First question: Do you remember when you first encountered JMonkeyEngine? What was your first impression?
+ danielperano          I started learning jME back in the 3.0 days, as I recall, and I was impressed with the features it offered.  … 
+        <a class="more readMore" href="/blog/interview-danielp/">Read
+            More... </a> 
+            
+          </span>
+          <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="interview" href="/tags/interview"><i class="fas fa-hashtag"></i>interview</a></li>
+        
+        <li><a class="blog" href="/tags/blog"><i class="fas fa-hashtag"></i>blog</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="stephengold" href="/authors/stephengold"><i class="fas fa-at"></i>stephengold</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2020-02-25 18:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>25 February 2020</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+
+        </div>
+      </article>
+
+      
+        
+            
+<article  
+
+onclick="document.location='\/blog\/interview-jayfella\/';"
+
+style="  '" 
+class=''
+>
+
+        
+        <h1>
+          
+<i class="fas fa-paragraph useless"></i>
+
+
+        
+          <a href="/blog/interview-jayfella/">Sgold interviews Jayfella</a> 
+        
+
+      </h1>
+      <div class="content">
+
+        <span>
+
+          
+        stephengold          Thank you for agreeing to be interviewed.
+First question: When did you first hear about JMonkeyEngine?
+ jayfella          Way back in 2014, after a long period of developing desktop applications, servers, and minecraft plugins, I decided to look into writing games.  … 
+        <a class="more readMore" href="/blog/interview-jayfella/">Read
+            More... </a> 
+            
+          </span>
+          <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="interview" href="/tags/interview"><i class="fas fa-hashtag"></i>interview</a></li>
+        
+        <li><a class="blog" href="/tags/blog"><i class="fas fa-hashtag"></i>blog</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="stephengold" href="/authors/stephengold"><i class="fas fa-at"></i>stephengold</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2020-02-15 12:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>15 February 2020</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+
+        </div>
+      </article>
+
+      
+        
+</section>
+
+
+<section class="pagination responsiveWidth">
+    
+  Page  1 of 1
+        
+</section>
+
+
+
+<h1>Tags</h1>
+<section class="list hlist responsiveWidth">
+    <ul class="list hlist">
+
+    
+    <li>
+
+    <a href="/tags/asset-store">  <i class="fas fa-hashtag"></i>asset-store </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/blog">  <i class="fas fa-hashtag"></i>blog </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/communitylog">  <i class="fas fa-hashtag"></i>communitylog </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/devlog">  <i class="fas fa-hashtag"></i>devlog </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/donations">  <i class="fas fa-hashtag"></i>donations </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/graphics">  <i class="fas fa-hashtag"></i>graphics </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/interview">  <i class="fas fa-hashtag"></i>interview </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/library">  <i class="fas fa-hashtag"></i>library </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/lightspeed-frontier">  <i class="fas fa-hashtag"></i>lightspeed-frontier </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/minie">  <i class="fas fa-hashtag"></i>minie </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/mythruna">  <i class="fas fa-hashtag"></i>mythruna </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/opencollective">  <i class="fas fa-hashtag"></i>opencollective </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/pbr">  <i class="fas fa-hashtag"></i>pbr </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/physics">  <i class="fas fa-hashtag"></i>physics </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/release">  <i class="fas fa-hashtag"></i>release </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/showcase">  <i class="fas fa-hashtag"></i>showcase </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/skullstone">  <i class="fas fa-hashtag"></i>skullstone </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/software">  <i class="fas fa-hashtag"></i>software </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/spoxel">  <i class="fas fa-hashtag"></i>spoxel </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/steam">  <i class="fas fa-hashtag"></i>steam </a>
+</li>
+
+    
+    <li>
+
+    <a href="/tags/tutorials">  <i class="fas fa-hashtag"></i>tutorials </a>
+</li>
+
+    
+</ul>
+
+</section>
+
+
+  </main>
+  <footer></footer>
+</body>
+</html>

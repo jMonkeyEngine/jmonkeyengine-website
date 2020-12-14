@@ -1,0 +1,174 @@
+{
+    "responseTitle":"jMonkeyEngine  | blog",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2020-02-25 18:00:00 +0000 UTC",
+        
+        "url":"/blog/interview-danielp/",
+
+        
+        "title":"Sgold interviews Daniel Perano",
+        
+
+   
+        
+        "summary":"stephengold          Thank you for agreeing to be interviewed.\nFirst question: Do you remember when you first encountered JMonkeyEngine? What was your first impression?\n danielperano          I started learning jME back in the 3.0 days, as I recall, and I was impressed with the features it offered."   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-02-15 12:00:00 +0000 UTC",
+        
+        "url":"/blog/interview-jayfella/",
+
+        
+        "title":"Sgold interviews Jayfella",
+        
+
+   
+        
+        "summary":"stephengold          Thank you for agreeing to be interviewed.\nFirst question: When did you first hear about JMonkeyEngine?\n jayfella          Way back in 2014, after a long period of developing desktop applications, servers, and minecraft plugins, I decided to look into writing games."   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-02-09 08:00:00 +0000 UTC",
+        
+        "url":"/blog/minie14/",
+
+        
+        "title":"Minie Physics Library Version 1.4 Released!",
+        
+
+   
+        
+        "summary":"Minie version 1.4 is an exciting new add-on for the JMonkeyEngine (JME) game engine.\n  Minie provides an open-source physics engine for desktop games. It gives software developers using JME access to the proven technology of the Bullet Physics SDK version 2.89, including:\n rigid-body dynamics, soft bodies, collision detection, vehicle and character controllers, ray and sweep tests, and dynamic constraints."   ,
+        
+      
+        "tags":[
+        
+             
+             "library"
+        
+              , 
+             "physics"
+        
+              , 
+             "software"
+        
+              , 
+             "minie"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2019-10-21 08:00:00 +0000 UTC",
+        
+        "url":"/blog/pbr_tutorial/",
+
+        
+        "title":"PBR Tutorial",
+        
+
+   
+        
+        "summary":"A continuing YouTube series helping users take leap from using the regular Lighting.j3md material to PbrLighting.j3md.\nFirst part of my tutorial series in which I explain how to use jmonkeyengine\u0026rsquo;s Physically Based Rendering pipeline. Intended for people who already understand how to use the regular Lighting.j3md shader, but have no idea how PBR works.\nSecond part of my tutorial series in which I explain how to use jmonkeyengine\u0026rsquo;s Physically Based Rendering pipeline."   ,
+        
+      
+        "tags":[
+        
+             
+             "pbr"
+        
+              , 
+             "graphics"
+        
+              , 
+             "tutorials"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "grizeldi"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

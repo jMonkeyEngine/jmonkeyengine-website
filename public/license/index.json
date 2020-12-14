@@ -1,0 +1,25 @@
+{
+    "responseTitle":"jMonkeyEngine  | License",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+  
+    "title":"License",
+    "content":"\u003cp\u003ejMonkeyEngine is licensed under the very permissive \u003ca href=\"https://choosealicense.com/licenses/bsd-3-clause/\"\u003eBSD 3-Clause License\u003c/a\u003e, giving you the freedom to publish your game and modify the engine without limitation completely free! There are \u003cstrong\u003eno requirements\u003c/strong\u003e to use our engine. No splash screens, no fees and no requirement to mention jMonkeyEngine in your game at all.\u003c/p\u003e\n\u003cp\u003eBelow is a copy of the BSD 3-Clause license used by this engine.\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre style=\"color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4\"\u003e\u003ccode class=\"language-text\" data-lang=\"text\"\u003eCopyright (c) 2009-2019 jMonkeyEngine\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are\nmet:\n\n* Redistributions of source code must retain the above copyright\nnotice, this list of conditions and the following disclaimer.\n\n* Redistributions in binary form must reproduce the above copyright\nnotice, this list of conditions and the following disclaimer in the\ndocumentation and/or other materials provided with the distribution.\n\n* Neither the name of \u0026#39;jMonkeyEngine\u0026#39; nor the names of its contributors\nmay be used to endorse or promote products derived from this software\nwithout specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n\u0026#34;AS IS\u0026#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED\nTO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR\nPURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\nEXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\nPROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR\nPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\nLIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n",
+    "contentPlain":"jMonkeyEngine is licensed under the very permissive BSD 3-Clause License, giving you the freedom to publish your game and modify the engine without limitation completely free! There are no requirements to use our engine. No splash screens, no fees and no requirement to mention jMonkeyEngine in your game at all.\nBelow is a copy of the BSD 3-Clause license used by this engine.\nCopyright (c) 2009-2019 jMonkeyEngine All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. * Neither the name of \u0026#39;jMonkeyEngine\u0026#39; nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \u0026#34;AS IS\u0026#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. " ,
+    
+    "summaryTitle":"License",
+    
+
+
+    
+    "summary":"jMonkeyEngine is licensed under the very permissive BSD 3-Clause License, giving you the freedom to publish your game and modify the engine without limitation completely free! There are no requirements to use our engine. No splash screens, no fees and no requirement to mention jMonkeyEngine in your game at all.\nBelow is a copy of the BSD 3-Clause license used by this engine."   ,
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}

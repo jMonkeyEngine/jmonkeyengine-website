@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | Sgold interviews Jayfella</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <link rel="stylesheet" href="/css/style.css"> 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script>
+
+  <script src="/highlight/highlight.pack.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  
+</head>
+
+<body>
+  <progress onload="startCyclingProgressBar()" max=100 value=0 id="pageLoadingProgress"></progress>
+
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div>
+        <a href="/">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon" >
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://store.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-puzzle-piece"></i> <span>Store</span>
+            </button>
+        </a>
+
+        <a href="/docs">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+         </a>
+
+        <a href="/license">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+
+    <div>
+        <a href="https://github.com/jMonkeyEngine/jmonkeyengine"  rel='noopener noreferrer' target="_blank">
+            <button class="icon codeCl" title="Github">
+                <i class="fab fa-github-square"></i> <span>Github</span>
+            </button>
+        </a>
+        <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon twitterCl" title="Follow on Twitter"> 
+                <i class="fab fa-twitter"></i> <span>Twitter</span>
+            </button>
+        </a>
+
+        <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer' target="_blank">
+            <button class="icon youtubeCl" title="Follow on Youtube">
+                <i class="fab fa-youtube"></i> <span>Youtube</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.itch.io/jMonkeyEngine" rel='noopener noreferrer' target="_blank">
+            <button class="icon itchCl" title="Itch.io">
+                <i class="fab fa-itch-io"></i> <span>Itch.io</span>
+            </button>
+        </a>
+        <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+            <button class="icon discordCl" title="Discord"> 
+                <i class="fab fa-discord"></i> <span>Discord</span>
+            </button>
+        </a>
+        <a href="https://opencollective.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon donateCl" title="Donate"> 
+                <i class="fas fa-donate"></i> <span>Donate!</span>
+            </button>
+        </a>
+
+    </div>
+</nav>
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <br />
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+              
+                      
+                <div class="showcaseElement"  style='display: block   ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/3.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/3.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/6.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/6.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/9.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/9.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/8.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/8.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/4.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/4.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/7.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/7.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/11.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/11.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/2.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/2.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/10.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/10.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                
+                  <video class="showcaseElement cover"  style='display: none  '  preload="none" autoplay loop muted class="cover">
+                    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256676876/movie_max.webm" type="video/webm">
+                  </video>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/5.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/5.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/1.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/ls_frontier/1.jpg'); " style="  "></div>
+                </div>
+                    
+              
+            
+  
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+      <a href="/start/#content"><button  id="startbtn" class="highlightedCl"><i class="fas fa-rocket"></i> Get Started... </button></a>
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Lightspeed Frontier powered by jMonkeyEngine</h2>
+      
+      Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize it piece by piece to tackle whatever adventures await you. Take on crime lords and space pirates … 
+      
+      <br />
+      <a class="readMore" href="/showcase/ls_frontier/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+
+<section class="full responsiveWidth">
+   
+<article>
+        <h1 id="content">
+            
+<i class="fas fa-paragraph useless"></i>
+
+           
+            Sgold interviews Jayfella</h1>
+            <div class="content">
+                <span>
+                <p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+Thank you for agreeing to be interviewed.</p>
+<p>First question: When did you first hear about JMonkeyEngine?</p>
+<p><figure class="githubUser inline " github-user="jayfella">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/jayfella">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="jayfella" class="ghname" ghresolve-name="innerText">
+            jayfella
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/jayfella" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Way back in 2014, after a long period of developing desktop applications,
+servers, and minecraft plugins, I decided to look into writing games.
+At that time I was more into C#, but XNA was a sinking ship,
+so looked at alternatives.
+I found jMonkey and gave it a shot.</p>
+<p>What made me stay with JME was the community.
+Actual developers of the engine would respond to my questions,
+which was encouraging and made me want to continue with it and contribute back.
+A lot of what I know now is down to the fact that people far more educated
+in game development than me took the time to share their knowledge.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> I had a similar experience.</p>
+<p>What were your first steps? Did you install the SDK right away?</p>
+<p><figure class="githubUser inline " github-user="jayfella">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/jayfella">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="jayfella" class="ghname" ghresolve-name="innerText">
+            jayfella
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/jayfella" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> I did install the SDK!
+At that time the SDK was “the thing to use,” and it was a cutting-edge tool.</p>
+<p>I distinctly remember making an infinite-terrain world with a
+2-D heightmap and cars.</p>
+<p>And I remember some of the first mistakes I made, too:
+wondering why adding lights everywhere was slowing down my game
+(in a forward-rendering pipeline) and why shadows weren’t realistic
+with multiple lights.</p>
+<p>I also remember Normen Hansen tutoring me into developing plugins
+and improving the SDK.
+For me, that was great.
+I felt like part of the family, and it was extremely encouraging to
+interact with such an intelligent and giving bunch of developers.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Suppose the old you (from 2014) was transported to the present,
+as a newcomer to the JMonkeyEngine community.
+What advice would you give yourself?</p>
+<p><figure class="githubUser inline " github-user="jayfella">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/jayfella">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="jayfella" class="ghname" ghresolve-name="innerText">
+            jayfella
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/jayfella" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Good question.</p>
+<p>I think it’s important to make mistakes to become better at what you do.
+We all start with big ideas,
+and virtually all come to realize it’s way more difficult than we anticipated.
+That’s a learning process we all need to go through.</p>
+<p>So my advice would be to keep doing what you’re doing,
+but don’t be disheartened by not achieving your goals on the first attempt.
+It takes years to become proficient.</p>
+<p>Listen to those that know better and try to understand why they came to
+that conclusion.</p>
+<p>Learning is not always about being right!</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Just so!</p>
+<p>Next question: You’re currently JMonkeyEngine’s community manager.
+How did that role come about?</p>
+<p><figure class="githubUser inline " github-user="jayfella">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/jayfella">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="jayfella" class="ghname" ghresolve-name="innerText">
+            jayfella
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/jayfella" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> My primary talent is finding ways of getting things done.
+If it can be done, I can do it.
+That’s always been my attitude.</p>
+<p>When it became apparent that there was a lack of direction,
+it rolled around in my head for quite some time.
+What could do to improve things?
+Did I have it in myself to keep the momentum going?</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> How has your passion for the role evolved?</p>
+<p><figure class="githubUser inline " github-user="jayfella">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/jayfella">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="jayfella" class="ghname" ghresolve-name="innerText">
+            jayfella
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/jayfella" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> My passion for the job remains the same as it was when I took the role,
+but I must admit it is a challenge!</p>
+<p>I’ve managed companies, people, websites, servers, and all things in-between,
+but I’ve never managed an open-source project of this size.
+You don’t pay people.
+You have no definite control over what people do or don&rsquo;t do.
+Instead you have to rely on support, trust, and a rather large dose of
+doing it yourself to encourage movement.</p>
+<p>It’s very rewarding to work together to keep jMonkey alive
+and to see genuine improvement as time goes by.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Of all your JMonkeyEngine projects,
+which have given you the greatest satisfaction?</p>
+<p><figure class="githubUser inline " github-user="jayfella">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/jayfella">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="jayfella" class="ghname" ghresolve-name="innerText">
+            jayfella
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/jayfella" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> The most satisfying thing I’ve written for jMonkey is the JmonkeyStore.
+It’s nice to create something that brings people together and provides
+so much use.</p>
+<p><a href="https://jmonkeystore.com">https://jmonkeystore.com</a></p>
+<p>If I had to choose something other than the store, it would be the
+shadows project for my game Animalia.
+It took me over a week &mdash; probably ten days &mdash;
+and countless headaches to get it just right, and when it finally worked
+it was ultra satisfying to have overcome all the issues.</p>
+<p><a href="https://www.youtube.com/watch?v=UfZyf9jG8PI&amp;t=5s">https://www.youtube.com/watch?v=UfZyf9jG8PI&amp;t=5s</a></p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> What’s next for JmonkeyStore?
+Are you still adding features?
+Where do we stand with respect to its Patreon goals?</p>
+<p><figure class="githubUser inline " github-user="jayfella">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/jayfella">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="jayfella" class="ghname" ghresolve-name="innerText">
+            jayfella
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/jayfella" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> I’d love to allow buying and selling software.</p>
+<p>There will also be the option of giving a developer a one-time payment
+of the buyers choice &mdash; a sort of “buy me a beer” option.
+As time goes by, it should bring more users to the community.</p>
+<p>We’re about a third of the way to being able to do that.
+It&rsquo;s a very exciting prospect to look forward to!</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Have you paid any bug bounties yet?</p>
+<p><figure class="githubUser inline " github-user="jayfella">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/jayfella">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="jayfella" class="ghname" ghresolve-name="innerText">
+            jayfella
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/jayfella" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> The bug bounty system is another great
+tool we can bring forward when the Patreon sponsorship increases.
+It’s something I’m very much looking forward to switching on.
+It’s a great way to get contributions moving forward &mdash; and even finding bugs.</p>
+<p>No bounties will be set until we increase funding.
+Right now the funding doesn’t warrant much incentive.
+It would only support one bounty every 2-4 months,
+which would stall things and probably cause more harm than good.</p>
+<p>For now, we are funding the monthly costs of our web presence and services,
+paid for by our generous community.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> I guess that&rsquo;s enough for now.</p>
+<p>I enjoyed conducting this interview.  Thank you for your time.</p>
+
+
+                </span>
+            <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="interview" href="/tags/interview"><i class="fas fa-hashtag"></i>interview</a></li>
+        
+        <li><a class="blog" href="/tags/blog"><i class="fas fa-hashtag"></i>blog</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="stephengold" href="/authors/stephengold"><i class="fas fa-at"></i>stephengold</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2020-02-15 12:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>15 February 2020</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+
+            </div>
+
+
+
+    </article>
+</section>
+
+
+<section class="full responsiveWidth">
+
+  <article>
+    <h1 id="comments"><i class="useless fas fa-comments"></i> Comments</h1>
+      <div class="content" id='discourse-comments'></div>
+
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://hub.jmonkeyengine.org/',
+                           discourseEmbedUrl: window.location.href };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+</article>
+</section>
+
+
+
+
+  </main>
+  <footer></footer>
+</body>
+</html>

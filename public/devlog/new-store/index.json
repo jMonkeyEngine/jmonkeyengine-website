@@ -1,0 +1,37 @@
+{
+    "responseTitle":"jMonkeyEngine  | jMonkeyStore is Now Open!",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+  
+    "title":"jMonkeyStore is Now Open!",
+    "content":"\u003cp\u003eAfter years of requests and attempts, a software store (a.k.a an asset store) for jmonkey has finally been created and is now open to registration. Everybody can register and submit their software!\u003c/p\u003e\n\u003ch1 id=\"httpsstorejmonkeyengineorg\"\u003e\u003ca href=\"https://store.jmonkeyengine.org/\"\u003ehttps://store.jmonkeyengine.org/\u003c/a\u003e\u003c/h1\u003e\n\u003cfigure class=\"ui fluid image\"\u003e\n    \u003cimg src=\"//i.ibb.co/42rX9bm/image.png\"/\u003e \n\u003c/figure\u003e\n\n\u003chr\u003e\n\u003cp\u003eCurrently only free open-source software can be submitted. Once we have the sponsorship required for the legal documentation and setup fees we will be able to allow \u003cstrong\u003eselling\u003c/strong\u003e (payment required to use it) and \u003cstrong\u003esponsoring\u003c/strong\u003e (pay the developer if you \u003cem\u003ewant to\u003c/em\u003e as a thank you)  software. We are quietly hoping this will be available soon!\u003c/p\u003e\n\u003cp\u003eIn regard to free opensource software:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eAll software must be available on a git repository. Github, GitLab and BitBucket are all supported.\u003c/li\u003e\n\u003cli\u003eSoftware must contain a license in the repository.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLicenses let people understand how they can use your software and if they are allowed to use it commercially. If you need help understanding what license to use, we have provided a \u003ca href=\"https://store.jmonkeyengine.org/legal/license/opensource/\"\u003elicense chooser\u003c/a\u003e to help you pick one. If you don\u0026rsquo;t provide a license, it is implied that you cannot use it!\u003c/p\u003e\n\u003cp\u003eWe are hoping as time goes by to provide an exhaustive collection of all the creations the jmonkey community has made and allow users to easily find and use them. This should make creating a game not only quicker but also allows users to learn how things are done through the source code. Terrain generators, mini-maps, vehicles, characters, shaders, post-processors and all manner of cool stuff will be available to everybody simply by adding a single line of code to your gradle project!\u003c/p\u003e\n\u003cp\u003eSince the project is very new, feel free to offer suggestions on improvements. If you cannot find a category that fits your software let us know and one will be added.\u003c/p\u003e\n",
+    "contentPlain":"After years of requests and attempts, a software store (a.k.a an asset store) for jmonkey has finally been created and is now open to registration. Everybody can register and submit their software!\nhttps://store.jmonkeyengine.org/   Currently only free open-source software can be submitted. Once we have the sponsorship required for the legal documentation and setup fees we will be able to allow selling (payment required to use it) and sponsoring (pay the developer if you want to as a thank you) software. We are quietly hoping this will be available soon!\nIn regard to free opensource software:\n All software must be available on a git repository. Github, GitLab and BitBucket are all supported. Software must contain a license in the repository.  Licenses let people understand how they can use your software and if they are allowed to use it commercially. If you need help understanding what license to use, we have provided a license chooser to help you pick one. If you don\u0026rsquo;t provide a license, it is implied that you cannot use it!\nWe are hoping as time goes by to provide an exhaustive collection of all the creations the jmonkey community has made and allow users to easily find and use them. This should make creating a game not only quicker but also allows users to learn how things are done through the source code. Terrain generators, mini-maps, vehicles, characters, shaders, post-processors and all manner of cool stuff will be available to everybody simply by adding a single line of code to your gradle project!\nSince the project is very new, feel free to offer suggestions on improvements. If you cannot find a category that fits your software let us know and one will be added.\n" ,
+    
+    "summaryTitle":"jMonkeyStore is Now Open!",
+    
+
+
+    
+    "summary":"After years of requests and attempts, a software store (a.k.a an asset store) for jmonkey has finally been created and is now open to registration. Everybody can register and submit their software!\nhttps://store.jmonkeyengine.org/   Currently only free open-source software can be submitted. Once we have the sponsorship required for the legal documentation and setup fees we will be able to allow selling (payment required to use it) and sponsoring (pay the developer if you want to as a thank you) software."   ,
+    
+    "tags":[
+        
+             
+             "asset-store"
+        
+              , 
+             "software"
+        
+              , 
+             "devlog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "jayfella"
+            
+            ]
+
+
+}

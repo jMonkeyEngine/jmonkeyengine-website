@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | JMonkeyEngine version 3.3.2 is here!</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <link rel="stylesheet" href="/css/style.css"> 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script>
+
+  <script src="/highlight/highlight.pack.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  
+</head>
+
+<body>
+  <progress onload="startCyclingProgressBar()" max=100 value=0 id="pageLoadingProgress"></progress>
+
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div>
+        <a href="/">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon" >
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://store.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-puzzle-piece"></i> <span>Store</span>
+            </button>
+        </a>
+
+        <a href="/docs">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+         </a>
+
+        <a href="/license">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+
+    <div>
+        <a href="https://github.com/jMonkeyEngine/jmonkeyengine"  rel='noopener noreferrer' target="_blank">
+            <button class="icon codeCl" title="Github">
+                <i class="fab fa-github-square"></i> <span>Github</span>
+            </button>
+        </a>
+        <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon twitterCl" title="Follow on Twitter"> 
+                <i class="fab fa-twitter"></i> <span>Twitter</span>
+            </button>
+        </a>
+
+        <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer' target="_blank">
+            <button class="icon youtubeCl" title="Follow on Youtube">
+                <i class="fab fa-youtube"></i> <span>Youtube</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.itch.io/jMonkeyEngine" rel='noopener noreferrer' target="_blank">
+            <button class="icon itchCl" title="Itch.io">
+                <i class="fab fa-itch-io"></i> <span>Itch.io</span>
+            </button>
+        </a>
+        <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+            <button class="icon discordCl" title="Discord"> 
+                <i class="fab fa-discord"></i> <span>Discord</span>
+            </button>
+        </a>
+        <a href="https://opencollective.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon donateCl" title="Donate"> 
+                <i class="fas fa-donate"></i> <span>Donate!</span>
+            </button>
+        </a>
+
+    </div>
+</nav>
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <br />
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+              
+                      
+                <div class="showcaseElement"  style='display: block   ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/2.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/2.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/6.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/6.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/8.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/8.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/1.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/1.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/7.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/7.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                
+                  <video class="showcaseElement cover"  style='display: none  '  preload="none" autoplay loop muted class="cover">
+                    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm" type="video/webm">
+                  </video>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/4.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/4.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/3.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/3.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/5.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/5.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                
+                  <video class="showcaseElement cover"  style='display: none  '  preload="none" autoplay loop muted class="cover">
+                    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm" type="video/webm">
+                  </video>
+                    
+              
+            
+  
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+      <a href="/start/#content"><button  id="startbtn" class="highlightedCl"><i class="fas fa-rocket"></i> Get Started... </button></a>
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Spoxel powered by jMonkeyEngine</h2>
+      
+      Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful … 
+      
+      <br />
+      <a class="readMore" href="/showcase/spoxel/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+
+<section class="full responsiveWidth">
+   
+<article>
+        <h1 id="content">
+            
+<i class="fas fa-code useless"></i>        
+  
+           
+            JMonkeyEngine version 3.3.2 is here!</h1>
+            <div class="content">
+                <span>
+                <p>After 3 months of beta testing, the Java game engine&rsquo;s long-awaited v3.3 release arrived on 30 March.</p>
+<p>With it came exciting new features:  AppState ids, light-probe blending, a better ragdoll control, and an animation system rewritten from the ground up.</p>
+<p>As often happens, a few key bugfixes missed the cutoff for v3.3.0-stable. In its wake, the JMonkeyEngine team came together and identified a handful of existing fixes that could be safely backported into v3.3.  With the help of volunteers, candidate builds received extensive testing on multiple platforms.  Their efforts culminated in version 3.3.2-stable, a production-ready patch release from the v3.3 line.</p>
+<p>The 3.3.2-stable libraries are tested, approved, and ready-to-rock!</p>
+<p>For projects built with Maven or Gradle, artifacts are available from JCenter.  If you are looking for the source code, go to <a href="https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.3.2-stable">https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.3.2-stable</a></p>
+<p>At this time, version 3.3 of the JME Software Development Kit (based on Netbeans 11) is still undergoing testing and is not recommended for production use.  Until it&rsquo;s ready, development with the v3.3 libraries can proceed using the 3.2 SDK (based on Netbeans 8) or general-purpose IDEs such as IntelliJ IDEA.</p>
+
+                </span>
+            <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="devlog" href="/tags/devlog"><i class="fas fa-hashtag"></i>devlog</a></li>
+        
+        <li><a class="release" href="/tags/release"><i class="fas fa-hashtag"></i>release</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="itsmike54" href="/authors/itsmike54"><i class="fas fa-at"></i>ItsMike54</a></li>
+        
+        <li><a class="stephengold" href="/authors/stephengold"><i class="fas fa-at"></i>stephengold</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2020-05-10 08:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>10 May 2020</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+
+            </div>
+
+
+
+    </article>
+</section>
+
+
+<section class="full responsiveWidth">
+
+  <article>
+    <h1 id="comments"><i class="useless fas fa-comments"></i> Comments</h1>
+      <div class="content" id='discourse-comments'></div>
+
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://hub.jmonkeyengine.org/',
+                           discourseEmbedUrl: window.location.href };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+</article>
+</section>
+
+
+
+
+  </main>
+  <footer></footer>
+</body>
+</html>

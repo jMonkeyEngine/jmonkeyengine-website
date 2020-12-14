@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | Minie Physics Library Version 1.4 Released!</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <link rel="stylesheet" href="/css/style.css"> 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script>
+
+  <script src="/highlight/highlight.pack.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  
+</head>
+
+<body>
+  <progress onload="startCyclingProgressBar()" max=100 value=0 id="pageLoadingProgress"></progress>
+
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div>
+        <a href="/">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon" >
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://store.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-puzzle-piece"></i> <span>Store</span>
+            </button>
+        </a>
+
+        <a href="/docs">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+         </a>
+
+        <a href="/license">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+
+    <div>
+        <a href="https://github.com/jMonkeyEngine/jmonkeyengine"  rel='noopener noreferrer' target="_blank">
+            <button class="icon codeCl" title="Github">
+                <i class="fab fa-github-square"></i> <span>Github</span>
+            </button>
+        </a>
+        <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon twitterCl" title="Follow on Twitter"> 
+                <i class="fab fa-twitter"></i> <span>Twitter</span>
+            </button>
+        </a>
+
+        <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer' target="_blank">
+            <button class="icon youtubeCl" title="Follow on Youtube">
+                <i class="fab fa-youtube"></i> <span>Youtube</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.itch.io/jMonkeyEngine" rel='noopener noreferrer' target="_blank">
+            <button class="icon itchCl" title="Itch.io">
+                <i class="fab fa-itch-io"></i> <span>Itch.io</span>
+            </button>
+        </a>
+        <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+            <button class="icon discordCl" title="Discord"> 
+                <i class="fab fa-discord"></i> <span>Discord</span>
+            </button>
+        </a>
+        <a href="https://opencollective.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon donateCl" title="Donate"> 
+                <i class="fas fa-donate"></i> <span>Donate!</span>
+            </button>
+        </a>
+
+    </div>
+</nav>
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <br />
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+              
+                      
+                <div class="showcaseElement"  style='display: block   ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/6.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/6.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/2.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/2.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/3.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/3.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/5.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/5.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                
+                  <video class="showcaseElement cover"  style='display: none  '  preload="none" autoplay loop muted class="cover">
+                    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm" type="video/webm">
+                  </video>
+                    
+              
+                
+                  <video class="showcaseElement cover"  style='display: none  '  preload="none" autoplay loop muted class="cover">
+                    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm" type="video/webm">
+                  </video>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/4.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/4.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/8.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/8.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/7.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/7.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/1.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/spoxel/1.jpg'); " style="  "></div>
+                </div>
+                    
+              
+            
+  
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+      <a href="/start/#content"><button  id="startbtn" class="highlightedCl"><i class="fas fa-rocket"></i> Get Started... </button></a>
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Spoxel powered by jMonkeyEngine</h2>
+      
+      Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful … 
+      
+      <br />
+      <a class="readMore" href="/showcase/spoxel/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+
+<section class="full responsiveWidth">
+   
+<article>
+        <h1 id="content">
+            
+<i class="fas fa-paragraph useless"></i>
+
+           
+            Minie Physics Library Version 1.4 Released!</h1>
+            <div class="content">
+                <span>
+                <p>Minie version 1.4 is an exciting new add-on for
+<a href="https://jmonkeyengine.org">the JMonkeyEngine (JME) game engine</a>.</p>
+<figure>
+    <img src="https://i.imgur.com/YdoHlbf.jpg"/> 
+</figure>
+
+<p>Minie provides an <a href="https://en.wikipedia.org/wiki/Open-source_software">open-source</a>
+physics <a href="https://en.wikipedia.org/wiki/Physics_engine">engine</a> for desktop games.
+It gives software developers using JME access to the proven technology of
+<a href="https://github.com/bulletphysics/bullet3/releases/tag/2.89">the Bullet Physics SDK version 2.89</a>,
+including:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Rigid_body_dynamics">rigid-body dynamics</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Soft-body_dynamics">soft bodies</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Collision_detection">collision detection</a>,</li>
+<li>vehicle and character controllers,</li>
+<li>ray and sweep tests, and</li>
+<li>dynamic constraints.</li>
+</ul>
+<p>Minie incorporates <a href="https://hub.jmonkeyengine.org/t/introducing-dynamicanimcontrol/41075">DynamicAnimControl</a>
+technology for <a href="https://en.wikipedia.org/wiki/Ragdoll_physics">ragdoll simulation</a>
+and <a href="http://radiomonash.com/inverse-kinematics-video-games-thing-happens-games-never-knew-word/">inverse kinematics</a>.
+It supports the use of
+<a href="https://kmamou.blogspot.com/2011/10/hacd-hierarchical-approximate-convex.html">Khaled Mamou V-HACD algorithm</a>
+to decompose complicated shapes for efficient simulation.</p>
+<p>Minie&rsquo;s <a href="https://en.wikipedia.org/wiki/Application_programming_interface">API</a>
+closely mimics those of JME&rsquo;s official physics libraries:
+jme3-bullet and jme3-jbullet, so existing JME applications
+should require little or no modification to work with Minie.</p>
+<p>Minie&rsquo;s documentation starts with a
+<a href="https://github.com/stephengold/Minie/blob/master/README.md">70-KB README file</a>.
+It comes with a dozen demo applications, some tutorials,
+and an extensive test suite, all open-source.
+Its Javadoc describes all public methods and their arguments,
+and the source code includes additional inline documentation.</p>
+<p>The release of Minie 1.4 was first announced
+<a href="https://hub.jmonkeyengine.org/t/the-minie-physics-library/41839/119">on 8 February 2020 at the JME Forum</a>.
+The software can easily be obtained for free.
+Pre-built Maven artifacts are served by
+<a href="https://bintray.com/stephengold/com.github.stephengold/Minie">JCenter</a>.
+Its complete source code and build scripts are in
+<a href="https://github.com/stephengold/Minie/releases/tag/1.4.0for32">a public GitHub repository</a>.
+And of course it has its own
+<a href="https://jmonkeystore.com/38308161-c3cf-4e23-8754-528ca8387c11">page at Jmonkeystore</a>.</p>
+<p>Whether you&rsquo;re starting a new game project,
+dissatisfied with the official physics libraries,
+or simply curious about the future of open-source game physics,
+you owe it to yourself to try Minie!</p>
+
+
+                </span>
+            <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="library" href="/tags/library"><i class="fas fa-hashtag"></i>library</a></li>
+        
+        <li><a class="physics" href="/tags/physics"><i class="fas fa-hashtag"></i>physics</a></li>
+        
+        <li><a class="software" href="/tags/software"><i class="fas fa-hashtag"></i>software</a></li>
+        
+        <li><a class="minie" href="/tags/minie"><i class="fas fa-hashtag"></i>minie</a></li>
+        
+        <li><a class="blog" href="/tags/blog"><i class="fas fa-hashtag"></i>blog</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="stephengold" href="/authors/stephengold"><i class="fas fa-at"></i>stephengold</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2020-02-09 08:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>09 February 2020</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+
+            </div>
+
+
+
+    </article>
+</section>
+
+
+<section class="full responsiveWidth">
+
+  <article>
+    <h1 id="comments"><i class="useless fas fa-comments"></i> Comments</h1>
+      <div class="content" id='discourse-comments'></div>
+
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://hub.jmonkeyengine.org/',
+                           discourseEmbedUrl: window.location.href };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+</article>
+</section>
+
+
+
+
+  </main>
+  <footer></footer>
+</body>
+</html>

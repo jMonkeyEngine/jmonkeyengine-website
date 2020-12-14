@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | Sgold interviews Daniel Perano</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <link rel="stylesheet" href="/css/style.css"> 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script>
+
+  <script src="/highlight/highlight.pack.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  
+</head>
+
+<body>
+  <progress onload="startCyclingProgressBar()" max=100 value=0 id="pageLoadingProgress"></progress>
+
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div>
+        <a href="/">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon" >
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://store.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-puzzle-piece"></i> <span>Store</span>
+            </button>
+        </a>
+
+        <a href="/docs">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+         </a>
+
+        <a href="/license">
+            <button class="genericCl responsiveIcon">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+
+    <div>
+        <a href="https://github.com/jMonkeyEngine/jmonkeyengine"  rel='noopener noreferrer' target="_blank">
+            <button class="icon codeCl" title="Github">
+                <i class="fab fa-github-square"></i> <span>Github</span>
+            </button>
+        </a>
+        <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon twitterCl" title="Follow on Twitter"> 
+                <i class="fab fa-twitter"></i> <span>Twitter</span>
+            </button>
+        </a>
+
+        <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer' target="_blank">
+            <button class="icon youtubeCl" title="Follow on Youtube">
+                <i class="fab fa-youtube"></i> <span>Youtube</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.itch.io/jMonkeyEngine" rel='noopener noreferrer' target="_blank">
+            <button class="icon itchCl" title="Itch.io">
+                <i class="fab fa-itch-io"></i> <span>Itch.io</span>
+            </button>
+        </a>
+        <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+            <button class="icon discordCl" title="Discord"> 
+                <i class="fab fa-discord"></i> <span>Discord</span>
+            </button>
+        </a>
+        <a href="https://opencollective.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <button class="icon donateCl" title="Donate"> 
+                <i class="fas fa-donate"></i> <span>Donate!</span>
+            </button>
+        </a>
+
+    </div>
+</nav>
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <br />
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+              
+                      
+                <div class="showcaseElement"  style='display: block   ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/11.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/11.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/8.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/8.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/7.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/7.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/19.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/19.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/18.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/18.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                
+                    <iframe loading="lazy" class="showcaseElement cover youtubeVid"   style='display:  none ' 
+                    lazy="true" lazy-src="https://www.youtube-nocookie.com/embed/AnqzGANkPG8"
+                    frameborder="0" allow="accelerometer; autoplay;  encrypted-media; gyroscope; fullscreen"></iframe>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/3.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/3.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/13.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/13.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/14.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/14.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/4.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/4.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/9.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/9.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/5.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/5.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/17.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/17.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/12.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/12.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/2.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/2.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/16.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/16.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/6.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/6.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/1.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/1.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/10.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/10.jpg'); " style="  "></div>
+                </div>
+                    
+              
+                      
+                <div class="showcaseElement"  style='display: none  ' >
+                  <div  class="cover blur" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/15.jpg'); " style=" "></div>
+                  <div    class="cover" lazy="true" lazy-style="background-image: url('/images/showcase/skullstone/15.jpg'); " style="  "></div>
+                </div>
+                    
+              
+            
+  
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+      <a href="/start/#content"><button  id="startbtn" class="highlightedCl"><i class="fas fa-rocket"></i> Get Started... </button></a>
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Skullstone powered by jMonkeyEngine</h2>
+      
+      Skullstone – a retro styled grid-based dungeon crawler RPG inspired by the good old titles such as Dungeon Master, Stonekeep, Eye of Beholder and many other classics.
+In a few words – a party of … 
+      
+      <br />
+      <a class="readMore" href="/showcase/skullstone/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+
+<section class="full responsiveWidth">
+   
+<article>
+        <h1 id="content">
+            
+<i class="fas fa-paragraph useless"></i>
+
+           
+            Sgold interviews Daniel Perano</h1>
+            <div class="content">
+                <span>
+                <p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+Thank you for agreeing to be interviewed.</p>
+<p>First question: Do you remember when you first encountered JMonkeyEngine?
+What was your first impression?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> I started learning jME back in the 3.0 days, as I recall,
+and I was impressed with the features it offered.
+The scene-graph control and appstate design made a lot of sense to me &mdash;
+at the time both were novel concepts.</p>
+<p>Not long after that, I adopted jME for a project called “OpenWorld.”</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+What sort of project was it?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> OpenWorld was the precursor to MyWorld &mdash;
+a platform for real-time, 3-D social virtual worlds and MMO games.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+What got you interested in social virtual worlds?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> I first heard of them from
+a magazine article about Second Life, over a decade ago.
+I was fascinated, and despite being underage
+(accounts were restricted to users 18 and over), I created an account.</p>
+<p>Since I was underage my adventures there did not last long, but
+I was hooked from the start.
+It was like a game, but there were so many things to do and places to explore,
+and the built-in creation system blew my mind.</p>
+<p>A couple years later, I discovered OpenSimulator,
+an open-source server that’s compatible with Second Life clients (viewers).
+Since then, I’ve been a member of various OpenSimulator virtual worlds (or grids, as they’re called).</p>
+<p>During my second year in OpenSimulator, I began to keenly notice
+some limitations that OpenSimulator inherited from Second Life.
+Compared to multi-player games, virtual worlds always felt slow and bloated,
+and the architecture was fundamentally limiting.</p>
+<p>At that point I had the idea that grew into MyWorld:
+apply multiplayer game technology to social virtual worlds.
+Later on, I realized that a social virtual-world platform
+could also be a powerful MMO gaming platform, and
+since then I’ve worked towards the dual goal of supporting
+social virtual worlds and MMO games as first-class citizens on MyWorld.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+How many people are working on MyWorld?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> We have three people on the project.
+Right now I’m the sole developer &mdash;
+the other two handle business management,
+social media, and aesthetics (art and design).</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+How is the project funded?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> We’re fully self-funded: no investor or venture-capital backing.
+We see this as an advantage, for two reasons:</p>
+<ol>
+<li>We’re not beholden to shareholders,
+so we’re free to make decisions that bring the best experience to our users.</li>
+<li>Our runway is infinitely long &mdash; we have no pressure to grow rapidly to avoid bankruptcy.
+We can grow organically and sustainably.</li>
+</ol>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+When’s the next release of MyWorld due out?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Our first alpha/preview release
+will come out around the end of March of this year (2020).</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+What features will it provide?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> The feature set will depend on what we have time to finish.
+Dynamic asset delivery/loading, the entity system, and scripting
+are in pretty good shape,
+but the user interface still needs work
+and there are many small “detail features” that need attention.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+In the long run, what will differentiate MyWorld from other virtual worlds?
+Specifically, how would you compare it to Minecraft and Second Life?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Unlike Minecraft, MyWorld is not a game itself &mdash;
+it’s a platform that supports dynamic content creation and scripting,
+and unlike games more generally, MyWorld provides first-class support
+for uploading 3D models, textures, audio, etcetera
+and distributing them to clients on an as-needed basis.
+It also has a professional-grade scripting language you can use
+to add custom behavior to your creations.</p>
+<p>Unlike current-generation virtual worlds,
+MyWorld was designed from Day One to satisfy
+the performance requirements of multiplayer action games.
+This means that exploring a virtual world can have the same fast,
+fluid feel as playing a well-designed multiplayer game.</p>
+<p>Another difference is that we support scripting on both client and server,
+allowing scripted effects and latency-elimination techniques
+that are impossible in current virtual worlds.</p>
+<p>In addition, our internal systems can be extended via plugins
+that can integrate into the entity system and
+host or call HTTP endpoints (for custom REST APIs, for example).
+Plugins can even extend the core network protocol
+with jME’s fast, intuitive, and efficient RMI implementation.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+What’s the financial model? Will the client be freely downloadable?
+Will there be paid subscriptions? Free-to-play accounts?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Our vision for MyWorld has always been to release it open-source,
+so the client will always be free to download and use, as will the core server.
+We may eventually release some commercial plugins for professional use,
+but these would be extensions to the core server,
+not permanently built-in proprietary code.</p>
+<p>In a project like MyWorld,
+there are many opportunities to provide value to users,
+so there are many potential revenue streams.
+Initially we’re looking at a revenue model similar to Second Life:
+users can rent space in the virtual world to build homes,
+businesses, workshops, etcetera.
+We may also introduce a subscription model that offers
+extra benefits to heavy users.</p>
+<p>We’re also investigating how we can monetize
+by offering professional hosting and support services to game developers
+and those interested in running MyWorld servers.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+I’ve heard that Second Life has its own currency.
+Do you have plans in that area?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> While MyWorld needs a virtual currency to effectively operate,
+issuing one ourselves is not currently a viable choice for a couple of reasons:</p>
+<ol>
+<li>
+<p>Issuing in-house currency is a large financial liability &mdash;
+there are many ways to destabilize an economy, virtual or otherwise,
+that are largely or completely outside the control of the currency issuer,
+which would present a risk both to us and our users.</p>
+</li>
+<li>
+<p>Governments have begun regulating virtual currencies,
+making it expensive and difficult to issue them.</p>
+</li>
+</ol>
+<p>Fortunately, we’re not the only ones with this need
+and there are several good virtual currency services,
+some of which allow the same currency to be used across many games or virtual worlds.</p>
+<p>So yes, we will have a virtual currency,
+but we’re not planning on issuing it ourselves.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+You mentioned earlier that Second Life was age-restricted.
+Will MyWorld have similar restrictions?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Initially yes, unfortunately.
+Allowing minors requires extra legal compliance
+and stringent moderation of content and user interactions.</p>
+<p>I don’t see this as a notable limitation, especially early on.
+Most of our initial user base will be developers and creators,
+not general users,
+so I expect the overwhelming majority of interest to be coming from adults.</p>
+<p>I want to allow minors to access at least some areas within MyWorld
+as soon as it makes sense for us as an organization and community,
+but for now we need to focus on the technical aspects.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+Does MyWorld use JMonkeyEngine for the client, the server, or both?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> The client is a typical jME application &mdash;
+AppStates tie MyWorld-specific libraries (such as our in-house entity system)
+to other systems and the scene graph.</p>
+<p>The server uses jME’s network stack,
+and we’re transitioning from jME’s physics to Minie, but that’s about all.
+The server’s systems and heartbeat/event dispatch loop are all custom &mdash;
+we don’t use jME’s application structure serverside.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+What technologies does MyWorld use besides JMonkeyEngine?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> It uses JavaFX, Lemur, Chipmunk (our in-house scripting language),
+Jetty (an embedded HTTP server), and CockroachDB (a distributed SQL database).</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+What prompted you to create Chipmunk?
+What other scripting languages did you consider?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Chipmunk was born out of necessity.</p>
+<p>Like Second Life,
+MyWorld allows content creators to script anything they create.
+Scripting can include physics, movement, particle/sound/animation effects,
+HTTP calls, etcetera.</p>
+<p>The problems here are security and resource use.
+Since anyone with creation privileges can upload scripts to a server
+(and scripts can also run client side), sandboxing is a must.</p>
+<p>My first choice for scripting was Groovy.
+It’s a powerful, well-known language with many features,
+and the compiler supports AST transformations for customizing compiled code.
+I spent a great deal of time pursuing this route,
+but the shoe always pinched in the same spots: preemption and checkpointing.</p>
+<p>Preemption means that the script engine can stop a running script at any time.
+This is necessary to ensure that misbehaving (or resource-intensive) scripts
+don’t overuse CPU resources.
+Preemption is also necessary for checkpointing:
+freezing a script so it can be persisted to disk or sent to another server.</p>
+<p>Java was not designed for preemption.
+Every mechanism I could think of to fit preemption support
+into Java’s compiled bytecode came with substantial overhead and other nasty limitations.</p>
+<p>I also experimented with an assembly-like language for scripting,
+but it was too difficult to read to be suitable for anything more than trivial scripts.</p>
+<p>I designed Chipmunk to fit a unique place in the language spectrum &mdash;
+easy for a first-time programmer to pick up,
+but powerful enough for an experienced developer to hit the ground running.
+For example, classes declare state that’s shared between all instances
+via the “shared” keyword,
+which is semantically identical to Java’s “static” keyword,
+but expresses the concept in terms that make intuitive sense
+to inexperienced programmers.</p>
+<p>In terms of features, Chipmunk supports modules, classes, polymorphism,
+first-class functions, anonymous (lambda) functions, exceptions,
+and dynamic typing.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+Chipmunk sounds like it might have many uses.</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> I hope so! I’m looking forward to seeing what else it’s used for.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+Is there any published documentation for it?
+Is it open-source?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Chipmunk is developed separately from MyWorld and will be released
+open-source as soon as we’ve finalized the v1.0 language spec
+and finished implementing the standard library.</p>
+<p>The main language features are functional, but it needs more attention
+on things like string manipulation, collection operations, and libraries.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+Part of the appeal of an open world, I think,
+is having a place to exhibit digital creations.</p>
+<p>What skills/tools would someone need to create and upload a 3-D model?
+Do you envision people using Blender 3D?</p>
+<p>What audio formats will MyWorld support?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> MyWorld is built around the assumption that users will create digital content.
+One of the first things I wrote was the dynamic asset upload/download mechanism.</p>
+<p>Our initial creation pipeline is based around the GLTF format.
+Thanks to jME’s GLTF importer, most modern GLTF files should import seamlessly.
+Our primary interest in external tools is Blender 3D,
+but anything that exports to GLTF should do fine.</p>
+<p>Later on, we plan to support in-world creation via constructive solid geometry
+with procedural extensions, as a supplement to the GLTF pipeline.</p>
+<p>Any audio format supported by jME (OGG &amp; WAV in particular)
+can be opened by the client for upload.
+Streaming media can be in any format supported by JavaFX’s media framework.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+If someone wants to develop games for MyWorld, where should they begin?
+Is there an e-mail list for announcements?
+A website they should monitor?
+A chatroom they should join?</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> The best place to go is our <a href="https://discordapp.com/invite/WccnrWg">Discord server</a>.
+We have an active community there,
+and we often discuss planned or requested features.
+It’s also the first place we share development updates
+and news about the project.
+For anyone wishing to participate in the alpha-test release,
+this is the place to be.</p>
+<p>Our <a href="https://www.facebook.com/MyWorld-LLC-228751528045088">Facebook</a>
+and <a href="https://twitter.com/MyWorldLLC">Twitter</a> pages
+cover major news items and announcements,
+and liking/following us there helps us get the word out to more people!</p>
+<p>For general project information, blog posts, and press releases,
+the <a href="https://myworldvw.com/">MyWorld website</a> is the place to go.
+We archive the notes from our monthly “MyWorld Meetup” sessions on the blog &mdash;
+these are a great resource for finding out details about the project.</p>
+<p><figure class="githubUser inline " github-user="stephengold">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/stephengold">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="stephengold" class="ghname" ghresolve-name="innerText">
+            stephengold
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/stephengold" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> 
+I’ve run out of questions.
+Unless there’s something more you’d like to discuss, let’s wrap this up.</p>
+<p>Thank you very much for your detailed answers
+and all the time and care you put into them.</p>
+<p><figure class="githubUser inline " github-user="danielperano">
+    <img class="excludeSummary" src="https://avatars.githubusercontent.com/danielperano">
+    <figcaption>  
+        <h2 ghresolve-bio="title" alt="danielperano" class="ghname" ghresolve-name="innerText">
+            danielperano
+        </h2>
+            <span ghresolve-bio="innerText" class="ghbio excludeSummary"></span>
+        <div>
+            <a alt="github link" title="Github"  href="https://github.com/danielperano" class="excludeSummary"><i class="fab fa-github"></i></a>
+            <a  alt="twitter link"  title="Twitter" ghresolve-twitter_link="href" class="ghtwitter_link excludeSummary" href="" style="display:none"><i class="fab fa-twitter"></i></a>
+            <a  alt="website link"  title="Website" ghresolve-blog="href"  class="ghblog excludeSummary" href="" style="display:none"><i class="fas fa-globe"></i></a>
+        </div>
+    </figcaption>
+</figure> Thank you! I enjoyed the interview, and I’m looking forward to seeing how jME continues to grow and improve – there’s a lot of great talent behind this project!</p>
+
+
+                </span>
+            <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="interview" href="/tags/interview"><i class="fas fa-hashtag"></i>interview</a></li>
+        
+        <li><a class="blog" href="/tags/blog"><i class="fas fa-hashtag"></i>blog</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="stephengold" href="/authors/stephengold"><i class="fas fa-at"></i>stephengold</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2020-02-25 18:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>25 February 2020</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  ><i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+
+            </div>
+
+
+
+    </article>
+</section>
+
+
+<section class="full responsiveWidth">
+
+  <article>
+    <h1 id="comments"><i class="useless fas fa-comments"></i> Comments</h1>
+      <div class="content" id='discourse-comments'></div>
+
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://hub.jmonkeyengine.org/',
+                           discourseEmbedUrl: window.location.href };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+</article>
+</section>
+
+
+
+
+  </main>
+  <footer></footer>
+</body>
+</html>

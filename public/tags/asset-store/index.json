@@ -1,0 +1,60 @@
+{
+    "responseTitle":"jMonkeyEngine  | asset-store",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2019-10-08 06:27:00 +0000 UTC",
+        
+        "url":"/devlog/new-store/",
+
+        
+        "title":"jMonkeyStore is Now Open!",
+        
+
+   
+        
+        "summary":"After years of requests and attempts, a software store (a.k.a an asset store) for jmonkey has finally been created and is now open to registration. Everybody can register and submit their software!\nhttps://store.jmonkeyengine.org/   Currently only free open-source software can be submitted. Once we have the sponsorship required for the legal documentation and setup fees we will be able to allow selling (payment required to use it) and sponsoring (pay the developer if you want to as a thank you) software."   ,
+        
+      
+        "tags":[
+        
+             
+             "asset-store"
+        
+              , 
+             "software"
+        
+              , 
+             "devlog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "jayfella"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

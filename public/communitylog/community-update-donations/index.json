@@ -1,0 +1,37 @@
+{
+    "responseTitle":"jMonkeyEngine  | Donations Update",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+  
+    "title":"Donations Update",
+    "content":"\u003cp\u003eHello fellow community members, this is the promised followup of \u003ca href=\"/communitylog/update-in-the-wake-of-recent-events/\"\u003eUpdate in the wake of recent events\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eAs planned, we opted for creating a collective at \u003ca href=\"https://opencollective.com/jmonkeyengine\"\u003eopencollective.com/jmonkeyengine\u003c/a\u003e, since this is the most future proof and community oriented alternative out there.\u003c/p\u003e\n\u003cp\u003eOpenCollective is a trusted platform that provides funds managment and fiscal hosting for many opensource organizations like us. This comes also with full transparency for the community as it is possible to see where donations go and to whom.\nOpenCollective should cover pretty much all the options, since it has one-time, monthly, yearly and custom tiers and accepts bank transfer, credit card and paypal. However I am also planning to re-enable donations through Github Sponsor that will be also connected to OpenCollective, this will require some extra integration so it will be done at a later time.\u003c/p\u003e\n\u003cp\u003eA new \u003ca href=\"https://hub.jmonkeyengine.org/badges/113/backer\"\u003eBacker Badge\u003c/a\u003e will be automatically asigned through a bot to every backer within an hour from the donation.\n\u003cstrong\u003eNote\u003c/strong\u003e: To receive the badge you must use the same email address in both your OpenCollective account and hub account, since they are matched with the given email address.\u003c/p\u003e\n\u003cp\u003eThe plan for now is to create a fund for the future of the project, when we will deem that this goal is reached, we might decide to redirect some of the donations to specific engine related projects, obviosly we will do this in full transparency by consulting the community and the backers.\u003c/p\u003e\n\u003cp\u003eLast but not least I want to thank @adi.barda for the valuable contribution of 500$ worth of aws credits that will cover 1 year of hosting with the current configuration on aws ec2.\u003c/p\u003e\n\u003cp\u003eThat\u0026rsquo;s all for now. A new thread will follow this one when I will have more updates to communicate.\u003c/p\u003e\n\u003cp\u003eTL;DR: We are accepting donations at \u003ca href=\"https://opencollective.com/jmonkeyengine\"\u003ehttps://opencollective.com/jmonkeyengine\u003c/a\u003e\u003c/p\u003e",
+    "contentPlain":"Hello fellow community members, this is the promised followup of Update in the wake of recent events\nAs planned, we opted for creating a collective at opencollective.com/jmonkeyengine, since this is the most future proof and community oriented alternative out there.\nOpenCollective is a trusted platform that provides funds managment and fiscal hosting for many opensource organizations like us. This comes also with full transparency for the community as it is possible to see where donations go and to whom. OpenCollective should cover pretty much all the options, since it has one-time, monthly, yearly and custom tiers and accepts bank transfer, credit card and paypal. However I am also planning to re-enable donations through Github Sponsor that will be also connected to OpenCollective, this will require some extra integration so it will be done at a later time.\nA new Backer Badge will be automatically asigned through a bot to every backer within an hour from the donation. Note: To receive the badge you must use the same email address in both your OpenCollective account and hub account, since they are matched with the given email address.\nThe plan for now is to create a fund for the future of the project, when we will deem that this goal is reached, we might decide to redirect some of the donations to specific engine related projects, obviosly we will do this in full transparency by consulting the community and the backers.\nLast but not least I want to thank @adi.barda for the valuable contribution of 500$ worth of aws credits that will cover 1 year of hosting with the current configuration on aws ec2.\nThat\u0026rsquo;s all for now. A new thread will follow this one when I will have more updates to communicate.\nTL;DR: We are accepting donations at https://opencollective.com/jmonkeyengine\n" ,
+    
+    "summaryTitle":"Donations Update",
+    
+
+
+    
+    "summary":"Hello fellow community members, this is the promised followup of Update in the wake of recent events\nAs planned, we opted for creating a collective at opencollective.com/jmonkeyengine, since this is the most future proof and community oriented alternative out there.\n"   ,
+    
+    "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+
+}
