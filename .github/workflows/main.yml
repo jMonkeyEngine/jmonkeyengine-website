@@ -20,13 +20,13 @@ jobs:
     - name: Clone master
       run: |
           git config --global user.name "GithubActions"
-          git config --global user.email "actions@robot.frk.wf"
+          git config --global user.email "actions@robot.jmonkeyengine.org"
           git clone --single-branch  --depth 1 --recurse-submodules  --branch master https://github.com/${GITHUB_REPOSITORY}.git project
 
     - name: Clone gh-pages
       run: |
           git config --global user.name "GithubActions"
-          git config --global user.email "actions@robot.frk.wf"
+          git config --global user.email "actions@robot.jmonkeyengine.org"
           git clone --no-checkout --single-branch --branch gh-pages https://github.com/${GITHUB_REPOSITORY}.git generated    
           cd generated
           git reset --hard `git rev-list --max-parents=0 HEAD`
