@@ -93,7 +93,7 @@ Posts can integrate comments from the hub by setting the **enable_comments: true
 ## Contribute to the website
 
 Just like everything else, the website is open to community contributions.
-We will accept and review articles from the community in form of PRs to our [website repo](). 
+We will accept and review articles from the community in form of PRs to our [website repo](https://github.com/jMonkeyEngine/jmonkeyengine-website). 
 Once a PR is approved and merged, a CI/CD task will rebuild and deploy the static site.
 
 ### Create a post

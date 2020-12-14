@@ -40,23 +40,6 @@ window.shuffleArray = function (array) {
 
 
 
-let PROGRESS_BAR_INTERVAL = null;
-window.addEventListener("load", function () {
-    document.getElementById("pageLoadingProgress").style.display = "none";
-    if (PROGRESS_BAR_INTERVAL) {
-        clearInterval(PROGRESS_BAR_INTERVAL);
-        PROGRESS_BAR_INTERVAL = null;
-    }
-});
-
-
-PROGRESS_BAR_INTERVAL = setInterval(function () {
-    const bar = document.getElementById("pageLoadingProgress");
-    if (!bar) return;
-    bar.value += 1;
-    if (bar.value >= bar.max) bar.value = 0;
-}, 20);
-
 
 window.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("[toggle]").forEach(el=>{

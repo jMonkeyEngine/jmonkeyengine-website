@@ -5,8 +5,11 @@
 
   <title>{{ block "title" . }}{{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}{{ end }}</title>
   <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description" content="jMonkeyEngine is a modern developer friendly game engine written primarily in Java.  ">
 
   <link rel="stylesheet" href="/css/style.css"> 
+  
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script> -->
 
   <script src="/highlight/highlight.pack.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
@@ -30,13 +33,24 @@
 </head>
 
 <body>
-  <progress onload="startCyclingProgressBar()" max=100 value=0 id="pageLoadingProgress"></progress>
-
   <header> {{ block "header" . }}{{ partial "header.html" .}}{{ end }}</header>
 
   <main>
     {{ block "main" . }}{{ end }}
   </main>
-  <footer></footer>
+  <footer> 
+    © 2020 jMonkeyEngine  |  <a title="Github repo"  rel='noopener nofollow noreferrer' target="_blank" href="https://github.com/jMonkeyEngine/jmonkeyengine-website">
+      <i class="fab fa-github"></i>
+    </a>
+    <a title="Report issue"  rel='noopener nofollow noreferrer' target="_blank" href="https://github.com/jMonkeyEngine/jmonkeyengine-website/issues">
+      <i class="fas fa-bug"></i>
+    </a>
+    <br />
+    All other trademarks, logos and featured content are property of their respective owners.
+    <br />
+    Website designed and developed by <a href="https://rblb.it">Riccardo Balbo</a>
+
+    
+  </footer>
 </body>
 </html>
