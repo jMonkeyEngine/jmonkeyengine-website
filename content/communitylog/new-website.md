@@ -16,9 +16,9 @@ tags:
 Hello. 
 
 We have a new website. 
-This doesn't come to you as a surprise if you have been following  [this thread](https://hub.jmonkeyengine.org/t/wip-new-website/43960/) where for ~1 week a preview of the website has been exposed to the feedback of the community. 
+This doesn't come to you as a surprise if you have been following  [this thread](https://hub.jmonkeyengine.org/t/wip-new-website/43960/) where for ~1 week a preview of the website has been exposed to the feedbacks of the community. 
 
-This is the result after integrating all the feedbacks, however there is always room for improvement and feedbacks are always appreciated, so if you didn't have a chance to voice your opinion before, feel free to do it as a reply to this post.
+This is the result after integrating all your suggestions, however there is always room for improvement and feedbacks are always appreciated, so if you didn't have a chance to voice your opinion before, feel free to do it as a reply to this post.
 
 <a title="Open original" href="/uploads/Screenshot_2020-12-13-jMonkeyEngine.jpg">
 <img style="display:inline-block" width="60%" src="/uploads/Screenshot_2020-12-13-jMonkeyEngine-partial.webp" />
@@ -39,7 +39,7 @@ The website header shows one random github contributor and one random backer.
 
 ![Contributors an backers](/uploads/Screenshot_2020-12-13-jMonkeyEngine-contributors.webp)
 
-*Note: the list of backers and contributors is not updated in realtime, due to local (browser level) caching it might take up to 2 days for the update to be propagated to everyone*
+*Note: the list of backers and contributors is not updated in realtime, due to local (browser level) caching, it might take up to 2 days for the update to be propagated to everyone*
 
 ### Backer message
 
@@ -49,20 +49,20 @@ Under the top banner a random backer message is shown
 
 Those messages are obtained from [opencollective/jmonkeyengine](https://opencollective.com/jmonkeyengine#section-contributors), and can be left by anyone who donated to the project using the opencollective interface.
 
-If you already donated  but you didn't leave a message, don't worry, you can go to our opencollective page and leave one anytime you want, or change the message you've already left. 
+If you've already donated  but you didn't leave a message, don't worry, you can go to our opencollective page and leave one anytime you want, or change the message you've already left. 
 
 You can for example promote your project that uses jmonkeyengine, leave a message to the community, say what you like about the project and why you donated, or anything else you wish to share, there is no strict rule on what can be written there, just please avoid being political and use common sense.
 
-*Note: the messages are not updated in realtime, due to local (browser level) caching it might take up to 2 days for the update to be propagated to everyone*
+*Note: the messages are not updated in realtime, due to local (browser level) caching, it might take up to 2 days for the update to be propagated to everyone*
 
 ### Top banner
 The top banner will now show one different random image from the showcased projects in every page.
-Those images are randomized everytime the site is rebuild, with one exception: the banner in author's pages will show only showcased content from the author itself if it exists.
+Those images are randomized everytime the site is rebuilt, with one exception: the banner in author's pages will show only showcased content from the author itself, if it exists.
 
 ### Author handles and pages
 Github handles are used as author names, the author page will automatically obtain public informations (such as bio, links, avatar etc) from the github account. The author pages will also list all the articles from the author.
 
-*Note: author infos are not updated in realtime, due to local (browser level) caching it might take up to 2 days for the update to be propagated to everyone*
+*Note: author infos are not updated in realtime, due to local (browser level) caching, it might take up to 2 days for the update to be propagated to everyone*
 
 ### Tags
 Everything is subdivided using tags. Special tags will make the articles appear under certain areas:
