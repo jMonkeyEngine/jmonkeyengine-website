@@ -76,9 +76,9 @@ img {
 }
 
 p {
-    display: inline-block;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
+    display: block;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
 }
 
 
@@ -1100,15 +1100,22 @@ section {
                 flex-direction: column;
             }
 
-
+            ul{
+                margin-left: 0.9rem;
+            }
             li {
                 // Adds little arrows before the li. 
                 list-style: none;
 
                 &:before {
-                    content: "\f054";
-                    font-family: 'font awesome 5 free';
-                    font-weight: 700;
+                    content: "\f0da";
+                    font-family: 'Font Awesome 5 Free';
+                    font-style: normal;
+                    font-weight: 900;
+                    font-display: auto;
+
+                    margin-left:-0.8rem;
+                    
                     padding-right: 0.5rem;
                 }
             }
@@ -1296,7 +1303,7 @@ section#showcase {
     }
 
     &.gallery {
-        min-height: 80vh;
+        min-height: ~"min(56vw, 60vh)";
     }
 
     #showCasePrev {
