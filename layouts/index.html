@@ -36,7 +36,7 @@
 
 <ul class="more responsiveWidth">
     {{ $pages :=  (where  .Site.Pages  "Params.tags"  "intersect" $filter )}}
-    {{ range first 3 $pages  }}
+    {{ range first 3 ( after 1 $pages )  }}
         <li>
             <a href="{{ .RelPermalink }}">
             {{ if .Params.summarytitle }}
