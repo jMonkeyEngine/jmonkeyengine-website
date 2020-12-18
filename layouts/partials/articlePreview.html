@@ -2,9 +2,9 @@
   <h1>
     {{ partial "postIcon.html" . }}
     {{ if .Params.summarytitle }}
-    <a href="{{ .RelPermalink }}#content">{{ .Params.summarytitle }}</a>
+    <a href="{{ .RelPermalink }}">{{ .Params.summarytitle }}</a>
     {{ else }}
-    {{ if .Title }} <a href="{{ .RelPermalink }}#content">{{ .Title }}</a> {{ end }}
+    {{ if .Title }} <a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
     {{ end }}
   </h1>
   <div class="content">
@@ -13,7 +13,7 @@
       {{ .Params.summary   |  safeHTML}}
       {{ else }}
       {{ .Summary |  safeHTML }} {{ if .Truncated }} …
-      <a class="more readMore" href="{{ .RelPermalink }}#content">Read
+      <a class="more readMore" href="{{ .RelPermalink }}">Read
         More... </a> {{ end }}
       {{ end }}
     </span>

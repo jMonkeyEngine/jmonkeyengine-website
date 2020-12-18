@@ -40,8 +40,58 @@ window.shuffleArray = function (array) {
 
 
 
+function isInViewport (el) {
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) 
+    );
+}
+
+function isVisible(el){
+    return !!el.offsetParent;
+}
+
+function lazyLoad(parent) {
+    parent.querySelectorAll('[lazy]').forEach(el => {
+        if (isVisible(el)) {
+            console.log("Lazy load", el,isVisible(el));
+
+            const attributeKeys = el.getAttributeNames();
+            attributeKeys.forEach(akey => {
+
+                if (akey.startsWith("lazy-")) {
+                    console.log("Load attribute " + akey);
+                    const realkey = akey.substring(5);
+                    const value = el.getAttribute(akey);
+                    el.setAttribute(realkey, value);
+                    console.log("Set", realkey, "=", value);
+
+                } else {
+                    console.log("Skip attribute", akey, "not lazy");
+                }
+            });
+        }
+    });
+}
+
+
 
 window.addEventListener("DOMContentLoaded", function () {
+    const contentAnchor=document.querySelector("#content");
+    if(contentAnchor&&!isInViewport(contentAnchor)){
+        contentAnchor.scrollIntoView({
+            behavior:"smooth",
+            block:"start",
+            inline:"nearest"
+        });
+        console.log("Scroll content into view");
+    }
+
     document.querySelectorAll("[toggle]").forEach(el => {
         const toggleId = el.getAttribute("toggle");
         if (!toggleId) return;
@@ -79,31 +129,3 @@ window.addEventListener("DOMContentLoaded", function () {
     })
 
 });
-
-
-function isVisible(el){
-    return !!el.offsetParent;
-}
-
-function lazyLoad(parent) {
-    parent.querySelectorAll('[lazy]').forEach(el => {
-        if (isVisible(el)) {
-            console.log("Lazy load", el,isVisible(el));
-
-            const attributeKeys = el.getAttributeNames();
-            attributeKeys.forEach(akey => {
-
-                if (akey.startsWith("lazy-")) {
-                    console.log("Load attribute " + akey);
-                    const realkey = akey.substring(5);
-                    const value = el.getAttribute(akey);
-                    el.setAttribute(realkey, value);
-                    console.log("Set", realkey, "=", value);
-
-                } else {
-                    console.log("Skip attribute", akey, "not lazy");
-                }
-            });
-        }
-    });
-}
