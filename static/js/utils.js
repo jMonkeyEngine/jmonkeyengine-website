@@ -82,14 +82,24 @@ function lazyLoad(parent) {
 
 
 window.addEventListener("DOMContentLoaded", function () {
-    const contentAnchor=document.querySelector("#content");
-    if(contentAnchor&&!isInViewport(contentAnchor)){
+    const scrollTo=(contentAnchor)=>{
         contentAnchor.scrollIntoView({
             behavior:"smooth",
             block:"start",
             inline:"nearest"
         });
         console.log("Scroll content into view");
+    }
+    if (!location.hash) {
+        const contentAnchor=document.querySelector("#content");
+        if(contentAnchor)scrollTo(contentAnchor);
+    }else{
+        setTimeout(()=> {
+            window.scrollTo(0, 0);
+            const contentAnchor=document.querySelector(location.hash);
+            scrollTo(contentAnchor);   
+        }, 1);
+        
     }
 
     document.querySelectorAll("[toggle]").forEach(el => {
