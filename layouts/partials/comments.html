@@ -6,8 +6,23 @@
       <div class="content" id='discourse-comments'></div>
 
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://hub.jmonkeyengine.org/',
-                           discourseEmbedUrl: window.location.href };
+        var eurl=window.location.href ;
+        eurl=eurl.split("#")[0]; // Remove hash
+        eurl=eurl.split("?")[0]; // Remove params        
+        eurl=eurl.trim();// Remove whitespaces
+        if(eurl.charAt(eurl.length-1)=="/") eurl=eurl.substring(0,eurl.length-1); // Remove ending /
+        if(eurl.startsWith("http://")) eurl="https://"+eurl.substring("http://".length);        // Always use https        
+        
+        /// HACKFIX
+        if(eurl.endsWith("/communitylog/new-website")){
+          eurl+="/#content"; 
+        }
+        ///
+
+        DiscourseEmbed = { 
+          discourseUrl: 'https://hub.jmonkeyengine.org/',
+          discourseEmbedUrl: eurl
+        };
       
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
