@@ -10,6 +10,7 @@
         eurl=eurl.split("#")[0]; // Remove hash
         eurl=eurl.split("?")[0]; // Remove params        
         eurl=eurl.trim();// Remove whitespaces
+        if(eurl.endsWith("/index.html"))eurl=eurl.substring(0,eurl.length-"/index.html".length).trim(); // Remove /index.html
         if(eurl.charAt(eurl.length-1)=="/") eurl=eurl.substring(0,eurl.length-1); // Remove ending /
         if(eurl.startsWith("http://")) eurl="https://"+eurl.substring("http://".length);        // Always use https        
         
