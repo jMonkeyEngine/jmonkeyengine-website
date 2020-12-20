@@ -40,26 +40,24 @@ window.shuffleArray = function (array) {
 
 
 
-function isInViewport (el) {
+function isInViewport(el) {
 
     var rect = el.getBoundingClientRect();
 
     return (
         rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth) 
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
     );
 }
 
-function isVisible(el){
+function isVisible(el) {
     return !!el.offsetParent;
 }
 
 function lazyLoad(parent) {
     parent.querySelectorAll('[lazy]').forEach(el => {
         if (isVisible(el)) {
-            console.log("Lazy load", el,isVisible(el));
+            console.log("Lazy load", el, isVisible(el));
 
             const attributeKeys = el.getAttributeNames();
             attributeKeys.forEach(akey => {
@@ -81,26 +79,78 @@ function lazyLoad(parent) {
 
 
 
+let floatingHeader = null;
+let visibleDisplay = null;
+const updateFloatingHeader = () => {
+    const header = document.querySelector("body > header");
+    const siteTitle = document.querySelector("#siteTitle");
+    if (!floatingHeader) {
+        console.info("Create floating header!");
+        floatingHeader = header.cloneNode(true);
+        floatingHeader.classList.add("floating");
+        const toTopBtn = floatingHeader.querySelector(".toggleNavOnPortraitButton");
+        if (toTopBtn) {
+            toTopBtn.setAttribute("class", "toggleNavOnPortraitButton fas fa-angle-up");
+            toTopBtn.setAttribute("title", "To top");
+            toTopBtn.onclick = () => {
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        visibleDisplay = floatingHeader.style.display;
+        document.body.append(floatingHeader);
+    }
+    if (!isInViewport(siteTitle)) {
+        // if (floatingHeader.style.display != visibleDisplay) {
+            // console.log("Show floating header");
+        floatingHeader.style.visibility = "visible";
+        // }
+    } else {
+        // if (floatingHeader && floatingHeader.style.display == visibleDisplay) {
+        //     console.log("Hide floating header");
+         floatingHeader.style.visibility = "hidden";
+        // }
+    }
+};
+
+document.addEventListener("scroll", updateFloatingHeader);
+
+const scrollTo = (contentAnchor) => {
+    const anchorBound = contentAnchor.getBoundingClientRect();
+    const floatingHBound = floatingHeader.getBoundingClientRect();
+    // contentAnchor.scrollIntoView({
+    //     behavior:"smooth",
+    //     block:"start",
+    //     inline:"nearest"
+    // });
+    window.scrollTo({
+        top: anchorBound.top + window.scrollY - floatingHBound.bottom ,
+        left: 0,
+        behavior: 'smooth'
+    });
+    console.log("Scroll content into view");
+}
 window.addEventListener("DOMContentLoaded", function () {
-    const scrollTo=(contentAnchor)=>{
-        contentAnchor.scrollIntoView({
-            behavior:"smooth",
-            block:"start",
-            inline:"nearest"
-        });
-        console.log("Scroll content into view");
-    }
-    if (!location.hash) {
-        const contentAnchor=document.querySelector("#content");
-        if(contentAnchor)scrollTo(contentAnchor);
-    }else{
-        setTimeout(()=> {
-            window.scrollTo(0, 0);
-            const contentAnchor=document.querySelector(location.hash);
-            scrollTo(contentAnchor);   
-        }, 1);
-        
-    }
+    updateFloatingHeader();
+
+
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+        if (location.hash) {
+            const contentAnchor = document.querySelector(location.hash);
+            scrollTo(contentAnchor);
+        } else {
+            const contentAnchor = document.querySelector("#content");
+            if (contentAnchor) scrollTo(contentAnchor);
+        }
+    }, 1);
+
+
+
+
 
     document.querySelectorAll("[toggle]").forEach(el => {
         const toggleId = el.getAttribute("toggle");

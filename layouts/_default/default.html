@@ -4,11 +4,12 @@
     {{ range first 1 (shuffle  (where   .Site.Pages  "Params.tags"  "intersect" $filter    ) ) }}
     {{ partial "showcaseBanner.html" . }}
 {{ end }}
+<a id="content"></a>
 
 <section class="full responsiveWidth">
-   
+
 <article>
-        <h1 id="content">
+        <h1 >
             {{ partial "postIcon.html" . }}
            
             {{ .Title }}</h1>

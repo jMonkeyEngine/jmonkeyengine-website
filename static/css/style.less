@@ -851,7 +851,7 @@ body {
         width: 100%;
         margin: 0;
         padding: 0;
-
+     
         #siteTitle {
             color: var(--highlightFg);
             display: flex;
@@ -862,47 +862,64 @@ body {
             align-items: center;
             margin: 0;
             padding: 0;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding-top: 0.4rem;
+            padding-bottom: 0.5rem;
         }
 
-
-
-
-    }
-}
-
-@media @portrait {
-    header {
-        #logo {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            align-items: center;
-
-            .toggleNavOnPortraitButton {
-                margin-right: 1rem;
-                margin-left: auto;
-
+        .smaller {
+            #logo {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                align-items: center;
+    
+                .toggleNavOnPortraitButton {
+                    margin-right: 1rem;
+                    margin-left: auto;
+    
+                }
             }
-        }
-
-        flex-direction: column;
-
-        >#siteTitle {
-            flex-direction: column !important;
-            text-align: left !important;
-            align-items: flex-start !important;
-
-            >#contributionsBanner {
+    
+            flex-direction: column;
+    
+            >#siteTitle {
+                flex-direction: column !important;
                 text-align: left !important;
-                margin-left: 1rem !important;
-                margin-top: 1rem !important;
+                align-items: flex-start !important;
+    
+                >#contributionsBanner {
+                    
+                    text-align: left!important;
+                    margin-left:0;
+                    padding-left:0.6rem;
+                        
+                }
+            }
+    
+        }
+        @media @portrait {
+            .smaller ()
+        }
+        &.floating{
+            position:fixed;
+            top:0;
+            left:0;
+            .smaller();
+           
+            #topmenu{
+                display:none;
+            }
+            #contributionsBanner {
+                display:none;
+            }
+            .toggleNavOnPortraitButton {
+                display:block;
+
             }
         }
-
     }
 }
+
 
 // Something that links to more something
 .more {
@@ -957,8 +974,11 @@ body {
 }
 
 #contributionsBanner {
-    text-align: right !important;
+    text-align: left ;
     margin-left: auto;
+    >div{
+        margin-top:0.4rem;
+    }
 }
 
 
