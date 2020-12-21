@@ -1,0 +1,3 @@
+[submodule "static/browser-update"]
+	path = static/browser-update
+	url = https://github.com/browser-update/browser-update

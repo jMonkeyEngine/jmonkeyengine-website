@@ -144,7 +144,7 @@ window.addEventListener("DOMContentLoaded", function () {
         window.scrollTo(0, 0);
         if (location.hash) {
             const contentAnchor = document.querySelector(location.hash);
-            scrollTo(contentAnchor);
+            if(contentAnchor)scrollTo(contentAnchor);
         } else {
             const contentAnchor = document.querySelector("#content");
             if (contentAnchor) scrollTo(contentAnchor);
