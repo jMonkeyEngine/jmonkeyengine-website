@@ -80,7 +80,6 @@ function lazyLoad(parent) {
 
 
 let floatingHeader = null;
-let visibleDisplay = null;
 const updateFloatingHeader = () => {
     const header = document.querySelector("body > header");
     const siteTitle = document.querySelector("#siteTitle");
@@ -88,19 +87,23 @@ const updateFloatingHeader = () => {
         console.info("Create floating header!");
         floatingHeader = header.cloneNode(true);
         floatingHeader.classList.add("floating");
-        const toTopBtn = floatingHeader.querySelector(".toggleNavOnPortraitButton");
+        let toTopBtn = floatingHeader.querySelector(".toggleNavOnPortraitButton");
         if (toTopBtn) {
+            let newTopBtn=toTopBtn.cloneNode(true);
+            toTopBtn.parentNode.replaceChild(newTopBtn,toTopBtn);
+            toTopBtn=newTopBtn;
+            toTopBtn.removeAttribute("toggle");
             toTopBtn.setAttribute("class", "toggleNavOnPortraitButton fas fa-angle-up");
             toTopBtn.setAttribute("title", "To top");
-            toTopBtn.onclick = () => {
+            toTopBtn.addEventListener("click",(ev) => {
                 window.scrollTo({
                     top: 0,
                     left: 0,
                     behavior: 'smooth'
                 });
-            }
+           
+            });
         }
-        visibleDisplay = floatingHeader.style.display;
         document.body.append(floatingHeader);
     }
     if (!isInViewport(siteTitle)) {
