@@ -139,20 +139,24 @@ const scrollTo = (contentAnchor) => {
 window.addEventListener("DOMContentLoaded", function () {
     updateFloatingHeader();
 
-
-    setTimeout(() => {
+    const scrollNow=()=>{
         window.scrollTo(0, 0);
-        if (location.hash) {
+        if (location.hash&&location.hash!="#") {
             const contentAnchor = document.querySelector(location.hash);
             if(contentAnchor)scrollTo(contentAnchor);
         } else {
             const contentAnchor = document.querySelector("#content");
             if (contentAnchor) scrollTo(contentAnchor);
         }
+    };
+
+    setTimeout(() => {
+        scrollNow();
     }, 1);
 
-
-
+    window.addEventListener("hashchange", function () {
+        if(location.hash&&location.hash!="#")scrollNow();
+    });
 
 
     document.querySelectorAll("[toggle]").forEach(el => {
