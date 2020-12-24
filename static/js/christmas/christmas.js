@@ -1,4 +1,3 @@
-
 (function () {
     const date = new Date();
     if ((date.getMonth()+1) != 12) return;
@@ -60,9 +59,10 @@
                     hat.style.position = "absolute";
                     hat.style.width = avatarBound.width + "px";
                     hat.style.height = avatarBound.height + "px";
-                    hat.style.zIndex = "99";
-                    hat.style.left = (avatarBound.left - parentBound.left - avatarBound.width * 0.3) + "px";
+                    hat.style.zIndex = "140";
 
+                    // hat.style.left = (parentBound.left - avatarBound.left- Math.min(avatarBound.height,avatarBound.width) * 0.3) + "px";
+                    hat.style.left = (avatarBound.left - parentBound.left - avatarBound.width * 0.3) + "px";
                     hat.style.top = (avatarBound.top - parentBound.top - avatarBound.height * 0.8) + "px";
 
                     parent.appendChild(hat);
