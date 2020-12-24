@@ -25,7 +25,6 @@
             }
         }
         function loadHats(selectors) {
-            console.log("Load hats... for", selectors);
 
             const hats = [
                 christmasRoot + 'hats/hat1.png'
