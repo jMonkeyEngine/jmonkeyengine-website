@@ -3,7 +3,7 @@ title: "Grizeldi's PBR Tutorial #2 - What are Light Probes?"
 date: 2019-10-16T08:00:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 
 authors:
     - "grizeldi"

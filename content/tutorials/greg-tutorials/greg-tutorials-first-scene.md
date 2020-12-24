@@ -3,7 +3,7 @@ title: "Greg's Tutorial 02 - First Scene"
 date: 2020-12-12T08:00:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 
 authors:
     - "XIII-code"

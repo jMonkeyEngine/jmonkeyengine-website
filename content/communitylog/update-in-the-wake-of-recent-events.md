@@ -3,7 +3,7 @@ title: "Update in the wake of recent events"
 date: 2020-10-29T08:00:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 
 authors:
     - "riccardobl"

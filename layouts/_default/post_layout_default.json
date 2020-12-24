@@ -1,0 +1,32 @@
+{
+    "responseTitle":"{{ block "title" . }}{{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}{{ end }}",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":{{ .File.UniqueID | jsonify }},
+
+    "title":{{.Title | jsonify}},
+    "content":{{ .Content | jsonify}},
+    "contentPlain":{{ .Content| plainify | jsonify}} ,
+    "url":{{ .Permalink  | absURL | jsonify }},
+
+
+    {{ if .Params.summary }}
+    "summary":{{ .Params.summary | plainify  | jsonify }},
+    {{else}}
+    "summary":{{.Summary | plainify | jsonify }}   ,
+    {{ end }}
+    "tags":[
+        {{ range $i, $e  :=  .Params.tags  }}
+             {{ if $i }} , {{end}}
+             "{{ $e }}"
+        {{ end }}
+        ],
+        "authors":[
+            {{ range $i, $e  :=  .Params.authors  }}
+                 {{ if $i }} , {{end}}
+                 "{{ $e }}"
+            {{ end }}
+            ]
+
+
+}

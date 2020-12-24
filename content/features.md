@@ -2,7 +2,7 @@
 menu: "main"
 title: "Features"
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 ---
 
 

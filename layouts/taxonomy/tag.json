@@ -5,13 +5,14 @@
   
 {{ $paginator := .Paginator }}
 
+
 {{ if $paginator.HasPrev }}
-    "prev":"{{ .Paginator.Prev.URL }}",
+    "prev":{{ .Paginator.Prev.URL | absURL | jsonify }},
 {{ else}}
     "prev":"",
 {{ end }}
 {{ if $paginator.HasNext }}
-    "next":"{{ .Paginator.Next.URL }}",
+    "next":{{ .Paginator.Next.URL  | absURL | jsonify}},
 {{ else}}
     "next":"",
 {{ end }}
@@ -24,17 +25,13 @@
      
         "date":"{{ .Date}}",
         
-        "url":{{ .Permalink  | jsonify }},
+        "url":{{ .Permalink  | absURL | jsonify }},
+        "jsonUrl":{{(print .Permalink   "index.json") | absURL  | jsonify }},
+        "title":{{ .Title   | jsonify }},
+        "uid":{{ .File.UniqueID | jsonify }},
 
-        {{ if .Params.summarytitle }}
-        "title":{{ .Params.summarytitle | plainify  | jsonify  }},
-        {{ else }}
-        "title":{{ .Title | plainify  | jsonify }},
-        {{ end }}
-
-   
-        {{ if .Params.summary }}
-        "summary":{{ .Params.summary | plainify  | jsonify }},
+       {{ if .Params.description }}
+        "summary":{{ .Params.description | plainify  | jsonify }},
         {{else}}
         "summary":{{.Summary | plainify | jsonify }}   ,
         {{ end }}

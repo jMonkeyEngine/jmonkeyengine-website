@@ -1,6 +1,6 @@
 ---
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 ---
 
 # Contributing to jMonkeyEngine

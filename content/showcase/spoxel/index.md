@@ -3,7 +3,7 @@ title: "Spoxel"
 date: 2019-10-15T06:27:00+00:00
 draft: false
 type: "default"
-layout: "showcase"
+layout: "post_layout_showcase"
 
 authors:
     - "Jeddic"
@@ -16,7 +16,9 @@ tags:
 publisher_link: "http://epagagames.com/spoxel/"
 steam_link: "https://store.steampowered.com/app/746880/Spoxel/"
 
-
+images: [
+        "/images/showcase/spoxel/7.jpg",
+]
 gallery: [
     "/images/showcase/spoxel/1.jpg",
     "/images/showcase/spoxel/2.jpg",
@@ -24,7 +26,6 @@ gallery: [
     "/images/showcase/spoxel/4.jpg",
     "/images/showcase/spoxel/5.jpg",
     "/images/showcase/spoxel/6.jpg",
-    "/images/showcase/spoxel/7.jpg",
     "/images/showcase/spoxel/8.jpg",
      "https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm",
     "https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm"

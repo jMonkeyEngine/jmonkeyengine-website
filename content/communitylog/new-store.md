@@ -3,7 +3,7 @@ title: "jMonkeyStore is Now Open!"
 date: 2019-10-08T06:27:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 enable_comments: true
 
 authors:

@@ -2,7 +2,7 @@
 menu: "main"
 title: "License"
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 ---
 
 jMonkeyEngine is licensed under the very permissive [BSD 3-Clause License](https://choosealicense.com/licenses/bsd-3-clause/), giving you the freedom to publish your game and modify the engine without limitation completely free! There are **no requirements** to use our engine. No splash screens, no fees and no requirement to mention jMonkeyEngine in your game at all.

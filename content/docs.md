@@ -2,7 +2,7 @@
 menu: "main"
 title: "Documentation"
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 ---
 
 Browse through our various forms of information to help you better understand the engine.

@@ -3,11 +3,12 @@ title: "New Website"
 date: 2020-12-13T08:00:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 enable_comments: true
 authors:
     - "riccardobl"
-
+images:
+    - "/uploads/Screenshot_2020-12-13-jMonkeyEngine-partial.webp"
 tags:
     - "communitylog"
     - "website"
@@ -117,7 +118,7 @@ title: "Your post"
 date: 2019-10-08T06:27:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 enable_comments: true
 authors:
     - "your github handle"
@@ -126,6 +127,13 @@ tags:
     - "tag1"
     - "tag2"
     - "tag3"
+
+# Images that will be used when creating the social networks previews (optional)
+# images: [ 
+#     "img.png",
+#     "img.jpg',
+#     "img.jpg"
+# ]
 ---
 ```
 
@@ -143,7 +151,7 @@ title: "Your project name"
 date: 2019-10-15T06:27:00+00:00
 draft: false
 type: "default"
-layout: "showcase"
+layout: "post_layout_showcase"
 enable_comments: false
 
 authors:
@@ -159,6 +167,14 @@ steam_link: "wwwww"
 itch_link: "wwww"
 publisher_link: "wwww"
 
+# Images that will be used when creating the social networks previews (optional)
+# images: [ 
+#     "img.png",
+#     "img.jpg',
+#     "img.jpg"
+# ]
+
+# Showcase gallery
 gallery: [
     "image.jpg",
     "image.png",
@@ -169,7 +185,7 @@ gallery: [
 
 ---
 ```
-As you can see, the name of the layout is **showcase** instead of **default** : **layout: "showcase"**
+As you can see, the name of the layout is **post_layout_showcase** instead of **post_layout_default** : **layout: "post_layout_showcase"**
 
 There are also new properties for external links
 

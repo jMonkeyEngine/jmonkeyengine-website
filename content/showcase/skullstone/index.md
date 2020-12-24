@@ -3,7 +3,7 @@ title: "Skullstone"
 date: 2019-10-16T08:00:00+00:00
 draft: false
 type: "default"
-layout: "showcase"
+layout: "post_layout_showcase"
 
 authors:
     - "FrozenShade666"
@@ -13,6 +13,12 @@ tags:
 
 publisher_link: "http://skullstonegame.com/"
 
+images: [
+    "/images/showcase/skullstone/7.jpg"
+]
+
+
+
 gallery: [
     "/images/showcase/skullstone/2.jpg",
     "/images/showcase/skullstone/1.jpg",
@@ -20,7 +26,6 @@ gallery: [
     "/images/showcase/skullstone/4.jpg",
     "/images/showcase/skullstone/5.jpg",
     "/images/showcase/skullstone/6.jpg",
-    "/images/showcase/skullstone/7.jpg",
     "/images/showcase/skullstone/8.jpg",
     "/images/showcase/skullstone/9.jpg",
     "/images/showcase/skullstone/10.jpg",

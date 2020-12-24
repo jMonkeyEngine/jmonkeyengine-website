@@ -1,7 +1,7 @@
 
 {{ if   .Params.gallery }}
 <i id="playButton" class=" fas fa-play"></i>
-{{ range  $index, $value :=  (shuffle  .Params.gallery ) }}
+{{ range  $index, $value :=  (shuffle  (union .Params.images .Params.gallery) ) }}
 
 
 

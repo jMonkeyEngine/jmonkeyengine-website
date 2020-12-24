@@ -3,7 +3,7 @@ title: "Mythruna"
 date: 2019-10-16T08:27:00+00:00
 draft: false
 type: "default"
-layout: "showcase"
+layout: "post_layout_showcase"
 
 authors:
     - "pspeed42"
@@ -12,6 +12,10 @@ tags:
     - "showcase"
 
 publisher_link: "http://mythruna.com/"
+
+images: [
+        "/images/showcase/mythruna/11.jpg",
+]
 
 gallery: [
     "/images/showcase/mythruna/1.jpg",
@@ -24,7 +28,6 @@ gallery: [
     "/images/showcase/mythruna/8.jpg",
     "/images/showcase/mythruna/9.jpg",
     "/images/showcase/mythruna/10.jpg",
-    "/images/showcase/mythruna/11.jpg",
     "/images/showcase/mythruna/12.jpg",
     "/images/showcase/mythruna/13.jpg",
     "/images/showcase/mythruna/14.jpg",

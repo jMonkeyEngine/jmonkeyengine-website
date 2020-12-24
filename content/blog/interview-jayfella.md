@@ -3,7 +3,7 @@ title: "Sgold interviews Jayfella"
 date: 2020-02-15T12:00:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 authors:
     - "stephengold"
 enable_comments: true

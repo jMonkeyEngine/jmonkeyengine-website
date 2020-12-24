@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://jmonkeyengine.org"
 languageCode = "en-us"
 title = "jMonkeyEngine"
 paginate=9
@@ -6,7 +6,7 @@ summarylength = 60
 enableRobotsTXT = true
 ignoreErrors = ["error-output-taxonomy"]
 pygmentsCodeFences=false
-
+disableKinds = ["RSS"]
 [markup.goldmark.renderer]
   hardWraps = true
   unsafe= true

@@ -3,7 +3,7 @@ title: "Minie Physics Library Version 1.4 Released!"
 date: 2020-02-09T08:00:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 enable_comments: true
 
 authors:

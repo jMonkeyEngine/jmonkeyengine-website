@@ -3,7 +3,7 @@ title: "Grizeldi's PBR Tutorial #1 - The Basics"
 date: 2019-01-18T08:00:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 
 authors:
     - "grizeldi"

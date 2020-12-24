@@ -1,16 +1,12 @@
 {
     "responseTitle":"{{ block "title" . }}{{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}{{ end }}",
     "apiVersion":"1.0",
-    "response":"defaultEntry",
-  
+    "response":"showcaseEntry",
+    "uid":{{ .File.UniqueID | jsonify }},
     "title":{{.Title | jsonify}},
     "content":{{ .Content | jsonify}},
     "contentPlain":{{ .Content| plainify | jsonify}} ,
-    {{ if .Params.summarytitle }}
-    "summaryTitle":{{ .Params.summarytitle | plainify  | jsonify  }},
-    {{ else }}
-    "summaryTitle":{{ .Title | plainify  | jsonify }},
-    {{ end }}
+    "url":{{ .Permalink  | absURL | jsonify }},
 
 
     {{ if .Params.summary }}
@@ -18,6 +14,29 @@
     {{else}}
     "summary":{{.Summary | plainify | jsonify }}   ,
     {{ end }}
+
+
+    {{ if isset .Params "publisher_link" }}
+    "publisher_link":{{ .Params.publisher_link | jsonify}},
+    {{else}}
+    "publisher_link":"",
+    {{end}}
+    {{ if isset .Params "steam_link" }}
+    "steam_link":{{ .Params.steam_link | jsonify}},
+    {{else}}
+    "steam_link":"",
+    {{end}}
+    {{ if isset .Params "itch_link" }}
+    "itch_link":{{ .Params.itch_link | jsonify}},
+    {{else}}
+    "itch_link":"",
+    {{end}}
+ 
+    "media":[
+        {{ range  $i, $e :=   (union .Params.images .Params.gallery)  }}{{ if $i }} , {{end}}{{ $e | absURL | jsonify}}{{end}}
+    ],
+
+
     "tags":[
         {{ range $i, $e  :=  .Params.tags  }}
              {{ if $i }} , {{end}}

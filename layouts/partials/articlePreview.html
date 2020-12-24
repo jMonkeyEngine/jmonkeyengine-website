@@ -1,5 +1,8 @@
 <article>
-  <h1>
+
+  <h1 >
+
+    
     {{ partial "postIcon.html" . }}
     {{ if .Params.summarytitle }}
     <a href="{{ .RelPermalink }}">{{ .Params.summarytitle }}</a>
@@ -7,8 +10,19 @@
     {{ if .Title }} <a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
     {{ end }}
   </h1>
-  <div class="content">
-    <span>
+  <!-- {{ if .Params.images }} -->
+
+
+  <!-- {{ range first 1 (shuffle .Params.images) }}
+  <img style="float:left;max-width:30%;margin-right:1rem;border-radius:1vmin" style="max-width:50%" src="{{.}}"  />
+
+  {{ end }} -->
+
+  <!-- {{ end }} -->
+  <div class="content" >
+
+    <span >
+     
       {{ if .Params.summary }}
       {{ .Params.summary   |  safeHTML}}
       {{ else }}

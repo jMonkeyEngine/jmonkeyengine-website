@@ -3,7 +3,7 @@ title: "Greg's Tutorial 01 - Getting Started"
 date: 2020-12-04T08:00:00+00:00
 draft: false
 type: "default"
-layout: "default"
+layout: "post_layout_default"
 
 authors:
     - "XIII-code"

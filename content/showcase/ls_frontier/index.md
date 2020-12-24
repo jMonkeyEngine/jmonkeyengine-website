@@ -3,7 +3,7 @@ title: "Lightspeed Frontier"
 date: 2019-10-15T06:27:00+00:00
 draft: false
 type: "default"
-layout: "showcase"
+layout: "post_layout_showcase"
 
 authors:
     - "moffkalast"
@@ -17,12 +17,15 @@ tags:
 
 steam_link: "https://store.steampowered.com/app/548650/Lightspeed_Frontier/"
 
+images: [
+        "/images/showcase/ls_frontier/5.jpg",
+]
+
 gallery: [
     "/images/showcase/ls_frontier/1.jpg",
     "/images/showcase/ls_frontier/2.jpg",
     "/images/showcase/ls_frontier/3.jpg",
     "/images/showcase/ls_frontier/4.jpg",
-    "/images/showcase/ls_frontier/5.jpg",
     "/images/showcase/ls_frontier/6.jpg",
     "/images/showcase/ls_frontier/7.jpg",
     "/images/showcase/ls_frontier/8.jpg",
