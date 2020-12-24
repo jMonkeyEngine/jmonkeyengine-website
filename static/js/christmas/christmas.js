@@ -10,7 +10,7 @@
         function loadSnow() {
             console.log("Load snow...");
             const snowScript = document.createElement("script");
-            snowScript.src = christmasRoot + "/snow.js"
+            snowScript.src = christmasRoot + "snow.js"
             document.head.appendChild(snowScript);
             snowScript.onload = function () {
                 console.log("Snow Loaded. Starting...");
