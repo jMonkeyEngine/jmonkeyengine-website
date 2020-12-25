@@ -52,6 +52,16 @@
         [
           {
             type: "attribute",
+            value: "src",
+            transform:function(src){
+              if(src.startsWith("/user_avatar/hub.jmonkeyengine.org/"))  {
+                return src.substring("/user_avatar/hub.jmonkeyengine.org/".length).split("/")[0];
+              }          
+              return src;
+            }
+          },
+          {
+            type: "attribute",
             value: "title"
           },
           {

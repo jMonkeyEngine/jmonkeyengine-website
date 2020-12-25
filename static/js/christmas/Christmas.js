@@ -1,3 +1,5 @@
+
+
 class Christmas {
     static init(root, hatSelectors, attributesForRng, exclusionSelectors) {
         this.root = root;
@@ -5,12 +7,27 @@ class Christmas {
         this.attributesForRng = attributesForRng;
         this.exclusionSelectors = exclusionSelectors;
         document.addEventListener("DOMContentLoaded", () => {
-            if (this.isChristmas()||window.location.hash=="#test-christmas25550") {
+            if (this.isChristmas() || window.location.hash == "#test-christmas25550") {
                 this.loadNow();
             }
         });
     }
+    static hashCode(v) {
+        let hash = 0;
+        for (var i = 0; i < v.length; i++) {
+            var character = v.charCodeAt(i);
+            hash = ((hash << 5) - hash) + character;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return hash;
+    }
+    static randomSeedParkMiller(seed) { // doesn't repeat b4 JS dies.
+        // https://gist.github.com/blixt/f17b47c62508be59987b
+        seed = seed % 2147483647
+        seed = seed * 16807 % 2147483647
+        return (seed - 1) / 2147483646
 
+    }
     static loadNow() {
         this.loadSnow();
         const hatLoadInt = () => {
@@ -61,9 +78,8 @@ class Christmas {
                 if (avatar.hasAttribute("christmas25550-hasHat")) return;
 
                 if (exclusionSelectors) {
-                    for (let i=0;i< exclusionSelectors.length;i++) {
+                    for (let i = 0; i < exclusionSelectors.length; i++) {
                         const exclusionSelector = exclusionSelectors[i];
-                        console.log("Test exclusion selector",exclusionSelector);
                         if (avatar.matches(exclusionSelector)) {
                             return;
                         }
@@ -73,24 +89,33 @@ class Christmas {
                 let hueRotation = 0;
                 if (attributesForRng && attributesForRng.length > 0) {
                     let seed = "";
-                    for (let i=0;i< attributesForRng.length;i++) {
+                    for (let i = 0; i < attributesForRng.length; i++) {
                         const r = attributesForRng[i];
                         if (r.type == "attribute") {
                             if (avatar.hasAttribute(r.value)) {
-                                seed += avatar.getAttribute(r.value);
+                                seed = avatar.getAttribute(r.value);
+                                console.log("Use attribute", r.value, "as seed");
+                                if (r.transform) {
+                                    seed = r.transform(seed);
+                                    console.log("Transformed to ", seed);
+                                }
                                 break;
                             }
                         } else if (r.type == "text") {
-                            seed += avatar.innerText;
+                            seed = avatar.innerText;
+                            console.log("Use innerText as seed");
+                            if (r.transform) {
+                                seed = r.transform(seed);
+                                console.log("Transformed to ", seed);
+                            }
                             break;
                         }
                     }
+
                     seed = seed.trim();
+                    const seedHashCode = this.hashCode(seed);
                     if (seed != "") {
-                        hueRotation = (seed.charCodeAt(0) - 'A'.charCodeAt(0)) / 'z'.charCodeAt(0);
-                        if (hueRotation < 0) hueRotation = 0;
-                        if (hueRotation > 1) hueRotation = 1;
-                        hueRotation = hueRotation * 2. - 1.;
+                        hueRotation = this.randomSeedParkMiller(seedHashCode);
                     }
                 }
 
