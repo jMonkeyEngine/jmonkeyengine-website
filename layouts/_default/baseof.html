@@ -46,10 +46,20 @@
   <!-- Christmas -->
   <script src="/js/christmas/Christmas.js"></script>
   <script>
-    Christmas.init(
+      Christmas.init(
         "https://jmonkeyengine.org/js/christmas/",
-        ["figure.githubUser img", 'img.avatar',"#showcase button"]
-    );
+        ["figure.githubUser img", 'img.avatar', "#showcase button"],
+        [
+          {
+            type: "attribute",
+            value: "title"
+          },
+          {
+            type: "text"
+          }
+        ],
+        ["header img.avatar"]
+      );
   </script>
   <!-- /Christmas -->
 
