@@ -168,6 +168,8 @@ I plan to add support for Java and JavaScript extensions in the future.
 {{< ghuser  user="stephengold" mode="inline" >}}
 Are you planning any other updates or additions to SceneMax3D?
 
+
+{{< ghuser  user="SceneMax3D" mode="inline" >}}
 There are currently two white-label commercial products based on SceneMax3D.
 One is gaining speed and looks promising,
 so I'm focussing on features that will help it succeed:
