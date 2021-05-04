@@ -2,6 +2,7 @@
 type: "default"
 layout: "post_layout_default"
 title: "Quick Start"
+date: 2021-04-25T18:00:00+00:00
 ---
 
 There are a variety of ways to use jMonkeyEngine:
@@ -16,11 +17,11 @@ Using the Netbeans-based SDK is by far the quickest solution to get you up and r
 jMonkeyEngine is not bound to any specific IDE or SDK, though, and if you feel comfortable in the Java environment you can use any IDE. The engine itself and it's dependencies can be downloaded directly and you can include them just like any other library in your java project.
 [Download the Engine](https://github.com/jMonkeyEngine/jmonkeyengine/releases).
 
-If you prefer to use online dependencies you can include them in your project from jcenter. This is the most common approach for users that use an IDE such as intellij.
+If you prefer to use online dependencies you can include them in your project from the Maven Central Repository. This is the most common approach for users that use an IDE such as intellij.
 
 ```groovy
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
