@@ -1,11 +1,12 @@
 
 
 class Christmas {
-    static init(root, hatSelectors, attributesForRng, exclusionSelectors) {
+    static init(root, hatSelectors, attributesForRng, exclusionSelectors,disableSnow) {
         this.root = root;
         this.hatSelectors = hatSelectors;
         this.attributesForRng = attributesForRng;
         this.exclusionSelectors = exclusionSelectors;
+        this.disableSnow=disableSnow;
         document.addEventListener("DOMContentLoaded", () => {
             if (this.isChristmas() || window.location.hash == "#test-christmas25550") {
                 this.loadNow();
@@ -29,7 +30,7 @@ class Christmas {
 
     }
     static loadNow() {
-        this.loadSnow();
+        if(!this.disableSnow)this.loadSnow();
         const hatLoadInt = () => {
             this.loadHats(this.hatSelectors, this.attributesForRng, this.exclusionSelectors);
         };
