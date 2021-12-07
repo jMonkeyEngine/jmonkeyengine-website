@@ -55,12 +55,12 @@ class Christmas {
         snowScript.onload = function () {
             console.log("Snow Loaded. Starting...");
             snow.start({
-                "stickingRatio": 0.6,
-                "wind": 5,
-                "flakeCount": 10,
+                "stickingRatio": 0.8,
+                "wind": 0.6,
+                "flakeCount": 32,
                 "maxRadius": 1.9,
-                "maxSpeed": 1,
-                "minSpeed": 0.1
+                "maxSpeed": 0.5,
+                "minSpeed": 0.2
             });
         }
     }
