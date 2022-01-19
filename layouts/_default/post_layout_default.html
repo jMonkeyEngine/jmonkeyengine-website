@@ -12,7 +12,7 @@
         <h1 >
             {{ partial "postIcon.html" . }}
            
-            {{ .Title }}</h1>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
             <div class="content">
                 <span>
                 {{ .Content }}
