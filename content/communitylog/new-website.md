@@ -12,6 +12,7 @@ images:
 tags:
     - "communitylog"
     - "website"
+    - "blog"
 ---
 
 Hello. 

@@ -14,6 +14,7 @@ tags:
     - "donations"
     - "opencollective"
     - "server"
+    - "blog"
 ---
 
 As you might have noticed already, our services were progressively migrated, during the month of October, to a cloud provider that, I believe, provides the best price/quality for our project.

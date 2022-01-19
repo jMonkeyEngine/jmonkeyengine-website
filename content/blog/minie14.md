@@ -15,6 +15,7 @@ tags:
     - "software"
     - "minie"
     - "blog"
+    - "misc"
 ---
 
 Minie version 1.4 is an exciting new add-on for [the JMonkeyEngine (JME) game engine](https://jmonkeyengine.org).

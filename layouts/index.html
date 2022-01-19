@@ -26,7 +26,7 @@
 <a class="more responsiveWidth" href="tags/communitylog">More community updates...</a>
 
 <section class="list vlist responsive responsiveWidth">
-    {{ $filter := slice "blog" }}
+    {{ $filter := slice "misc" }}
     {{ $pages :=  (where  .Site.Pages  "Params.tags"  "intersect" $filter )}}
     {{ range first 1 $pages  }}
     {{ partial "articlePreview.html" . }}

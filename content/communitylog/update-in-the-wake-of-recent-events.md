@@ -12,6 +12,7 @@ tags:
     - "communitylog"
     - "donations"
     - "opencollective"
+    - "blog"
 ---
 ## Hello fellow community members.
 

@@ -12,6 +12,7 @@ tags:
     - "communitylog"
     - "donations"
     - "opencollective"
+    - "blog"
 ---
 
 Hello fellow community members, this is the promised followup of [Update in the wake of recent events](/communitylog/update-in-the-wake-of-recent-events/)

@@ -11,6 +11,7 @@ enable_comments: true
 tags:
     - "interview"
     - "blog"
+    - "misc"
 ---
 
 {{< ghuser  user="stephengold" mode="inline" >}}
