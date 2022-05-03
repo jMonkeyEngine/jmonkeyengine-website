@@ -2,22 +2,103 @@
 type: "default"
 layout: "post_layout_default"
 title: "Quick Start"
+disable_nav: true
 date: 2021-04-25T18:00:00+00:00
 ---
 
-There are a variety of ways to use jMonkeyEngine:
+<style>
+    #qsbuttons{ 
+        text-align:center;
+    }
+    #qsbuttons > p{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
 
-* Download the SDK
-* Download the engine
-* Add the libraries to a build script
+    .qsbtn{
+      flex-grow: 1
+        
+    }
+    #jme-initializer{
+        margin-top:1em;
+        border:none;
+    }
+</style>
+<script>
+function showSubPage(id){
+    const subpages=document.querySelectorAll(".qspage");
+    subpages.forEach(sp=>sp.style.display="none");
+    const selectedSubPage=document.querySelector(".qspage#"+id);
+    selectedSubPage.style.display="block";
 
-Using the Netbeans-based SDK is by far the quickest solution to get you up and running. Everything needed is provided, along with extra tools and integrations, and is generally the place most users start their endevour.
-[Download the SDK](https://github.com/jMonkeyEngine/sdk/releases).
+    const buttons=document.querySelectorAll("button.qsbtn");
+    buttons.forEach(el=>el.classList.remove("highlightedCl"));
+    
+    const selectedBtn=document.querySelector("button#"+id+"Btn");
+    selectedBtn.classList.add("highlightedCl");
+}
+</script>
+<div id="qsbuttons" style="text-align:center">
+jMonkeyEngine is not bound to any specific IDE or SDK and it can be used as any other java library.
+<br>
+In this page we explore the three main ways of starting a project with jMonkeyEngine.
+<br><br>
 
-jMonkeyEngine is not bound to any specific IDE or SDK, though, and if you feel comfortable in the Java environment you can use any IDE. The engine itself and it's dependencies can be downloaded directly and you can include them just like any other library in your java project.
-[Download the Engine](https://github.com/jMonkeyEngine/jmonkeyengine/releases).
+<button id="qsinitializerBtn" class="highlightedCl qsbtn" onclick="showSubPage('qsinitializer')">The Inializer</button> 
+<button  class="qsbtn" id="qssdkBtn"  onclick="showSubPage('qssdk')">The SDK</button>
+<button class="qsbtn"  id="qscustomBtn" onclick="showSubPage('qscustom')">DIY</button>
 
-If you prefer to use online dependencies you can include them in your project from the Maven Central Repository. This is the most common approach for users that use an IDE such as intellij.
+</div>
+<hr>
+<div class="qspage" id="qssdk" style="display:none">
+
+Using the Netbeans-based SDK is by far the quickest solution to get you up and running. Everything needed is provided, along with extra tools and integrations, and is generally the place most users start their endevour. [Download the SDK](https://github.com/jMonkeyEngine/sdk/releases).
+
+</div>
+
+
+
+<div class="qspage" id="qsinitializer" style="text-align:center">
+
+The initializer is a convenient online tool that build a starter gradle script and template for your application.
+You can access the tool directly from [here](https://start.jmonkeyengine.org) or use the embedded version below.
+
+<iframe id="jme-initializer" 
+    style="width:100%;height:800px;" 
+    src="https://start.jmonkeyengine.org"
+></iframe>
+
+<script>
+    const iframe=document.querySelector("#jme-initializer");
+    if(iframe){
+        iframe.src=iframe.src+"?rnd="+Math.random()+"&time="+Date.now(); // avoid caching
+        window.addEventListener("message",(msg)=>{
+            try{
+                const event=JSON.parse(msg.data);
+                if(event.name=="jme-initializer-resize"){
+                    const height=event.height;
+                    document.querySelector("#jme-initializer").style.height = height + 'px';
+                }        
+            }catch(e){
+                console.log(e);
+            }
+            
+        });
+    }
+</script>
+
+</div>
+
+
+
+<div class="qspage" id="qscustom" style="display:none">
+
+The engine itself and its dependencies can be downloaded from [the releases page](https://github.com/jMonkeyEngine/jmonkeyengine/releases) and used as any other java library.
+
+If you prefer to use a build automation tool, you can find the engine hosted on the [Maven Central Repository](https://mvnrepository.com/artifact/org.jmonkeyengine). This is the most common approach for users that use an IDE or editor that supports maven or gradle build scripts (such as [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Visual Studio Code](https://code.visualstudio.com/) ).
+
+The code below shows how to include the bare minimum to use the jMonkeyEngine in your gradle project
 
 ```groovy
 repositories {
@@ -27,7 +108,7 @@ repositories {
 dependencies {
     implementation "org.jmonkeyengine:jme3-core:3.3.2-stable"
     implementation "org.jmonkeyengine:jme3-desktop:3.3.2-stable"
-    implementation "org.jmonkeyengine:jme3-lwjgl:3.3.2-stable" 
+    implementation "org.jmonkeyengine:jme3-lwjgl3:3.3.2-stable" 
 }
 ```
 
@@ -88,3 +169,6 @@ Running this class will start your first game and display a blue box on the scre
 For a more thorough tutorial on jMonkey browse through our [wiki](https://wiki.jmonkeyengine.org). The wiki provides extended documentation as well as tutorials on how to develop your game effectively using jmonkey practices. Tutorials start from the basics all the way up to collision detection, input mapping and shaders, and will be your go-to place for most of the information you require.
 
 If you ever find yourself confused or wondering how something is done, head over to our [community hub](https://hub.jmonkeyengine.org) and create a new thread. Our ultra-helpful team and community will be more than happy to give you a hand in getting you back on track.
+
+</div>
+
