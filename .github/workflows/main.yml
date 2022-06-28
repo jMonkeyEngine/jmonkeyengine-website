@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-18.04    
     container:
-      image: riccardoblb/buildenvs:hugo
+      image: jmonkeyengine/buildenv-jme3:hugo
     
     steps: 
     - name: Clone master

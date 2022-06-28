@@ -1,5 +1,6 @@
 ---
 type: "default"
+disable_nav: true
 layout: "post_layout_default"
 ---
 

@@ -12,7 +12,7 @@
 set -x
 if [ "$IMAGE" = "" ];
 then
-    export IMAGE="riccardoblb/buildenvs:hugo"
+    export IMAGE="jmonkeyengine/buildenv-jme3:hugo"
 fi
 
 userUID=`id -u`
@@ -26,7 +26,7 @@ fi
 
 if [ "$DONT_COMPILE_LESS" = "" ];
 then
-    export CMD="sleep 2&&echo 'export default \"`date +%s`\"'> static/js/build-id.js&&npm install less -g&&lessc static/css/style.less static/css/style.css&&$CMD"    
+    export CMD="sleep 2&&echo 'export default \"`date +%s`\"'> static/js/build-id.js&&lessc static/css/style.less static/css/style.css&&$CMD"    
 fi
 
 
@@ -87,6 +87,7 @@ fi
 set -x
 if [ "$NO_CONTAINER" = "" ];
 then
+    $RUNTIME pull $IMAGE
     $RUNTIME run  -v"$PWD:$PWD" $ENV_FILE $RUN_AS -w $PWD $ARGS --rm $IMAGE bash -c  "$CMD"
 else
     eval "$CMD"

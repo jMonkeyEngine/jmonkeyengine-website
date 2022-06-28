@@ -18,8 +18,10 @@
                 {{ .Content }}
 
                 </span>
-            {{ partial "articleNavPost.html" . }}
+                {{ if not .Params.disable_nav }}
 
+                    {{ partial "articleNavPost.html" . }}
+                {{ end }}
             </div>
 
 
