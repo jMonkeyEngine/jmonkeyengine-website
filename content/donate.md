@@ -6,7 +6,7 @@ disable_nav: true
 date: 2021-04-25T18:00:00+00:00
 ---
 
-There are two ways to donate to jMonkeyEngine and its community:
+<!-- There are two ways to donate to jMonkeyEngine and its community: -->
 
 
 
@@ -26,7 +26,7 @@ The collective is managed by the Core Developers and it will be used to promote 
 </div>
 
 <br><br><br>
-
+<!-- 
 <a href="https://fund.jmonkeyengine.org"><h2 >Fund our OpenSource community with Bitcoin</h2></a>
 <div style="display:flex;flex-direction:row;align-items:center;margin-top:1rem">
 <a href="https://fund.jmonkeyengine.org">
@@ -40,5 +40,5 @@ This option gives you the ability to chose the destination of your funds.
 <br>
 <i>If you donate to our collective through ⚡plit Donation, you will be able to claim the donation as yours by logging-in to <a href="https://opencollective.com">opencollective.com</a> with the same email address.</i>
 </p>
-</div>
+</div> -->
 
