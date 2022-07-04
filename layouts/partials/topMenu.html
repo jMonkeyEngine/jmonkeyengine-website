@@ -1,11 +1,11 @@
 <nav class="responsiveWidth  " id="topmenu">
     <div class="expandable">
-        <a href="/">
+        <a href="https://jmonkeyengine.org/" alt-href="https://jmonkeyengine.org/tags,https://jmonkeyengine.org/authors,https://jmonkeyengine.org/devlog,https://jmonkeyengine.org/blog,,https://jmonkeyengine.org/communitylog">
             <button class="genericCl responsiveIcon expandable ">
                 <i class="fas fa-home"></i> <span>Home</span>
             </button>
         </a>
-        <a href="/tags/showcase">
+        <a href="https://jmonkeyengine.org/tags/showcase" alt-href="https://jmonkeyengine.org/showcase">
             <button class="genericCl responsiveIcon  expandable ">
                 <i class="fas fa-images"></i> <span>Showcase</span>
             </button>
@@ -17,19 +17,19 @@
             </button>
         </a>
 
-        <a href="https://store.jmonkeyengine.org">
+        <a href="https://library.jmonkeyengine.org">
             <button class="genericCl responsiveIcon  expandable ">
-                <i class="fas fa-puzzle-piece"></i> <span>Store</span>
+                <i class="fas fa-puzzle-piece"></i> <span>Library</span>
             </button>
         </a>
 
-        <a href="/docs">
+        <a href="https://jmonkeyengine.org/docs">
             <button class="genericCl responsiveIcon  expandable ">
                 <i class="fas fa-book"></i> <span>Docs</span>
             </button>
         </a>
 
-        <a href="/license">
+        <a href="https://jmonkeyengine.org/license">
             <button class="genericCl responsiveIcon  expandable toggleable toggledOffPortrait">
                 <i class="fas fa-balance-scale-right"></i> <span>License</span>
             </button>
@@ -66,7 +66,7 @@
                     <i class="fab fa-discord"></i> <span>Discord</span>
                 </button>
             </a>
-            <a href="https://opencollective.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+            <a href="https://jmonkeyengine.org/donate" rel='noopener noreferrer' target="_blank">
                 <button class="icon donateCl toggleable toggledOffPortrait  expandable " title="Donate">
                     <i class="fas fa-donate"></i> <span>Donate!</span>
                 </button>
@@ -74,3 +74,58 @@
 
         </div>
 </nav>
+
+<script>
+    // https://github.com/aceakash/string-similarity/blob/master/LICENSE
+    !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.stringSimilarity=e():t.stringSimilarity=e()}(self,(function(){return t={138:t=>{function e(t,e){if((t=t.replace(/\s+/g,""))===(e=e.replace(/\s+/g,"")))return 1;if(t.length<2||e.length<2)return 0;let r=new Map;for(let e=0;e<t.length-1;e++){const n=t.substring(e,e+2),o=r.has(n)?r.get(n)+1:1;r.set(n,o)}let n=0;for(let t=0;t<e.length-1;t++){const o=e.substring(t,t+2),s=r.has(o)?r.get(o):0;s>0&&(r.set(o,s-1),n++)}return 2*n/(t.length+e.length-2)}t.exports={compareTwoStrings:e,findBestMatch:function(t,r){if(!function(t,e){return"string"==typeof t&&!!Array.isArray(e)&&!!e.length&&!e.find((function(t){return"string"!=typeof t}))}(t,r))throw new Error("Bad arguments: First argument should be a string, second should be an array of strings");const n=[];let o=0;for(let s=0;s<r.length;s++){const i=r[s],f=e(t,i);n.push({target:i,rating:f}),f>n[o].rating&&(o=s)}return{ratings:n,bestMatch:n[o],bestMatchIndex:o}}}}},e={},function r(n){if(e[n])return e[n].exports;var o=e[n]={exports:{}};return t[n](o,o.exports,r),o.exports}(138);var t,e}));
+    //
+
+    
+
+    // mark current active item
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectionClass= window.selectedTopMenuClass || "highlightedCl";
+
+        const topmenu = document.querySelector('#topmenu');
+        if (window.location.href.startsWith("http://localhost:1313")) {
+            for (const a of topmenu.querySelectorAll("a")) {
+                a.href = a.href.replace("https://jmonkeyengine.org", "http://localhost:1313");
+            }
+        }
+
+        const likelyScore=[];
+        for (const a of topmenu.querySelectorAll("a")) {
+            const pageUrl=window.location.href.endsWith("/")?window.location.href.substring(0,window.location.href.length-1):window.location.href;
+         
+            const process = (linkUrls) => {
+                if(!linkUrls)return;
+                for(let linkUrl of linkUrls){
+                    if (linkUrl != null) {
+                        if (window.location.href.startsWith("http://localhost:1313")) {
+                            linkUrl = linkUrl.replace("https://jmonkeyengine.org", "http://localhost:1313");
+                        }
+
+                        if (linkUrl.endsWith("/")) {
+                            linkUrl = linkUrl.substring(0, linkUrl.length - 1);
+                        }
+                        const score = stringSimilarity.compareTwoStrings(linkUrl, pageUrl);
+                        likelyScore.push(
+                            {
+                                score: score,
+                                el: a.querySelector("button")
+                            }
+                        );
+                    }
+                }
+            }
+
+            process([a.href]);
+            process(a.getAttribute("alt-href")?a.getAttribute("alt-href").split(","):undefined);           
+
+        }
+        likelyScore.sort((a, b) => b.score - a.score);   
+        likelyScore.forEach(el=>el.el.classList.remove(selectionClass));
+        likelyScore[0].el.classList.add(selectionClass);
+
+    });
+</script>
