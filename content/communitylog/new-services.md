@@ -28,7 +28,7 @@ The [**jMonkeyEngine Initializer**](https://start.jmonkeyengine.org).
 <img src="/images/initializer.png" style="max-width:100%">
 
 
-This tool is found in the [Get Started](http://localhost:1313/start/) page and assists in the creation of new multi-platform gradle projects. 
+This tool is found in the [Get Started](https://jmonkeyengine.org/start/) page and assists in the creation of new multi-platform gradle projects. 
 
 
 ## Library: the new Store
