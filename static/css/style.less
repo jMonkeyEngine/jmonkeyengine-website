@@ -8,9 +8,6 @@
     user-select: none;
 }
 
-p,code{
-    user-select:text;
-}
 
 :root {
     --foreground: #dfdfdf;
@@ -1431,3 +1428,16 @@ div#poweredBy{
     margin:1em;
     max-height:4em;
   }
+
+pre,code,pre *,code *,p, p *,article .content *{
+    pointer-events: all!important;
+    -moz-pointer-events: all!important;
+    -khtml-pointer-events: all!important;
+    -webkit-pointer-events: all!important;
+    -ms-pointer-events: all!important;
+    user-select: text!important;
+    -moz-user-select: text!important;
+    -khtml-user-select: text!important;
+    -webkit-user-select: text!important;
+    -ms-user-select: text!important;
+}

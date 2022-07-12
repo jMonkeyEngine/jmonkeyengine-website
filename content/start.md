@@ -42,12 +42,12 @@ function showSubPage(id){
 <div id="qsbuttons" style="text-align:center">
 jMonkeyEngine is not bound to any specific IDE or SDK and it can be used as any other java library.
 <br>
-In this page we explore the three main ways of starting a project with jMonkeyEngine.
+There are several ways to starta project with jMonkeyEngine:
 <br><br>
 
-<!-- <button id="qsinitializerBtn" class="highlightedCl qsbtn" onclick="showSubPage('qsinitializer')">The Inializer</button>  -->
+<button id="qsinitializerBtn" class="highlightedCl qsbtn" onclick="showSubPage('qsinitializer')">The Inializer</button> 
 <button  class="qsbtn" id="qssdkBtn"  onclick="showSubPage('qssdk')">The SDK</button>
-<button class="qsbtn highlightedCl"  id="qscustomBtn" onclick="showSubPage('qscustom')" >DIY</button>
+<button class="qsbtn"  id="qscustomBtn" onclick="showSubPage('qscustom')" >DIY</button>
 
 </div>
 <hr>
@@ -59,7 +59,7 @@ Using the Netbeans-based SDK is by far the quickest solution to get you up and r
 
 
 
-<div class="qspage" id="qsinitializer" style="text-align:center;display:none">
+<div class="qspage" id="qsinitializer" style="text-align:center;display:block">
 
 The initializer is a convenient online tool that build a starter gradle script and template for your application.
 You can access the tool directly from [here](https://start.jmonkeyengine.org) or use the embedded version below.
@@ -92,7 +92,7 @@ You can access the tool directly from [here](https://start.jmonkeyengine.org) or
 
 
 
-<div class="qspage" id="qscustom" style="display:block">
+<div class="qspage" id="qscustom" style="display:none">
 
 The engine itself and its dependencies can be downloaded from [the releases page](https://github.com/jMonkeyEngine/jmonkeyengine/releases) and used as any other java library.
 
