@@ -79,12 +79,17 @@ You can access the tool directly from [here](https://start.jmonkeyengine.org) or
                 if(event.name=="jme-initializer-resize"){
                     const height=event.height;
                     document.querySelector("#jme-initializer").style.height = height + 'px';
-                }        
+                }else if(event.name=="jme-initializer-scrollToTop"){
+                    const el=document.querySelector("#jme-initializer");
+                    window.scrollToElement(el);
+                }     
             }catch(e){
                 console.log(e);
             }
             
         });
+
+
     }
 </script>
 
