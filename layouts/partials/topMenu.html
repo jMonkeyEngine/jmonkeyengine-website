@@ -83,7 +83,7 @@
     
 
     // mark current active item
-    document.addEventListener('DOMContentLoaded', function () {
+    window.initJmeMenu=function () {
         const selectionClass= window.selectedTopMenuClass || "highlightedCl";
 
         const topmenu = document.querySelector('#topmenu');
@@ -127,5 +127,9 @@
         likelyScore.forEach(el=>el.el.classList.remove(selectionClass));
         likelyScore[0].el.classList.add(selectionClass);
 
+    };
+    
+    document.addEventListener('DOMContentLoaded', function(){
+       window.initJmeMenu(); 
     });
 </script>
