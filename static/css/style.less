@@ -29,7 +29,7 @@
     --background2: rgb(39, 39, 39);
     --twitter: #1DA1F2;
 
-    --buttonColor: #2f2f2f;
+    --buttonColor: rgb(41, 41, 41);
     --buttonColorFg: var(--foreground);
 
     --docsColor: #0c5858;
@@ -381,7 +381,7 @@ nav li:before {
 
     a {
         text-decoration: none !important;
-
+        color:inherit;
     }
 
     .shadowed();
@@ -822,6 +822,10 @@ body {
         font-size:0.8rem;
         color:var(--foreground2);
         margin-bottom:1rem;
+        a,a:hover,a:visited{
+            color:inherit;
+            text-decoration: underline;
+        }
 
     }
 
@@ -1078,9 +1082,14 @@ section {
     // }
 
     >article {
+      
         // An article, is the content.
-        .content span a,.content span a:hover,.content span  a:visited{
+        .content  a,.content  a:hover,.content   a:visited{
             color:var(--highlightFg2);
+        }
+       .content  nav a,.content nav a:visited,.content  nav a:hover{
+            color:inherit
+
         }
         .shadowed();
         text-align: left;
@@ -1216,7 +1225,7 @@ section {
                         margin: 0;
                         margin:0.4rem;
                         // .genericCl {
-                            background: var(--background4)!important;
+                            // background: var(--background4)!important;
                         // }
                         box-shadow: 0 0 @boxShadowBlur 0 var(--boxShadowColor);
                         
