@@ -2,6 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=PT+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
 * {
     box-sizing: border-box;
@@ -10,14 +13,20 @@
 
 
 :root {
-    --foreground: #dfdfdf;
-    --foreground2: #b8b8b8;
+    --fontFamily: Roboto Slab, sans-serif;
+    --foreground: #a8a8a8;
+    --foreground2: #b1b1b1;
+    // --highlightFg: #ffbb00;
+    // --highlightFg2: #ffe292;
+    // --highlightedColor: #ffbb00;
     --highlightFg: #ffbb00;
-    --highlightFg2: #ffe292;
-    --background: #222222;
-    --background2: rgb(27, 27, 27);
-    --background3: rgb(20, 20, 20);
-    --background4: rgb(37, 37, 37);
+    --highlightFg2: #c07302;
+    --highlightedColor: #e4b418e1;
+
+    --background: #212121;
+    --background4: #111;
+    --background3: rgb(0, 0, 0);
+    --background2: rgb(39, 39, 39);
     --twitter: #1DA1F2;
 
     --buttonColor: #2f2f2f;
@@ -52,11 +61,10 @@
     --twitterColor: #1475b1;
     --twitterColorFg: var(--foreground);
 
-    --highlightedColor: #ffbb00;
     --highlightedColorFg: #242424;
 
     --textShadowColor: var(--background3);
-    --boxShadowColor: var(--background2);
+    --boxShadowColor: var(--background4);
 }
 
 
@@ -604,7 +612,7 @@ h3 {
     cursor: pointer;
 
     &:hover {
-        color: var(--highlightFg2);
+        filter: brightness(130%);
     }
 
     @media @portrait {
@@ -790,7 +798,7 @@ body {
 
     overflow-x: hidden;
 
-    font-family: 'Ubuntu', sans-serif; // font-family: 'JetBrains Mono', monospace;
+    font-family: var(--fontFamily);
     // font-family: 'Padauk', sans-serif;
     background: var(--background) !important;
     color: var(--foreground) !important;
@@ -848,7 +856,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: var(--background2);
+        background-color: var(--background4);
         box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
         width: 100%;
         margin: 0;
@@ -999,6 +1007,7 @@ body {
             display: inline;
 
         }
+      
     }
 
     &.hlist {
@@ -1070,7 +1079,9 @@ section {
 
     >article {
         // An article, is the content.
-      
+        .content span a,.content span a:hover,.content span  a:visited{
+            color:var(--highlightFg2);
+        }
         .shadowed();
         text-align: left;
         background: var(--background2);
@@ -1083,7 +1094,9 @@ section {
         h1 {}
         h2,h3,h1{
             display:block;
-            padding-top:1rem;
+            color:var(--foreground2);
+            padding-top:2rem;
+            padding-bottom:0.4rem;
         }
         .more {
             text-align: left;
@@ -1173,8 +1186,11 @@ section {
                 flex-direction: column;
                 align-items: baseline;
                 flex-wrap: wrap;
-                color: var(--highlightFg);
+                color: var(--foreground2);
+                *{
+                    color: var(--foreground2);
 
+                }
                 >ul {
                     width: 100%;
                 }
@@ -1195,15 +1211,22 @@ section {
                     }
 
                     button {
+
                         width: 100%;
                         margin: 0;
+                        margin:0.4rem;
+                        // .genericCl {
+                            background: var(--background4)!important;
+                        // }
+                        box-shadow: 0 0 @boxShadowBlur 0 var(--boxShadowColor);
+                        
                     }
                 }
 
           /*     @media @portrait {*/
                     ul li {
                         // make nav in list section more compact
-                        margin: 0.1rem;
+                        margin: 0rem;
                         padding: 0;
                         width: auto;
                     }
@@ -1250,7 +1273,7 @@ section {
                 nav,
                 nav ul li {
                     // make nav in list section more compact
-                    margin: 0.1rem;
+                    margin: 0rem;
                     padding: 0;
                 }
             }
