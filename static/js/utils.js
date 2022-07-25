@@ -121,7 +121,7 @@ const updateFloatingHeader = () => {
 
 document.addEventListener("scroll", updateFloatingHeader);
 
-const scrollTo = (contentAnchor) => {
+window.scrollToElement = (contentAnchor) => {
     const anchorBound = contentAnchor.getBoundingClientRect();
     const floatingHBound = floatingHeader.getBoundingClientRect();
     // contentAnchor.scrollIntoView({
@@ -143,10 +143,10 @@ window.addEventListener("DOMContentLoaded", function () {
         window.scrollTo(0, 0);
         if (location.hash&&location.hash!="#") {
             const contentAnchor = document.querySelector(location.hash);
-            if(contentAnchor)scrollTo(contentAnchor);
+            if(contentAnchor)window.scrollToElement(contentAnchor);
         } else {
             const contentAnchor = document.querySelector("#content");
-            if (contentAnchor) scrollTo(contentAnchor);
+            if (contentAnchor) window.scrollToElement(contentAnchor);
         }
     };
 
