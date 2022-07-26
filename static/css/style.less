@@ -12,52 +12,53 @@
 
 :root {
     --fontFamily: Arial, Ubuntu, sans-serif;
-    --foreground: #a8a8a8;
-    --foreground2: #b1b1b1;
+    --foreground: #b1b1b1;
+    --foreground2: #c5c5c5;
+    --foreground3: #e7e7e7;
     // --highlightFg: #ffbb00;
     // --highlightFg2: #ffe292;
     // --highlightedColor: #ffbb00;
-    --highlightFg: #ffbb00;
+    --highlightFg: #ffd000;
     --highlightFg2: #c07302;
-    --highlightedColor: #e4b418e1;
+    --highlightedColor: #ffd000;
 
-    --background: #212121;
+    --background: #1b1b1b;
     --background4: #111;
     --background3: rgb(0, 0, 0);
     --background2: rgb(39, 39, 39);
     --twitter: #1DA1F2;
 
     --buttonColor: rgb(41, 41, 41);
-    --buttonColorFg: var(--foreground);
+    --buttonColorFg: var(--foreground3);
 
     --docsColor: #0c5858;
-    --docsColorFg: var(--foreground);
+    --docsColorFg: var(--foreground3);
 
     --bugsColor: #680404;
-    --bugsColorFg: var(--foreground);
+    --bugsColorFg: var(--foreground3);
 
     --codeColor: #6d003f;
-    --codeColorFg: var(--foreground);
+    --codeColorFg: var(--foreground3);
 
 
     --discordColor: #44013b;
-    --discordColorFg: var(--foreground);
+    --discordColorFg: var(--foreground3);
 
     --storeColor: #686602;
-    --storeColorFg: var(--foreground);
+    --storeColorFg: var(--foreground3);
 
     --donateColor: #8cc800;
     --donateColorFg: #212700;
 
 
     --itchColor: #b11f38;
-    --itchColorFg: var(--foreground);
+    --itchColorFg: var(--foreground3);
 
     --youtubeColor: #c4302b;
-    --youtubeColorFg: var(--foreground);
+    --youtubeColorFg: var(--foreground3);
 
     --twitterColor: #1475b1;
-    --twitterColorFg: var(--foreground);
+    --twitterColorFg: var(--foreground3);
 
     --highlightedColorFg: #242424;
 
@@ -359,7 +360,7 @@ nav li:before {
 
     all: unset;
     appearance: none;
-    background-color: var(--background2) !important;
+    background-color: var(--background2) ;
     border: 0.1rem solid var(--background3) !important;
     border-radius: @borderRoundness;
     color: var(--highlightFg);
@@ -382,6 +383,7 @@ nav li:before {
         color:inherit;
     }
 
+ 
     .shadowed();
 }
 
@@ -593,6 +595,7 @@ h3 {
     padding: 0;
     margin-bottom: 1rem;
     color: var(--highlightFg);
+
 }
 
 h2,
@@ -657,8 +660,8 @@ h3 {
 
 
 .genericCl {
-    background: var(--buttonColor) !important;
-    color: var(--buttonColorFg) !important;
+    background: var(--buttonColor) ;
+    color: var(--buttonColorFg) ;
     font-weight: bold;
 }
 
@@ -820,7 +823,7 @@ body {
     font-family: var(--fontFamily);
     // font-family: 'Padauk', sans-serif;
     background: var(--background) !important;
-    color: var(--foreground) !important;
+    color: var(--foreground) ;
     min-height: 100%;
     width: 100%;
     position: relative;
@@ -998,14 +1001,17 @@ body {
 
 // A width that is not too wide.
 .responsiveWidth {
-    max-width: 1200px;
+    max-width: 1110px;
     width: 99vw;
     margin-left: auto;
     margin-right: auto;
 }
 
-
+#backerMessage {
+    color:var(--foreground2);
+}
 #backerMessages {
+    color:var(--foreground3);
     text-align: center;
     width: 100%;
 }
@@ -1102,6 +1108,9 @@ section {
 
     >article {
       
+        button{
+            background-color: var(--background4);
+        }
         // An article, is the content.
         .content  a,.content  a:hover,.content   a:visited{
             color:var(--highlightFg2);
@@ -1119,13 +1128,21 @@ section {
         flex-direction: column;
         text-shadow: none;
 
-        h1 {}
+    
         h2,h3,h1{
             display:block;
             color:var(--foreground2);
             padding-top:2rem;
             padding-bottom:0.4rem;
+       
         }
+    //  .content  h3,.content h1{
+        
+    //         a,a:visited,a:hover{
+    //             color:var(--foreground2);
+    //             text-decoration: underline;
+    //         }
+    //     }
         .more {
             text-align: left;
         }
@@ -1167,6 +1184,13 @@ section {
                 word-break: break-word;
                 
             }
+            // a:after{
+            //     content:'\f08e';
+            //     font-family:FontAwesome;
+            //     margin-left:0.5rem;
+            //     font-size:0.7rem;
+            //     vertical-align: bottom;
+            // }
         /*        @media @portrait {*/
                 display: flex;
                 flex-direction: column;
@@ -1348,6 +1372,7 @@ section#showcase {
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
+    color:var(--foreground3);
     padding: 0;
     display: flex;
     position: relative;
@@ -1357,6 +1382,9 @@ section#showcase {
     // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.61' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
     &.gallery{
         background-image: none;
+    }
+    h1,h2,h3{
+        color:var(--highlightFg);
     }
     .textShadowedIntense();
 

@@ -3,11 +3,10 @@
   <h1 >
 
     
-    {{ partial "postIcon.html" . }}
     {{ if .Params.summarytitle }}
-    <a href="{{ .RelPermalink }}">{{ .Params.summarytitle }}</a>
+    <a href="{{ .RelPermalink }}">{{ partial "postIcon.html" . }} {{ .Params.summarytitle }}</a>
     {{ else }}
-    {{ if .Title }} <a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
+    {{ if .Title }} <a href="{{ .RelPermalink }}">{{ partial "postIcon.html" . }} {{ .Title }}</a> {{ end }}
     {{ end }}
   </h1>
   <!-- {{ if .Params.images }} -->
