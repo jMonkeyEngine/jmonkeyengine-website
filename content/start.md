@@ -42,7 +42,7 @@ function showSubPage(id){
 <div id="qsbuttons" style="text-align:center">
 jMonkeyEngine is not bound to any specific IDE or SDK and it can be used as any other java library.
 <br>
-There are several ways to starta project with jMonkeyEngine:
+There are several ways to start a project with jMonkeyEngine:
 <br><br>
 
 <button id="qsinitializerBtn" class="highlightedCl qsbtn" onclick="showSubPage('qsinitializer')">The Inializer</button> 
