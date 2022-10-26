@@ -45,7 +45,7 @@ jMonkeyEngine is not bound to any specific IDE or SDK and it can be used as any 
 There are several ways to start a project with jMonkeyEngine:
 <br><br>
 
-<button id="qsinitializerBtn" class="highlightedCl qsbtn" onclick="showSubPage('qsinitializer')">The Inializer</button> 
+<button id="qsinitializerBtn" class="highlightedCl qsbtn" onclick="showSubPage('qsinitializer')">The Initializer</button> 
 <button  class="qsbtn" id="qssdkBtn"  onclick="showSubPage('qssdk')">The SDK</button>
 <button class="qsbtn"  id="qscustomBtn" onclick="showSubPage('qscustom')" >DIY</button>
 
