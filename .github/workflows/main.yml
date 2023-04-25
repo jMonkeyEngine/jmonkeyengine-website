@@ -12,7 +12,7 @@ on:
 jobs:
  
   build:
-    runs-on: ubuntu-18.04    
+    runs-on: ubuntu-latest    
     container:
       image: jmonkeyengine/buildenv-jme3:hugo
     
