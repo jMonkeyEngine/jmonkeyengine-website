@@ -2,13 +2,13 @@
     <ul  class="links">
         <h3 class="links">Links</h3>
         {{ if isset .Params "publisher_link" }}
-        <li><button><a href="{{ .Params.publisher_link }}"><i class="fas fa-link"></i> Publisher Website</a></button></li>
+        <li><button onclick="window.location.href=('{{ .Params.itch_link }}')"><a href="{{ .Params.publisher_link }}"><i class="fas fa-link"></i> Publisher Website</a></button></li>
         {{end}}
         {{ if isset .Params "steam_link" }}
-        <li><button><a href="{{ .Params.steam_link }}"><i class="fab fa-steam-symbol"></i> Steam Page</a></button></li>
+        <li><button onclick="window.location.href=('{{ .Params.itch_link }}')"><a href="{{ .Params.steam_link }}"><i class="fab fa-steam-symbol"></i> Steam Page</a></button></li>
         {{end}}
         {{ if isset .Params "itch_link" }}
-        <li><button><a href="{{ .Params.itch_link }}"><i class="fab fa-itch-io"></i> Itch.io Page</a></button></li>
+        <li><button onclick="window.location.href=('{{ .Params.itch_link }}')"><a href="{{ .Params.itch_link }}"><i class="fab fa-itch-io"></i> Itch.io Page</a></button></li>
         {{end}}
     </ul>
     {{ partial "articleNavCommon.html" . }}
