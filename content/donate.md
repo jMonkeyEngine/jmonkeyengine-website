@@ -26,20 +26,3 @@ The collective is managed by the Core Developers and the funds will be used to p
 </div>
 
 <br>
-
-<a rel='noopener noreferrer' target="_blank" href="https://donate.jmonkeyengine.org"><h2 >Donate to our OpenSource community with Bitcoin</h2></a>
-<div style="display:flex;flex-direction:row;align-items:center;margin-top:1rem">
-<a  rel='noopener noreferrer' target="_blank" href="https://donate.jmonkeyengine.org">
-    <i style="font-size:6rem;color:var(--foreground)" class="fa-brands fa-bitcoin"></i>
-</a>
-<p style="margin-left:2rem;">
-Alternatively you can donate through <a rel='noopener noreferrer' target="_blank" href="https://donate.jmonkeyengine.org">our instance of ⚡plit Donation</a>, an unified solution to donate Bitcoin over the lightning network to our collective but also directly to the opensource contributors and teams that build jMonkeyEngine. 
-<br>
-This option gives you the ability to chose the destination of your funds.
-<br>
-<br>
-<i>If you donate to our collective through ⚡plit Donation, you will be able to claim the donation as yours by logging-in to <a rel='noopener noreferrer' target="_blank" href="https://opencollective.com">opencollective.com</a> with the same email address.</i>
-</p>
-
-</div>
-<br>
