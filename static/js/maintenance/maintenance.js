@@ -7,7 +7,7 @@ JmeMaintenance.Icons = {
 }
 
 JmeMaintenance.Settings = {
-    scheduledMaintenance: "00 1 1 * *",
+    scheduledMaintenance: "00 0 1 * *",
     maintenanceDurationInHours: 1,
     maintenanceNoticeDurationInHours: 2,
     debugTimeSpeed: 1
