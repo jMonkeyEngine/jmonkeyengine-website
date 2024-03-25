@@ -1,0 +1,38 @@
+{
+  "name": "browser-update",
+  "version": "3.3.25",
+  "description": "Remind users to update their browser in an unobtrusive way.",
+  "main": "update.npm.full.js",
+  "scripts": {
+    "test": "eslint ./*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/browser-update/browser-update.git"
+  },
+  "keywords": [
+    "browser",
+    "web"
+  ],
+  "files": [
+    "update.npm.full.js",
+    "update.npm.js"
+  ],
+  "author": "Thomas Hümmer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/browser-update/browser-update/issues"
+  },
+  "homepage": "https://browser-update.org",
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}

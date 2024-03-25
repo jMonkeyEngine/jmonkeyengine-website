@@ -1,0 +1,36 @@
+{
+    "responseTitle":"jMonkeyEngine  | JMonkeyEngine 3.5.1 release",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"43552feaffeb1ff0ff339a02d023fd35",
+
+    "title":"JMonkeyEngine 3.5.1 release",
+    "content":"\u003cp\u003eJMonkeyEngine is pleased to announce the 3.5.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.5.1 is an interim release that patches a couple bugs and improves support for Macintosh systems containing Apple Silicon.\u003c/p\u003e\n\u003cp\u003eThe 3.5.1-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\u003c/p\u003e\n\u003cp\u003eTo browse the change list and the source code, go to \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.1-stable\"\u003ehttps://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.1-stable\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eFor the latest news and discussion of JMonkeyEngine software development, visit \u003ca href=\"https://hub.jmonkeyengine.org/c/development-discussion-jme3/9\"\u003ethe Development category at the JME Hub/Forum\u003c/a\u003e.\u003c/p\u003e\n",
+    "contentPlain":"JMonkeyEngine is pleased to announce the 3.5.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.5.1 is an interim release that patches a couple bugs and improves support for Macintosh systems containing Apple Silicon.\nThe 3.5.1-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and the source code, go to https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.1-stable\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Hub/Forum.\n" ,
+    "url":"https://jmonkeyengine.org/devlog/jme351/",
+
+
+    
+    "summary":"JMonkeyEngine is pleased to announce the 3.5.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.5.1 is an interim release that patches a couple bugs and improves support for Macintosh systems containing Apple Silicon.\nThe 3.5.1-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and the source code, go to https://github."   ,
+    
+    "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+
+}

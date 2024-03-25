@@ -1,0 +1,62 @@
+{
+    "responseTitle":"jMonkeyEngine  | jayfella",
+    "apiVersion":"1.0",
+    "response":"articlesByAuthor",
+  
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+        "date":"2019-10-08 06:27:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/communitylog/new-store/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/new-store/index.json",
+        "title":"jMonkeyStore is Now Open!",
+        "uid":"afceaba9e9b0609c5af553038ac0c920",
+
+        
+        "summary":"After years of requests and attempts, a software store (a.k.a an asset store) for jmonkey has finally been created and is now open to registration. Everybody can register and submit their software!\nhttps://store.jmonkeyengine.org/ Currently only free open-source software can be submitted. Once we have the sponsorship required for the legal documentation and setup fees we will be able to allow selling (payment required to use it) and sponsoring (pay the developer if you want to as a thank you) software."   ,
+        
+      
+        "tags":[
+        
+             
+             "asset-store"
+        
+              , 
+             "software"
+        
+              , 
+             "website"
+        
+              , 
+             "communitylog"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "jayfella"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

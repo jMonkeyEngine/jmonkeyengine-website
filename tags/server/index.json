@@ -1,0 +1,65 @@
+{
+    "responseTitle":"jMonkeyEngine  | server",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2021-11-04 09:58:16.894 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/communitylog/host-migration-and-funding/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/host-migration-and-funding/index.json",
+        "title":"Host migration and funding",
+        "uid":"bc44c1a24ffdb69655cd627e1b59ad3f",
+
+       
+        "summary":"As you might have noticed already, our services were progressively migrated, during the month of October, to a cloud provider that, I believe, provides the best price/quality for our project.\nUp till now we have been using amazon aws with one year of credits donated by @adi.barda, that allowed us to never use any of our community fund, but from now on you will see monthly expenses submitted to the fund to pay for hosting and related services."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+              , 
+             "server"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

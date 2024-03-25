@@ -1,0 +1,289 @@
+Changes to the notification / detection script
+==========
+
+3.3.26 26.11.20
+- fix insecure chrome version number (note: this did not lead to false positive notifications), fixes #515
+- whitelist basilisk
+
+3.3.25 19.11.20
+- ignore embedded browsers: QtWebEngine, Microcoft Teams, Electron (add a special notification later) fixes #509 fixes #511
+- Mark chrome vulnerable below version 86.0.0.4240.111 because of an actively used zero-day exploit.
+- describe self-hosting on site
+
+3.3.24 3.10.20
+- change order of specifity for custom notification text (1. use text_for_$BROWSER_in_$LANG, 2. fall back to text_for_$BROWSER, 3. fall back to text_in_$LANG, 4. fall back to text, 5. use default text), fixes #325
+- fixed links on update page
+
+3.3.23 3.10.20
+- added firefox 78 as an ESR version still supported. Removed version 60 and 68.
+- updated browser versions
+
+3.3.22 17.8.20
+- Fix broken conditional when using `shift_page_down`
+- remove old config check
+
+3.3.21 14.8.20
+- Fix cookie stuff. Remove "Secure" to also send the cookie in insecure contexts. Use "Same-Site: Lax"
+
+3.3.20 11.8.20
+- added uzbek and estonian translations
+- Updated browser versions
+
+3.3.19 26.5.20
+- Chrome version 82 was skipped by google. Taking this into account we prolong the grace period until chrome 83 is available on all devices. For now marking Chrome 81 as latest version.
+
+3.3.18 25.5.20
+- latest version of iOS is for most devices 12.3, fixes #490
+
+3.3.17 25.5.20
+- updated browser versions
+- removed browser statistic collection for every 1000th user
+
+3.3.16 1.4.20
+- updated browser versions
+
+3.3.15 29.2.20
+- clear cookie in test mode
+
+3.3.14 27.2.20
+- ignore oculus quest browser
+- created a detailed test-page for the script https://browser-update.org/test/bar.html
+- updated firefox version
+- mark discontinued browsers
+
+3.3.13 24.2.20
+- take care of edge version jump between 18 and 79 when specifying relative to latest version
+  (e.g. with current Edge 80 e:-4 is translated to e:16 instead of e: 76)
+- fix #478
+
+3.3.12 23.2.20
+- updated edge and chrome versions
+- fix edge on android detection (where the latest version is still based off chrome 73)
+- added option to test the script easier: Add "#ignorecookie-bu" to your url and reload the page. Then the bar will always show no matter if the "the user already saw it cookie was set", see #430
+
+3.3.11 23.2.20
+- ignore certain OPPO opera browser that cannot be updated
+- fixed to not show to iphone 6 anymore, since it does not support ios 13, fixes #472
+- all devices with ios 11 support ios 12
+
+3.3.10 23.2.20
+- updated browser versions
+- removed npm dependency -> only a dev dependency
+- added browser info to the options object, so you can get the information on the current browser, fixes #471
+- correct detection of new edge browser
+- offer new edge browser on all supported platforms, but for now only to current IE or edge users
+
+3.3.9 8.1.20
+- updated all browser versions
+
+3.3.8 9.11.19
+- option do disable anonymous browser statistics on every 1000th visit
+
+3.3.7 6.11.19
+- Workaround for Safari on iPadOS 13 pretending to be desktop user agent, fixes #459
+
+3.3.6 5.11.19
+- note on browser statistics
+- updated safari version
+
+3.3.5 4.11.19
+- fix bot detection
+- update slovenian translation
+
+3.3.4 3.11.19
+- ignore edge on android for now
+- ignore some more bots
+- updated a few translations
+
+3.3.3 1.11.19
+- updated versions
+
+3.3.2 10.10.19
+- whitelist chrome-lighthouse bot (google page speed), brave browser (for now) and Falkon browser, fixes #451, fixes #450
+
+3.3.0 13.9.19
+- now you can use custom notification messages for different browsers (experimental).
+  Explanation here: https://github.com/browser-update/browser-update/wiki/Details-on-configuration#user-content-different-messages-depening-on-browser
+  Fixes #433, Fixes #388
+
+3.2.16 13.9.19
+- fix another edge case in IE11: notification fallback if not specifying any version now works as expected
+- updated firefox ESR versions
+
+3.2.15
+- fixed internet explorer versions to notify when just an edge version to notify was specified with negative numbers (e.g. e:-3). Fixes #440. Fixes #430.
+- updated browser versions
+- fixed accessibility
+- npm now always works in the browser
+
+3.2.14 13.7.19
+- some translation fixes
+- improve accessibility of message
+
+3.2.13 13.7.19
+- updated browser versions
+
+3.2.12 8.5.19
+- updated catalan, czech, farsi, hungarian and albanian translations of script
+- better accessibility
+- finnish translation
+
+3.2.11 8.5.19
+- fixed bug where specifying required version "0" did not mean "latest version", as specified in the docs, fixes #436
+- updated browser versions
+
+3.2.10 9.4.19
+- updated browser versions
+- changed firefox download link as it did not work in IE 11
+
+3.2.9 10.2.19
+- updated firefox, ios, opera, chrome, uc, vivaldi browser versions
+
+3.2.8
+- mark safari 12.0.1 as latest version...
+
+3.2.7 8.1.19
+- correct handling of semver version strings with negative numbers
+
+3.2.6 7.1.19
+- fixed which versions of edge are not supported anymore
+- updated browser versions
+
+3.2.5 19.12.18
+- updated firefox, opera, chrome, vivaldi, yandex versions
+- ingnore firefox focus for now
+
+3.2.4 12.11.18
+- updated browser versions
+
+3.2.3 22.10.18
+- updated FF, Chrome, Safari version
+- updated translations (farsi, english, hungarian)
+
+3.2.2 4.10.18
+- updated versions of almost all browsers
+- if option "noclose" is specified, the bar also does not close if the update button is pressed
+- reminderClosed: 0 can be passed. Then the user cannot close the bar, fixes #414
+- updated translations
+
+3.2.1 26.7.18
+- fixed firefox esr detection
+- updated firefox version
+
+3.2.0 26.7.18
+- fix when permanently ignoring did not work on some sites (where reminder=0 was set), fixes #399
+- updated chrome version
+- ignore CM browser
+- add option "notify_lts" to also notify firefox browser that has still "Long term support" (LTS). Normal behaviour is to ignore this version as long as it is supported, fixes #362
+- better detection of firefox ESR. E.g. Firefox 52.0.2 is no ESR version, Firefox 52.2 is!, fixes #362
+- in test mode, print if the cookie to temporarily ignore the bar is set
+- better readability of debug message in test mode
+- better detection if iOS devices can be updated to the latest version of iOS
+
+3.1.13 17.6.18
+- ignore prerender bot
+- minimum versions only for old api
+
+3.1.12 12.6.18
+- updated chrome, ios and uc browser current version
+- updated insecure versions for edge, yandex, firefox, chrome
+
+3.1.10 3.6.18
+- ignore new waterfox user agent string
+
+3.1.9
+- fix bug in npm version
+
+3.1.7 22.5.18
+- ignore waterfox browser
+
+3.1.6 16.5.18
+- samsung internet latest version is 6.4, 7.0 is still beta
+- updated browser versions of vivaldi, edge and opera
+- show hide permanent also for reminderClosed<24 (hours) but then hide the text ("you will be reminded in x days")
+
+3.1.5 9.5.18
+- better handling of left-to-right languages (arabic, hebrew, persian)
+- more translations of new text
+
+3.1.4 8.5.18
+- fixed specifying Internet Explorer (and fallback from Edge), fixes #375
+
+3.1.2 8.5.18
+- New style text formatting for more languages
+- better compatibility for taiwanese chinese
+
+3.1.1 8.5.18
+- improve test mode:
+  - show script version
+  - show reasons to show or hide notification
+  - improved style
+- fixed bug with permanent hide
+- rename no_os_update to no_device update to clarify
+- ignore chrome os (for now)
+- mark old android browser as insecure
+- op.hide_reasons: list of reasons for the bar to be hidden
+
+3.1.0
+- do not make whole bar clickable if custom text is set
+- check for %s in text to decide if legacy style should be used
+- state when the user will be reminded again in days, option to permanent hide if reminderClosed > 1 day
+
+3.0.8 3.5.17
+- option url_permanent_hide allows to set a url where to go if the users presses the permanent hide button
+- custom improvements
+  - set style explicit on buttons and not on all links, to allow to use custom text with links
+  - do not make the whole bar clickable (if update button is present). this is also to allow custom text with links
+  - do not change throw error when ignore-button is not present
+  - fixes #391
+  - fixes #390
+
+3.0.7 1.5.17
+- ignore new viasat sparrow browser
+- updated versions: samsung to 7.0
+
+3.0.6 23.4.18
+- mark also one version prior to the latest version as supported for chrome, opera and firefox to give more time for users to transition to the latest version
+- update chrome version to 66
+
+3.0.5 23.4.18
+- mark IE 11 as supported
+- mark FF 52 as "LTS"
+- set current chrome from 66 to 65, to not notify unsupported chrome 65 which has been released only 6 days ago. wait 10 days for that.
+- mark ios < 8 as no_os_update=true
+- mark ios > 11 as no_os_update=false
+
+3.0.4 22.4.18
+- almost all css selectors via classes
+
+3.0.3 21.4.18
+- if test is on a debug script is loaded and information stating this is only a test message, and additionally more information on the detection
+
+3.0.2 21.4.18
+- renamed translation strings
+- detecting amazon silk, but ignored for now, TODO
+
+3.0.1 21.4.18
+- require instead of notify: specify version which is required on the site. This is easier with minor version comparison
+
+3.0.0 20.4.18
+Big rewrite:
+- excessive tests
+- $bu_get_browser() now returns an object with a lot of information around the browser:
+   - if it is insecure
+   - if it is still updated
+   - years since release
+   - the rendering eingine
+  - if it is on mobile
+  - if the underlying operating system can be updated if the browser updates are limited by the os (like e.g. on iOs, very old macs, or very old windows systems)
+- semantic version comparison
+- Option to not shift the page down when the bar is shown on top
+- new (backwards compatible) html layout of the message that can be customized more flexible
+- the bar can now be permanently hidden to be more friendly to users that can for some reason not update their browser (for now until translations flow in only for english)
+- by default the browser-update page now opens in https (except for IE, which in old versions might not work)
+- the message text is now modular in order to show different messages for browsers with severe security issues
+- now notifying severely insecure versions if insecure: true is configured
+- now notifying unsupported versions if unsupported: true is configured
+
+2.3.3 19.4.18
+- new browser versions

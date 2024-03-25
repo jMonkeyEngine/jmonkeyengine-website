@@ -1,0 +1,74 @@
+{
+    "responseTitle":"jMonkeyEngine  | board game",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2023-07-04 06:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/collect-the-10s/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/collect-the-10s/index.json",
+        "title":"Collect The 10s",
+        "uid":"0d87e814eec3cf37bc4aab3015c11f99",
+
+       
+        "summary":"A playing card game (taken from the popular Indian game mendikot / mindi cot / dehla pakad) brought to life in a 3D world! Simply enter the game room, walk around, sit at a table, and start playing Collect The 10s! Download this game which is focused on bringing recognition to the players in ONLINE play by offering players an ELO rating (similar to chess) when they play rated games, and getting a world and country ranking based on this rating."   ,
+        
+      
+        "tags":[
+        
+             
+             "cardgame"
+        
+              , 
+             "cards"
+        
+              , 
+             "mendikot"
+        
+              , 
+             "mindi"
+        
+              , 
+             "dehla pakad"
+        
+              , 
+             "board game"
+        
+              , 
+             "Collect The 10s"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "bkz"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

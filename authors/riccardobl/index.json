@@ -1,0 +1,239 @@
+{
+    "responseTitle":"jMonkeyEngine  | riccardobl",
+    "apiVersion":"1.0",
+    "response":"articlesByAuthor",
+  
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+        "date":"2022-07-10 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/communitylog/new-services/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/new-services/index.json",
+        "title":"jMonkey Initializer, Library and p2p donations",
+        "uid":"2f5cd9947db7e79db300edc8f06d5cc6",
+
+        
+        "summary":"Hello jMonkey community, I bring you some exciting news:\njMonkeyEngine Initializer Thanks to @richtea we now have an awesome web tool that simplifies the creation of jme projects for both new and advanced users:\nThe jMonkeyEngine Initializer.\nThis tool is found in the Get Started page and assists in the creation of new multi-platform gradle projects.\nLibrary: the new Store We are moving what is currently referred as \u0026ldquo;jmonkey store\u0026rdquo; to a new solution called \u0026ldquo;jmonkey library\u0026rdquo;."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "bitcoin"
+        
+              , 
+             "initializer"
+        
+              , 
+             "library"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2022-01-19 18:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/blog/macos-cloud-renting-and-developmentmacos-cloud-renting-and-development/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/macos-cloud-renting-and-developmentmacos-cloud-renting-and-development/index.json",
+        "title":"MacOS renting and development in the cloud",
+        "uid":"216bb60484ef5c87b6389f5f2849a79b",
+
+        
+        "summary":"MacOS cloud renting has started to proliferate with the new Apple Silicon M1 chip and it turned out to be a pretty decent way to test graphical applications on MacOS without buying apple\u0026rsquo;s pricey hardware or resorting to hackish ports and vms of questionable legality.\nI am reporting here the procedure to quickly get a MacOS M1 cloud service up and running for testing jmonkey applications without too much hassle."   ,
+        
+      
+        "tags":[
+        
+             
+             "tutorials"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2021-11-04 09:58:16.894 +0000 UTC",
+        "url":"https://jmonkeyengine.org/communitylog/host-migration-and-funding/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/host-migration-and-funding/index.json",
+        "title":"Host migration and funding",
+        "uid":"bc44c1a24ffdb69655cd627e1b59ad3f",
+
+        
+        "summary":"As you might have noticed already, our services were progressively migrated, during the month of October, to a cloud provider that, I believe, provides the best price/quality for our project.\nUp till now we have been using amazon aws with one year of credits donated by @adi.barda, that allowed us to never use any of our community fund, but from now on you will see monthly expenses submitted to the fund to pay for hosting and related services."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+              , 
+             "server"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2020-12-13 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/communitylog/new-website/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/new-website/index.json",
+        "title":"New Website",
+        "uid":"b1efe558ca71fb0412e8a85cd7a8ec01",
+
+        
+        "summary":"Hello.\nWe have a new website.\nThis doesn\u0026rsquo;t come to you as a surprise if you have been following this thread where for ~1 week a preview of the website has been exposed to the feedbacks of the community.\nThis is the result after integrating all your suggestions, however there is always room for improvement and feedbacks are always appreciated, so if you didn\u0026rsquo;t have a chance to voice your opinion before, feel free to do it as a reply to this post."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "website"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2020-11-09 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/communitylog/community-update-donations/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/community-update-donations/index.json",
+        "title":"Donations Update",
+        "uid":"49860e54ec2eb94ebc0dbe2566ebfda3",
+
+        
+        "summary":"Hello fellow community members, this is the promised followup of Update in the wake of recent events\nAs planned, we opted for creating a collective at opencollective.com/jmonkeyengine, since this is the most future proof and community oriented alternative out there.\n"   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2020-10-29 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/communitylog/update-in-the-wake-of-recent-events/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/update-in-the-wake-of-recent-events/index.json",
+        "title":"Update in the wake of recent events",
+        "uid":"063097bc654cae8762bfc3c9f50eaaad",
+
+        
+        "summary":"Hello fellow community members. Probably most of you know already, but one of the team members left the community due to an internal disagreement.\nFrom his departure I took over his role, reconfigured our services to use easily redeployable docker containers, tested for different configurations and load and migrated everything to a different cloud provider with a plan that I believe is more suitable to our needs."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

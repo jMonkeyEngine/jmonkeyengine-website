@@ -1,0 +1,57 @@
+@keyframes jme-a-maintenance-pulse {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+#jme-a-maintenance >  *{
+    all: initial;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1em;
+    color:inherit;
+}
+#jme-a-maintenance {
+    all: initial;
+    text-shadow: unset;
+    display: block;
+    z-index: 99999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    min-width: 40vw;
+    max-width: 100%;
+    background-color: #c07302;
+    padding: 1em;
+    border-top-right-radius: 0.6em;
+    color: rgb(5, 5, 5);
+    display: flex;
+    align-items: center;
+    opacity: 0.85;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 0 0 0.5em #3a2300;
+}
+
+#jme-a-maintenance.jme-a-maintenance-inprogress {
+    background-color: #adb900;
+    animation: jme-a-maintenance-pulse 2s infinite;
+    color: rgb(88, 25, 0);
+}
+
+#jme-a-maintenance.jme-a-maintenance-completed {
+    background-color: #91ff00;
+    color: rgb(0, 26, 97);
+}
+
+#jme-a-maintenance>img {
+    all: unset;
+    height: 1.4em;
+    padding-right: 0.5em;
+}

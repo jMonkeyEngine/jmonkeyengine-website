@@ -1,0 +1,24 @@
+{
+    "responseTitle":"jMonkeyEngine  | Fund jMonkeyEngine",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"e893892674bf973b5e7e5bb08ee38f06",
+
+    "title":"Fund jMonkeyEngine",
+    "content":"\u003c!-- There are two ways to donate to jMonkeyEngine and its community: --\u003e\n\u003cp\u003e\u003ca rel='noopener noreferrer' target=\"_blank\" href=\"https://opencollective.com/jmonkeyengine\"\u003e\u003ch2\u003eDonate to our Collective with PayPal / Credit Card / Bank Transfer \u003c/h2\u003e\u003c/a\u003e\u003c/p\u003e\n\u003cdiv style=\"display:flex;flex-direction:row;align-items:center;margin-top:1rem\"\u003e\n\u003ca rel='noopener noreferrer' target=\"_blank\" href=\"https://opencollective.com/jmonkeyengine\"\u003e\n    \u003ci style=\"font-size:6rem;color:var(--foreground)\" class=\"fa-solid fa-building-columns\"\u003e\u003c/i\u003e\n\u003c/a\u003e\n\u003cp style=\"margin-left:2rem;\"\u003e\nWe accept donations through our collective at \u003ca rel='noopener noreferrer' target=\"_blank\" href=\"https://opencollective.com/jmonkeyengine\"\u003eopencollective/jmonkeyengine\u003c/a\u003e.\n\u003cbr\u003e\nThe collective is managed by the Core Developers and the funds will be used to promote and fund the development and maintenance of the engine and its related services.\n\u003cbr\u003e\n\u003cbr\u003e\n\u003ci\u003eBackers can leave a message to the community that will be featured in the homepage.\u003c/i\u003e\n\u003c/p\u003e\n\u003c/div\u003e\n\u003cbr\u003e\n",
+    "contentPlain":" Donate to our Collective with PayPal / Credit Card / Bank Transfer We accept donations through our collective at opencollective/jmonkeyengine. The collective is managed by the Core Developers and the funds will be used to promote and fund the development and maintenance of the engine and its related services. Backers can leave a message to the community that will be featured in the homepage. " ,
+    "url":"https://jmonkeyengine.org/donate/",
+
+
+    
+    "summary":"Donate to our Collective with PayPal / Credit Card / Bank Transfer We accept donations through our collective at opencollective/jmonkeyengine. The collective is managed by the Core Developers and the funds will be used to promote and fund the development and maintenance of the engine and its related services. Backers can leave a message to the community that will be featured in the homepage."   ,
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}

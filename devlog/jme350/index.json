@@ -1,0 +1,36 @@
+{
+    "responseTitle":"jMonkeyEngine  | JMonkeyEngine 3.5.0-stable release",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"5182e4d61f54466c8735f5decaa6438c",
+
+    "title":"JMonkeyEngine 3.5.0-stable release",
+    "content":"\u003cp\u003eWe\u0026rsquo;re proud to present the 3.5.0-stable release of our open-source 3-D game engine for Java programmers. This is the first release of jMonkeyEngine to leverage LWJGL v3.3, and it includes many bugfixes and new features. For details, see the release notes at \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.0-stable\"\u003ehttps://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.0-stable\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003ePre-compiled 3.5.0-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\u003c/p\u003e\n\u003cp\u003eFor the latest news and discussion of JMonkeyEngine software development, visit \u003ca href=\"https://hub.jmonkeyengine.org/c/development-discussion-jme3/9\"\u003ethe Development category at the JME Community Hub/Forum\u003c/a\u003e.\u003c/p\u003e\n",
+    "contentPlain":"We\u0026rsquo;re proud to present the 3.5.0-stable release of our open-source 3-D game engine for Java programmers. This is the first release of jMonkeyEngine to leverage LWJGL v3.3, and it includes many bugfixes and new features. For details, see the release notes at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.0-stable\nPre-compiled 3.5.0-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Community Hub/Forum.\n" ,
+    "url":"https://jmonkeyengine.org/devlog/jme350/",
+
+
+    
+    "summary":"We\u0026rsquo;re proud to present the 3.5.0-stable release of our open-source 3-D game engine for Java programmers. This is the first release of jMonkeyEngine to leverage LWJGL v3.3, and it includes many bugfixes and new features. For details, see the release notes at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.0-stable\nPre-compiled 3.5.0-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Community Hub/Forum."   ,
+    
+    "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+
+}
