@@ -1,0 +1,103 @@
+{
+    "responseTitle":"jMonkeyEngine  | blog",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"https://jmonkeyengine.org/tags/blog/page/2/index.json",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2019-10-08 06:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/communitylog/new-store/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/new-store/index.json",
+        "title":"jMonkeyStore is Now Open!",
+        "uid":"afceaba9e9b0609c5af553038ac0c920",
+
+       
+        "summary":"After years of requests and attempts, a software store (a.k.a an asset store) for jmonkey has finally been created and is now open to registration. Everybody can register and submit their software!\nhttps://store.jmonkeyengine.org/ Currently only free open-source software can be submitted. Once we have the sponsorship required for the legal documentation and setup fees we will be able to allow selling (payment required to use it) and sponsoring (pay the developer if you want to as a thank you) software."   ,
+        
+      
+        "tags":[
+        
+             
+             "asset-store"
+        
+              , 
+             "software"
+        
+              , 
+             "website"
+        
+              , 
+             "communitylog"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "jayfella"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2019-01-18 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/tutorials/grizeldi-pbr-tutorials/pbr_tutorial/",
+        "jsonUrl":"https://jmonkeyengine.org/tutorials/grizeldi-pbr-tutorials/pbr_tutorial/index.json",
+        "title":"Grizeldi's PBR Tutorial #1 - The Basics",
+        "uid":"ea73043b02c5136da4f2cc6ec19aea93",
+
+       
+        "summary":"A continuing YouTube series helping users take leap from using the regular Lighting.j3md material to PbrLighting.j3md.\nFirst part of my tutorial series in which I explain how to use jmonkeyengine\u0026rsquo;s Physically Based Rendering pipeline. Intended for people who already understand how to use the regular Lighting.j3md shader, but have no idea how PBR works. "   ,
+        
+      
+        "tags":[
+        
+             
+             "pbr"
+        
+              , 
+             "graphics"
+        
+              , 
+             "tutorials"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "grizeldi"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

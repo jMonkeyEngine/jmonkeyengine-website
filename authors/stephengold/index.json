@@ -1,0 +1,323 @@
+{
+    "responseTitle":"jMonkeyEngine  | stephengold",
+    "apiVersion":"1.0",
+    "response":"articlesByAuthor",
+  
+
+
+
+    "prev":"",
+
+
+    "next":"https://jmonkeyengine.org/authors/stephengold/page/2/index.json",
+
+
+
+"articles":[
+
+    
+    {
+        "date":"2025-01-28 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/devlog/jme370/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme370/index.json",
+        "title":"JMonkeyEngine 3.7.0-stable release",
+        "uid":"d5b24aa173bb33f5f1b7d87d5660286a",
+
+        
+        "summary":"We\u0026rsquo;re proud to announce the release of version 3.7.0-stable of the JMonkeyEngine game engine.\nAnd here\u0026rsquo;s a big \u0026ldquo;thank you!\u0026rdquo; to Adi Barda, who managed that release.\nThe new release is featured in version v3.7.0-stable-sdk2 of our Software Development Kit.\nPre-compiled libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nRelease notes are online at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.7.0-stable\nDevelopment of a 3."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2022-04-21 23:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/devlog/jme352/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme352/index.json",
+        "title":"JMonkeyEngine 3.5.2 release",
+        "uid":"85a4d2d6b4c4c1720a13f7aebff09f02",
+
+        
+        "summary":"JMonkeyEngine is pleased to announce the 3.5.2-stable release of its game engine for Java programmers. JMonkeyEngine 3.5.2 is an interim release that solves a couple issues with 3.5.0/3.5.1 and upgrades the underlying LWJGL libraries to version 3.3.1.\nThe 3.5.2-stable libraries can be found in the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and/or download the source code, go to https://github."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2022-03-20 16:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/devlog/jme351/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme351/index.json",
+        "title":"JMonkeyEngine 3.5.1 release",
+        "uid":"43552feaffeb1ff0ff339a02d023fd35",
+
+        
+        "summary":"JMonkeyEngine is pleased to announce the 3.5.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.5.1 is an interim release that patches a couple bugs and improves support for Macintosh systems containing Apple Silicon.\nThe 3.5.1-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and the source code, go to https://github."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2022-01-24 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/devlog/jme350/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme350/index.json",
+        "title":"JMonkeyEngine 3.5.0-stable release",
+        "uid":"5182e4d61f54466c8735f5decaa6438c",
+
+        
+        "summary":"We\u0026rsquo;re proud to present the 3.5.0-stable release of our open-source 3-D game engine for Java programmers. This is the first release of jMonkeyEngine to leverage LWJGL v3.3, and it includes many bugfixes and new features. For details, see the release notes at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.0-stable\nPre-compiled 3.5.0-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Community Hub/Forum."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2021-12-05 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/devlog/jme341/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme341/index.json",
+        "title":"JMonkeyEngine 3.4.1 release",
+        "uid":"3b24ee9ea07ebd8fa1231f1491eb87e5",
+
+        
+        "summary":"The JMonkeyEngine team is proud to announce the 3.4.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.4.1 is an interim release that patches a handful of bugs and performance issues discovered in the JME 3.4 libraries since they became generally available in May.\nAlpha testing has already begun on JME 3.5, which is planned for general availability in early 2022."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2021-03-11 18:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/blog/interview-adibarda/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-adibarda/index.json",
+        "title":"Sgold interviews Adi Barda",
+        "uid":"85bf824777a372f522327c4f863ec5a4",
+
+        
+        "summary":"stephengold When, where, and how did you first become aware of JMonkeyEngine?\nWhat got you interested in using it?\nSceneMax3D Back in 2018, I decided to create a 3-D animation development environment\nthat would run on Android devices.\nI went looking for a 3-D Java library\nthat could be used in Android applications,\nand JME was the only one I found that had a \u0026ldquo;code first\u0026rdquo; approach."   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2020-05-10 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/devlog/jme332/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme332/index.json",
+        "title":"JMonkeyEngine version 3.3.2 is here!",
+        "uid":"a5c6c935624089dbd4b70a2261366f2e",
+
+        
+        "summary":"After 3 months of beta testing, the Java game engine\u0026rsquo;s long-awaited v3.3 release arrived on 30 March.\nWith it came exciting new features: AppState ids, light-probe blending, a better ragdoll control, and an animation system rewritten from the ground up.\nAs often happens, a few key bugfixes missed the cutoff for v3.3.0-stable. In its wake, the JMonkeyEngine team came together and identified a handful of existing fixes that could be safely backported into v3.3. With the help of volunteers, candidate builds received extensive testing on multiple platforms. Their efforts culminated in version 3.3.2-stable, a production-ready patch release from the v3.3 line.\n"   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "ItsMike54"
+            
+                  , 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2020-02-25 18:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/blog/interview-danielp/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-danielp/index.json",
+        "title":"Sgold interviews Daniel Perano",
+        "uid":"650b77822713f2fa2b9c87fe7c05dc53",
+
+        
+        "summary":"stephengold Thank you for agreeing to be interviewed.\nFirst question: Do you remember when you first encountered JMonkeyEngine?\nWhat was your first impression?\ndanielperano I started learning jME back in the 3.0 days, as I recall,\nand I was impressed with the features it offered.\nThe scene-graph control and appstate design made a lot of sense to me \u0026mdash;"   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+        "date":"2020-02-15 12:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/blog/interview-jayfella/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-jayfella/index.json",
+        "title":"Sgold interviews Jayfella",
+        "uid":"9550e436efed613eefbe0d086be4c02a",
+
+        
+        "summary":"stephengold Thank you for agreeing to be interviewed.\nFirst question: When did you first hear about JMonkeyEngine?\njayfella Way back in 2014, after a long period of developing desktop applications,\nservers, and minecraft plugins, I decided to look into writing games.\nAt that time I was more into C#, but XNA was a sinking ship,\nso looked at alternatives."   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

@@ -1,0 +1,208 @@
+{
+    "responseTitle":"jMonkeyEngine  | misc",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2022-01-19 18:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/macos-cloud-renting-and-developmentmacos-cloud-renting-and-development/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/macos-cloud-renting-and-developmentmacos-cloud-renting-and-development/index.json",
+        "title":"MacOS renting and development in the cloud",
+        "uid":"216bb60484ef5c87b6389f5f2849a79b",
+
+       
+        "summary":"MacOS cloud renting has started to proliferate with the new Apple Silicon M1 chip and it turned out to be a pretty decent way to test graphical applications on MacOS without buying apple\u0026rsquo;s pricey hardware or resorting to hackish ports and vms of questionable legality.\nI am reporting here the procedure to quickly get a MacOS M1 cloud service up and running for testing jmonkey applications without too much hassle."   ,
+        
+      
+        "tags":[
+        
+             
+             "tutorials"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2021-03-11 18:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/interview-adibarda/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-adibarda/index.json",
+        "title":"Sgold interviews Adi Barda",
+        "uid":"85bf824777a372f522327c4f863ec5a4",
+
+       
+        "summary":"stephengold When, where, and how did you first become aware of JMonkeyEngine?\nWhat got you interested in using it?\nSceneMax3D Back in 2018, I decided to create a 3-D animation development environment\nthat would run on Android devices.\nI went looking for a 3-D Java library\nthat could be used in Android applications,\nand JME was the only one I found that had a \u0026ldquo;code first\u0026rdquo; approach."   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-02-25 18:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/interview-danielp/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-danielp/index.json",
+        "title":"Sgold interviews Daniel Perano",
+        "uid":"650b77822713f2fa2b9c87fe7c05dc53",
+
+       
+        "summary":"stephengold Thank you for agreeing to be interviewed.\nFirst question: Do you remember when you first encountered JMonkeyEngine?\nWhat was your first impression?\ndanielperano I started learning jME back in the 3.0 days, as I recall,\nand I was impressed with the features it offered.\nThe scene-graph control and appstate design made a lot of sense to me \u0026mdash;"   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-02-15 12:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/interview-jayfella/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-jayfella/index.json",
+        "title":"Sgold interviews Jayfella",
+        "uid":"9550e436efed613eefbe0d086be4c02a",
+
+       
+        "summary":"stephengold Thank you for agreeing to be interviewed.\nFirst question: When did you first hear about JMonkeyEngine?\njayfella Way back in 2014, after a long period of developing desktop applications,\nservers, and minecraft plugins, I decided to look into writing games.\nAt that time I was more into C#, but XNA was a sinking ship,\nso looked at alternatives."   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-02-09 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/minie14/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/minie14/index.json",
+        "title":"Minie Physics Library Version 1.4 Released!",
+        "uid":"b76eba7dda28f9a70d3296d66d9a0fbc",
+
+       
+        "summary":"Minie version 1.4 is an exciting new add-on for the JMonkeyEngine (JME) game engine.\nMinie provides an open-source physics engine for desktop games. It gives software developers using JME access to the proven technology of the Bullet Physics SDK version 2.89,\nincluding:\nrigid-body dynamics, soft bodies, collision detection, vehicle and character controllers, ray and sweep tests, and dynamic constraints. Minie incorporates DynamicAnimControl technology for ragdoll simulation and inverse kinematics."   ,
+        
+      
+        "tags":[
+        
+             
+             "library"
+        
+              , 
+             "physics"
+        
+              , 
+             "software"
+        
+              , 
+             "minie"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

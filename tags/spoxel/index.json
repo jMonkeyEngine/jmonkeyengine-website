@@ -1,0 +1,59 @@
+{
+    "responseTitle":"jMonkeyEngine  | spoxel",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2019-10-15 06:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/spoxel/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/spoxel/index.json",
+        "title":"Spoxel",
+        "uid":"3c680054951eecec382eccaa51c3484b",
+
+       
+        "summary":"Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful spells to use in your adventure or infuse weapons and armor with rare resources to create legendary items of power. Explore an infinite world and delve into other dimensions while you build a base to establish a foothold of power and defend it from your enemies!"   ,
+        
+      
+        "tags":[
+        
+             
+             "steam"
+        
+              , 
+             "spoxel"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "Jeddic"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

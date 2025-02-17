@@ -1,0 +1,65 @@
+{
+    "responseTitle":"jMonkeyEngine  | stephengold",
+    "apiVersion":"1.0",
+    "response":"articlesByAuthor",
+  
+
+
+
+    "prev":"https://jmonkeyengine.org/authors/stephengold/index.json",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+        "date":"2020-02-09 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/blog/minie14/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/minie14/index.json",
+        "title":"Minie Physics Library Version 1.4 Released!",
+        "uid":"b76eba7dda28f9a70d3296d66d9a0fbc",
+
+        
+        "summary":"Minie version 1.4 is an exciting new add-on for the JMonkeyEngine (JME) game engine.\nMinie provides an open-source physics engine for desktop games. It gives software developers using JME access to the proven technology of the Bullet Physics SDK version 2.89,\nincluding:\nrigid-body dynamics, soft bodies, collision detection, vehicle and character controllers, ray and sweep tests, and dynamic constraints. Minie incorporates DynamicAnimControl technology for ragdoll simulation and inverse kinematics."   ,
+        
+      
+        "tags":[
+        
+             
+             "library"
+        
+              , 
+             "physics"
+        
+              , 
+             "software"
+        
+              , 
+             "minie"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

@@ -1,0 +1,56 @@
+{
+    "responseTitle":"jMonkeyEngine  | Ali-RS",
+    "apiVersion":"1.0",
+    "response":"articlesByAuthor",
+  
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+        "date":"2023-03-20 08:00:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/devlog/jme360/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme360/index.json",
+        "title":"JMonkeyEngine 3.6.0-stable release",
+        "uid":"2a175bd38b5074a2f1958bbb41b767a7",
+
+        
+        "summary":"We\u0026rsquo;re proud to present the 3.6.0-stable release of our open-source 3-D game engine for Java programmers. It includes many bugfixes and new features. For details, see the release notes at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.6.0-stable\nPre-compiled 3.6.0-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Community Hub/Forum."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "Ali-RS"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | New Website</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description"
+    content="jMonkeyEngine is a modern developer friendly game engine written primarily in Java.  ">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jmonkeyengine.org/uploads/Screenshot_2020-12-13-jMonkeyEngine-partial.webp"/>
+
+<meta name="twitter:title" content="New Website"/>
+<meta name="twitter:description" content="Hello.
+We have a new website.
+This doesn&rsquo;t come to you as a surprise if you have been following this thread where for ~1 week a preview of the website has been exposed to the feedbacks of the community.
+This is the result after integrating all your suggestions, however there is always room for improvement and feedbacks are always appreciated, so if you didn&rsquo;t have a chance to voice your opinion before, feel free to do it as a reply to this post."/>
+
+  <meta property="og:title" content="New Website" />
+<meta property="og:description" content="Hello.
+We have a new website.
+This doesn&rsquo;t come to you as a surprise if you have been following this thread where for ~1 week a preview of the website has been exposed to the feedbacks of the community.
+This is the result after integrating all your suggestions, however there is always room for improvement and feedbacks are always appreciated, so if you didn&rsquo;t have a chance to voice your opinion before, feel free to do it as a reply to this post." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmonkeyengine.org/communitylog/new-website/" /><meta property="og:image" content="https://jmonkeyengine.org/uploads/Screenshot_2020-12-13-jMonkeyEngine-partial.webp" /><meta property="article:section" content="communitylog" />
+<meta property="article:published_time" content="2020-12-13T08:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-13T08:00:00+00:00" />
+
+
+  <meta itemprop="name" content="New Website">
+<meta itemprop="description" content="Hello.
+We have a new website.
+This doesn&rsquo;t come to you as a surprise if you have been following this thread where for ~1 week a preview of the website has been exposed to the feedbacks of the community.
+This is the result after integrating all your suggestions, however there is always room for improvement and feedbacks are always appreciated, so if you didn&rsquo;t have a chance to voice your opinion before, feel free to do it as a reply to this post."><meta itemprop="datePublished" content="2020-12-13T08:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-12-13T08:00:00+00:00" />
+<meta itemprop="wordCount" content="1127"><meta itemprop="image" content="https://jmonkeyengine.org/uploads/Screenshot_2020-12-13-jMonkeyEngine-partial.webp">
+<meta itemprop="keywords" content="communitylog,website,blog," />
+  
+
+
+
+  
+  <script src="/js/old-browser.js"></script>
+  <link rel="stylesheet" href="/css/old-browser.css">
+  
+
+  
+
+  
+  <script src="/highlight/highlight.pack.js"></script>
+  <script
+    src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+  
+
+  
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/later/1.2.0/later.min.js" integrity="sha512-4OyNDMl5KLKjS8F1ImVwUvmthM8HkXbR6vMafCmT5zBTd9I/sA3z3zM0JLBosHW6/3K2jq2RoBo/eTUNS2hOGA==" crossorigin="anonymous"></script>
+  <script src="/js/maintenance/maintenance.js"></script>
+  <link rel="stylesheet" href="/js/maintenance/maintenance.css">
+  
+
+  
+  <script src="/js/christmas/Christmas.js"></script>
+  <script>
+      Christmas.init(
+        "https://jmonkeyengine.org/js/christmas/",
+        ["figure.githubUser img", 'img.avatar', "#showcase button"],
+        [
+          {
+            type: "attribute",
+            value: "src",
+            transform:function(src){
+              if(src.startsWith("/user_avatar/hub.jmonkeyengine.org/"))  {
+                return src.substring("/user_avatar/hub.jmonkeyengine.org/".length).split("/")[0];
+              }          
+              return src;
+            }
+          },
+          {
+            type: "attribute",
+            value: "title"
+          },
+          {
+            type: "text"
+          }
+        ],
+        ["header img.avatar"]
+      );
+  </script>
+  
+
+</head>
+
+<body>
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div class="expandable">
+        <a href="https://jmonkeyengine.org/" alt-href="https://jmonkeyengine.org/tags,https://jmonkeyengine.org/authors,https://jmonkeyengine.org/devlog,https://jmonkeyengine.org/blog,,https://jmonkeyengine.org/communitylog">
+            <button class="genericCl responsiveIcon expandable ">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+        <a href="https://jmonkeyengine.org/tags/showcase" alt-href="https://jmonkeyengine.org/showcase">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-images"></i> <span>Showcase</span>
+            </button>
+        </a>
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://library.jmonkeyengine.org" >
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-puzzle-piece"></i> <span>Library</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.org/docs">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.org/license">
+            <button class="genericCl responsiveIcon  expandable toggleable toggledOffPortrait">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+    <div class="toggleable toggledOffPortrait expandable">
+            <a  href="https://github.com/jMonkeyEngine/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+                <button class="icon toggleable toggledOffPortrait codeCl  expandable " title="Github">
+                    <i class="fab fa-github-square"></i> <span>Github</span>
+                </button>
+            </a>
+            <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+                <button class="icon twitterCl toggleable toggledOffPortrait  expandable " title="Follow on Twitter">
+                    <i class="fab fa-twitter"></i> <span>Twitter</span>
+                </button>
+            </a>
+
+            <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer'
+                target="_blank">
+                <button class="icon youtubeCl toggleable toggledOffPortrait  expandable " title="Follow on Youtube">
+                    <i class="fab fa-youtube"></i> <span>Youtube</span>
+                </button>
+            </a>
+       
+
+            
+            <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+                <button class="icon discordCl toggleable toggledOffPortrait  expandable " title="Discord">
+                    <i class="fab fa-discord"></i> <span>Discord</span>
+                </button>
+            </a>
+            <a href="https://jmonkeyengine.org/donate" >
+                <button class="icon donateCl toggleable toggledOffPortrait  expandable " title="Donate">
+                    <i class="fas fa-donate"></i> <span>Donate!</span>
+                </button>
+            </a>
+
+        </div>
+</nav>
+
+<script>
+    
+    !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.stringSimilarity=e():t.stringSimilarity=e()}(self,(function(){return t={138:t=>{function e(t,e){if((t=t.replace(/\s+/g,""))===(e=e.replace(/\s+/g,"")))return 1;if(t.length<2||e.length<2)return 0;let r=new Map;for(let e=0;e<t.length-1;e++){const n=t.substring(e,e+2),o=r.has(n)?r.get(n)+1:1;r.set(n,o)}let n=0;for(let t=0;t<e.length-1;t++){const o=e.substring(t,t+2),s=r.has(o)?r.get(o):0;s>0&&(r.set(o,s-1),n++)}return 2*n/(t.length+e.length-2)}t.exports={compareTwoStrings:e,findBestMatch:function(t,r){if(!function(t,e){return"string"==typeof t&&!!Array.isArray(e)&&!!e.length&&!e.find((function(t){return"string"!=typeof t}))}(t,r))throw new Error("Bad arguments: First argument should be a string, second should be an array of strings");const n=[];let o=0;for(let s=0;s<r.length;s++){const i=r[s],f=e(t,i);n.push({target:i,rating:f}),f>n[o].rating&&(o=s)}return{ratings:n,bestMatch:n[o],bestMatchIndex:o}}}}},e={},function r(n){if(e[n])return e[n].exports;var o=e[n]={exports:{}};return t[n](o,o.exports,r),o.exports}(138);var t,e}));
+    
+
+    
+
+    
+    window.initJmeMenu=function () {
+        const selectionClass= window.selectedTopMenuClass || "highlightedCl";
+
+        const topmenu = document.querySelector('#topmenu');
+        if (window.location.href.startsWith("http://localhost:1313")) {
+            for (const a of topmenu.querySelectorAll("a")) {
+                a.href = a.href.replace("https://jmonkeyengine.org", "http://localhost:1313");
+            }
+        }
+
+        const likelyScore=[];
+        for (const a of topmenu.querySelectorAll("a")) {
+            const pageUrl=window.location.href.endsWith("/")?window.location.href.substring(0,window.location.href.length-1):window.location.href;
+         
+            const process = (linkUrls) => {
+                if(!linkUrls)return;
+                for(let linkUrl of linkUrls){
+                    if (linkUrl != null) {
+                        if (window.location.href.startsWith("http://localhost:1313")) {
+                            linkUrl = linkUrl.replace("https://jmonkeyengine.org", "http://localhost:1313");
+                        }
+
+                        if (linkUrl.endsWith("/")) {
+                            linkUrl = linkUrl.substring(0, linkUrl.length - 1);
+                        }
+                        const score = stringSimilarity.compareTwoStrings(linkUrl, pageUrl);
+                        likelyScore.push(
+                            {
+                                score: score,
+                                el: a.querySelector("button")
+                            }
+                        );
+                    }
+                }
+            }
+
+            process([a.href]);
+            process(a.getAttribute("alt-href")?a.getAttribute("alt-href").split(","):undefined);           
+
+        }
+        likelyScore.sort((a, b) => b.score - a.score);   
+        likelyScore.forEach(el=>el.el.classList.remove(selectionClass));
+        likelyScore[0].el.classList.add(selectionClass);
+
+    };
+    
+    document.addEventListener('DOMContentLoaded', function(){
+       window.initJmeMenu(); 
+    });
+</script>
+
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+
+<i id="playButton" class=" fas fa-play"></i>
+
+
+
+
+
+
+<div class="showcaseElement" style='display: block   '>
+  <div class="cover blur"   style  ="background-image: url('/images/showcase/spoxel/4.jpg'); " ></div>
+  <div class="cover"    style  ="background-image: url('/images/showcase/spoxel/4.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/1.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/1.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/8.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/8.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/2.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/2.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/7.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/7.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/3.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/3.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/6.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/6.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+  <video class="showcaseElement cover" style='display: none  ' preload="none"
+    class="cover">
+    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm" type="video/webm">
+  </video>
+</div>
+
+
+
+
+
+
+
+  <video class="showcaseElement cover" style='display: none  ' preload="none"
+    class="cover">
+    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm" type="video/webm">
+  </video>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/5.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/5.jpg'); " ></div>
+</div>
+
+
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+
+      <a href="/start/"><button  id="startbtn" class="highlightedCl" ><i class="fas fa-rocket"></i> Get Started </button></a>
+
+      <a href="/#features" title="overview"><button id="startbtn"   class="highlightedCl"><i class="fas fa-question-circle" style="padding:0"></i></button></a>
+      
+
+      
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Spoxel powered by jMonkeyEngine</h2>
+      
+      Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful … 
+      
+      <br />
+      <a class="readMore" href="/showcase/spoxel/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+<a id="content"></a>
+
+<section class="full responsiveWidth">
+
+<article>
+        <h1 >
+            
+<i class="fas fa-bullhorn useless"></i>
+
+           
+            <a href="/communitylog/new-website/">New Website</a></h1>
+            <div class="content">
+                <span>
+                <p>Hello.</p>
+<p>We have a new website.<br>
+This doesn&rsquo;t come to you as a surprise if you have been following  <a href="https://hub.jmonkeyengine.org/t/wip-new-website/43960/">this thread</a> where for ~1 week a preview of the website has been exposed to the feedbacks of the community.</p>
+<p>This is the result after integrating all your suggestions, however there is always room for improvement and feedbacks are always appreciated, so if you didn&rsquo;t have a chance to voice your opinion before, feel free to do it as a reply to this post.</p>
+<a title="Open original" href="/uploads/Screenshot_2020-12-13-jMonkeyEngine.jpg">
+<img style="display:inline-block" width="60%" src="/uploads/Screenshot_2020-12-13-jMonkeyEngine-partial.webp" />
+</a>
+<a title="Open original" href="/uploads/Screenshot_2020-12-13-jMonkeyEngine-portrait.png">
+<img style="display:inline-block" width="30%" src="/uploads/Screenshot_2020-12-13-jMonkeyEngine-portrait-partial.webp" />
+</a>
+<h2 id="features-overview">Features Overview</h2>
+<h3 id="backers-an-contributors">Backers an contributors</h3>
+<p>The website header shows one random github contributor and one random backer.</p>
+<p><img src="/uploads/Screenshot_2020-12-13-jMonkeyEngine-contributors.webp" alt="Contributors an backers"></p>
+<p><em>Note: the list of backers and contributors is not updated in realtime, due to local (browser level) caching, it might take up to 2 days for the update to be propagated to everyone</em></p>
+<h3 id="backer-message">Backer message</h3>
+<p>Under the top banner a random backer message is shown</p>
+<p><img src="/uploads/Screenshot_2020-12-13-jMonkeyEngine-backermessage.webp" alt="Backer Message"></p>
+<p>Those messages are obtained from <a href="https://opencollective.com/jmonkeyengine#section-contributors">opencollective/jmonkeyengine</a>, and can be left by anyone who donated to the project using the opencollective interface.</p>
+<p>If you&rsquo;ve already donated  but you didn&rsquo;t leave a message, don&rsquo;t worry, you can go to our opencollective page and leave one anytime you want, or change the message you&rsquo;ve already left.</p>
+<p>You can for example promote your project that uses jmonkeyengine, leave a message to the community, say what you like about the project and why you donated, or anything else you wish to share, there is no strict rule on what can be written there, just please avoid being political and use common sense.</p>
+<p><em>Note: the messages are not updated in realtime, due to local (browser level) caching, it might take up to 2 days for the update to be propagated to everyone</em></p>
+<h3 id="top-banner">Top banner</h3>
+<p>The top banner will now show one different random image from the showcased projects in every page.<br>
+Those images are randomized everytime the site is rebuilt, with one exception: the banner in author&rsquo;s pages will show only showcased content from the author itself, if it exists.</p>
+<h3 id="author-handles-and-pages">Author handles and pages</h3>
+<p>Github handles are used as author names, the author page will automatically obtain public informations (such as bio, links, avatar etc) from the github account. The author pages will also list all the articles from the author.</p>
+<p><em>Note: author infos are not updated in realtime, due to local (browser level) caching, it might take up to 2 days for the update to be propagated to everyone</em></p>
+<h3 id="tags">Tags</h3>
+<p>Everything is subdivided using tags. Special tags will make the articles appear under certain areas:</p>
+<ul>
+<li><strong>devlog</strong> : will place the article under the <em>development updates</em>, an area that contains the news regarding the development of the engine</li>
+<li><strong>communitylog</strong> : will place the article under the <em>community updates</em> an area that contains all the updates regarding our community</li>
+<li><strong>tutorials</strong> : will place the article at the bottom of the <a href="/docs">Docs</a> pages</li>
+<li><strong>showcase</strong> : will place the article among the showcased content</li>
+<li><strong>blog</strong> : will place the article under the generic blog section</li>
+</ul>
+<p>More tags can be used together, and custom tags can be used to create lists of correlated posts (eg. a tutorial serie).</p>
+<h3 id="showcase">Showcase</h3>
+<p>Just like before we have a showcase under the <a href="/tags/showcase">showcase</a> tag.<br>
+Articles published with this tag will be featured in the <a href="#top-banner">Top Banner</a>. If you have a projects that is complete or almost in its final form that looks good and can be showcased in our website,  feel free to add it yourself by following the <a href="#contribute-to-the-website">Contribute to the website</a> section.</p>
+<h3 id="community-addons">Community addons</h3>
+<p>The &ldquo;features&rdquo; list now includes community contributions.</p>
+<p><img src="/uploads/Screenshot_2020-12-13-jMonkeyEngine-features.webp" alt="Features"></p>
+<p>Make sure to let us know if you have a library to add there!</p>
+<h3 id="comments">Comments</h3>
+<p>Posts can integrate comments from the hub by setting the <strong>enable_comments: true</strong> property.</p>
+<h2 id="contribute-to-the-website">Contribute to the website</h2>
+<p>Just like everything else, the website is open to community contributions.<br>
+We will accept and review articles from the community in form of PRs to our <a href="https://github.com/jMonkeyEngine/jmonkeyengine-website">website repo</a>.<br>
+Once a PR is approved and merged, a CI/CD task will rebuild and deploy the static site.</p>
+<h3 id="create-a-post">Create a post</h3>
+<p>To create a new post you need to make a new Markdown (.md) file under the <code>content/</code> folder in a directory of your choice (or a new one).<br>
+The directory structure will be reflected in the url, but won&rsquo;t influence the functionality of the site or the categorization, to place your post under a certain group you&rsquo;ll need to use tags. You can learn the usage for different special tags in the <a href="#tags">Tags</a> section.</p>
+<p>For example, let&rsquo;s say I want to write a tutorial serie, I would write my article in <em>content/tutorials/my-tutorial-serie/tutorial1.md</em> and I would use the tags <em>tutorials, my-tutorial-serie</em>.</p>
+<p>Feel free to use the styling you want for the article content, you can also use raw html, just try to keep it somewhat related to the general look of the website.</p>
+<h3 id="general-header">General Header</h3>
+<p>The md files need to provide a special header that defines some metadata.</p>
+<p>For common articles the header is (nb don&rsquo;t forget the <code>---</code>)</p>
+<pre><code class="language-yaml">---
+title: &quot;Your post&quot;
+date: 2019-10-08T06:27:00+00:00
+draft: false
+type: &quot;default&quot;
+layout: &quot;post_layout_default&quot;
+enable_comments: true
+authors:
+    - &quot;your github handle&quot;
+    - &quot;another github handle, if there is more than 1 author&quot;
+tags:
+    - &quot;tag1&quot;
+    - &quot;tag2&quot;
+    - &quot;tag3&quot;
+
+# Images that will be used when creating the social networks previews (optional)
+# images: [ 
+#     &quot;img.png&quot;,
+#     &quot;img.jpg',
+#     &quot;img.jpg&quot;
+# ]
+---
+</code></pre>
+<p>Make use to use a valid date in <strong>date</strong> and to remove <strong>enable_comments</strong> if you wish to disable comments.</p>
+<h3 id="showcase-header">Showcase Header</h3>
+<p>If you are posting to the <strong>showcase</strong>, the header is different:</p>
+<pre><code class="language-yaml">---
+title: &quot;Your project name&quot;
+date: 2019-10-15T06:27:00+00:00
+draft: false
+type: &quot;default&quot;
+layout: &quot;post_layout_showcase&quot;
+enable_comments: false
+
+authors:
+    - &quot;your github handle&quot;
+    - &quot;another github handle, if there is more than 1 author&quot;
+tags:
+    - &quot;tag1&quot;
+    - &quot;tag2&quot;
+    - &quot;tag3&quot;
+
+
+steam_link: &quot;wwwww&quot;
+itch_link: &quot;wwww&quot;
+publisher_link: &quot;wwww&quot;
+
+# Images that will be used when creating the social networks previews (optional)
+# images: [ 
+#     &quot;img.png&quot;,
+#     &quot;img.jpg',
+#     &quot;img.jpg&quot;
+# ]
+
+# Showcase gallery
+gallery: [
+    &quot;image.jpg&quot;,
+    &quot;image.png&quot;,
+    &quot;image.webp&quot;,
+    &quot;video.webm&quot;,
+    &quot;youtube:ID&quot;
+]
+
+---
+</code></pre>
+<p>As you can see, the name of the layout is <strong>post_layout_showcase</strong> instead of <strong>post_layout_default</strong> : <strong>layout: &ldquo;post_layout_showcase&rdquo;</strong></p>
+<p>There are also new properties for external links</p>
+<ul>
+<li>Steam: <strong>steam_link: &ldquo;wwwww&rdquo;</strong></li>
+<li>Itch.io: <strong>itch_link: &ldquo;wwww&rdquo;</strong></li>
+<li>Generic Website: <strong>publisher_link: &ldquo;wwww&rdquo;</strong></li>
+</ul>
+<p>If you don&rsquo;t have one or more of those links for your project, you can just omit the param alltogether.</p>
+<p>And finally there is a <strong>gallery</strong> param.<br>
+There you can put images and videos of your projects that will be shown in the top header and in the gallery.</p>
+<p>Every format supported by the html standard will work, in addition to that you can also link youtube videos by using this format <code>youtube:ID</code> (eg. <code>youtube:AnqzGANkPG8</code>).</p>
+<p><em>If possible you should link external resources in the gallery, in order to prevent the website repo from growing too big.</em></p>
+
+
+                </span>
+                
+
+                    <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="communitylog" href="/tags/communitylog"><i class="fas fa-hashtag"></i>communitylog</a></li>
+        
+        <li><a class="website" href="/tags/website"><i class="fas fa-hashtag"></i>website</a></li>
+        
+        <li><a class="blog" href="/tags/blog"><i class="fas fa-hashtag"></i>blog</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="riccardobl" href="/authors/riccardobl"><i class="fas fa-at"></i>riccardobl</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2020-12-13 08:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>13 December 2020</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw&text=Hello.%0aWe%20have%20a%20new%20website.%0aThis%20doesn%e2%80%99t%20come%20to%20you%20as%20a%20surprise%20if%20you%20have%20been%20following%20this%20thread%20where%20for%20~1%20week%20a%20preview%20of%20the%20website%20%e2%80%a6  "  >
+                <i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+                
+            </div>
+
+
+
+    </article>
+</section>
+
+
+<section class="full responsiveWidth">
+
+  <article>
+    <h1 id="comments"><i class="useless fas fa-comments"></i> Comments</h1>
+      <div class="content" id='discourse-comments'></div>
+
+      <script type="text/javascript">
+        var eurl=window.location.href ;
+        eurl=eurl.split("#")[0]; 
+        eurl=eurl.split("?")[0]; 
+        eurl=eurl.trim();
+        if(eurl.endsWith("/index.html"))eurl=eurl.substring(0,eurl.length-"/index.html".length).trim(); 
+        if(eurl.charAt(eurl.length-1)=="/") eurl=eurl.substring(0,eurl.length-1); 
+        if(eurl.startsWith("http://")) eurl="https://"+eurl.substring("http://".length);        
+        
+        
+        if(eurl.endsWith("/communitylog/new-website")){
+          eurl+="/#content"; 
+        }
+        
+
+        DiscourseEmbed = { 
+          discourseUrl: 'https://hub.jmonkeyengine.org/',
+          discourseEmbedUrl: eurl
+        };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+</article>
+</section>
+
+
+
+
+  </main>
+  <footer>
+    © 2020 jMonkeyEngine.
+    All other trademarks, logos and featured content are property of their respective owners.
+    <br />
+    <a title="Github repo" rel='noopener nofollow noreferrer' target="_blank"
+      href="https://github.com/jMonkeyEngine/jmonkeyengine-website">
+      <i class="fab fa-github"></i> Source on Github
+    </a> 
+    |
+    <a title="Report issue" rel='noopener nofollow noreferrer' target="_blank"
+      href="https://github.com/jMonkeyEngine/jmonkeyengine-website/issues">
+      <i class="fas fa-bug"></i> Report an issue
+    </a> 
+    <br />
+    <br />
+    Website designed and developed by 
+    <a href="https://github.com/riccardobl">Riccardo Balbo</a>
+    for the jMonkeyEngine's Community.
+
+   
+
+  </footer>
+  <div id="poweredBy" >
+  
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://www.macstadium.com/">
+      
+      <img   src="/images/macstadium-logo.png" />
+    </a>
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://www.java.com/">
+      
+      <img   src="/images/java-logo.png" />
+    </a>
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://opengl.org/">
+      
+      <img   src="/images/opengl-logo.png" />
+    </a>
+  </div>
+
+</body>
+
+</html>

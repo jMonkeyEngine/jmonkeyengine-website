@@ -1,0 +1,53 @@
+{
+    "responseTitle":"jMonkeyEngine  | pspeed42",
+    "apiVersion":"1.0",
+    "response":"articlesByAuthor",
+  
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+        "date":"2019-10-16 08:27:00 +0000 UTC",
+        "url":"https://jmonkeyengine.org/showcase/mythruna/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/mythruna/index.json",
+        "title":"Mythruna",
+        "uid":"68e428168590e916fdd7bb2371db0473",
+
+        
+        "summary":"Mythruna (myth + rune + a) is a game under development attempting to combine serious role playing elements with an endless, living, and completely modifiable randomly generated sandbox world. When completed, Mythruna will be a unique gaming experience."   ,
+        
+      
+        "tags":[
+        
+             
+             "mythruna"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "pspeed42"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

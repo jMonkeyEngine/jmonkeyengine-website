@@ -1,0 +1,65 @@
+{
+    "responseTitle":"jMonkeyEngine  | lightspeed frontier",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2019-10-15 06:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/ls_frontier/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/ls_frontier/index.json",
+        "title":"Lightspeed Frontier",
+        "uid":"029e0e452cd8daad9a5e6e84866cabed",
+
+       
+        "summary":"Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize it piece by piece to tackle whatever adventures await you. Take on crime lords and space pirates in battle, undercut corporations that are monopolizing business, influence the galactic stock market, and become the most successful captain you can be.\nIn this sci-fi adventure sandbox game, you have the opportunity to explore and influence the universe around you and make your own path."   ,
+        
+      
+        "tags":[
+        
+             
+             "steam"
+        
+              , 
+             "lightspeed frontier"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "moffkalast"
+            
+                  , 
+                 "grizeldi"
+            
+                  , 
+                 "poshdan"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

@@ -1,0 +1,36 @@
+{
+    "responseTitle":"jMonkeyEngine  | JMonkeyEngine 3.5.2 release",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"85a4d2d6b4c4c1720a13f7aebff09f02",
+
+    "title":"JMonkeyEngine 3.5.2 release",
+    "content":"\u003cp\u003eJMonkeyEngine is pleased to announce the 3.5.2-stable release of its game engine for Java programmers. JMonkeyEngine 3.5.2 is an interim release that solves a couple issues with 3.5.0/3.5.1 and upgrades the underlying LWJGL libraries to version 3.3.1.\u003c/p\u003e\n\u003cp\u003eThe 3.5.2-stable libraries can be found in the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\u003c/p\u003e\n\u003cp\u003eTo browse the change list and/or download the source code, go to \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.2-stable\"\u003ehttps://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.2-stable\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eFor the latest news and discussion of JMonkeyEngine software development, visit \u003ca href=\"https://hub.jmonkeyengine.org/c/development-discussion-jme3/9\"\u003ethe Development category at the JME Hub/Forum\u003c/a\u003e.\u003c/p\u003e\n",
+    "contentPlain":"JMonkeyEngine is pleased to announce the 3.5.2-stable release of its game engine for Java programmers. JMonkeyEngine 3.5.2 is an interim release that solves a couple issues with 3.5.0/3.5.1 and upgrades the underlying LWJGL libraries to version 3.3.1.\nThe 3.5.2-stable libraries can be found in the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and/or download the source code, go to https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.2-stable\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Hub/Forum.\n" ,
+    "url":"https://jmonkeyengine.org/devlog/jme352/",
+
+
+    
+    "summary":"JMonkeyEngine is pleased to announce the 3.5.2-stable release of its game engine for Java programmers. JMonkeyEngine 3.5.2 is an interim release that solves a couple issues with 3.5.0/3.5.1 and upgrades the underlying LWJGL libraries to version 3.3.1.\nThe 3.5.2-stable libraries can be found in the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and/or download the source code, go to https://github."   ,
+    
+    "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+
+}

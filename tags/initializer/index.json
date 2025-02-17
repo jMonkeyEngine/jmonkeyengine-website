@@ -1,0 +1,65 @@
+{
+    "responseTitle":"jMonkeyEngine  | initializer",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2022-07-10 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/communitylog/new-services/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/new-services/index.json",
+        "title":"jMonkey Initializer, Library and p2p donations",
+        "uid":"2f5cd9947db7e79db300edc8f06d5cc6",
+
+       
+        "summary":"Hello jMonkey community, I bring you some exciting news:\njMonkeyEngine Initializer Thanks to @richtea we now have an awesome web tool that simplifies the creation of jme projects for both new and advanced users:\nThe jMonkeyEngine Initializer.\nThis tool is found in the Get Started page and assists in the creation of new multi-platform gradle projects.\nLibrary: the new Store We are moving what is currently referred as \u0026ldquo;jmonkey store\u0026rdquo; to a new solution called \u0026ldquo;jmonkey library\u0026rdquo;."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "bitcoin"
+        
+              , 
+             "initializer"
+        
+              , 
+             "library"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

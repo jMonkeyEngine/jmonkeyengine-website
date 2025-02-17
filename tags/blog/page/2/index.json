@@ -1,0 +1,360 @@
+{
+    "responseTitle":"jMonkeyEngine  | blog",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"https://jmonkeyengine.org/tags/blog/index.json",
+
+
+    "next":"https://jmonkeyengine.org/tags/blog/page/3/index.json",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2021-03-11 18:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/interview-adibarda/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-adibarda/index.json",
+        "title":"Sgold interviews Adi Barda",
+        "uid":"85bf824777a372f522327c4f863ec5a4",
+
+       
+        "summary":"stephengold When, where, and how did you first become aware of JMonkeyEngine?\nWhat got you interested in using it?\nSceneMax3D Back in 2018, I decided to create a 3-D animation development environment\nthat would run on Android devices.\nI went looking for a 3-D Java library\nthat could be used in Android applications,\nand JME was the only one I found that had a \u0026ldquo;code first\u0026rdquo; approach."   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-12-13 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/communitylog/new-website/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/new-website/index.json",
+        "title":"New Website",
+        "uid":"b1efe558ca71fb0412e8a85cd7a8ec01",
+
+       
+        "summary":"Hello.\nWe have a new website.\nThis doesn\u0026rsquo;t come to you as a surprise if you have been following this thread where for ~1 week a preview of the website has been exposed to the feedbacks of the community.\nThis is the result after integrating all your suggestions, however there is always room for improvement and feedbacks are always appreciated, so if you didn\u0026rsquo;t have a chance to voice your opinion before, feel free to do it as a reply to this post."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "website"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-11-09 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/communitylog/community-update-donations/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/community-update-donations/index.json",
+        "title":"Donations Update",
+        "uid":"49860e54ec2eb94ebc0dbe2566ebfda3",
+
+       
+        "summary":"Hello fellow community members, this is the promised followup of Update in the wake of recent events\nAs planned, we opted for creating a collective at opencollective.com/jmonkeyengine, since this is the most future proof and community oriented alternative out there.\n"   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-10-29 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/communitylog/update-in-the-wake-of-recent-events/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/update-in-the-wake-of-recent-events/index.json",
+        "title":"Update in the wake of recent events",
+        "uid":"063097bc654cae8762bfc3c9f50eaaad",
+
+       
+        "summary":"Hello fellow community members. Probably most of you know already, but one of the team members left the community due to an internal disagreement.\nFrom his departure I took over his role, reconfigured our services to use easily redeployable docker containers, tested for different configurations and load and migrated everything to a different cloud provider with a plan that I believe is more suitable to our needs."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-05-10 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/devlog/jme332/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme332/index.json",
+        "title":"JMonkeyEngine version 3.3.2 is here!",
+        "uid":"a5c6c935624089dbd4b70a2261366f2e",
+
+       
+        "summary":"After 3 months of beta testing, the Java game engine\u0026rsquo;s long-awaited v3.3 release arrived on 30 March.\nWith it came exciting new features: AppState ids, light-probe blending, a better ragdoll control, and an animation system rewritten from the ground up.\nAs often happens, a few key bugfixes missed the cutoff for v3.3.0-stable. In its wake, the JMonkeyEngine team came together and identified a handful of existing fixes that could be safely backported into v3.3. With the help of volunteers, candidate builds received extensive testing on multiple platforms. Their efforts culminated in version 3.3.2-stable, a production-ready patch release from the v3.3 line.\n"   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "ItsMike54"
+            
+                  , 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-02-25 18:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/interview-danielp/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-danielp/index.json",
+        "title":"Sgold interviews Daniel Perano",
+        "uid":"650b77822713f2fa2b9c87fe7c05dc53",
+
+       
+        "summary":"stephengold Thank you for agreeing to be interviewed.\nFirst question: Do you remember when you first encountered JMonkeyEngine?\nWhat was your first impression?\ndanielperano I started learning jME back in the 3.0 days, as I recall,\nand I was impressed with the features it offered.\nThe scene-graph control and appstate design made a lot of sense to me \u0026mdash;"   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-02-15 12:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/interview-jayfella/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/interview-jayfella/index.json",
+        "title":"Sgold interviews Jayfella",
+        "uid":"9550e436efed613eefbe0d086be4c02a",
+
+       
+        "summary":"stephengold Thank you for agreeing to be interviewed.\nFirst question: When did you first hear about JMonkeyEngine?\njayfella Way back in 2014, after a long period of developing desktop applications,\nservers, and minecraft plugins, I decided to look into writing games.\nAt that time I was more into C#, but XNA was a sinking ship,\nso looked at alternatives."   ,
+        
+      
+        "tags":[
+        
+             
+             "interview"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2020-02-09 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/minie14/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/minie14/index.json",
+        "title":"Minie Physics Library Version 1.4 Released!",
+        "uid":"b76eba7dda28f9a70d3296d66d9a0fbc",
+
+       
+        "summary":"Minie version 1.4 is an exciting new add-on for the JMonkeyEngine (JME) game engine.\nMinie provides an open-source physics engine for desktop games. It gives software developers using JME access to the proven technology of the Bullet Physics SDK version 2.89,\nincluding:\nrigid-body dynamics, soft bodies, collision detection, vehicle and character controllers, ray and sweep tests, and dynamic constraints. Minie incorporates DynamicAnimControl technology for ragdoll simulation and inverse kinematics."   ,
+        
+      
+        "tags":[
+        
+             
+             "library"
+        
+              , 
+             "physics"
+        
+              , 
+             "software"
+        
+              , 
+             "minie"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2019-10-16 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/tutorials/grizeldi-pbr-tutorials/pbr_tutorial2/",
+        "jsonUrl":"https://jmonkeyengine.org/tutorials/grizeldi-pbr-tutorials/pbr_tutorial2/index.json",
+        "title":"Grizeldi's PBR Tutorial #2 - What are Light Probes?",
+        "uid":"0b5f62e4ae680992093adc89963b5edd",
+
+       
+        "summary":"Second part of my tutorial series in which I explain how to use jmonkeyengine\u0026rsquo;s Physically Based Rendering pipeline. In this part we answer the question what are the light probes and why do we need them. "   ,
+        
+      
+        "tags":[
+        
+             
+             "pbr"
+        
+              , 
+             "graphics"
+        
+              , 
+             "tutorials"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "grizeldi"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

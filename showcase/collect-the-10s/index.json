@@ -1,0 +1,67 @@
+{
+    "responseTitle":"jMonkeyEngine  | Collect The 10s",
+    "apiVersion":"1.0",
+    "response":"showcaseEntry",
+    "uid":"0d87e814eec3cf37bc4aab3015c11f99",
+    "title":"Collect The 10s",
+    "content":"A playing card game (taken from the popular Indian game \u003ci\u003emendikot / mindi cot / dehla pakad\u003c/i\u003e) brought to life in a 3D world! Simply enter the game room, walk around, sit at a table, and start playing Collect The 10s!\n\u003cbr\u003e\u003cbr\u003e\n\u003ca href=\"https://collectthe10s.com/download\" target=\"_blank\"  rel=\"noopener noreferrer\"\u003eDownload\u003c/a\u003e this game which is focused on bringing \u003cb\u003erecognition\u003c/b\u003e to the players in \u003cb\u003eONLINE play\u003c/b\u003e by offering players an \n\u003cb\u003eELO rating\u003c/b\u003e (similar to chess) when they play \u003ci\u003erated games\u003c/i\u003e, and getting a \u003cb\u003eworld and country\u003c/b\u003e \n\u003ca href=\"https://collectthe10s.com/rankings\" target=\"_blank\"  rel=\"noopener noreferrer\"\u003eranking\u003c/a\u003e \nbased on this rating.\u003cbr\u003e\u003cbr\u003e\n\u003cb\u003e\u003ci\u003eSingle player\u003c/i\u003e\u003c/b\u003e \nmode is also available where you play at different skill levels against \u003ci\u003eCPU\u003c/i\u003e players in \u003cb\u003eLadder\u003c/b\u003e \nand \u003cb\u003eRound Robin tournaments\u003c/b\u003e. The \u003ci\u003eCPU\u003c/i\u003e uses a \u003cb\u003estrong fine-tuned AI\u003c/b\u003e when set at the higher skill levels and is a very formidable opponent!\n",
+    "contentPlain":"A playing card game (taken from the popular Indian game mendikot / mindi cot / dehla pakad) brought to life in a 3D world! Simply enter the game room, walk around, sit at a table, and start playing Collect The 10s! Download this game which is focused on bringing recognition to the players in ONLINE play by offering players an ELO rating (similar to chess) when they play rated games, and getting a world and country ranking based on this rating.\nSingle player mode is also available where you play at different skill levels against CPU players in Ladder and Round Robin tournaments. The CPU uses a strong fine-tuned AI when set at the higher skill levels and is a very formidable opponent! " ,
+    "url":"https://jmonkeyengine.org/showcase/collect-the-10s/",
+
+
+    
+    "summary":"A playing card game (taken from the popular Indian game mendikot / mindi cot / dehla pakad) brought to life in a 3D world! Simply enter the game room, walk around, sit at a table, and start playing Collect The 10s! Download this game which is focused on bringing recognition to the players in ONLINE play by offering players an ELO rating (similar to chess) when they play rated games, and getting a world and country ranking based on this rating."   ,
+    
+
+
+    
+    "publisher_link":"https://collectthe10s.com/",
+    
+    
+    "steam_link":"",
+    
+    
+    "itch_link":"https://collectthe10s.itch.io/collect-the-10s",
+    
+ 
+    "media":[
+        "https://jmonkeyengine.org/images/showcase/c10/0.webp" , "https://jmonkeyengine.org/images/showcase/c10/1.webp" , "https://jmonkeyengine.org/images/showcase/c10/2.webp" , "https://jmonkeyengine.org/images/showcase/c10/3.webp" , "https://jmonkeyengine.org/images/showcase/c10/4.webp" , "https://jmonkeyengine.org/images/showcase/c10/5.webp" , "https://jmonkeyengine.org/images/showcase/c10/6.webp" , "https://jmonkeyengine.org/images/showcase/c10/7.webp" , "https://jmonkeyengine.org/images/showcase/c10/8.webp" , "https://jmonkeyengine.org/images/showcase/c10/9.webp" , "https://jmonkeyengine.org/images/showcase/c10/10.webp" , "https://jmonkeyengine.org/images/showcase/c10/11.webp" , "youtube:c7B6r9fTa3M" , "youtube:BU9sJGhm9lI" , "youtube:H1Qqpr-txtc"
+    ],
+
+
+    "tags":[
+        
+             
+             "cardgame"
+        
+              , 
+             "cards"
+        
+              , 
+             "mendikot"
+        
+              , 
+             "mindi"
+        
+              , 
+             "dehla pakad"
+        
+              , 
+             "board game"
+        
+              , 
+             "Collect The 10s"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "bkz"
+            
+            ]
+
+
+}

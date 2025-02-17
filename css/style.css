@@ -1,0 +1,1268 @@
+@import url("/fontawesome/css/all.min.css");
+@font-face {
+  font-family: 'PT Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ptmono/v13/9oRONYoBnWILk-9AnC8zNg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgo6eA.ttf) format('truetype');
+}
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+:root {
+  --fontFamily: Arial, Ubuntu, sans-serif;
+  --foreground: #b1b1b1;
+  --foreground2: #c5c5c5;
+  --foreground3: #e7e7e7;
+  --highlightFg: #ffd000;
+  --highlightFg2: #c07302;
+  --highlightedColor: #ffd000;
+  --background: #1b1b1b;
+  --background4: #111;
+  --background3: #000000;
+  --background2: #272727;
+  --twitter: #1DA1F2;
+  --buttonColor: #292929;
+  --buttonColorFg: var(--foreground3);
+  --docsColor: #0c5858;
+  --docsColorFg: var(--foreground3);
+  --bugsColor: #680404;
+  --bugsColorFg: var(--foreground3);
+  --codeColor: #6d003f;
+  --codeColorFg: var(--foreground3);
+  --discordColor: #44013b;
+  --discordColorFg: var(--foreground3);
+  --storeColor: #686602;
+  --storeColorFg: var(--foreground3);
+  --donateColor: #8cc800;
+  --donateColorFg: #212700;
+  --itchColor: #b11f38;
+  --itchColorFg: var(--foreground3);
+  --youtubeColor: #c4302b;
+  --youtubeColorFg: var(--foreground3);
+  --twitterColor: #1475b1;
+  --twitterColorFg: var(--foreground3);
+  --highlightedColorFg: #242424;
+  --textShadowColor: var(--background3);
+  --boxShadowColor: var(--background4);
+}
+img {
+  max-width: 100%;
+}
+p {
+  display: block;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+blockquote {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+blockquote > *:first-child:before {
+  content: "\f100";
+  font-family: 'font awesome 5 free';
+  font-weight: 700;
+  padding: 0.5rem;
+}
+blockquote > *:first-child:after {
+  content: "\f101";
+  font-family: 'font awesome 5 free';
+  font-weight: 700;
+  padding: 0.5rem;
+}
+progress#pageLoadingProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  height: 0.6vh;
+}
+progress#pageLoadingProgress[value],
+progress#pageLoadingProgress::-webkit-progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  background: var(--background2);
+  border: none;
+}
+progress#pageLoadingProgress::-webkit-progress-value,
+progress#pageLoadingProgress::-moz-progress-bar {
+  background: var(--highlightFg);
+}
+html {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+pre {
+  padding: 1rem;
+}
+pre,
+code {
+  position: relative;
+  border-radius: 0.3rem;
+  overflow: auto !important;
+  font-family: "PT Mono";
+}
+.hljs-ln-numbers {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: right;
+  color: var(--foreground2);
+  vertical-align: top;
+}
+.hljs-ln tr:nth-child(odd) {
+  background-color: var(--background4);
+}
+.hljs-ln-code {
+  padding-left: 1rem !important;
+}
+ul {
+  padding: 0.5rem;
+}
+ul,
+li {
+  text-decoration: none;
+  appearance: none;
+  list-style-type: none;
+  padding-left: 0.5rem;
+  margin: 0;
+}
+li {
+  margin-top: 0.1rem;
+}
+li p {
+  display: inline;
+}
+nav ul,
+nav li {
+  text-align: left;
+  all: unset;
+  display: flex;
+  white-space: nowrap;
+}
+nav ul {
+  margin-top: 0.5rem;
+}
+nav li:before {
+  display: none;
+}
+.shadowed {
+  box-shadow: 0 0 0.8rem 0.3rem var(--boxShadowColor);
+}
+.textShadowed {
+  text-shadow: 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor);
+}
+.textShadowedIntense {
+  text-shadow: 0 0 0.2rem var(--textShadowColor), 0 0 0.2rem var(--textShadowColor), 0 0 0.2rem var(--textShadowColor), 0 0 0.4rem var(--textShadowColor), 0 0 0.8rem var(--textShadowColor), 0 0 0.8rem var(--textShadowColor), 0 0 1.6rem var(--textShadowColor), 0 0 1.6rem var(--textShadowColor), 0 0 0.1rem var(--foreground), 0 0 0.1rem var(--foreground), 0 0 0.1rem var(--foreground), 0 0 0.1rem var(--foreground);
+}
+#topmenu {
+  background-color: var(--background);
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  padding: 0.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  #topmenu {
+    flex-wrap: wrap;
+  }
+}
+#topmenu a {
+  text-decoration: none !important;
+}
+#topmenu > div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-right: 0.3rem;
+}
+#topmenu > div:last-child {
+  margin-right: 0;
+}
+#topmenu > div:last-child > div {
+  margin-left: 0.3rem;
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  #topmenu > div:last-child {
+    margin: auto;
+  }
+}
+#topmenu > div:first-child {
+  margin-right: auto;
+  margin-left: 0;
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  #topmenu > div:first-child {
+    margin: auto;
+  }
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  #topmenu > div.expandedOnPortrait {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #topmenu > div.expandedOnPortrait button {
+    margin: 0!important;
+    margin-top: 0.3rem !important;
+    min-width: 8rem;
+    text-align: left!important;
+  }
+}
+.commonButton {
+  all: unset;
+  appearance: none;
+  background-color: var(--background2);
+  border: 0.1rem solid var(--background3) !important;
+  border-radius: 0.3rem;
+  color: var(--highlightFg);
+  padding: 0.3rem;
+  text-decoration: none;
+  margin: 0.3rem;
+  display: inline-block;
+  padding: 0.6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+  text-shadow: none;
+  font-weight: bolder !important;
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  box-shadow: 0 0 0.8rem 0.3rem var(--boxShadowColor);
+}
+.commonButton a {
+  text-decoration: none !important;
+  color: inherit;
+}
+button {
+  all: unset;
+  appearance: none;
+  background-color: var(--background2);
+  border: 0.1rem solid var(--background3) !important;
+  border-radius: 0.3rem;
+  color: var(--highlightFg);
+  padding: 0.3rem;
+  text-decoration: none;
+  margin: 0.3rem;
+  display: inline-block;
+  padding: 0.6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+  text-shadow: none;
+  font-weight: bolder !important;
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  box-shadow: 0 0 0.8rem 0.3rem var(--boxShadowColor);
+}
+button a {
+  text-decoration: none !important;
+  color: inherit;
+}
+button:hover {
+  filter: brightness(130%);
+}
+@keyframes buttonIconExpand {
+  100% {
+    position: initial;
+  }
+}
+.clickableIcon {
+  padding: 0.5rem;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  min-width: 1.8rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.clickableIcon i {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block;
+  margin-right: -0.25rem !important;
+  transition: margin 0.6s linear;
+}
+.clickableIcon > span {
+  opacity: 0;
+  letter-spacing: -0.9rem;
+  font-size: 0px;
+  margin: 0;
+  padding: 0;
+}
+@media only screen and (min-width : 1168px) {
+  .clickableIcon > span {
+    transition: letter-spacing 0.8s linear, opacity 0.3s linear 0.6s, font-size 0.3s linear;
+  }
+}
+@media only screen and (min-width : 1168px) {
+  .clickableIcon.hover i,
+  .clickableIcon:hover i {
+    margin: 0 !important;
+  }
+  .clickableIcon.hover > span,
+  .clickableIcon:hover > span {
+    font-size: inherit;
+    letter-spacing: 0px;
+    opacity: 1;
+  }
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  .clickableIcon.expandedOnPortrait i {
+    margin: 0 !important;
+  }
+  .clickableIcon.expandedOnPortrait > span {
+    font-size: inherit;
+    letter-spacing: 0px;
+    opacity: 1;
+  }
+}
+button.icon {
+  padding: 0.5rem;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  min-width: 1.8rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+button.icon i {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block;
+  margin-right: -0.25rem !important;
+  transition: margin 0.6s linear;
+}
+button.icon > span {
+  opacity: 0;
+  letter-spacing: -0.9rem;
+  font-size: 0px;
+  margin: 0;
+  padding: 0;
+}
+@media only screen and (min-width : 1168px) {
+  button.icon > span {
+    transition: letter-spacing 0.8s linear, opacity 0.3s linear 0.6s, font-size 0.3s linear;
+  }
+}
+@media only screen and (min-width : 1168px) {
+  button.icon.hover i,
+  button.icon:hover i {
+    margin: 0 !important;
+  }
+  button.icon.hover > span,
+  button.icon:hover > span {
+    font-size: inherit;
+    letter-spacing: 0px;
+    opacity: 1;
+  }
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  button.icon.expandedOnPortrait i {
+    margin: 0 !important;
+  }
+  button.icon.expandedOnPortrait > span {
+    font-size: inherit;
+    letter-spacing: 0px;
+    opacity: 1;
+  }
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  button.responsiveIcon {
+    padding: 0.5rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    min-width: 1.8rem;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0.2rem;
+  }
+  button.responsiveIcon i {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block;
+    margin-right: -0.25rem !important;
+  }
+  button.responsiveIcon > span {
+    opacity: 0;
+    letter-spacing: -0.9rem;
+    font-size: 0px;
+    margin: 0;
+    padding: 0;
+  }
+  button.responsiveIcon.expandedOnPortrait i {
+    margin: 0 !important;
+  }
+  button.responsiveIcon.expandedOnPortrait > span {
+    font-size: inherit;
+    letter-spacing: 0px;
+    opacity: 1;
+  }
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+nav ul {
+  display: flex;
+  flex-direction: column;
+}
+a,
+a:hover,
+a:visited {
+  color: inherit;
+  text-decoration: inherit;
+  color: var(--highlightFg);
+}
+a:hover {
+  text-decoration: underline;
+}
+h1 a,
+h2 a,
+h1 a:visited,
+h2 a:visited,
+h1 a:hover,
+h2 a:hover,
+header a,
+header a:hover,
+header a:visited {
+  color: inherit;
+}
+h1 {
+  position: relative;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+h2,
+h1,
+h3 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+  color: var(--highlightFg);
+}
+h2,
+h3 {
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+.toggleNavOnPortraitButton {
+  font-size: 2rem;
+  display: none;
+  color: var(--highlightFg);
+  cursor: pointer;
+}
+.toggleNavOnPortraitButton:hover {
+  filter: brightness(130%);
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  .toggleNavOnPortraitButton {
+    display: block;
+  }
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  .useless {
+    display: none;
+  }
+}
+.toggleable.toggledOff {
+  display: none !important;
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  .toggleable.toggledOffPortrait {
+    display: none !important;
+  }
+}
+* > i.fas:first-child,
+* > i.fab:first-child {
+  padding-right: 0.2rem;
+}
+.genericCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+}
+.highlightedCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--highlightedColor) !important;
+  color: var(--highlightedColorFg) !important;
+}
+.highlightedCl i {
+  color: var(--highlightedColorFg) !important;
+}
+.donateCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--donateColor) !important;
+  color: var(--donateColorFg) !important;
+}
+.donateCl i {
+  color: var(--donateColorFg) !important;
+}
+.docsCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--docsColor) !important;
+  color: var(--docsColorFg) !important;
+}
+.docsCl i {
+  color: var(--docsColorFg) !important;
+}
+.bugsCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--bugsColor) !important;
+  color: var(--bugsColorFg) !important;
+}
+.bugsCl i {
+  color: var(--bugsColorFg) !important;
+}
+.codeCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--codeColor) !important;
+  color: var(--codeColorFg) !important;
+}
+.codeCl i {
+  color: var(--codeColorFg) !important;
+}
+.discordCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--discordColor) !important;
+  color: var(--discordColorFg) !important;
+}
+.discordCl i {
+  color: var(--discordColorFg) !important;
+}
+.storeCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--storeColor) !important;
+  color: var(--storeColorFg) !important;
+}
+.storeCl i {
+  color: var(--storeColorFg) !important;
+}
+.twitterCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--twitterColor) !important;
+  color: var(--twitterColorFg) !important;
+}
+.twitterCl i {
+  color: var(--twitterColorFg) !important;
+}
+.youtubeCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--youtubeColor) !important;
+  color: var(--youtubeColorFg) !important;
+}
+.youtubeCl i {
+  color: var(--youtubeColorFg) !important;
+}
+.itchCl {
+  background: var(--buttonColor);
+  color: var(--buttonColorFg);
+  font-weight: bold;
+  background: var(--itchColor) !important;
+  color: var(--itchColorFg) !important;
+}
+.itchCl i {
+  color: var(--itchColorFg) !important;
+}
+figure.githubUser {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+  padding: 0;
+  margin: 2rem;
+}
+figure.githubUser > * {
+  padding: 0;
+  margin: 0;
+}
+figure.githubUser > img {
+  box-shadow: 0 0 0.2rem 0.01rem var(--highlightFg);
+  border-radius: 8rem;
+  max-height: 6rem;
+}
+figure.githubUser > figcaption {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+figure.githubUser > figcaption > h2 {
+  padding: 0;
+  margin: 0;
+}
+figure.githubUser.inline {
+  margin: 0;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem solid var(--highlightFg);
+}
+figure.githubUser.inline > img {
+  max-height: 3rem;
+}
+figure.githubUser.inline h2 {
+  font-size: 1.2rem;
+}
+figure.githubUser.inline .ghbio {
+  display: none !important;
+}
+body {
+  text-align: left;
+  overflow-x: hidden;
+  font-family: var(--fontFamily);
+  background: var(--background) !important;
+  color: var(--foreground);
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8706rem;
+  word-wrap: break-word;
+  white-space: normal;
+  text-shadow: 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor), 0 0 0.1rem var(--textShadowColor);
+}
+body > footer {
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--foreground2);
+  margin-bottom: 1rem;
+}
+body > footer a,
+body > footer a:hover,
+body > footer a:visited {
+  color: inherit;
+  text-decoration: underline;
+}
+body > main {
+  font-size: 1rem;
+  width: 100%;
+}
+body > main > h1 {
+  text-align: center;
+  margin: auto;
+  max-width: 600px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+body > main > h1:before,
+body > main > h1:after {
+  content: "\f107";
+  font-family: 'font awesome 5 free';
+  font-weight: 700;
+  padding: 0.5rem;
+}
+body > header {
+  position: relative;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background4);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body > header #siteTitle {
+  color: var(--highlightFg);
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  /* justify-items: center;
+			justify-content: center; */
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.4rem;
+  padding-bottom: 0.5rem;
+}
+body > header .smaller {
+  flex-direction: column;
+}
+body > header .smaller #logo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+body > header .smaller #logo .toggleNavOnPortraitButton {
+  margin-right: 1rem;
+  margin-left: auto;
+}
+body > header .smaller > #siteTitle {
+  flex-direction: column !important;
+  text-align: left !important;
+  align-items: flex-start !important;
+}
+body > header .smaller > #siteTitle > #contributionsBanner {
+  text-align: left!important;
+  margin-left: 0;
+  padding-left: 0.6rem;
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  body > header {
+    flex-direction: column;
+  }
+  body > header #logo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+  }
+  body > header #logo .toggleNavOnPortraitButton {
+    margin-right: 1rem;
+    margin-left: auto;
+  }
+  body > header > #siteTitle {
+    flex-direction: column !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+  body > header > #siteTitle > #contributionsBanner {
+    text-align: left!important;
+    margin-left: 0;
+    padding-left: 0.6rem;
+  }
+}
+body > header.floating {
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+}
+body > header.floating #logo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+body > header.floating #logo .toggleNavOnPortraitButton {
+  margin-right: 1rem;
+  margin-left: auto;
+}
+body > header.floating > #siteTitle {
+  flex-direction: column !important;
+  text-align: left !important;
+  align-items: flex-start !important;
+}
+body > header.floating > #siteTitle > #contributionsBanner {
+  text-align: left!important;
+  margin-left: 0;
+  padding-left: 0.6rem;
+}
+body > header.floating #contributionsBanner {
+  display: none;
+}
+body > header.floating .toggleNavOnPortraitButton {
+  display: block;
+}
+.more {
+  text-align: right;
+  display: block;
+}
+.cover {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  object-fit: cover;
+  pointer-events: none;
+  box-shadow: 0 0 0.3rem 0.04rem var(--background4);
+}
+.cover.gallery {
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: auto;
+  object-fit: contain;
+  z-index: 0;
+}
+.cover.blur {
+  filter: blur(100px);
+  margin-top: 40vh;
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  .cover.blur {
+    display: none;
+  }
+}
+.responsiveWidth {
+  max-width: 1400px;
+  width: 99vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+#backerMessage {
+  color: var(--foreground2);
+}
+#backerMessages {
+  color: var(--foreground3);
+  text-align: center;
+  width: 100%;
+}
+#contributionsBanner {
+  text-align: left ;
+  margin-left: auto;
+}
+#contributionsBanner > div {
+  margin-top: 0.4rem;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.list > article p {
+  display: inline;
+}
+.list.hlist {
+  flex-direction: row;
+}
+.list.hlist > article {
+  flex-basis: 30%;
+}
+.list.vlist {
+  display: flex;
+  flex-direction: column;
+}
+.collapsedList article {
+  border-radius: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  flex-basis: 100%;
+}
+.collapsedList article h1 {
+  border-radius: 0;
+}
+.collapsedList article:last-child {
+  margin-bottom: 1rem;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+.collapsedList article:first-child {
+  margin-top: 1rem;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+.collapsedList article:first-child h1 {
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+main > section {
+  text-align: center;
+  margin: auto;
+}
+section {
+  display: block;
+  position: relative;
+  text-align: left;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+section > article {
+  box-shadow: 0 0 0.8rem 0.3rem var(--boxShadowColor);
+  text-align: left;
+  background: var(--background2);
+  border-radius: 0.3rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-shadow: none;
+}
+section > article button {
+  background-color: var(--background4);
+}
+section > article .content a,
+section > article .content a:hover,
+section > article .content a:visited {
+  color: var(--highlightFg2);
+}
+section > article .content nav a,
+section > article .content nav a:visited,
+section > article .content nav a:hover {
+  color: inherit;
+}
+section > article h2,
+section > article h3,
+section > article h1 {
+  display: block;
+  color: var(--foreground2);
+  padding-top: 2rem;
+  padding-bottom: 0.4rem;
+}
+section > article .more {
+  text-align: left;
+}
+section > article hr {
+  margin-top: 1rem!important;
+  margin-bottom: 1rem!important;
+}
+section > article > h1:first-of-type {
+  border-radius: 0.3rem;
+  background: var(--background4);
+  color: var(--foreground2);
+  margin: 0;
+  padding: 0;
+  display: block;
+  padding: 0.7rem;
+  padding-left: 0.5rem;
+  padding-right: 0.1rem;
+  font-size: 1.3rem;
+  width: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+section > article > div.content {
+  line-height: 130%;
+  padding: 1rem;
+  flex-direction: row;
+  align-items: stretch;
+  min-width: 0;
+  width: 100%;
+  /*        @media @portrait {*/
+  display: flex;
+  flex-direction: column;
+  /*   }*/
+}
+section > article > div.content a {
+  word-break: break-all;
+  word-break: break-word;
+}
+section > article > div.content li {
+  list-style: none;
+}
+section > article > div.content li:before {
+  content: "\f0da";
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  margin-left: -0.8rem;
+  padding-right: 0.5rem;
+}
+section > article > div.content p:first-of-type {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+section > article > div.content > span {
+  display: block;
+  overflow-wrap: break-word;
+  flex-grow: 1;
+  width: 100%;
+}
+section > article > div.content > span ul {
+  margin-left: 1rem;
+}
+section > article > div.content > nav {
+  flex-grow: 0;
+  margin-left: 2rem;
+  flex-direction: column;
+  align-items: baseline;
+  flex-wrap: wrap;
+  color: var(--foreground2);
+  /*     @media @portrait {*/
+  /*    }*/
+  /*    @media @portrait {*/
+  margin-left: 0;
+  flex-direction: row;
+  /*}*/
+}
+section > article > div.content > nav * {
+  color: var(--foreground2);
+}
+section > article > div.content > nav > ul {
+  width: 100%;
+}
+section > article > div.content > nav > ul li {
+  width: 100%;
+  background: none;
+  border: none !important;
+  margin: 0.1rem;
+  margin-left: 0rem;
+  font-size: 0.8rem;
+  box-shadow: none;
+}
+section > article > div.content > nav > ul li > * {
+  margin-left: 1rem;
+}
+section > article > div.content > nav > ul li button {
+  width: 100%;
+  margin: 0;
+  margin: 0.4rem;
+  box-shadow: 0 0 0.8rem 0 var(--boxShadowColor);
+}
+section > article > div.content > nav ul li {
+  margin: 0rem;
+  padding: 0;
+  width: auto;
+}
+section > article > div.content > nav > ul {
+  margin-right: 0.4rem;
+  width: auto;
+}
+section.list > article > div.content {
+  display: flex;
+  flex-direction: column;
+}
+section.list > article > div.content nav {
+  flex-direction: row;
+}
+section.list > article > div.content nav .share {
+  display: none !important;
+}
+section.list > article > div.content ul {
+  width: auto;
+}
+section.list > article > div.content ul li {
+  width: auto;
+}
+section.list > article > div.content nav,
+section.list > article > div.content nav ul li {
+  margin: 0rem;
+  padding: 0;
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  section.hlist.responsive article {
+    border-radius: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-basis: 100%;
+  }
+  section.hlist.responsive article h1 {
+    border-radius: 0;
+  }
+  section.hlist.responsive article:last-child {
+    margin-bottom: 1rem;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+  section.hlist.responsive article:first-child {
+    margin-top: 1rem;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+  }
+  section.hlist.responsive article:first-child h1 {
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+  }
+}
+section#contribute article {
+  border-radius: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  flex-basis: 100%;
+}
+section#contribute article h1 {
+  border-radius: 0;
+}
+section#contribute article:last-child {
+  margin-bottom: 1rem;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+section#contribute article:first-child {
+  margin-top: 1rem;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+section#contribute article:first-child h1 {
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+button#startbtn {
+  font-size: 1.6rem;
+}
+button#featuresbtn {
+  font-size: 1.2rem;
+}
+section#showcase {
+  text-align: center;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--foreground3);
+  padding: 0;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-height: 40vh;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.42' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  text-shadow: 0 0 0.2rem var(--textShadowColor), 0 0 0.2rem var(--textShadowColor), 0 0 0.2rem var(--textShadowColor), 0 0 0.4rem var(--textShadowColor), 0 0 0.8rem var(--textShadowColor), 0 0 0.8rem var(--textShadowColor), 0 0 1.6rem var(--textShadowColor), 0 0 1.6rem var(--textShadowColor), 0 0 0.1rem var(--foreground), 0 0 0.1rem var(--foreground), 0 0 0.1rem var(--foreground), 0 0 0.1rem var(--foreground);
+}
+section#showcase.gallery {
+  background-image: none;
+}
+section#showcase h1,
+section#showcase h2,
+section#showcase h3 {
+  color: var(--highlightFg);
+}
+section#showcase #playButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 90;
+  align-items: center;
+  font-size: 4rem;
+  display: none;
+  justify-content: center;
+}
+section#showcase #gameDescription {
+  text-align: right !important;
+  width: 50%;
+  font-size: 0.8rem;
+  margin-top: auto;
+  margin-right: 0 !important;
+  margin-left: auto;
+  height: auto;
+  display: block;
+}
+section#showcase #gameDescription h2 {
+  text-align: left !important;
+  font-size: 0.9rem;
+}
+section#showcase #engineDescription {
+  font-size: 1.3rem;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+section#showcase #showCasePrev,
+section#showcase #showCaseNext {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  color: var(--highlightFg);
+}
+section#showcase.gallery {
+  min-height: 30vmax;
+}
+section#showcase #showCasePrev {
+  font-size: 4rem;
+  top: 50%;
+  margin-top: -2rem;
+  left: 1rem;
+}
+section#showcase #showCaseNext {
+  font-size: 4rem;
+  margin-top: -2rem;
+  top: 50%;
+  right: 1rem;
+}
+section#showcase > div {
+  padding: 1rem;
+  background: none;
+  box-shadow: none;
+  width: 100%;
+  display: block;
+  background-position: center;
+  background-size: cover;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+@media only screen and (max-width:1167px), only screen and (orientation:portrait) {
+  section#showcase #gameDescription h2 {
+    text-align: center !important;
+  }
+  section#showcase #gameDescription {
+    text-align: center !important;
+    width: 100%;
+  }
+  section#showcase #engineDescription {
+    text-align: center !important;
+    font-size: 1.1rem;
+  }
+}
+div#poweredBy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 3em;
+  text-align: right;
+}
+div#poweredBy img {
+  margin: 1em;
+  max-height: 4em;
+}
+pre,
+code,
+pre *,
+code *,
+p,
+p *,
+article .content * {
+  pointer-events: all!important;
+  -moz-pointer-events: all!important;
+  -khtml-pointer-events: all!important;
+  -webkit-pointer-events: all!important;
+  -ms-pointer-events: all!important;
+  user-select: text!important;
+  -moz-user-select: text!important;
+  -khtml-user-select: text!important;
+  -webkit-user-select: text!important;
+  -ms-user-select: text!important;
+}

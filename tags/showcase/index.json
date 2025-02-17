@@ -1,0 +1,252 @@
+{
+    "responseTitle":"jMonkeyEngine  | showcase",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2023-08-09 06:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/depthris/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/depthris/index.json",
+        "title":"DEPTHRIS",
+        "uid":"b1d2a7838d0add7ac95a14ceffbf4eb4",
+
+       
+        "summary":"3D puzzle game inspired by the classic title for DOS.\nMove and rotate the pieces so they fit in the spaces and fill as much floors as possibles.\nBut on each level, the pieces will start falling faster, increasing the tension."   ,
+        
+      
+        "tags":[
+        
+             
+             "tetris"
+        
+              , 
+             "puzzle"
+        
+              , 
+             "depthris"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "bloodwalker"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2023-07-04 06:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/collect-the-10s/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/collect-the-10s/index.json",
+        "title":"Collect The 10s",
+        "uid":"0d87e814eec3cf37bc4aab3015c11f99",
+
+       
+        "summary":"A playing card game (taken from the popular Indian game mendikot / mindi cot / dehla pakad) brought to life in a 3D world! Simply enter the game room, walk around, sit at a table, and start playing Collect The 10s! Download this game which is focused on bringing recognition to the players in ONLINE play by offering players an ELO rating (similar to chess) when they play rated games, and getting a world and country ranking based on this rating."   ,
+        
+      
+        "tags":[
+        
+             
+             "cardgame"
+        
+              , 
+             "cards"
+        
+              , 
+             "mendikot"
+        
+              , 
+             "mindi"
+        
+              , 
+             "dehla pakad"
+        
+              , 
+             "board game"
+        
+              , 
+             "Collect The 10s"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "bkz"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2019-10-16 08:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/mythruna/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/mythruna/index.json",
+        "title":"Mythruna",
+        "uid":"68e428168590e916fdd7bb2371db0473",
+
+       
+        "summary":"Mythruna (myth + rune + a) is a game under development attempting to combine serious role playing elements with an endless, living, and completely modifiable randomly generated sandbox world. When completed, Mythruna will be a unique gaming experience."   ,
+        
+      
+        "tags":[
+        
+             
+             "mythruna"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "pspeed42"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2019-10-16 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/skullstone/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/skullstone/index.json",
+        "title":"Skullstone",
+        "uid":"0f8d7f9ec7d595dff45ec3dc4369dc3f",
+
+       
+        "summary":"Skullstone – a retro styled grid-based dungeon crawler RPG inspired by the good old titles such as Dungeon Master, Stonekeep, Eye of Beholder and many other classics.\nIn a few words – a party of mercenaries explore a dungeon. They fight monsters, solve puzzles, find equipment, gather experience and level up while progressing through increasingly difficult levels. And there’s a story behind all that, are you ready to discover the truth behind Skullstone ?"   ,
+        
+      
+        "tags":[
+        
+             
+             "skullstone"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "FrozenShade666"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2019-10-15 06:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/ls_frontier/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/ls_frontier/index.json",
+        "title":"Lightspeed Frontier",
+        "uid":"029e0e452cd8daad9a5e6e84866cabed",
+
+       
+        "summary":"Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize it piece by piece to tackle whatever adventures await you. Take on crime lords and space pirates in battle, undercut corporations that are monopolizing business, influence the galactic stock market, and become the most successful captain you can be.\nIn this sci-fi adventure sandbox game, you have the opportunity to explore and influence the universe around you and make your own path."   ,
+        
+      
+        "tags":[
+        
+             
+             "steam"
+        
+              , 
+             "lightspeed frontier"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "moffkalast"
+            
+                  , 
+                 "grizeldi"
+            
+                  , 
+                 "poshdan"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2019-10-15 06:27:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/showcase/spoxel/",
+        "jsonUrl":"https://jmonkeyengine.org/showcase/spoxel/index.json",
+        "title":"Spoxel",
+        "uid":"3c680054951eecec382eccaa51c3484b",
+
+       
+        "summary":"Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful spells to use in your adventure or infuse weapons and armor with rare resources to create legendary items of power. Explore an infinite world and delve into other dimensions while you build a base to establish a foothold of power and defend it from your enemies!"   ,
+        
+      
+        "tags":[
+        
+             
+             "steam"
+        
+              , 
+             "spoxel"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "Jeddic"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

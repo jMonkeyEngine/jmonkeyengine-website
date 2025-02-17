@@ -1,0 +1,42 @@
+{
+    "responseTitle":"jMonkeyEngine  | Host migration and funding",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"bc44c1a24ffdb69655cd627e1b59ad3f",
+
+    "title":"Host migration and funding",
+    "content":"\u003cp\u003eAs you might have noticed already, our services were progressively migrated, during the month of October, to a cloud provider that, I believe, provides the best price/quality for our project.\u003cbr\u003e\n\u003cbr\u003e\n\u003cbr\u003e\nUp till now we have been using amazon aws with one year of credits donated by \u003ca href=\"https://hub.jmonkeyengine.org/u/adi.barda\"\u003e@adi.barda\u003c/a\u003e, that allowed us to never use any of our community fund, but from now on you will see monthly expenses submitted to the fund to pay for hosting and related services.\u003cbr\u003e\n\u003cbr\u003e\n\u003cbr\u003e\nDue to the general state of the market, the use of modern cloud tech and the improvements that were made to our server configurations last year, you should expect to see those expenses to be much lower to what we were used to 2 years ago, this also means that hosting is now secured for many years to come and that we can start talking about using some of the community donations to promote the development, as proposed many times before.\u003cbr\u003e\n\u003cbr\u003e\n\u003cbr\u003e\nThis thread is mostly concerned with the migration and we will have a better discussion about the use the donations, but feel free to reply with your opinion or ideas on this matter.\u003cbr\u003e\n\u003cbr\u003e\n\u003cbr\u003e\nAlso, small update about opencollective: they added a \u0026ldquo;Crypto Contribution\u0026rdquo; option that allows to contribute by paying through a crypto blockchain, rather than a centralized service, donations are converted to usd behind the scenes.\u003c/p\u003e\n",
+    "contentPlain":"As you might have noticed already, our services were progressively migrated, during the month of October, to a cloud provider that, I believe, provides the best price/quality for our project.\nUp till now we have been using amazon aws with one year of credits donated by @adi.barda, that allowed us to never use any of our community fund, but from now on you will see monthly expenses submitted to the fund to pay for hosting and related services.\nDue to the general state of the market, the use of modern cloud tech and the improvements that were made to our server configurations last year, you should expect to see those expenses to be much lower to what we were used to 2 years ago, this also means that hosting is now secured for many years to come and that we can start talking about using some of the community donations to promote the development, as proposed many times before.\nThis thread is mostly concerned with the migration and we will have a better discussion about the use the donations, but feel free to reply with your opinion or ideas on this matter.\nAlso, small update about opencollective: they added a \u0026ldquo;Crypto Contribution\u0026rdquo; option that allows to contribute by paying through a crypto blockchain, rather than a centralized service, donations are converted to usd behind the scenes.\n" ,
+    "url":"https://jmonkeyengine.org/communitylog/host-migration-and-funding/",
+
+
+    
+    "summary":"As you might have noticed already, our services were progressively migrated, during the month of October, to a cloud provider that, I believe, provides the best price/quality for our project.\nUp till now we have been using amazon aws with one year of credits donated by @adi.barda, that allowed us to never use any of our community fund, but from now on you will see monthly expenses submitted to the fund to pay for hosting and related services."   ,
+    
+    "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+              , 
+             "server"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+
+}

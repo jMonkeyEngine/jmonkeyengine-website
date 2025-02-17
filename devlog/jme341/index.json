@@ -1,0 +1,36 @@
+{
+    "responseTitle":"jMonkeyEngine  | JMonkeyEngine 3.4.1 release",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"3b24ee9ea07ebd8fa1231f1491eb87e5",
+
+    "title":"JMonkeyEngine 3.4.1 release",
+    "content":"\u003cp\u003eThe JMonkeyEngine team is proud to announce the 3.4.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.4.1 is an interim release that patches a handful of bugs and performance issues discovered in the JME 3.4 libraries since they became generally available in May.\u003c/p\u003e\n\u003cp\u003eAlpha testing has already begun on JME 3.5, which is planned for general availability in early 2022. JME 3.5 will introduce a few new features and also many refinements.\u003c/p\u003e\n\u003cp\u003eThe 3.4.1-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\u003c/p\u003e\n\u003cp\u003eTo browse the change list and the source code, go to \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.4.1-stable\"\u003ehttps://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.4.1-stable\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eAt this time, there\u0026rsquo;s no Software Development Kit (SDK) built specifically for JME 3.4 . However, development using the JME 3.4.1 libraries can proceed using the JME 3.3 SDK (based on Netbeans 11) or a general-purpose IDE such as IntelliJ IDEA.\u003c/p\u003e\n\u003cp\u003eFor the latest news and discussion of JMonkeyEngine software development, visit \u003ca href=\"https://hub.jmonkeyengine.org/c/development-discussion-jme3/9\"\u003ethe Development category at the JME Hub/Forum\u003c/a\u003e.\u003c/p\u003e\n",
+    "contentPlain":"The JMonkeyEngine team is proud to announce the 3.4.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.4.1 is an interim release that patches a handful of bugs and performance issues discovered in the JME 3.4 libraries since they became generally available in May.\nAlpha testing has already begun on JME 3.5, which is planned for general availability in early 2022. JME 3.5 will introduce a few new features and also many refinements.\nThe 3.4.1-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and the source code, go to https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.4.1-stable\nAt this time, there\u0026rsquo;s no Software Development Kit (SDK) built specifically for JME 3.4 . However, development using the JME 3.4.1 libraries can proceed using the JME 3.3 SDK (based on Netbeans 11) or a general-purpose IDE such as IntelliJ IDEA.\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Hub/Forum.\n" ,
+    "url":"https://jmonkeyengine.org/devlog/jme341/",
+
+
+    
+    "summary":"The JMonkeyEngine team is proud to announce the 3.4.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.4.1 is an interim release that patches a handful of bugs and performance issues discovered in the JME 3.4 libraries since they became generally available in May.\nAlpha testing has already begun on JME 3.5, which is planned for general availability in early 2022."   ,
+    
+    "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+
+}

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | jMonkey Initializer, Library and p2p donations</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description"
+    content="jMonkeyEngine is a modern developer friendly game engine written primarily in Java.  ">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="jMonkey Initializer, Library and p2p donations"/>
+<meta name="twitter:description" content="Hello jMonkey community, I bring you some exciting news:
+jMonkeyEngine Initializer Thanks to @richtea we now have an awesome web tool that simplifies the creation of jme projects for both new and advanced users:
+The jMonkeyEngine Initializer.
+This tool is found in the Get Started page and assists in the creation of new multi-platform gradle projects.
+Library: the new Store We are moving what is currently referred as &ldquo;jmonkey store&rdquo; to a new solution called &ldquo;jmonkey library&rdquo;."/>
+
+  <meta property="og:title" content="jMonkey Initializer, Library and p2p donations" />
+<meta property="og:description" content="Hello jMonkey community, I bring you some exciting news:
+jMonkeyEngine Initializer Thanks to @richtea we now have an awesome web tool that simplifies the creation of jme projects for both new and advanced users:
+The jMonkeyEngine Initializer.
+This tool is found in the Get Started page and assists in the creation of new multi-platform gradle projects.
+Library: the new Store We are moving what is currently referred as &ldquo;jmonkey store&rdquo; to a new solution called &ldquo;jmonkey library&rdquo;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmonkeyengine.org/communitylog/new-services/" /><meta property="article:section" content="communitylog" />
+<meta property="article:published_time" content="2022-07-10T08:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-10T08:00:00+00:00" />
+
+
+  <meta itemprop="name" content="jMonkey Initializer, Library and p2p donations">
+<meta itemprop="description" content="Hello jMonkey community, I bring you some exciting news:
+jMonkeyEngine Initializer Thanks to @richtea we now have an awesome web tool that simplifies the creation of jme projects for both new and advanced users:
+The jMonkeyEngine Initializer.
+This tool is found in the Get Started page and assists in the creation of new multi-platform gradle projects.
+Library: the new Store We are moving what is currently referred as &ldquo;jmonkey store&rdquo; to a new solution called &ldquo;jmonkey library&rdquo;."><meta itemprop="datePublished" content="2022-07-10T08:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-07-10T08:00:00+00:00" />
+<meta itemprop="wordCount" content="385">
+<meta itemprop="keywords" content="communitylog,bitcoin,initializer,library,blog," />
+  
+
+
+
+  
+  <script src="/js/old-browser.js"></script>
+  <link rel="stylesheet" href="/css/old-browser.css">
+  
+
+  
+
+  
+  <script src="/highlight/highlight.pack.js"></script>
+  <script
+    src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+  
+
+  
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/later/1.2.0/later.min.js" integrity="sha512-4OyNDMl5KLKjS8F1ImVwUvmthM8HkXbR6vMafCmT5zBTd9I/sA3z3zM0JLBosHW6/3K2jq2RoBo/eTUNS2hOGA==" crossorigin="anonymous"></script>
+  <script src="/js/maintenance/maintenance.js"></script>
+  <link rel="stylesheet" href="/js/maintenance/maintenance.css">
+  
+
+  
+  <script src="/js/christmas/Christmas.js"></script>
+  <script>
+      Christmas.init(
+        "https://jmonkeyengine.org/js/christmas/",
+        ["figure.githubUser img", 'img.avatar', "#showcase button"],
+        [
+          {
+            type: "attribute",
+            value: "src",
+            transform:function(src){
+              if(src.startsWith("/user_avatar/hub.jmonkeyengine.org/"))  {
+                return src.substring("/user_avatar/hub.jmonkeyengine.org/".length).split("/")[0];
+              }          
+              return src;
+            }
+          },
+          {
+            type: "attribute",
+            value: "title"
+          },
+          {
+            type: "text"
+          }
+        ],
+        ["header img.avatar"]
+      );
+  </script>
+  
+
+</head>
+
+<body>
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div class="expandable">
+        <a href="https://jmonkeyengine.org/" alt-href="https://jmonkeyengine.org/tags,https://jmonkeyengine.org/authors,https://jmonkeyengine.org/devlog,https://jmonkeyengine.org/blog,,https://jmonkeyengine.org/communitylog">
+            <button class="genericCl responsiveIcon expandable ">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+        <a href="https://jmonkeyengine.org/tags/showcase" alt-href="https://jmonkeyengine.org/showcase">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-images"></i> <span>Showcase</span>
+            </button>
+        </a>
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://library.jmonkeyengine.org" >
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-puzzle-piece"></i> <span>Library</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.org/docs">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.org/license">
+            <button class="genericCl responsiveIcon  expandable toggleable toggledOffPortrait">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+    <div class="toggleable toggledOffPortrait expandable">
+            <a  href="https://github.com/jMonkeyEngine/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+                <button class="icon toggleable toggledOffPortrait codeCl  expandable " title="Github">
+                    <i class="fab fa-github-square"></i> <span>Github</span>
+                </button>
+            </a>
+            <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+                <button class="icon twitterCl toggleable toggledOffPortrait  expandable " title="Follow on Twitter">
+                    <i class="fab fa-twitter"></i> <span>Twitter</span>
+                </button>
+            </a>
+
+            <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer'
+                target="_blank">
+                <button class="icon youtubeCl toggleable toggledOffPortrait  expandable " title="Follow on Youtube">
+                    <i class="fab fa-youtube"></i> <span>Youtube</span>
+                </button>
+            </a>
+       
+
+            
+            <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+                <button class="icon discordCl toggleable toggledOffPortrait  expandable " title="Discord">
+                    <i class="fab fa-discord"></i> <span>Discord</span>
+                </button>
+            </a>
+            <a href="https://jmonkeyengine.org/donate" >
+                <button class="icon donateCl toggleable toggledOffPortrait  expandable " title="Donate">
+                    <i class="fas fa-donate"></i> <span>Donate!</span>
+                </button>
+            </a>
+
+        </div>
+</nav>
+
+<script>
+    
+    !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.stringSimilarity=e():t.stringSimilarity=e()}(self,(function(){return t={138:t=>{function e(t,e){if((t=t.replace(/\s+/g,""))===(e=e.replace(/\s+/g,"")))return 1;if(t.length<2||e.length<2)return 0;let r=new Map;for(let e=0;e<t.length-1;e++){const n=t.substring(e,e+2),o=r.has(n)?r.get(n)+1:1;r.set(n,o)}let n=0;for(let t=0;t<e.length-1;t++){const o=e.substring(t,t+2),s=r.has(o)?r.get(o):0;s>0&&(r.set(o,s-1),n++)}return 2*n/(t.length+e.length-2)}t.exports={compareTwoStrings:e,findBestMatch:function(t,r){if(!function(t,e){return"string"==typeof t&&!!Array.isArray(e)&&!!e.length&&!e.find((function(t){return"string"!=typeof t}))}(t,r))throw new Error("Bad arguments: First argument should be a string, second should be an array of strings");const n=[];let o=0;for(let s=0;s<r.length;s++){const i=r[s],f=e(t,i);n.push({target:i,rating:f}),f>n[o].rating&&(o=s)}return{ratings:n,bestMatch:n[o],bestMatchIndex:o}}}}},e={},function r(n){if(e[n])return e[n].exports;var o=e[n]={exports:{}};return t[n](o,o.exports,r),o.exports}(138);var t,e}));
+    
+
+    
+
+    
+    window.initJmeMenu=function () {
+        const selectionClass= window.selectedTopMenuClass || "highlightedCl";
+
+        const topmenu = document.querySelector('#topmenu');
+        if (window.location.href.startsWith("http://localhost:1313")) {
+            for (const a of topmenu.querySelectorAll("a")) {
+                a.href = a.href.replace("https://jmonkeyengine.org", "http://localhost:1313");
+            }
+        }
+
+        const likelyScore=[];
+        for (const a of topmenu.querySelectorAll("a")) {
+            const pageUrl=window.location.href.endsWith("/")?window.location.href.substring(0,window.location.href.length-1):window.location.href;
+         
+            const process = (linkUrls) => {
+                if(!linkUrls)return;
+                for(let linkUrl of linkUrls){
+                    if (linkUrl != null) {
+                        if (window.location.href.startsWith("http://localhost:1313")) {
+                            linkUrl = linkUrl.replace("https://jmonkeyengine.org", "http://localhost:1313");
+                        }
+
+                        if (linkUrl.endsWith("/")) {
+                            linkUrl = linkUrl.substring(0, linkUrl.length - 1);
+                        }
+                        const score = stringSimilarity.compareTwoStrings(linkUrl, pageUrl);
+                        likelyScore.push(
+                            {
+                                score: score,
+                                el: a.querySelector("button")
+                            }
+                        );
+                    }
+                }
+            }
+
+            process([a.href]);
+            process(a.getAttribute("alt-href")?a.getAttribute("alt-href").split(","):undefined);           
+
+        }
+        likelyScore.sort((a, b) => b.score - a.score);   
+        likelyScore.forEach(el=>el.el.classList.remove(selectionClass));
+        likelyScore[0].el.classList.add(selectionClass);
+
+    };
+    
+    document.addEventListener('DOMContentLoaded', function(){
+       window.initJmeMenu(); 
+    });
+</script>
+
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+
+<i id="playButton" class=" fas fa-play"></i>
+
+
+
+
+
+
+<div class="showcaseElement" style='display: block   '>
+  <div class="cover blur"   style  ="background-image: url('/images/showcase/spoxel/2.jpg'); " ></div>
+  <div class="cover"    style  ="background-image: url('/images/showcase/spoxel/2.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/8.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/8.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/3.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/3.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+  <video class="showcaseElement cover" style='display: none  ' preload="none"
+    class="cover">
+    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm" type="video/webm">
+  </video>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/6.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/6.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/4.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/4.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+  <video class="showcaseElement cover" style='display: none  ' preload="none"
+    class="cover">
+    <source src="https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm" type="video/webm">
+  </video>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/1.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/1.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/5.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/5.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/spoxel/7.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/spoxel/7.jpg'); " ></div>
+</div>
+
+
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+
+      <a href="/start/"><button  id="startbtn" class="highlightedCl" ><i class="fas fa-rocket"></i> Get Started </button></a>
+
+      <a href="/#features" title="overview"><button id="startbtn"   class="highlightedCl"><i class="fas fa-question-circle" style="padding:0"></i></button></a>
+      
+
+      
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Spoxel powered by jMonkeyEngine</h2>
+      
+      Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful … 
+      
+      <br />
+      <a class="readMore" href="/showcase/spoxel/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+<a id="content"></a>
+
+<section class="full responsiveWidth">
+
+<article>
+        <h1 >
+            
+<i class="fas fa-bullhorn useless"></i>
+
+           
+            <a href="/communitylog/new-services/">jMonkey Initializer, Library and p2p donations</a></h1>
+            <div class="content">
+                <span>
+                <p>Hello jMonkey community, I bring you some exciting news:</p>
+<h2 id="jmonkeyengine-initializer">jMonkeyEngine Initializer</h2>
+<p>Thanks to <a href="https://hub.jmonkeyengine.org/u/richtea/">@richtea</a> we now have an awesome web tool that simplifies the creation of jme projects for both new and advanced users:<br>
+The <a href="https://start.jmonkeyengine.org"><strong>jMonkeyEngine Initializer</strong></a>.</p>
+<img src="/images/initializer.png" style="max-width:100%">
+<p>This tool is found in the <a href="https://jmonkeyengine.org/start/">Get Started</a> page and assists in the creation of new multi-platform gradle projects.</p>
+<h2 id="library-the-new-store">Library: the new Store</h2>
+<p>We are moving what is currently referred as &ldquo;jmonkey store&rdquo; to a new solution called <a href="https://library.jmonkeyengine.org">&ldquo;jmonkey library&rdquo;</a>.<br>
+This has been rebuilt from scratch with the intent of making a low-friction and developer friendly portal to find community content.</p>
+<img src="/images/library.png" style="max-width:100%">
+<p>The main improvement of this solution over the previous one are:</p>
+<ul>
+<li><strong>Login shared with the <a href="https://hub.jmonkeyengine.org">hub</a></strong>.</li>
+<li><strong>Auto-Import projects from Github (and the old Store)</strong>: You just paste the link and the library tries to figure out the rest</li>
+<li><strong><a href="https://library.jmonkeyengine.org/apidoc">Simple Apis</a></strong></li>
+<li><strong><a href="https://github.com/jMonkeyEngine/jme-library-publish-action">Github Action integration</a></strong> to automate publishing and updates using the github action workflow.</li>
+<li><strong>Github Sponsor, PayPal Donations, Bitcoin Lightning Tips and Patreon buttons</strong> can be configured and displayed in the library pages</li>
+<li><strong>Integration with the Initializer</strong>: users with trust level &gt;=2 on the <a href="https://hub.jmonkeyengine.org">hub</a> can toggle a checkbox and get their libraries included in the jme initializer.</li>
+</ul>
+<p><em>The old store will stay online until all the entries are migrated.</em></p>
+<h2 id="p2pcommunity2community-donation">P2P/Community2Community Donation</h2>
+<p>Until now we have been receiving donations only through <a href="https://opencollective.com/jmonkeyengine">opencollective</a> and we&rsquo;ve been using them mostly to cover hosting costs and not much else, while there are discussions around using some of the funds to promote development, I&rsquo;ve come up with something new&hellip;</p>
+<p>Following the value4value principle we are now <a href="/donate">accepting donations</a> also through Bitcoin over the lightning network (for borderless, low fees and fast settling), but the catch is that these donations go directly to the private lightning wallets of our github contributors.</p>
+<img src="/images/splitdonation.png" style="max-width:100%">
+<p>Basically you can add a lightning address or LNURL to your github bio, as explained <a href="https://github.com/riccardobl/SplitDonation#opensource-contributor-receive-rewards">here</a> and you will be eligible to get a slice of the donations made through <a href="https://donate.jmonkeyengine.org">donate.jmonkeyengine.org</a>.</p>
+<p>This is also integrated with the <a href="https://library.jmonkeyengine.org">jMonkeyEngine Library</a> and <a href="https://start.jmonkeyengine.org">jMonkeyEngine Initializer</a>. Projects built with the initializer will have a special  <em>gradle fund</em> task that opens a page to donate to the authors of the dependencies that have a valid lightning address or LNURL configured in the <a href="https://library.jmonkeyengine.org/#!user=current">jMonkeyEngine Library&rsquo;s User Settings</a>.</p>
+<p><em>More on this in a dedicated post at a later time</em></p>
+
+
+                </span>
+                
+
+                    <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="communitylog" href="/tags/communitylog"><i class="fas fa-hashtag"></i>communitylog</a></li>
+        
+        <li><a class="bitcoin" href="/tags/bitcoin"><i class="fas fa-hashtag"></i>bitcoin</a></li>
+        
+        <li><a class="initializer" href="/tags/initializer"><i class="fas fa-hashtag"></i>initializer</a></li>
+        
+        <li><a class="library" href="/tags/library"><i class="fas fa-hashtag"></i>library</a></li>
+        
+        <li><a class="blog" href="/tags/blog"><i class="fas fa-hashtag"></i>blog</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="riccardobl" href="/authors/riccardobl"><i class="fas fa-at"></i>riccardobl</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2022-07-10 08:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>10 July 2022</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw&text=Hello%20jMonkey%20community%2c%20I%20bring%20you%20some%20exciting%20news%3a%0ajMonkeyEngine%20Initializer%20Thanks%20to%20%40richtea%20we%20now%20have%20an%20awesome%20web%20tool%20that%20simplifies%20%e2%80%a6  "  >
+                <i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+                
+            </div>
+
+
+
+    </article>
+</section>
+
+
+<section class="full responsiveWidth">
+
+  <article>
+    <h1 id="comments"><i class="useless fas fa-comments"></i> Comments</h1>
+      <div class="content" id='discourse-comments'></div>
+
+      <script type="text/javascript">
+        var eurl=window.location.href ;
+        eurl=eurl.split("#")[0]; 
+        eurl=eurl.split("?")[0]; 
+        eurl=eurl.trim();
+        if(eurl.endsWith("/index.html"))eurl=eurl.substring(0,eurl.length-"/index.html".length).trim(); 
+        if(eurl.charAt(eurl.length-1)=="/") eurl=eurl.substring(0,eurl.length-1); 
+        if(eurl.startsWith("http://")) eurl="https://"+eurl.substring("http://".length);        
+        
+        
+        if(eurl.endsWith("/communitylog/new-website")){
+          eurl+="/#content"; 
+        }
+        
+
+        DiscourseEmbed = { 
+          discourseUrl: 'https://hub.jmonkeyengine.org/',
+          discourseEmbedUrl: eurl
+        };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+</article>
+</section>
+
+
+
+
+  </main>
+  <footer>
+    © 2020 jMonkeyEngine.
+    All other trademarks, logos and featured content are property of their respective owners.
+    <br />
+    <a title="Github repo" rel='noopener nofollow noreferrer' target="_blank"
+      href="https://github.com/jMonkeyEngine/jmonkeyengine-website">
+      <i class="fab fa-github"></i> Source on Github
+    </a> 
+    |
+    <a title="Report issue" rel='noopener nofollow noreferrer' target="_blank"
+      href="https://github.com/jMonkeyEngine/jmonkeyengine-website/issues">
+      <i class="fas fa-bug"></i> Report an issue
+    </a> 
+    <br />
+    <br />
+    Website designed and developed by 
+    <a href="https://github.com/riccardobl">Riccardo Balbo</a>
+    for the jMonkeyEngine's Community.
+
+   
+
+  </footer>
+  <div id="poweredBy" >
+  
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://www.macstadium.com/">
+      
+      <img   src="/images/macstadium-logo.png" />
+    </a>
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://www.java.com/">
+      
+      <img   src="/images/java-logo.png" />
+    </a>
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://opengl.org/">
+      
+      <img   src="/images/opengl-logo.png" />
+    </a>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <title>jMonkeyEngine  | MacOS renting and development in the cloud</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description"
+    content="jMonkeyEngine is a modern developer friendly game engine written primarily in Java.  ">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MacOS renting and development in the cloud"/>
+<meta name="twitter:description" content="MacOS cloud renting has started to proliferate with the new Apple Silicon M1 chip and it turned out to be a pretty decent way to test graphical applications on MacOS without buying apple&rsquo;s pricey hardware or resorting to hackish ports and vms of questionable legality.
+I am reporting here the procedure to quickly get a MacOS M1 cloud service up and running for testing jmonkey applications without too much hassle."/>
+
+  <meta property="og:title" content="MacOS renting and development in the cloud" />
+<meta property="og:description" content="MacOS cloud renting has started to proliferate with the new Apple Silicon M1 chip and it turned out to be a pretty decent way to test graphical applications on MacOS without buying apple&rsquo;s pricey hardware or resorting to hackish ports and vms of questionable legality.
+I am reporting here the procedure to quickly get a MacOS M1 cloud service up and running for testing jmonkey applications without too much hassle." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmonkeyengine.org/blog/macos-cloud-renting-and-developmentmacos-cloud-renting-and-development/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-01-19T18:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-19T18:00:00+00:00" />
+
+
+  <meta itemprop="name" content="MacOS renting and development in the cloud">
+<meta itemprop="description" content="MacOS cloud renting has started to proliferate with the new Apple Silicon M1 chip and it turned out to be a pretty decent way to test graphical applications on MacOS without buying apple&rsquo;s pricey hardware or resorting to hackish ports and vms of questionable legality.
+I am reporting here the procedure to quickly get a MacOS M1 cloud service up and running for testing jmonkey applications without too much hassle."><meta itemprop="datePublished" content="2022-01-19T18:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-19T18:00:00+00:00" />
+<meta itemprop="wordCount" content="892">
+<meta itemprop="keywords" content="tutorials,blog,misc," />
+  
+
+
+
+  
+  <script src="/js/old-browser.js"></script>
+  <link rel="stylesheet" href="/css/old-browser.css">
+  
+
+  
+
+  
+  <script src="/highlight/highlight.pack.js"></script>
+  <script
+    src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="/highlight/styles/railscasts.css">
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+  
+
+  
+  <script src="/js/utils.js"></script>
+  <script src="/js/showcase.js"></script>
+  <script type="module" src="/js/Main.js"></script>
+  
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/later/1.2.0/later.min.js" integrity="sha512-4OyNDMl5KLKjS8F1ImVwUvmthM8HkXbR6vMafCmT5zBTd9I/sA3z3zM0JLBosHW6/3K2jq2RoBo/eTUNS2hOGA==" crossorigin="anonymous"></script>
+  <script src="/js/maintenance/maintenance.js"></script>
+  <link rel="stylesheet" href="/js/maintenance/maintenance.css">
+  
+
+  
+  <script src="/js/christmas/Christmas.js"></script>
+  <script>
+      Christmas.init(
+        "https://jmonkeyengine.org/js/christmas/",
+        ["figure.githubUser img", 'img.avatar', "#showcase button"],
+        [
+          {
+            type: "attribute",
+            value: "src",
+            transform:function(src){
+              if(src.startsWith("/user_avatar/hub.jmonkeyengine.org/"))  {
+                return src.substring("/user_avatar/hub.jmonkeyengine.org/".length).split("/")[0];
+              }          
+              return src;
+            }
+          },
+          {
+            type: "attribute",
+            value: "title"
+          },
+          {
+            type: "text"
+          }
+        ],
+        ["header img.avatar"]
+      );
+  </script>
+  
+
+</head>
+
+<body>
+  <header> <nav class="responsiveWidth  " id="topmenu">
+    <div class="expandable">
+        <a href="https://jmonkeyengine.org/" alt-href="https://jmonkeyengine.org/tags,https://jmonkeyengine.org/authors,https://jmonkeyengine.org/devlog,https://jmonkeyengine.org/blog,,https://jmonkeyengine.org/communitylog">
+            <button class="genericCl responsiveIcon expandable ">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </button>
+        </a>
+        <a href="https://jmonkeyengine.org/tags/showcase" alt-href="https://jmonkeyengine.org/showcase">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-images"></i> <span>Showcase</span>
+            </button>
+        </a>
+
+        <a href="https://hub.jmonkeyengine.org">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fab fa-discourse"></i> <span>Discussions</span>
+            </button>
+        </a>
+
+        <a href="https://library.jmonkeyengine.org" >
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-puzzle-piece"></i> <span>Library</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.org/docs">
+            <button class="genericCl responsiveIcon  expandable ">
+                <i class="fas fa-book"></i> <span>Docs</span>
+            </button>
+        </a>
+
+        <a href="https://jmonkeyengine.org/license">
+            <button class="genericCl responsiveIcon  expandable toggleable toggledOffPortrait">
+                <i class="fas fa-balance-scale-right"></i> <span>License</span>
+            </button>
+        </a>
+    </div>
+
+    <div class="toggleable toggledOffPortrait expandable">
+            <a  href="https://github.com/jMonkeyEngine/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+                <button class="icon toggleable toggledOffPortrait codeCl  expandable " title="Github">
+                    <i class="fab fa-github-square"></i> <span>Github</span>
+                </button>
+            </a>
+            <a href="https://twitter.com/jmonkeyengine" rel='noopener noreferrer' target="_blank">
+                <button class="icon twitterCl toggleable toggledOffPortrait  expandable " title="Follow on Twitter">
+                    <i class="fab fa-twitter"></i> <span>Twitter</span>
+                </button>
+            </a>
+
+            <a href="https://www.youtube.com/channel/UC-Fs3R5Q6wW_XYspOXGZgPw" rel='noopener noreferrer'
+                target="_blank">
+                <button class="icon youtubeCl toggleable toggledOffPortrait  expandable " title="Follow on Youtube">
+                    <i class="fab fa-youtube"></i> <span>Youtube</span>
+                </button>
+            </a>
+       
+
+            
+            <a href="https://discord.gg/Rv8sfVu" rel='noopener noreferrer' target="_blank">
+                <button class="icon discordCl toggleable toggledOffPortrait  expandable " title="Discord">
+                    <i class="fab fa-discord"></i> <span>Discord</span>
+                </button>
+            </a>
+            <a href="https://jmonkeyengine.org/donate" >
+                <button class="icon donateCl toggleable toggledOffPortrait  expandable " title="Donate">
+                    <i class="fas fa-donate"></i> <span>Donate!</span>
+                </button>
+            </a>
+
+        </div>
+</nav>
+
+<script>
+    
+    !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.stringSimilarity=e():t.stringSimilarity=e()}(self,(function(){return t={138:t=>{function e(t,e){if((t=t.replace(/\s+/g,""))===(e=e.replace(/\s+/g,"")))return 1;if(t.length<2||e.length<2)return 0;let r=new Map;for(let e=0;e<t.length-1;e++){const n=t.substring(e,e+2),o=r.has(n)?r.get(n)+1:1;r.set(n,o)}let n=0;for(let t=0;t<e.length-1;t++){const o=e.substring(t,t+2),s=r.has(o)?r.get(o):0;s>0&&(r.set(o,s-1),n++)}return 2*n/(t.length+e.length-2)}t.exports={compareTwoStrings:e,findBestMatch:function(t,r){if(!function(t,e){return"string"==typeof t&&!!Array.isArray(e)&&!!e.length&&!e.find((function(t){return"string"!=typeof t}))}(t,r))throw new Error("Bad arguments: First argument should be a string, second should be an array of strings");const n=[];let o=0;for(let s=0;s<r.length;s++){const i=r[s],f=e(t,i);n.push({target:i,rating:f}),f>n[o].rating&&(o=s)}return{ratings:n,bestMatch:n[o],bestMatchIndex:o}}}}},e={},function r(n){if(e[n])return e[n].exports;var o=e[n]={exports:{}};return t[n](o,o.exports,r),o.exports}(138);var t,e}));
+    
+
+    
+
+    
+    window.initJmeMenu=function () {
+        const selectionClass= window.selectedTopMenuClass || "highlightedCl";
+
+        const topmenu = document.querySelector('#topmenu');
+        if (window.location.href.startsWith("http://localhost:1313")) {
+            for (const a of topmenu.querySelectorAll("a")) {
+                a.href = a.href.replace("https://jmonkeyengine.org", "http://localhost:1313");
+            }
+        }
+
+        const likelyScore=[];
+        for (const a of topmenu.querySelectorAll("a")) {
+            const pageUrl=window.location.href.endsWith("/")?window.location.href.substring(0,window.location.href.length-1):window.location.href;
+         
+            const process = (linkUrls) => {
+                if(!linkUrls)return;
+                for(let linkUrl of linkUrls){
+                    if (linkUrl != null) {
+                        if (window.location.href.startsWith("http://localhost:1313")) {
+                            linkUrl = linkUrl.replace("https://jmonkeyengine.org", "http://localhost:1313");
+                        }
+
+                        if (linkUrl.endsWith("/")) {
+                            linkUrl = linkUrl.substring(0, linkUrl.length - 1);
+                        }
+                        const score = stringSimilarity.compareTwoStrings(linkUrl, pageUrl);
+                        likelyScore.push(
+                            {
+                                score: score,
+                                el: a.querySelector("button")
+                            }
+                        );
+                    }
+                }
+            }
+
+            process([a.href]);
+            process(a.getAttribute("alt-href")?a.getAttribute("alt-href").split(","):undefined);           
+
+        }
+        likelyScore.sort((a, b) => b.score - a.score);   
+        likelyScore.forEach(el=>el.el.classList.remove(selectionClass));
+        likelyScore[0].el.classList.add(selectionClass);
+
+    };
+    
+    document.addEventListener('DOMContentLoaded', function(){
+       window.initJmeMenu(); 
+    });
+</script>
+
+<div id="siteTitle" class="list hlist  responsiveWidth">
+    <div id="logo">
+        <a href="/">
+            <img src="/images/jme-logo.png" />
+        </a>
+        <i class="toggleNavOnPortraitButton fas fa-bars" toggle="topmenu"></i>
+    </div>
+
+    <div id="contributionsBanner">
+        <div> <i class="fas fa-donate"></i>
+            Backed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="backerName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://opencollective.com/jmonkeyengine#section-contributors"> and more...</a>
+        </div>
+        <div>
+            <i class="fab fa-github-alt"></i>
+            Contributed by:
+            <a rel='noopener nofollow noreferrer' target="_blank" id="contributorName">The Community</a>
+            <a rel='noopener nofollow noreferrer' target="_blank"
+                href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors">and more...</a>
+        </div>
+    </div>
+</div>
+
+    </header>
+
+  <main>
+    
+
+
+    
+    <section id="showcase" mode="banner">
+
+  
+
+    
+
+<i id="playButton" class=" fas fa-play"></i>
+
+
+
+
+
+
+<div class="showcaseElement" style='display: block   '>
+  <div class="cover blur"   style  ="background-image: url('/images/showcase/skullstone/12.jpg'); " ></div>
+  <div class="cover"    style  ="background-image: url('/images/showcase/skullstone/12.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/13.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/13.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<iframe loading="lazy" class="showcaseElement cover youtubeVid" style='display:  none ' 
+   lazy="true" lazy-src  ="https://www.youtube-nocookie.com/embed/AnqzGANkPG8" frameborder="0"
+  allow="accelerometer; autoplay;  encrypted-media; gyroscope; fullscreen"></iframe>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/14.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/14.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/15.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/15.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/2.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/2.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/18.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/18.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/7.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/7.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/3.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/3.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/5.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/5.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/17.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/17.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/16.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/16.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/6.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/6.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/4.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/4.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/1.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/1.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/9.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/9.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/8.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/8.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/11.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/11.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/19.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/19.jpg'); " ></div>
+</div>
+
+
+
+
+
+
+
+<div class="showcaseElement" style='display: none  '>
+  <div class="cover blur"   lazy="true" lazy-style  ="background-image: url('/images/showcase/skullstone/10.jpg'); " ></div>
+  <div class="cover"    lazy="true" lazy-style   ="background-image: url('/images/showcase/skullstone/10.jpg'); " ></div>
+</div>
+
+
+
+
+      
+
+    <div  class="responsiveWidth" id="engineDescription">
+      jMonkeyEngine is a modern developer friendly game engine written primarily in Java. 
+      <br />
+      Its minimalistic and code first approach makes it perfect for developers who want the support of a game engine
+      while retaining full control over their code with the ability to extend and adapt the engine to their workflow.
+      
+      <br />
+      <br />
+      <br />
+
+      <a href="/start/"><button  id="startbtn" class="highlightedCl" ><i class="fas fa-rocket"></i> Get Started </button></a>
+
+      <a href="/#features" title="overview"><button id="startbtn"   class="highlightedCl"><i class="fas fa-question-circle" style="padding:0"></i></button></a>
+      
+
+      
+        <br />
+        <br />
+    </div>
+
+    <div class="responsiveWidth" >
+    <div id="gameDescription" >
+      <h2><i class="far fa-images" ></i> Skullstone powered by jMonkeyEngine</h2>
+      
+      Skullstone – a retro styled grid-based dungeon crawler RPG inspired by the good old titles such as Dungeon Master, Stonekeep, Eye of Beholder and many other classics.
+In a few words – a party of … 
+      
+      <br />
+      <a class="readMore" href="/showcase/skullstone/#showcase">See game page </a> 
+    </div>
+  </div>
+
+</section>
+
+
+
+<br/>
+
+
+
+<section class="message list vlist">
+  <div>
+    <blockquote class="list vlist responsive">
+
+
+
+      <span id="backerMessage">-</span>
+      <i><a rel='noopener nofollow noreferrer' target="_blank" id="backerMessageName">-</a> </i>
+    </blockquote>
+    <a href="https://opencollective.com/jmonkeyengine">Become a
+      backer and leave a message...</a>
+
+
+  </div>
+</section>
+
+<br/>
+
+
+<a id="content"></a>
+
+<section class="full responsiveWidth">
+
+<article>
+        <h1 >
+            
+<i class="fas fa-paragraph useless"></i>
+
+           
+            <a href="/blog/macos-cloud-renting-and-developmentmacos-cloud-renting-and-development/">MacOS renting and development in the cloud</a></h1>
+            <div class="content">
+                <span>
+                <p><img src="https://user-images.githubusercontent.com/4943530/150141802-2e082357-7422-4405-b066-88947bf28642.png" alt="Screenshot_20220119_143808"></p>
+<p>MacOS cloud renting has started to proliferate with the new Apple Silicon M1 chip and it turned out to be a pretty decent way to test graphical applications on MacOS without buying apple&rsquo;s pricey hardware or resorting to hackish ports and vms of questionable legality.</p>
+<p>I am reporting here the procedure to quickly get a MacOS M1 cloud service up and running for testing jmonkey applications without too much hassle.</p>
+<p>This guide focus on Apple Silicon M1 instances, but can be replicated on x86_64</p>
+<h3 id="1-finding-the-right-cloud-provider">1. Finding the right cloud provider</h3>
+<p>Firstly you are going to need to find a place where you can rent your cloud server.<br>
+We are going to need ssh, root and vnc access.<br>
+I&rsquo;ve been using  <a href="https://www.scaleway.com/en/hello-m1/">https://www.scaleway.com/en/hello-m1/</a> with success. It is located in Paris, so people outside europe might want to find a local provider that has lower latency.</p>
+<h3 id="2-install-nomachine-client">2. Install NoMachine Client</h3>
+<p>These instances usually come with VNC enabled by default. However I&rsquo;ve found VNC performances to be pretty bad, especially for realtime applications, so we are going to replace it with a much better alternative called <a href="https://nomachine.com">NoMachine</a> that has nearly-local performances (tested on a 100Mb connection) and sound support.</p>
+<p>So for start you are going to need to install the client (that we will use later) in your local machine, you can use one of the following links:</p>
+<ul>
+<li><a href="https://www.nomachine.com/download">NoMachine (community edition)</a> : Client+Server single app</li>
+<li><a href="https://www.nomachine.com/product&amp;p=NoMachine%20Enterprise%20Client">NoMachine Enterprise Client</a>: Client only</li>
+</ul>
+<h3 id="3-spawn-an-instance-and-get-access-credentials">3. Spawn an instance and get access credentials</h3>
+<p>Now we can start with the server: spawn a new instance on the provider you&rsquo;ve found before and then collect the following access infos:</p>
+<ul>
+<li>instance ip</li>
+<li>username</li>
+<li>password</li>
+</ul>
+<p>If you rented from Scaleway, you can get all those infos from the instance dashboard that should look something like this<br>
+<img src="https://user-images.githubusercontent.com/4943530/150140692-afa252df-0214-4d1d-abe8-bdc36cc38468.png" alt="image"></p>
+<p>Note: VNCPassword is also the user account password and the ssh user <strong>m1</strong> is also the user account name</p>
+<h3 id="4-ssh-into-the-newly-created-instance">4. Ssh into the newly created instance</h3>
+<p>If you are on linux chances are that you have already an ssh client installed, so  you can just call<br>
+<code>ssh m1@your.instance.ip.address</code><br>
+from the command line.<br>
+On windows you can use something like PuTTY, if you have never done that before you can follow this guide: <a href="https://tomjorge.me/how-do-i-connect-to-my-scaleway-cloud-instance-via-windows/">https://tomjorge.me/how-do-i-connect-to-my-scaleway-cloud-instance-via-windows/</a> (it&rsquo;s the same for other providers).</p>
+<h3 id="5-install-the-required-software-on-the-server-instance">5. Install the required software on the server instance</h3>
+<p>To have a working jme dev environment we are going to need the following software:</p>
+<ul>
+<li><strong>Homebrew Package Manager</strong> : It will make software installation easier</li>
+<li><strong>Java11</strong>: Java &lt;= 8 has issues on mac</li>
+<li><strong>Visual Studio Code with java extensions</strong>: lightweight editor  (this is my editor of choice, but you can use your favorite one)</li>
+<li><strong>NoMachine</strong>: Remote access server</li>
+</ul>
+<p>The following script does all that for you.</p>
+<ul>
+<li><em>Note</em>: you will be asked to input the password you got in point 3</li>
+<li><em>Note2</em>: There is an issue with audio driver installation in MacOS 12 and NoMachine 7.7.4, the script applies a workaround, if your instance doesn&rsquo;t have the affected software you can disable the workaround by commenting the <code>IS_MACOS12=&quot;1&quot;</code> line.</li>
+<li><em>Note3</em>:  if your instance is x86_64: comment the Apple Silicon JAVA_URL and uncomment the x86_64 url</li>
+</ul>
+<pre><code class="language-bash">IS_MACOS12=&quot;1&quot;
+NO_MACHINE_URL=&quot;https://download.nomachine.com/download/7.7/MacOSX/nomachine_7.7.4_1.dmg&quot;
+
+#For Apple Silicon M1
+JAVA_URL=&quot;https://cdn.azul.com/zulu/bin/zulu11.54.23-ca-jdk11.0.14-macosx_aarch64.dmg&quot; 
+
+# For x86 64 bit
+#JAVA_URL=&quot;https://cdn.azul.com/zulu/bin/zulu11.54.23-ca-jdk11.0.14-macosx_x64.dmg&quot; 
+
+# Download no machine
+cd /tmp
+curl &quot;$NO_MACHINE_URL&quot; -o nomachine.dmg
+
+
+# Install
+hdiutil mount nomachine.dmg
+cd /Volumes/NoMachine
+sudo installer -pkg NoMachine.pkg -target /
+cd /tmp
+
+# Download and install homebrew packet manager
+/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+
+echo 'eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;' &gt;&gt; $HOME/.zprofile
+eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;
+    
+# Install OpenJDK11
+cd /tmp
+curl &quot;$JAVA_URL&quot; -o java.dmg
+hdiutil mount java.dmg
+cd /Volumes/Azul\ Zulu\ JDK*
+sudo installer -pkg *Zulu*.pkg -target /
+
+
+# Install Visual Studio Code
+brew install --cask visual-studio-code
+
+
+# Workaround for audio not working in MacOS 12 (https://knowledgebase.nomachine.com/TR12S10423)
+if [ &quot;$IS_MACOS12&quot; = &quot;1&quot; ];
+then
+    sudo rm -rf /Library/Extensions/nxaudio.kext /Library/Audio/Plug-Ins/HAL/NMAudio.driver /Library/Audio/Plug-Ins/HAL/NMAudioMic.driver
+    sudo mkdir -p /Library/Audio/Plug-Ins/HAL/
+
+    sudo cp -a /Applications/NoMachine.app/Contents/Frameworks/bin/drivers/NMAudio.driver    /Library/Audio/Plug-Ins/HAL/NMAudio.driver
+    sudo cp -a /Applications/NoMachine.app/Contents/Frameworks/bin/drivers/NMAudioMic.driver /Library/Audio/Plug-Ins/HAL/NMAudioMic.driver
+
+    sudo chmod -R 755 /Library/Audio/Plug-Ins/HAL/NMAudio*
+    sudo chown -R &quot;root:wheel&quot; /Library/Audio/Plug-Ins/HAL/NMAudio*
+    
+    sudo launchctl stop com.apple.audio.coreaudiod
+    sudo launchctl start com.apple.audio.coreaudiod
+fi
+
+
+# Restart everything
+sudo reboot
+</code></pre>
+<h3 id="6-grant-the-permissions">6. Grant the permissions</h3>
+<p>Now we need to grant the required permissions to NoMachine Server (nxnode).<br>
+This is the most annoying part, since it cannot be done from the command line but it has to be done manually from the UI with VNC.</p>
+<p>So, log into your instance with VNC. If you are familiar with VNC, you&rsquo;ll know what to do, if not, this is the relevant tutorial  <a href="https://www.scaleway.com/en/docs/compute/apple-silicon/how-to/connect-to-mac-mini-m1/"> How to connect to a Mac mini M1 | Scaleway</a> .<br>
+For convenience here a list of VNC clients:</p>
+<ul>
+<li><a href="https://www.tightvnc.com/">TightVNC</a>: Windows/Linux</li>
+<li><a href="https://apps.kde.org/krdc/">KRDC</a>: Linux+kde  (this is the client i&rsquo;ve been using while writing this guide)</li>
+<li><a href="https://remmina.org/">Remmina</a>: Linux</li>
+<li><a href="https://www.realvnc.com">RealVNC</a> : Windows/Linux</li>
+</ul>
+<p>Once you are logged into MacOS, you need to go in Menu -&gt; System preferences</p>
+<p><img src="https://user-images.githubusercontent.com/4943530/150140737-290aca3d-fcc1-4137-aa0a-16af3f428bb7.png" alt="image"></p>
+<p>From there you need to go in <strong>Security &amp; Privacy</strong> -&gt; <strong>Privacy</strong><br>
+Click the lock icon and input the password.</p>
+<p><img src="https://user-images.githubusercontent.com/4943530/150140767-3c6c9d41-f059-4306-b04d-049094add5e1.png" alt="image"></p>
+<p>Now you need to enable the following permissions:</p>
+<ul>
+<li>Accessibility</li>
+<li>Full Disk Access</li>
+<li>Microphone</li>
+<li>Screen Recording</li>
+</ul>
+<p><em>Note: Some permissions might not be recorded immediately, you might need to attempt to connect with NoMachine client once before they appear in Security&amp;Privacy.</em></p>
+<p>See images below:</p>
+<p><img src="https://user-images.githubusercontent.com/4943530/150140816-6032181f-b304-4838-b720-347abdf6ebb6.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/4943530/150140847-6ada472c-e0cb-4dfb-84b1-09d7c1e8aedb.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/4943530/150140852-69df9de7-327f-4ca1-8678-f44ce4d7598b.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/4943530/150140865-1c4b458e-4e12-4ce7-92b6-9827a76582c0.png" alt="image"></p>
+<h3 id="7-done">7. Done</h3>
+<p>Now you are good to go, you can close VNC, connect directly with NoMachine and start your development and testing.<br>
+If you use Visual Studio Code as editor, you will need to open it and install the <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">java extension pack</a>.</p>
+
+
+                </span>
+                
+
+                    <nav>
+
+    
+
+
+    <ul class="tags smaller">
+
+        <h3  class="tags">Tags</h3>
+        
+        <li><a class="tutorials" href="/tags/tutorials"><i class="fas fa-hashtag"></i>tutorials</a></li>
+        
+        <li><a class="blog" href="/tags/blog"><i class="fas fa-hashtag"></i>blog</a></li>
+        
+        <li><a class="misc" href="/tags/misc"><i class="fas fa-hashtag"></i>misc</a></li>
+        
+    </ul>
+
+
+
+    <ul class="authors smaller">
+        <h3  class="authors">Authors</h3>
+        
+        <li><a class="riccardobl" href="/authors/riccardobl"><i class="fas fa-at"></i>riccardobl</a></li>
+        
+    </ul>
+    
+    <ul class="postedDate smaller">
+        <h3 class="postedDate">Date</h3>
+        <li><time datetime="2022-01-19 18:00:00 &#43;0000 UTC"><i class="fas fa-calendar"></i>19 January 2022</time>      </li>
+    </ul>
+
+    
+    <ul class="share">
+        <h3 class="share">Share</h3>
+        <li>
+            <button><a href="https://twitter.com/share?ref_src=twsrc%5Etfw&text=MacOS%20cloud%20renting%20has%20started%20to%20proliferate%20with%20the%20new%20Apple%20Silicon%20M1%20chip%20and%20it%20turned%20out%20to%20be%20a%20pretty%20decent%20way%20to%20test%20graphical%20%e2%80%a6  "  >
+                <i class="fab fa-twitter-square"></i> Share on Twitter</a></button></li>
+    </ul>
+
+
+
+
+
+</nav>
+                
+            </div>
+
+
+
+    </article>
+</section>
+
+
+<section class="full responsiveWidth">
+
+  <article>
+    <h1 id="comments"><i class="useless fas fa-comments"></i> Comments</h1>
+      <div class="content" id='discourse-comments'></div>
+
+      <script type="text/javascript">
+        var eurl=window.location.href ;
+        eurl=eurl.split("#")[0]; 
+        eurl=eurl.split("?")[0]; 
+        eurl=eurl.trim();
+        if(eurl.endsWith("/index.html"))eurl=eurl.substring(0,eurl.length-"/index.html".length).trim(); 
+        if(eurl.charAt(eurl.length-1)=="/") eurl=eurl.substring(0,eurl.length-1); 
+        if(eurl.startsWith("http://")) eurl="https://"+eurl.substring("http://".length);        
+        
+        
+        if(eurl.endsWith("/communitylog/new-website")){
+          eurl+="/#content"; 
+        }
+        
+
+        DiscourseEmbed = { 
+          discourseUrl: 'https://hub.jmonkeyengine.org/',
+          discourseEmbedUrl: eurl
+        };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+</article>
+</section>
+
+
+
+
+  </main>
+  <footer>
+    © 2020 jMonkeyEngine.
+    All other trademarks, logos and featured content are property of their respective owners.
+    <br />
+    <a title="Github repo" rel='noopener nofollow noreferrer' target="_blank"
+      href="https://github.com/jMonkeyEngine/jmonkeyengine-website">
+      <i class="fab fa-github"></i> Source on Github
+    </a> 
+    |
+    <a title="Report issue" rel='noopener nofollow noreferrer' target="_blank"
+      href="https://github.com/jMonkeyEngine/jmonkeyengine-website/issues">
+      <i class="fas fa-bug"></i> Report an issue
+    </a> 
+    <br />
+    <br />
+    Website designed and developed by 
+    <a href="https://github.com/riccardobl">Riccardo Balbo</a>
+    for the jMonkeyEngine's Community.
+
+   
+
+  </footer>
+  <div id="poweredBy" >
+  
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://www.macstadium.com/">
+      
+      <img   src="/images/macstadium-logo.png" />
+    </a>
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://www.java.com/">
+      
+      <img   src="/images/java-logo.png" />
+    </a>
+    <a  rel='noopener nofollow noreferrer' target="_blank" href="https://opengl.org/">
+      
+      <img   src="/images/opengl-logo.png" />
+    </a>
+  </div>
+
+</body>
+
+</html>

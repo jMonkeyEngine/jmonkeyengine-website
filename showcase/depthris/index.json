@@ -1,0 +1,55 @@
+{
+    "responseTitle":"jMonkeyEngine  | DEPTHRIS",
+    "apiVersion":"1.0",
+    "response":"showcaseEntry",
+    "uid":"b1d2a7838d0add7ac95a14ceffbf4eb4",
+    "title":"DEPTHRIS",
+    "content":"\u003cp\u003e3D puzzle game inspired by the classic title for DOS.\u003c/p\u003e\n\u003cp\u003eMove and rotate the pieces so they fit in the spaces and fill as much floors as possibles.\u003c/p\u003e\n\u003cp\u003eBut on each level, the pieces will start falling faster, increasing the tension.\u003c/p\u003e\n",
+    "contentPlain":"3D puzzle game inspired by the classic title for DOS.\nMove and rotate the pieces so they fit in the spaces and fill as much floors as possibles.\nBut on each level, the pieces will start falling faster, increasing the tension.\n" ,
+    "url":"https://jmonkeyengine.org/showcase/depthris/",
+
+
+    
+    "summary":"3D puzzle game inspired by the classic title for DOS.\nMove and rotate the pieces so they fit in the spaces and fill as much floors as possibles.\nBut on each level, the pieces will start falling faster, increasing the tension."   ,
+    
+
+
+    
+    "publisher_link":"",
+    
+    
+    "steam_link":"",
+    
+    
+    "itch_link":"https://codewalker.itch.io/depthris",
+    
+ 
+    "media":[
+        "https://jmonkeyengine.org/images/showcase/depthris/1.webp" , "https://jmonkeyengine.org/images/showcase/depthris/2.webp" , "https://jmonkeyengine.org/images/showcase/depthris/3.webp" , "https://jmonkeyengine.org/images/showcase/depthris/4.webp" , "https://jmonkeyengine.org/images/showcase/depthris/5.webp" , "https://jmonkeyengine.org/images/showcase/depthris/6.webp"
+    ],
+
+
+    "tags":[
+        
+             
+             "tetris"
+        
+              , 
+             "puzzle"
+        
+              , 
+             "depthris"
+        
+              , 
+             "showcase"
+        
+        ],
+        "authors":[
+            
+                 
+                 "bloodwalker"
+            
+            ]
+
+
+}

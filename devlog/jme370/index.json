@@ -1,0 +1,36 @@
+{
+    "responseTitle":"jMonkeyEngine  | JMonkeyEngine 3.7.0-stable release",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"d5b24aa173bb33f5f1b7d87d5660286a",
+
+    "title":"JMonkeyEngine 3.7.0-stable release",
+    "content":"\u003cp\u003eWe\u0026rsquo;re proud to announce the release of version 3.7.0-stable of the JMonkeyEngine game engine.\u003cbr\u003e\nAnd here\u0026rsquo;s a big \u0026ldquo;thank you!\u0026rdquo; to Adi Barda, who managed that release.\u003c/p\u003e\n\u003cp\u003eThe new release is featured in \u003ca href=\"https://github.com/jMonkeyEngine/sdk/releases/tag/v3.7.0-stable-sdk2\"\u003eversion v3.7.0-stable-sdk2 of our Software Development Kit\u003c/a\u003e.\u003cbr\u003e\nPre-compiled libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\u003cbr\u003e\nRelease notes are online at \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.7.0-stable\"\u003ehttps://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.7.0-stable\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eDevelopment of a 3.8 release has already begun. Ryan McDonough is managing that effort. Please support him in any way you can.\u003c/p\u003e\n\u003cp\u003eFor the latest news and discussion of JMonkeyEngine software development, visit \u003ca href=\"https://hub.jmonkeyengine.org/c/development-discussion-jme3/9\"\u003ethe Development category at the JME Community Hub/Forum\u003c/a\u003e.\u003c/p\u003e\n",
+    "contentPlain":"We\u0026rsquo;re proud to announce the release of version 3.7.0-stable of the JMonkeyEngine game engine.\nAnd here\u0026rsquo;s a big \u0026ldquo;thank you!\u0026rdquo; to Adi Barda, who managed that release.\nThe new release is featured in version v3.7.0-stable-sdk2 of our Software Development Kit.\nPre-compiled libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nRelease notes are online at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.7.0-stable\nDevelopment of a 3.8 release has already begun. Ryan McDonough is managing that effort. Please support him in any way you can.\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Community Hub/Forum.\n" ,
+    "url":"https://jmonkeyengine.org/devlog/jme370/",
+
+
+    
+    "summary":"We\u0026rsquo;re proud to announce the release of version 3.7.0-stable of the JMonkeyEngine game engine.\nAnd here\u0026rsquo;s a big \u0026ldquo;thank you!\u0026rdquo; to Adi Barda, who managed that release.\nThe new release is featured in version v3.7.0-stable-sdk2 of our Software Development Kit.\nPre-compiled libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nRelease notes are online at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.7.0-stable\nDevelopment of a 3."   ,
+    
+    "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+
+}

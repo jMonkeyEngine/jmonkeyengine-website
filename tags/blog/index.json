@@ -1,0 +1,351 @@
+{
+    "responseTitle":"jMonkeyEngine  | blog",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"https://jmonkeyengine.org/tags/blog/page/2/index.json",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2025-01-28 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/devlog/jme370/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme370/index.json",
+        "title":"JMonkeyEngine 3.7.0-stable release",
+        "uid":"d5b24aa173bb33f5f1b7d87d5660286a",
+
+       
+        "summary":"We\u0026rsquo;re proud to announce the release of version 3.7.0-stable of the JMonkeyEngine game engine.\nAnd here\u0026rsquo;s a big \u0026ldquo;thank you!\u0026rdquo; to Adi Barda, who managed that release.\nThe new release is featured in version v3.7.0-stable-sdk2 of our Software Development Kit.\nPre-compiled libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nRelease notes are online at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.7.0-stable\nDevelopment of a 3."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2023-03-20 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/devlog/jme360/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme360/index.json",
+        "title":"JMonkeyEngine 3.6.0-stable release",
+        "uid":"2a175bd38b5074a2f1958bbb41b767a7",
+
+       
+        "summary":"We\u0026rsquo;re proud to present the 3.6.0-stable release of our open-source 3-D game engine for Java programmers. It includes many bugfixes and new features. For details, see the release notes at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.6.0-stable\nPre-compiled 3.6.0-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Community Hub/Forum."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "Ali-RS"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2022-07-10 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/communitylog/new-services/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/new-services/index.json",
+        "title":"jMonkey Initializer, Library and p2p donations",
+        "uid":"2f5cd9947db7e79db300edc8f06d5cc6",
+
+       
+        "summary":"Hello jMonkey community, I bring you some exciting news:\njMonkeyEngine Initializer Thanks to @richtea we now have an awesome web tool that simplifies the creation of jme projects for both new and advanced users:\nThe jMonkeyEngine Initializer.\nThis tool is found in the Get Started page and assists in the creation of new multi-platform gradle projects.\nLibrary: the new Store We are moving what is currently referred as \u0026ldquo;jmonkey store\u0026rdquo; to a new solution called \u0026ldquo;jmonkey library\u0026rdquo;."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "bitcoin"
+        
+              , 
+             "initializer"
+        
+              , 
+             "library"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2022-04-21 23:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/devlog/jme352/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme352/index.json",
+        "title":"JMonkeyEngine 3.5.2 release",
+        "uid":"85a4d2d6b4c4c1720a13f7aebff09f02",
+
+       
+        "summary":"JMonkeyEngine is pleased to announce the 3.5.2-stable release of its game engine for Java programmers. JMonkeyEngine 3.5.2 is an interim release that solves a couple issues with 3.5.0/3.5.1 and upgrades the underlying LWJGL libraries to version 3.3.1.\nThe 3.5.2-stable libraries can be found in the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and/or download the source code, go to https://github."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2022-03-20 16:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/devlog/jme351/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme351/index.json",
+        "title":"JMonkeyEngine 3.5.1 release",
+        "uid":"43552feaffeb1ff0ff339a02d023fd35",
+
+       
+        "summary":"JMonkeyEngine is pleased to announce the 3.5.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.5.1 is an interim release that patches a couple bugs and improves support for Macintosh systems containing Apple Silicon.\nThe 3.5.1-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; group ID.\nTo browse the change list and the source code, go to https://github."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2022-01-24 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/devlog/jme350/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme350/index.json",
+        "title":"JMonkeyEngine 3.5.0-stable release",
+        "uid":"5182e4d61f54466c8735f5decaa6438c",
+
+       
+        "summary":"We\u0026rsquo;re proud to present the 3.5.0-stable release of our open-source 3-D game engine for Java programmers. This is the first release of jMonkeyEngine to leverage LWJGL v3.3, and it includes many bugfixes and new features. For details, see the release notes at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.0-stable\nPre-compiled 3.5.0-stable libraries are available from the Maven Central repository under the \u0026ldquo;org.jmonkeyengine\u0026rdquo; groupID.\nFor the latest news and discussion of JMonkeyEngine software development, visit the Development category at the JME Community Hub/Forum."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2022-01-19 18:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/blog/macos-cloud-renting-and-developmentmacos-cloud-renting-and-development/",
+        "jsonUrl":"https://jmonkeyengine.org/blog/macos-cloud-renting-and-developmentmacos-cloud-renting-and-development/index.json",
+        "title":"MacOS renting and development in the cloud",
+        "uid":"216bb60484ef5c87b6389f5f2849a79b",
+
+       
+        "summary":"MacOS cloud renting has started to proliferate with the new Apple Silicon M1 chip and it turned out to be a pretty decent way to test graphical applications on MacOS without buying apple\u0026rsquo;s pricey hardware or resorting to hackish ports and vms of questionable legality.\nI am reporting here the procedure to quickly get a MacOS M1 cloud service up and running for testing jmonkey applications without too much hassle."   ,
+        
+      
+        "tags":[
+        
+             
+             "tutorials"
+        
+              , 
+             "blog"
+        
+              , 
+             "misc"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2021-12-05 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/devlog/jme341/",
+        "jsonUrl":"https://jmonkeyengine.org/devlog/jme341/index.json",
+        "title":"JMonkeyEngine 3.4.1 release",
+        "uid":"3b24ee9ea07ebd8fa1231f1491eb87e5",
+
+       
+        "summary":"The JMonkeyEngine team is proud to announce the 3.4.1-stable release of its 3-D game engine for Java programmers. JMonkeyEngine 3.4.1 is an interim release that patches a handful of bugs and performance issues discovered in the JME 3.4 libraries since they became generally available in May.\nAlpha testing has already begun on JME 3.5, which is planned for general availability in early 2022."   ,
+        
+      
+        "tags":[
+        
+             
+             "devlog"
+        
+              , 
+             "release"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "stephengold"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2021-11-04 09:58:16.894 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/communitylog/host-migration-and-funding/",
+        "jsonUrl":"https://jmonkeyengine.org/communitylog/host-migration-and-funding/index.json",
+        "title":"Host migration and funding",
+        "uid":"bc44c1a24ffdb69655cd627e1b59ad3f",
+
+       
+        "summary":"As you might have noticed already, our services were progressively migrated, during the month of October, to a cloud provider that, I believe, provides the best price/quality for our project.\nUp till now we have been using amazon aws with one year of credits donated by @adi.barda, that allowed us to never use any of our community fund, but from now on you will see monthly expenses submitted to the fund to pay for hosting and related services."   ,
+        
+      
+        "tags":[
+        
+             
+             "communitylog"
+        
+              , 
+             "donations"
+        
+              , 
+             "opencollective"
+        
+              , 
+             "server"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "riccardobl"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}

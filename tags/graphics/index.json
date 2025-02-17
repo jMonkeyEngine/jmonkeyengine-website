@@ -1,0 +1,100 @@
+{
+    "responseTitle":"jMonkeyEngine  | graphics",
+    "apiVersion":"1.0",
+    "response":"articlesByTag",
+  
+
+
+
+
+    "prev":"",
+
+
+    "next":"",
+
+
+
+"articles":[
+
+    
+    {
+     
+        "date":"2019-10-16 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/tutorials/grizeldi-pbr-tutorials/pbr_tutorial2/",
+        "jsonUrl":"https://jmonkeyengine.org/tutorials/grizeldi-pbr-tutorials/pbr_tutorial2/index.json",
+        "title":"Grizeldi's PBR Tutorial #2 - What are Light Probes?",
+        "uid":"0b5f62e4ae680992093adc89963b5edd",
+
+       
+        "summary":"Second part of my tutorial series in which I explain how to use jmonkeyengine\u0026rsquo;s Physically Based Rendering pipeline. In this part we answer the question what are the light probes and why do we need them. "   ,
+        
+      
+        "tags":[
+        
+             
+             "pbr"
+        
+              , 
+             "graphics"
+        
+              , 
+             "tutorials"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "grizeldi"
+            
+            ]
+
+    }
+
+     , 
+    {
+     
+        "date":"2019-01-18 08:00:00 +0000 UTC",
+        
+        "url":"https://jmonkeyengine.org/tutorials/grizeldi-pbr-tutorials/pbr_tutorial/",
+        "jsonUrl":"https://jmonkeyengine.org/tutorials/grizeldi-pbr-tutorials/pbr_tutorial/index.json",
+        "title":"Grizeldi's PBR Tutorial #1 - The Basics",
+        "uid":"ea73043b02c5136da4f2cc6ec19aea93",
+
+       
+        "summary":"A continuing YouTube series helping users take leap from using the regular Lighting.j3md material to PbrLighting.j3md.\nFirst part of my tutorial series in which I explain how to use jmonkeyengine\u0026rsquo;s Physically Based Rendering pipeline. Intended for people who already understand how to use the regular Lighting.j3md shader, but have no idea how PBR works. "   ,
+        
+      
+        "tags":[
+        
+             
+             "pbr"
+        
+              , 
+             "graphics"
+        
+              , 
+             "tutorials"
+        
+              , 
+             "blog"
+        
+        ],
+        "authors":[
+            
+                 
+                 "grizeldi"
+            
+            ]
+
+    }
+
+
+]
+
+
+
+}
