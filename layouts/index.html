@@ -67,6 +67,28 @@
 
 {{ partial "community-banner" . }}
 
+{{- $homeShowcasePages := where .Site.RegularPages "Section" "showcase" -}}
+{{- $homeShowcaseTools := where .Site.RegularPages "Section" "showcase-tools" -}}
+{{- $homeFeaturedPages := slice -}}
+{{- range $homeShowcasePages -}}{{- if .Params.featured -}}{{- $homeFeaturedPages = $homeFeaturedPages | append . -}}{{- end -}}{{- end -}}
+{{- range $homeShowcaseTools -}}{{- if .Params.featured -}}{{- $homeFeaturedPages = $homeFeaturedPages | append . -}}{{- end -}}{{- end -}}
+{{- if gt (len $homeFeaturedPages) 0 -}}
+{{- $homeFeaturedProject := index (first 1 $homeFeaturedPages) 0 -}}
+<!-- ======== FEATURED SHOWCASE ======== -->
+<section class="home-showcase-section" aria-labelledby="home-showcase-title">
+    <div class="section-container">
+        <div class="section-header home-showcase-header">
+            <div>
+                <h2 class="section-title" id="home-showcase-title">From the Showcase</h2>
+                <p class="section-subtitle">A featured project from the jMonkeyEngine community.</p>
+            </div>
+            <a href="/showcase/" class="btn btn-outline">Browse showcase <i class="fas fa-arrow-right"></i></a>
+        </div>
+        {{ partial "showcase-featured-card.html" $homeFeaturedProject }}
+    </div>
+</section>
+{{- end -}}
+
 <!-- ======== FEATURES ======== -->
 <section class="features-section">
     <div class="section-container">
