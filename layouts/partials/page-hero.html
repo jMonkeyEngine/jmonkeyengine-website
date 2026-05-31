@@ -6,7 +6,21 @@
 {{- $community := index .Site.Data "community" | default dict -}}
 {{- $openCollectiveData := index $community "open-collective" | default (index $community "openCollective") | default dict -}}
 {{- $backersData := index $openCollectiveData "backers" | default dict -}}
-{{- $backers := index $backersData "all" | default (slice) -}}
+{{- $communityParams := .Site.Params.community | default dict -}}
+{{- $exclusions := index $communityParams "exclusions" | default dict -}}
+{{- $backerExclusions := slice -}}
+{{- range (index $exclusions "backers" | default (slice)) -}}
+  {{- $backerExclusions = $backerExclusions | append (lower .) -}}
+{{- end -}}
+{{- $backers := slice -}}
+{{- range $backer := (index $backersData "all" | default (slice)) -}}
+  {{- $keys := slice (lower ($backer.name | default "")) (lower ($backer.slug | default "")) (lower ($backer.account | default "")) (lower ($backer.accountUrl | default "")) -}}
+  {{- $excluded := false -}}
+  {{- range $key := $keys -}}
+    {{- if and $key (in $backerExclusions $key) -}}{{- $excluded = true -}}{{- end -}}
+  {{- end -}}
+  {{- if not $excluded -}}{{- $backers = $backers | append $backer -}}{{- end -}}
+{{- end -}}
 {{- $backersCount := len $backers -}}
 {{- $term := "" -}}
 {{- with .Data -}}{{- with .Term -}}{{- $term = lower . -}}{{- end -}}{{- end -}}

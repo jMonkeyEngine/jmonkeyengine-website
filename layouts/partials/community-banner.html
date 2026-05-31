@@ -3,14 +3,67 @@
 {{- $contributorsData := index $githubData "contributors" | default dict -}}
 {{- $openCollectiveData := index $community "open-collective" | default (index $community "openCollective") | default dict -}}
 {{- $backersData := index $openCollectiveData "backers" | default dict -}}
+{{- $communityParams := .Site.Params.community | default dict -}}
+{{- $exclusions := index $communityParams "exclusions" | default dict -}}
+{{- $backerExclusions := slice -}}
+{{- range (index $exclusions "backers" | default (slice)) -}}
+  {{- $backerExclusions = $backerExclusions | append (lower .) -}}
+{{- end -}}
+{{- $contributorExclusions := slice -}}
+{{- range (index $exclusions "contributors" | default (slice)) -}}
+  {{- $contributorExclusions = $contributorExclusions | append (lower .) -}}
+{{- end -}}
 
-{{- $backers := index $backersData "all" | default (slice) -}}
-{{- $backerTopSeed := first 3 (index $backersData "top" | default $backers) -}}
+{{- $backers := slice -}}
+{{- range $backer := (index $backersData "all" | default (slice)) -}}
+  {{- $keys := slice (lower ($backer.name | default "")) (lower ($backer.slug | default "")) (lower ($backer.account | default "")) (lower ($backer.accountUrl | default "")) -}}
+  {{- $excluded := false -}}
+  {{- range $key := $keys -}}
+    {{- if and $key (in $backerExclusions $key) -}}{{- $excluded = true -}}{{- end -}}
+  {{- end -}}
+  {{- if not $excluded -}}{{- $backers = $backers | append $backer -}}{{- end -}}
+{{- end -}}
+
+{{- $backerTopSeed := slice -}}
+{{- range $backer := (index $backersData "top" | default $backers) -}}
+  {{- $keys := slice (lower ($backer.name | default "")) (lower ($backer.slug | default "")) (lower ($backer.account | default "")) (lower ($backer.accountUrl | default "")) -}}
+  {{- $excluded := false -}}
+  {{- range $key := $keys -}}
+    {{- if and $key (in $backerExclusions $key) -}}{{- $excluded = true -}}{{- end -}}
+  {{- end -}}
+  {{- if not $excluded -}}{{- $backerTopSeed = $backerTopSeed | append $backer -}}{{- end -}}
+{{- end -}}
+{{- $backerTopSeed = first 3 $backerTopSeed -}}
 {{- $backersCount := len $backers -}}
-{{- $backerMessageBackers := index $backersData "messages" | default (slice) -}}
+{{- $backerMessageBackers := slice -}}
+{{- range $backer := (index $backersData "messages" | default (slice)) -}}
+  {{- $keys := slice (lower ($backer.name | default "")) (lower ($backer.slug | default "")) (lower ($backer.account | default "")) (lower ($backer.accountUrl | default "")) -}}
+  {{- $excluded := false -}}
+  {{- range $key := $keys -}}
+    {{- if and $key (in $backerExclusions $key) -}}{{- $excluded = true -}}{{- end -}}
+  {{- end -}}
+  {{- if not $excluded -}}{{- $backerMessageBackers = $backerMessageBackers | append $backer -}}{{- end -}}
+{{- end -}}
 
-{{- $contributors := where (index $contributorsData "all" | default (slice)) "type" "!=" "Bot" -}}
-{{- $contribTopSeed := first 3 (where (index $contributorsData "top" | default $contributors) "type" "!=" "Bot") -}}
+{{- $contributors := slice -}}
+{{- range $contributor := where (index $contributorsData "all" | default (slice)) "type" "!=" "Bot" -}}
+  {{- $keys := slice (lower ($contributor.login | default "")) (lower ($contributor.name | default "")) (lower ($contributor.url | default "")) -}}
+  {{- $excluded := false -}}
+  {{- range $key := $keys -}}
+    {{- if and $key (in $contributorExclusions $key) -}}{{- $excluded = true -}}{{- end -}}
+  {{- end -}}
+  {{- if not $excluded -}}{{- $contributors = $contributors | append $contributor -}}{{- end -}}
+{{- end -}}
+{{- $contribTopSeed := slice -}}
+{{- range $contributor := where (index $contributorsData "top" | default $contributors) "type" "!=" "Bot" -}}
+  {{- $keys := slice (lower ($contributor.login | default "")) (lower ($contributor.name | default "")) (lower ($contributor.url | default "")) -}}
+  {{- $excluded := false -}}
+  {{- range $key := $keys -}}
+    {{- if and $key (in $contributorExclusions $key) -}}{{- $excluded = true -}}{{- end -}}
+  {{- end -}}
+  {{- if not $excluded -}}{{- $contribTopSeed = $contribTopSeed | append $contributor -}}{{- end -}}
+{{- end -}}
+{{- $contribTopSeed = first 3 $contribTopSeed -}}
 {{- $contribCount := len $contributors -}}
 
 {{- $defaultMessage := "Keep the momentum going with a quick note for the project." -}}
@@ -72,7 +125,7 @@
       <h2 id="community-spotlight-message-title" class="community-card__title">Community message</h2>
       <blockquote class="community-card__message">{{ $messageText }}</blockquote>
       <p class="community-card__byline"><span aria-hidden="true">—</span> <a id="community-spotlight-message-author" class="community-card__author-link" href="{{ $messageAuthorUrl }}" target="_blank" rel="noopener noreferrer">{{ $messageAuthor }}</a></p>
-      <a class="community-card__small-link" href="/donate/">Leave a support message</a>
+      <a class="community-card__small-link" href="/donate/">Leave a message</a>
     </article>
   </div>
 

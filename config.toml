@@ -22,6 +22,10 @@ disableKinds = ["RSS", "taxonomy", "term"]
 [params]
   hostname="jmonkeyengine.org"
 
+[params.community.exclusions]
+  backers = []
+  contributors = ["Copilot", "dependabot[bot]"]
+
 [outputs]
   home = ["HTML"]
   page = ["HTML","JSON"]

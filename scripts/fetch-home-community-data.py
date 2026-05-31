@@ -26,6 +26,11 @@ from html import unescape
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
+try:
+    import tomllib
+except ModuleNotFoundError:  # pragma: no cover - Python < 3.11 fallback
+    tomllib = None
+
 OPEN_COLLECTIVE_GRAPHQL_URL = "https://api.opencollective.com/graphql/v2"
 OPEN_COLLECTIVE_REPO = "jmonkeyengine"
 GITHUB_API_ENDPOINT = "https://api.github.com/repos/{repo}/contributors?per_page={per_page}&page={page}"
@@ -85,6 +90,7 @@ DEFAULT_OUTPUT_GITHUB = "data/community/github.json"
 DEFAULT_OUTPUT_OPEN_COLLECTIVE = "data/community/open-collective.json"
 DEFAULT_OUTPUT_OPEN_COLLECTIVE_UPDATES = "data/community/open-collective-updates.json"
 DEFAULT_OUTPUT_NEWS_DIR = "content/news"
+DEFAULT_HUGO_CONFIG = "config.toml"
 
 def _to_str(value: Any) -> str:
     if value is None:
@@ -158,6 +164,75 @@ def _normalize_key(raw: Any) -> str:
         normalized = raw.strip().lower()
         return normalized
     return _to_str(raw).lower()
+
+
+def _load_community_exclusions(path: Path) -> Dict[str, Set[str]]:
+    empty = {"backers": set(), "contributors": set()}
+    if not path.exists():
+        return empty
+
+    try:
+        content = path.read_bytes()
+    except OSError:
+        return empty
+
+    if tomllib is not None:
+        try:
+            data = tomllib.loads(content.decode("utf-8"))
+        except Exception:
+            return empty
+        exclusions = data.get("params", {}).get("community", {}).get("exclusions", {})
+        return {
+            "backers": {_normalize_key(value) for value in exclusions.get("backers", []) if _normalize_key(value)},
+            "contributors": {_normalize_key(value) for value in exclusions.get("contributors", []) if _normalize_key(value)},
+        }
+
+    text = content.decode("utf-8", errors="ignore")
+    current_section = ""
+    parsed: Dict[str, Set[str]] = {"backers": set(), "contributors": set()}
+    list_pattern = re.compile(r"^(backers|contributors)\s*=\s*\[(.*)\]\s*$")
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("[") and line.endswith("]"):
+            current_section = line.strip("[]").strip()
+            continue
+        if current_section != "params.community.exclusions":
+            continue
+        match = list_pattern.match(line)
+        if not match:
+            continue
+        key, raw_values = match.groups()
+        for value in re.findall(r'"([^"]+)"|\'([^\']+)\'', raw_values):
+            parsed_value = _normalize_key(value[0] or value[1])
+            if parsed_value:
+                parsed[key].add(parsed_value)
+    return parsed
+
+
+def _is_excluded(item: Dict[str, Any], exclusions: Set[str], keys: Tuple[str, ...]) -> bool:
+    if not exclusions:
+        return False
+    for key in keys:
+        value = _normalize_key(item.get(key))
+        if value and value in exclusions:
+            return True
+    return False
+
+
+def _filter_backers(backers: List[Dict[str, Any]], exclusions: Set[str]) -> List[Dict[str, Any]]:
+    return [
+        backer for backer in backers
+        if not _is_excluded(backer, exclusions, ("name", "slug", "account", "accountUrl"))
+    ]
+
+
+def _filter_contributors(contributors: List[Dict[str, Any]], exclusions: Set[str]) -> List[Dict[str, Any]]:
+    return [
+        contributor for contributor in contributors
+        if not _is_excluded(contributor, exclusions, ("login", "name", "url"))
+    ]
 
 
 def _dedupe_by_key(items: List[Dict[str, Any]], key: str) -> List[Dict[str, Any]]:
@@ -800,6 +875,7 @@ def main() -> None:
     parser.add_argument("--open-collective-page-size", type=int, default=1000, help="OpenCollective members page size")
     parser.add_argument("--open-collective-updates-output", default=DEFAULT_OUTPUT_OPEN_COLLECTIVE_UPDATES, help="Output JSON path for OpenCollective updates/news payload")
     parser.add_argument("--news-output-dir", default=DEFAULT_OUTPUT_NEWS_DIR, help="Generated Hugo content directory for OpenCollective news posts")
+    parser.add_argument("--hugo-config", default=DEFAULT_HUGO_CONFIG, help="Hugo config path with community exclusion lists")
     parser.add_argument("--open-collective-updates-limit", type=int, default=50, help="Maximum OpenCollective updates to save as news posts")
     parser.add_argument("--github-per-page", type=int, default=100, help="GitHub contributors page size")
     args = parser.parse_args()
@@ -808,6 +884,7 @@ def main() -> None:
     open_collective_output_path = Path(args.open_collective_output)
     open_collective_updates_output_path = Path(args.open_collective_updates_output)
     news_output_dir = Path(args.news_output_dir)
+    community_exclusions = _load_community_exclusions(Path(args.hugo_config))
 
     previous_github = _safe_existing(github_output_path)
     previous_open_collective = _safe_existing(open_collective_output_path)
@@ -890,6 +967,8 @@ def main() -> None:
         if contributors:
             status_tags.add("fallback:contributors")
 
+    backers = _filter_backers(backers, community_exclusions["backers"])
+    contributors = _filter_contributors(contributors, community_exclusions["contributors"])
     backers_with_message = [backer for backer in backers if _to_str(backer.get("message"))]
 
     # Keep top buckets deterministic; actual random sampling for chips/messages is done client-side
