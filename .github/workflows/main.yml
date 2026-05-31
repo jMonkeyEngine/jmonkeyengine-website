@@ -65,9 +65,8 @@ jobs:
         cd generated
         git add .
         git commit -m "Update data - `date`"        
-        header=$(echo -n "ad-m:${{ github.token }}" | base64)
-        set +e
-        (git -c http.extraheader="AUTHORIZATION: basic $header" push origin gh-pages --force )
+        header=$(printf "x-access-token:%s" "${GITHUB_TOKEN}" | base64 | tr -d '\n')
+        git -c http.extraheader="AUTHORIZATION: basic ${header}" push origin gh-pages --force
 
     - name: Purge Cloudflare Cache
       shell: bash
