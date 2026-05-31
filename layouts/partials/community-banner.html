@@ -1,0 +1,261 @@
+{{- $community := index .Site.Data "community" | default dict -}}
+{{- $githubData := index $community "github" | default dict -}}
+{{- $contributorsData := index $githubData "contributors" | default dict -}}
+{{- $openCollectiveData := index $community "open-collective" | default (index $community "openCollective") | default dict -}}
+{{- $backersData := index $openCollectiveData "backers" | default dict -}}
+
+{{- $backers := index $backersData "all" | default (slice) -}}
+{{- $backerTopSeed := first 3 (index $backersData "top" | default $backers) -}}
+{{- $backersCount := len $backers -}}
+{{- $backerMessageBackers := index $backersData "messages" | default (slice) -}}
+
+{{- $contributors := where (index $contributorsData "all" | default (slice)) "type" "!=" "Bot" -}}
+{{- $contribTopSeed := first 3 (where (index $contributorsData "top" | default $contributors) "type" "!=" "Bot") -}}
+{{- $contribCount := len $contributors -}}
+
+{{- $defaultMessage := "Keep the momentum going with a quick note for the project." -}}
+{{- $messageText := $defaultMessage -}}
+{{- $messageAuthor := "OpenCollective" -}}
+{{- $messageAuthorUrl := "https://opencollective.com/jmonkeyengine" -}}
+
+{{- if gt (len $backerMessageBackers) 0 -}}
+  {{- $firstMessage := index $backerMessageBackers 0 -}}
+  {{- if $firstMessage.message -}}
+    {{- $messageText = $firstMessage.message -}}
+    {{- $messageAuthor = default $messageAuthor $firstMessage.name -}}
+    {{- $messageAuthorUrl = default $messageAuthorUrl $firstMessage.accountUrl -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if gt $backersCount 0 -}}
+<section class="community-spotlight" aria-label="Community section">
+  <div class="section-container community-spotlight__inner">
+    <article class="community-card community-card--backers" aria-labelledby="community-spotlight-backed-by">
+      <h2 id="community-spotlight-backed-by" class="community-card__title">Backed by</h2>
+      <p class="community-card__summary">{{ $backersCount }} supporters from the community.</p>
+
+      <ul id="community-backers-chips" class="community-card__chips" aria-label="Community backers">
+        {{- range $backer := first 3 $backerTopSeed }}
+          {{- if .name -}}
+            <li class="community-card__chip community-card__chip--top">
+              <a href="{{ .accountUrl | default "https://opencollective.com/jmonkeyengine" }}" target="_blank" rel="noopener noreferrer" title="Top backer">
+                {{ .name }}
+              </a>
+            </li>
+          {{- end -}}
+        {{- end -}}
+      </ul>
+
+      <a id="community-backer-see-all" class="community-card__small-link" href="https://opencollective.com/jmonkeyengine" target="_blank" rel="noopener noreferrer">See all backers</a>
+    </article>
+
+    <article class="community-card community-card--contributors" aria-labelledby="community-spotlight-contrib-by">
+      <h2 id="community-spotlight-contrib-by" class="community-card__title">Contributed by</h2>
+      <p class="community-card__summary">{{ $contribCount }} contributors across GitHub repositories.</p>
+
+      <ul id="community-contributors-chips" class="community-card__chips" aria-label="Contributors">
+        {{- range $contributor := first 3 $contribTopSeed }}
+          {{- if or .name .login -}}
+            <li class="community-card__chip community-card__chip--top-contributor">
+              <a href="{{ .url | default (printf "https://github.com/%s" .login) }}" target="_blank" rel="noopener noreferrer" title="Contributor">
+                {{ .name | default .login }}
+              </a>
+            </li>
+          {{- end -}}
+        {{- end -}}
+      </ul>
+
+      <a id="community-contrib-see-all" class="community-card__small-link" href="https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors" target="_blank" rel="noopener noreferrer">See all contributors</a>
+    </article>
+
+    <article class="community-card community-card--message" aria-labelledby="community-spotlight-message-title">
+      <h2 id="community-spotlight-message-title" class="community-card__title">Community message</h2>
+      <blockquote class="community-card__message">{{ $messageText }}</blockquote>
+      <p class="community-card__byline"><span aria-hidden="true">—</span> <a id="community-spotlight-message-author" class="community-card__author-link" href="{{ $messageAuthorUrl }}" target="_blank" rel="noopener noreferrer">{{ $messageAuthor }}</a></p>
+      <a class="community-card__small-link" href="/donate/">Leave a support message</a>
+    </article>
+  </div>
+
+  <script>
+    (() => {
+      const allBackers = {{ $backers | jsonify | safeJS }};
+      const topBackers = {{ $backerTopSeed | jsonify | safeJS }};
+      const allContributors = {{ $contributors | jsonify | safeJS }};
+      const topContributors = {{ $contribTopSeed | jsonify | safeJS }};
+      const allMessages = {{ $backerMessageBackers | jsonify | safeJS }};
+
+      const ensureArray = (value) => Array.isArray(value) ? value : [];
+      const toText = (value) => (typeof value === "string" ? value.trim() : "");
+      const randomize = (items) => {
+        const copy = [...items];
+        for (let i = copy.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      };
+
+      const dedupeByKey = (items, keyOf) => {
+        const seen = new Set();
+        return items.filter((item) => {
+          const key = keyOf(item);
+          if (!key) {
+            return false;
+          }
+          if (seen.has(key)) {
+            return false;
+          }
+          seen.add(key);
+          return true;
+        });
+      };
+
+      const formatChip = (name, url, title, className = "") => {
+        const li = document.createElement("li");
+        li.className = className || "community-card__chip";
+        const a = document.createElement("a");
+        a.href = url || "https://opencollective.com/jmonkeyengine";
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.title = title || name || "Community member";
+        a.textContent = name || "Community member";
+        li.appendChild(a);
+        return li;
+      };
+
+      const normalizeBacker = (item) => {
+        const name = toText(item?.name);
+        const slug = toText(item?.slug);
+        const account = toText(item?.account);
+        const accountUrl = toText(item?.accountUrl);
+        const key = `${(slug || account || accountUrl || name).toLowerCase()}`;
+        return {
+          key: key ? key : "",
+          name,
+          href: accountUrl || "https://opencollective.com/jmonkeyengine",
+        };
+      };
+
+      const normalizeContributor = (item) => {
+        if (toText(item?.type).toLowerCase() === "bot") {
+          return { key: "", name: "", href: "" };
+        }
+        const name = toText(item?.name) || toText(item?.login);
+        const login = toText(item?.login);
+        const rawHref = toText(item?.url);
+        const href = rawHref || (login ? `https://github.com/${login}` : "https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors");
+        const key = (login || name).toLowerCase();
+        return {
+          key: key ? key : "",
+          name,
+          href,
+        };
+      };
+
+      const buildTop = (topItems, allItems, normalize) => {
+        const normalizedTop = dedupeByKey(ensureArray(topItems).map(normalize), (item) => item.key);
+        if (normalizedTop.length > 0) {
+          return normalizedTop.slice(0, 3);
+        }
+
+        return dedupeByKey(ensureArray(allItems).map(normalize), (item) => item.key).slice(0, 3);
+      };
+
+      const remainingCount = (allItems, renderedItems) => {
+        const remaining = ensureArray(allItems).filter((item) => !renderedItems.has(item.key));
+        return Math.max(0, remaining.length);
+      };
+
+      const renderBackers = () => {
+        const list = document.getElementById("community-backers-chips");
+        if (!list) return;
+
+        const allNormalized = dedupeByKey(ensureArray(allBackers).map(normalizeBacker), (item) => item.key);
+        const top = buildTop(topBackers, allBackers, normalizeBacker);
+        const topByKey = new Set(top.map((item) => item.key));
+        const randomPool = dedupeByKey(
+          allNormalized.filter((item) => !topByKey.has(item.key)),
+          (item) => item.key
+        );
+        const random = randomize(randomPool).slice(0, 3);
+
+        list.innerHTML = "";
+        top.forEach((backer) => list.appendChild(formatChip(backer.name, backer.href, "Top backer", "community-card__chip community-card__chip--top")));
+        random.forEach((backer) => list.appendChild(formatChip(backer.name, backer.href, "Backer")));
+
+        const shownKeys = new Set();
+        top.forEach((item) => shownKeys.add(item.key));
+        random.forEach((item) => shownKeys.add(item.key));
+
+        const remaining = remainingCount(allNormalized, shownKeys);
+        if (remaining > 0) {
+          list.appendChild(formatChip(`+ ${remaining} more`, "https://opencollective.com/jmonkeyengine", "See all backers", "community-card__chip community-card__chip--more"));
+        }
+      };
+
+      const renderContributors = () => {
+        const list = document.getElementById("community-contributors-chips");
+        if (!list) return;
+
+        const allNormalized = dedupeByKey(ensureArray(allContributors).map(normalizeContributor), (item) => item.key);
+        const top = buildTop(topContributors, allContributors, normalizeContributor);
+        const topByKey = new Set(top.map((item) => item.key));
+        const randomPool = dedupeByKey(
+          allNormalized.filter((item) => !topByKey.has(item.key)),
+          (item) => item.key
+        );
+        const random = randomize(randomPool).slice(0, 3);
+
+        list.innerHTML = "";
+        if (top.length + random.length === 0) {
+          list.innerHTML = "<li class=\"community-card__chip community-card__chip-muted\">No contributor data available</li>";
+          return;
+        }
+
+        top.forEach((contributor) => list.appendChild(formatChip(contributor.name, contributor.href, "Top contributor in last six months", "community-card__chip community-card__chip--top-contributor")));
+        random.forEach((contributor) => list.appendChild(formatChip(contributor.name, contributor.href, "Contributor")));
+
+        const shownKeys = new Set();
+        top.forEach((item) => shownKeys.add(item.key));
+        random.forEach((item) => shownKeys.add(item.key));
+
+        const remaining = remainingCount(allNormalized, shownKeys);
+        if (remaining > 0) {
+          list.appendChild(formatChip(`+ ${remaining} more`, "https://github.com/jMonkeyEngine/jmonkeyengine/graphs/contributors", "See all contributors", "community-card__chip community-card__chip--more"));
+        }
+      };
+
+      const renderMessage = () => {
+        const validMessages = ensureArray(allMessages)
+          .map((item) => ({
+            message: toText(item?.message),
+            author: toText(item?.name) || "OpenCollective",
+            authorUrl: toText(item?.accountUrl) || "https://opencollective.com/jmonkeyengine",
+          }))
+          .filter((item) => item.message);
+
+        if (validMessages.length === 0) {
+          return;
+        }
+
+        const pick = validMessages[Math.floor(Math.random() * validMessages.length)];
+        const messageNode = document.querySelector(".community-card__message");
+        const authorNode = document.getElementById("community-spotlight-message-author");
+        if (messageNode) {
+          messageNode.textContent = pick.message;
+        }
+        if (authorNode) {
+          authorNode.textContent = pick.author;
+          authorNode.href = pick.authorUrl;
+          authorNode.target = "_blank";
+          authorNode.rel = "noopener noreferrer";
+        }
+      };
+
+      renderBackers();
+      renderContributors();
+      renderMessage();
+    })();
+  </script>
+</section>
+{{- end -}}

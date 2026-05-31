@@ -1,0 +1,490 @@
+<canvas id="matrix-canvas" aria-hidden="true"></canvas>
+<style>
+  #matrix-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    z-index: 1;
+    opacity: 1;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.86) 62%, rgba(255,255,255,0.18) 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.86) 62%, rgba(255,255,255,0.18) 92%, transparent 100%);
+    contain: strict;
+  }
+</style>
+<script>
+(function() {
+  const canvas = document.getElementById('matrix-canvas');
+  if (!canvas) return;
+
+  let hero = null;
+  let shell = null;
+  let width = 1;
+  let height = 1;
+  let dpr = 1;
+  let lastTs = 0;
+  let mashupLoaded = false;
+  const pointer = { x: 0, y: 0, active: 0, target: 0 };
+  const baseReveal = { x: 0.68, y: 0.48, inner: 210, outer: 430 };
+  const pointerReveal = { inner: 150, outer: 265 };
+
+  function attachToHero() {
+    hero = document.querySelector('.hero');
+    shell = document.getElementById('hero-showcase-shell');
+    if (hero && canvas.parentElement !== hero) {
+      hero.insertBefore(canvas, hero.firstChild);
+    }
+  }
+  attachToHero();
+
+  const gl = canvas.getContext('webgl2', {
+    alpha: true,
+    antialias: false,
+    depth: false,
+    stencil: false,
+    premultipliedAlpha: true,
+    powerPreference: 'high-performance'
+  });
+
+  window.__heroWebGLInfo = {
+    requested: 'webgl2',
+    usingWebGL2: !!gl,
+    renderer: gl ? gl.getParameter(gl.RENDERER) : null,
+    version: gl ? gl.getParameter(gl.VERSION) : null,
+    mashupInShader: true,
+    bananasInShader: true,
+    bananasInstanced: true,
+    bananaColumnsFixed: 12,
+    pointerRevealInShader: true
+  };
+
+  if (!gl) {
+    canvas.style.display = 'none';
+    return;
+  }
+
+  function compile(type, src) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, src);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      const log = gl.getShaderInfoLog(shader);
+      gl.deleteShader(shader);
+      throw new Error(log);
+    }
+    return shader;
+  }
+
+  function program(vs, fs) {
+    const p = gl.createProgram();
+    gl.attachShader(p, compile(gl.VERTEX_SHADER, vs));
+    gl.attachShader(p, compile(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) {
+      const log = gl.getProgramInfoLog(p);
+      gl.deleteProgram(p);
+      throw new Error(log);
+    }
+    return p;
+  }
+
+  const quadProgram = program(`#version 300 es
+    precision highp float;
+    const vec2 POS[3] = vec2[3](vec2(-1.0,-1.0), vec2(3.0,-1.0), vec2(-1.0,3.0));
+    out vec2 v_uv;
+    void main() {
+      vec2 p = POS[gl_VertexID];
+      v_uv = p * 0.5 + 0.5;
+      gl_Position = vec4(p, 0.0, 1.0);
+    }
+  `, `#version 300 es
+    precision highp float;
+    in vec2 v_uv;
+    out vec4 outColor;
+    uniform sampler2D u_mashup;
+    uniform vec2 u_resolution;
+    uniform vec2 u_imageSize;
+    uniform vec2 u_pointer;
+    uniform float u_pointerActive;
+    uniform float u_time;
+    uniform float u_dpr;
+
+    float circleMask(vec2 p, vec2 c, float innerR, float outerR) {
+      float d = distance(p, c);
+      return 1.0 - smoothstep(innerR, outerR, d);
+    }
+
+    vec2 repeatedUv(vec2 frag, vec2 canvasSize, vec2 imageSize) {
+      // Native-pixel-ish tiling: no cover/stretch. The texture repeats horizontally
+      // and vertically in shader space so the mashup keeps its original aspect.
+      vec2 tileSize = max(imageSize, vec2(1.0));
+      vec2 offset = vec2(canvasSize.x * 0.31, -canvasSize.y * 0.08);
+      return (frag - offset) / tileSize;
+    }
+
+    void main() {
+      vec2 frag = vec2(gl_FragCoord.x / u_dpr, u_resolution.y - (gl_FragCoord.y / u_dpr));
+      vec2 uv = repeatedUv(frag, u_resolution, u_imageSize);
+      vec4 img = texture(u_mashup, uv);
+
+      float base = circleMask(frag, u_resolution * vec2(0.70, 0.45), 285.0, 620.0) * 0.92;
+      float pointer = circleMask(frag, u_pointer, 205.0, 380.0) * u_pointerActive * 1.00;
+      float reveal = clamp(max(base, pointer), 0.0, 1.0);
+
+      float leftFade = smoothstep(0.08, 0.34, v_uv.x);
+      float bottomFade = 1.0 - smoothstep(0.94, 1.0, v_uv.y);
+      float topFade = smoothstep(0.0, 0.045, v_uv.y);
+      float alpha = reveal * leftFade * bottomFade * topFade;
+
+      vec3 graded = img.rgb * vec3(1.22, 1.18, 1.08) + vec3(0.055, 0.045, 0.015);
+      graded = mix(graded, vec3(1.0, 0.88, 0.26), 0.035 * reveal);
+      outColor = vec4(clamp(graded, 0.0, 1.0), img.a * alpha);
+    }
+  `);
+
+  const bananaProgram = program(`#version 300 es
+    precision highp float;
+    layout(location=0) in vec2 a_corner;
+    layout(location=1) in vec2 a_pos;
+    layout(location=2) in float a_size;
+    layout(location=3) in float a_alpha;
+    uniform vec2 u_resolution;
+    uniform float u_dpr;
+    out vec2 v_uv;
+    out float v_alpha;
+    void main() {
+      vec2 pixel = a_pos + a_corner * a_size;
+      vec2 clip = vec2((pixel.x / u_resolution.x) * 2.0 - 1.0, 1.0 - (pixel.y / u_resolution.y) * 2.0);
+      gl_Position = vec4(clip, 0.0, 1.0);
+      v_uv = a_corner + 0.5;
+      v_alpha = a_alpha;
+    }
+  `, `#version 300 es
+    precision highp float;
+    in vec2 v_uv;
+    in float v_alpha;
+    out vec4 outColor;
+    uniform sampler2D u_banana;
+    void main() {
+      vec4 tex = texture(u_banana, v_uv);
+      float edge = smoothstep(0.02, 0.18, tex.a);
+      outColor = vec4(tex.rgb, tex.a * edge * v_alpha);
+    }
+  `);
+
+  const quadUniforms = {
+    resolution: gl.getUniformLocation(quadProgram, 'u_resolution'),
+    imageSize: gl.getUniformLocation(quadProgram, 'u_imageSize'),
+    pointer: gl.getUniformLocation(quadProgram, 'u_pointer'),
+    pointerActive: gl.getUniformLocation(quadProgram, 'u_pointerActive'),
+    time: gl.getUniformLocation(quadProgram, 'u_time'),
+    dpr: gl.getUniformLocation(quadProgram, 'u_dpr'),
+    mashup: gl.getUniformLocation(quadProgram, 'u_mashup')
+  };
+  const bananaUniforms = {
+    resolution: gl.getUniformLocation(bananaProgram, 'u_resolution'),
+    dpr: gl.getUniformLocation(bananaProgram, 'u_dpr'),
+    banana: gl.getUniformLocation(bananaProgram, 'u_banana')
+  };
+
+  function makeTextureFromCanvas(srcCanvas) {
+    const tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, srcCanvas);
+    return tex;
+  }
+
+  function makeFallbackTexture() {
+    const c = document.createElement('canvas');
+    c.width = 4;
+    c.height = 4;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = '#15120a';
+    ctx.fillRect(0, 0, 4, 4);
+    ctx.fillStyle = '#ffd000';
+    ctx.fillRect(2, 1, 1, 1);
+    return makeTextureFromCanvas(c);
+  }
+
+  let mashupTexture = makeFallbackTexture();
+  const mashupSize = { width: 4, height: 4 };
+  const mashupSrc = '/images/showcase-mashup/showcase-mashup.webp';
+  function uploadMashupTexture(source) {
+    try {
+      mashupSize.width = source.width || source.naturalWidth || 4;
+      mashupSize.height = source.height || source.naturalHeight || 4;
+      gl.bindTexture(gl.TEXTURE_2D, mashupTexture);
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+      mashupLoaded = true;
+      window.__heroWebGLInfo.mashupLoaded = true;
+      window.__heroWebGLInfo.mashupStatus = 'loaded';
+      window.__heroWebGLInfo.mashupSize = [mashupSize.width, mashupSize.height];
+    } catch (error) {
+      window.__heroWebGLInfo.mashupStatus = 'upload-error';
+      window.__heroWebGLInfo.mashupError = error && error.message ? error.message : String(error);
+    }
+  }
+  function deferTextureUpload(source) {
+    const run = () => uploadMashupTexture(source);
+    if (document.visibilityState === 'hidden') {
+      window.setTimeout(run, 0);
+    } else if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(run, { timeout: 250 });
+    } else {
+      window.setTimeout(run, 0);
+    }
+  }
+  function loadMashupTexture(attempt = 0) {
+    const image = new Image();
+    let queued = false;
+    image.decoding = 'async';
+    image.fetchPriority = attempt === 0 ? 'low' : 'auto';
+    window.__heroWebGLInfo.mashupStatus = attempt === 0 ? 'loading' : 'retrying';
+    window.__heroWebGLInfo.mashupAttempts = attempt + 1;
+
+    const uploadFromImage = () => {
+      if (queued) return;
+      queued = true;
+      if ('createImageBitmap' in window) {
+        createImageBitmap(image)
+          .then(deferTextureUpload)
+          .catch(() => deferTextureUpload(image));
+      } else {
+        deferTextureUpload(image);
+      }
+    };
+
+    image.onload = () => {
+      if (image.decode) {
+        image.decode().then(uploadFromImage).catch(uploadFromImage);
+      } else {
+        uploadFromImage();
+      }
+    };
+    image.onerror = () => {
+      window.__heroWebGLInfo.mashupStatus = 'load-error';
+      if (attempt < 3) {
+        const delay = 180 * Math.pow(2, attempt);
+        window.setTimeout(() => loadMashupTexture(attempt + 1), delay);
+      }
+    };
+
+    const retrySuffix = attempt ? `${mashupSrc}${mashupSrc.includes('?') ? '&' : '?'}retry=${Date.now()}` : mashupSrc;
+    image.src = retrySuffix;
+
+    if (image.complete && image.naturalWidth > 0) {
+      uploadFromImage();
+    }
+  }
+  loadMashupTexture();
+
+  function makeBananaTexture() {
+    const c = document.createElement('canvas');
+    c.width = 96;
+    c.height = 96;
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.font = '76px Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, Segoe UI Symbol, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = 'rgba(255,208,0,0.45)';
+    ctx.shadowBlur = 10;
+    ctx.fillText('🍌', 48, 52);
+    return makeTextureFromCanvas(c);
+  }
+  const bananaTexture = makeBananaTexture();
+
+  const bananaQuadBuffer = gl.createBuffer();
+  const bananaInstanceBuffer = gl.createBuffer();
+  const bananaStride = 4;
+  const bananaColumnCount = 12;
+  gl.bindBuffer(gl.ARRAY_BUFFER, bananaQuadBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+    -0.5, -0.5,
+     0.5, -0.5,
+    -0.5,  0.5,
+     0.5,  0.5
+  ]), gl.STATIC_DRAW);
+  let bananas = [];
+  let bananaArray = new Float32Array(0);
+  let bananaCapacity = 0;
+
+  function resetBanana(b, initial, index = 0) {
+    const laneCount = Math.max(1, bananaColumnCount);
+    const laneWidth = width / laneCount;
+    b.x = (index + 0.5) * laneWidth + (Math.random() - 0.5) * Math.min(10, laneWidth * 0.16);
+    b.y = initial ? Math.random() * height : -80 - Math.random() * 360;
+    b.speed = 34 + Math.random() * 48;
+    b.size = 12 + Math.random() * 6;
+    b.alpha = 0.11 + Math.random() * 0.15;
+    b.wave = Math.random() * Math.PI * 2;
+    b.drift = (Math.random() - 0.5) * 3;
+    b.length = 4 + Math.floor(Math.random() * 4);
+    b.spacing = 1.02 + Math.random() * 0.18;
+    b.index = index;
+  }
+
+  function rebuildBananas() {
+    const count = bananaColumnCount;
+    bananas = Array.from({ length: count }, (_, index) => {
+      const b = {};
+      resetBanana(b, true, index);
+      return b;
+    });
+    bananaCapacity = count * 8;
+    bananaArray = new Float32Array(bananaCapacity * bananaStride);
+    gl.bindBuffer(gl.ARRAY_BUFFER, bananaInstanceBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, bananaArray.byteLength, gl.DYNAMIC_DRAW);
+  }
+
+  function resize() {
+    attachToHero();
+    const rect = (hero || document.documentElement).getBoundingClientRect();
+    const nextWidth = Math.max(1, Math.floor(rect.width || window.innerWidth));
+    const nextHeight = Math.max(1, Math.floor(rect.height || window.innerHeight * 0.7));
+    dpr = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+    width = nextWidth;
+    height = nextHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    pointer.x = pointer.x || width * 0.69;
+    pointer.y = pointer.y || height * 0.46;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    rebuildBananas();
+  }
+
+  function setPointer(event) {
+    if (!hero) return;
+    const rect = hero.getBoundingClientRect();
+    pointer.x = Math.max(0, Math.min(width, event.clientX - rect.left));
+    pointer.y = Math.max(0, Math.min(height, event.clientY - rect.top));
+    pointer.target = 1;
+    if (shell) shell.classList.add('is-pointing');
+  }
+
+  function clearPointer() {
+    pointer.target = 0;
+    if (shell) shell.classList.remove('is-pointing');
+  }
+
+  function bindEvents() {
+    if (!hero || hero.__heroWebGLBound) return;
+    hero.__heroWebGLBound = true;
+    hero.addEventListener('pointermove', setPointer, { passive: true });
+    hero.addEventListener('pointerenter', setPointer, { passive: true });
+    hero.addEventListener('pointerleave', clearPointer, { passive: true });
+    hero.addEventListener('focusin', () => { pointer.target = 0.8; if (shell) shell.classList.add('is-pointing'); });
+    hero.addEventListener('focusout', clearPointer);
+  }
+
+  function render(ts) {
+    const seconds = ts * 0.001;
+    const dt = lastTs ? Math.min(0.05, (ts - lastTs) * 0.001) : 0.016;
+    lastTs = ts;
+    pointer.active += (pointer.target - pointer.active) * Math.min(1, dt * 9);
+
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+    gl.useProgram(quadProgram);
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, mashupTexture);
+    gl.uniform1i(quadUniforms.mashup, 0);
+    gl.uniform2f(quadUniforms.resolution, width, height);
+    gl.uniform2f(quadUniforms.imageSize, mashupSize.width, mashupSize.height);
+    gl.uniform2f(quadUniforms.pointer, pointer.x, pointer.y);
+    gl.uniform1f(quadUniforms.pointerActive, pointer.active);
+    gl.uniform1f(quadUniforms.time, seconds);
+    gl.uniform1f(quadUniforms.dpr, dpr);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+    let pointCount = 0;
+    for (let i = 0; i < bananas.length; i++) {
+      const b = bananas[i];
+      b.y += b.speed * dt;
+      const x = b.x + Math.sin(seconds * 0.55 + b.wave + b.y * 0.010) * b.drift;
+      for (let j = 0; j < b.length; j++) {
+        const y = b.y - j * b.size * b.spacing;
+        if (y < -80 || y > height + 80) continue;
+        const trail = 1 - (j / Math.max(1, b.length - 1));
+        const fadeBottom = 1 - Math.max(0, Math.min(1, (y - height * 0.78) / (height * 0.22)));
+        const fadeTop = Math.max(0, Math.min(1, (y + 40) / 90));
+        const offset = pointCount * bananaStride;
+        bananaArray[offset] = x;
+        bananaArray[offset + 1] = y;
+        bananaArray[offset + 2] = b.size * (0.74 + trail * 0.32);
+        bananaArray[offset + 3] = b.alpha * (0.18 + trail * 0.82) * fadeBottom * fadeTop;
+        pointCount++;
+      }
+      if (b.y - b.length * b.size * b.spacing > height + 80) resetBanana(b, false, b.index || i);
+    }
+
+    gl.useProgram(bananaProgram);
+    gl.activeTexture(gl.TEXTURE1);
+    gl.bindTexture(gl.TEXTURE_2D, bananaTexture);
+    gl.uniform1i(bananaUniforms.banana, 1);
+    gl.uniform2f(bananaUniforms.resolution, width, height);
+    gl.uniform1f(bananaUniforms.dpr, dpr);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, bananaQuadBuffer);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 2 * 4, 0);
+    gl.vertexAttribDivisor(0, 0);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, bananaInstanceBuffer);
+    if (pointCount > 0) {
+      gl.bufferSubData(gl.ARRAY_BUFFER, 0, bananaArray.subarray(0, pointCount * bananaStride));
+    }
+    gl.enableVertexAttribArray(1);
+    gl.vertexAttribPointer(1, 2, gl.FLOAT, false, bananaStride * 4, 0);
+    gl.vertexAttribDivisor(1, 1);
+    gl.enableVertexAttribArray(2);
+    gl.vertexAttribPointer(2, 1, gl.FLOAT, false, bananaStride * 4, 2 * 4);
+    gl.vertexAttribDivisor(2, 1);
+    gl.enableVertexAttribArray(3);
+    gl.vertexAttribPointer(3, 1, gl.FLOAT, false, bananaStride * 4, 3 * 4);
+    gl.vertexAttribDivisor(3, 1);
+
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+    gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, pointCount);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+    window.__heroWebGLInfo.frame = {
+      width,
+      height,
+      dpr,
+      bananaColumns: bananas.length,
+      bananaCount: pointCount,
+      bananaDrawMode: 'instanced-triangle-strip',
+      bananaInstances: pointCount,
+      mashupLoaded,
+      pointerActive: Number(pointer.active.toFixed(3))
+    };
+    requestAnimationFrame(render);
+  }
+
+  try {
+    resize();
+    bindEvents();
+    window.addEventListener('DOMContentLoaded', () => { attachToHero(); bindEvents(); resize(); });
+    window.addEventListener('resize', resize);
+    requestAnimationFrame(render);
+  } catch (error) {
+    console.error('Hero WebGL2 shader canvas failed', error);
+    window.__heroWebGLInfo.error = String(error && error.message ? error.message : error);
+  }
+})();
+</script>

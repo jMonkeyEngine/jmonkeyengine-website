@@ -1,0 +1,34 @@
+{{- $p := . -}}
+{{- $images := partial "showcase-images.html" (dict "page" $p "fallback" $p.Params.images) -}}
+{{- $gallery := $p.Params.gallery -}}
+{{- $cover := "" -}}
+{{- $shortDescription := $p.Params.summary | default $p.Summary | default "" -}}
+{{- if $images -}}
+    {{- $cover = index $images 0 -}}
+{{- else if $gallery -}}
+    {{- $cover = index $gallery 0 -}}
+{{- end -}}
+{{- if $shortDescription -}}{{ $shortDescription = $shortDescription | plainify | truncate 140 }}{{ end }}
+<a href="{{ $p.RelPermalink }}" class="game-card">
+    {{ if $cover }}
+    <div class="game-card-img" style="background-image: url('{{ $cover }}')"></div>
+    {{ else }}
+    <div class="game-card-img game-card-placeholder"><i class="fas fa-gamepad"></i></div>
+    {{ end }}
+    <div class="game-card-body">
+        <div class="game-card-top">
+            {{ with $p.Params.tags }}{{ $shownTags := 0 }}{{ range . }}{{ if and (ne (lower .) "showcase") (lt $shownTags 2) }}<span class="game-tag">{{ . }}</span>{{ $shownTags = add $shownTags 1 }}{{ end }}{{ end }}{{ end }}
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">{{ $p.Title }}</h3>
+            {{ with $p.Params.authors }}<p class="game-card-author">by {{ index . 0 }}</p>{{ end }}
+            {{ with $shortDescription }}<p class="game-card-summary">{{ . }}</p>{{ end }}
+            <div class="game-card-links">
+                {{ with $p.Params.steam_link }}<span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>{{ end }}
+                {{ with $p.Params.itch_link }}<span class="glink itch" title="itch.io"><i class="fab fa-itch-io"></i></span>{{ end }}
+                {{ with $p.Params.publisher_link }}<span class="glink web" title="Website"><i class="fas fa-globe"></i></span>{{ end }}
+                {{ with $p.Params.indiedb_link }}<span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>{{ end }}
+            </div>
+        </div>
+    </div>
+</a>

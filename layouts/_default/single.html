@@ -1,0 +1,130 @@
+{{ define "main" }}
+<section class="game-page">
+    {{ $images := .Params.images }}
+    {{ if eq .Section "showcase" }}
+        {{ $images = partial "showcase-images.html" (dict "page" . "fallback" .Params.images) }}
+    {{ end }}
+    {{ $descriptionSource := "" }}
+    {{ $descriptionSourceRaw := "" }}
+    {{ with .Params.description }}
+        {{ $descriptionSourceRaw = . | replaceRE "^\\s+|\\s+$" "" }}
+        {{ $descriptionSource = . | plainify | replaceRE "^\\s+|\\s+$" "" }}
+    {{ end }}
+    {{ if not $descriptionSource }}
+        {{ with .Params.summary }}
+            {{ $descriptionSourceRaw = . | replaceRE "^\\s+|\\s+$" "" }}
+            {{ $descriptionSource = . | plainify | replaceRE "^\\s+|\\s+$" "" }}
+        {{ end }}
+    {{ end }}
+    {{ if not $descriptionSource }}
+        {{ with .Summary }}
+            {{ $descriptionSourceRaw = . | replaceRE "^\\s+|\\s+$" "" }}
+            {{ $descriptionSource = . | plainify | replaceRE "^\\s+|\\s+$" "" }}
+        {{ end }}
+    {{ end }}
+    {{ if not $descriptionSource }}
+        {{ with .Content }}
+            {{ $descriptionSourceRaw = . | replaceRE "^\\s+|\\s+$" "" }}
+            {{ $descriptionSource = . | plainify | replaceRE "^\\s+|\\s+$" "" }}
+        {{ end }}
+    {{ end }}
+    {{ $shortDescription := "" }}
+    {{ if $descriptionSource }}
+        {{ $shortDescription = $descriptionSource | truncate 210 "..."}}
+    {{ end }}
+    {{ $fullDescription := .Content | replaceRE "^\\s+|\\s+$" "" }}
+    {{ if $fullDescription }}
+        {{ if $shortDescription }}
+            {{ $fullDescription = $fullDescription | replaceRE "^\\s*<p>.*?</p>\\s*" "" }}
+        {{ end }}
+    {{ else if $descriptionSourceRaw }}
+        {{ $fullDescription = $descriptionSourceRaw | markdownify }}
+    {{ end }}
+
+    {{/* Hero */}}
+    <div class="game-page-hero">
+        {{ if $images }}{{ range first 1 $images }}
+        <div class="game-page-hero-bg" style="background-image: url('{{ . }}');"></div>
+        {{ end }}{{ else }}
+        <div class="game-page-hero-bg game-page-hero-placeholder"></div>
+        {{ end }}
+        <div class="game-page-hero-overlay"></div>
+        <div class="game-page-hero-content">
+            <div class="game-hero-badges">
+                {{ if .Params.authors }}<span class="hero-badge author"><i class="fas fa-user"></i>{{ range $i,$a:=.Params.authors }}{{if $i}}, {{end}}{{$a}}{{end}}</span>{{ end }}
+            {{ if .Params.tags }}{{ range first 3 .Params.tags }}{{if not (eq . "showcase")}}<span class="hero-badge tag">{{ . }}</span>{{end}}{{end}}{{ end }}
+            </div>
+            <h1 class="game-hero-title">{{ .Title }}</h1>
+            {{ with $shortDescription }}<p class="game-hero-summary">{{ . }}</p>{{ end }}
+        </div>
+    </div>
+
+    <div class="game-page-body">
+
+        {{/* Platforms */}}
+        {{ $platforms := .Params.platforms }}
+        {{ if or $platforms .Params.steam_link .Params.itch_link .Params.publisher_link }}
+        <div class="game-section platforms-section">
+            <div class="game-section-label"><i class="fas fa-desktop"></i> Available on</div>
+            {{ if $platforms }}
+                {{ partial "showcase-platform-chips.html" (dict "platforms" $platforms) }}
+            {{ else }}
+                {{ $fallbackPlatforms := slice }}
+                {{ if .Params.steam_link }}{{ $fallbackPlatforms = $fallbackPlatforms | append "Windows" }}{{ end }}
+                {{ if .Params.itch_link }}{{ $fallbackPlatforms = $fallbackPlatforms | append "Web" }}{{ end }}
+                {{ if .Params.publisher_link }}{{ $fallbackPlatforms = $fallbackPlatforms | append "Web" }}{{ end }}
+                {{ partial "showcase-platform-chips.html" (dict "platforms" $fallbackPlatforms) }}
+            {{ end }}
+        </div>
+        {{ end }}
+
+        {{/* Links Panel */}}
+        {{ $hasLinks := or .Params.steam_link .Params.itch_link .Params.indiedb_link .Params.publisher_link .Params.web_link .Params.gamejolt_link .Params.play_store_link .Params.ios_appstore_link }}
+        {{ if $hasLinks }}
+        <div class="game-section links-section">
+            <div class="game-section-label"><i class="fas fa-link"></i> Links</div>
+            <div class="links-grid">
+                {{ partial "showcase-link-card.html" (dict "url" .Params.steam_link "class" "link-steam" "icon" "fab fa-steam" "name" "Steam" "sub" "View on Steam Store") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.itch_link "class" "link-itch" "icon" "fab fa-itch-io" "name" "itch.io" "sub" "Download on itch.io") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.indiedb_link "class" "link-indiedb" "icon" "fas fa-database" "name" "IndieDB" "sub" "Page on IndieDB") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.publisher_link "class" "link-web" "icon" "fas fa-globe" "name" "Website" "sub" "Official website") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.web_link "class" "link-web" "icon" "fas fa-globe" "name" "Website" "sub" "Official website") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.gamejolt_link "class" "link-gamejolt" "icon" "fas fa-gamepad" "name" "GameJolt" "sub" "Page on GameJolt") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.play_store_link "class" "link-playstore" "icon" "fab fa-google-play" "name" "Google Play" "sub" "Download for Android") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.ios_appstore_link "class" "link-appstore" "icon" "fab fa-apple" "name" "App Store" "sub" "Download for iOS") }}
+            </div>
+        </div>
+        {{ end }}
+
+        {{/* Screenshots */}}
+        {{ $gallery := .Params.gallery }}
+        {{ $all_imgs := slice }}
+        {{ if $gallery }}
+            {{ range $gallery }}
+                {{ if not (strings.HasPrefix . "youtube:") }}
+                {{ if not (strings.HasSuffix . ".webm") }}
+                {{ if not (strings.HasSuffix . ".mp4") }}
+                    {{ $all_imgs = $all_imgs | append . }}
+                {{ end }}{{ end }}{{ end }}
+                {{ end }}
+        {{ else if $images }}
+            {{ range after 1 $images }}
+                {{ $all_imgs = $all_imgs | append . }}
+                {{ end }}
+        {{ end }}
+
+        {{ partial "screenshots-carousel.html" (dict "items" $all_imgs "id" "screenshots-carousel" "label" "Screenshots") }}
+
+        {{ if $fullDescription }}
+        <div class="game-section game-page-story">
+            <div class="game-section-label"><i class="fas fa-book-open"></i> About this game</div>
+            <div class="article-body">{{ $fullDescription | safeHTML }}</div>
+        </div>
+        {{ end }}
+
+    </div>
+</section>
+{{ partial "showcase-lightbox.html" . }}
+
+{{ partial "showcase-carousel-script.html" . }}
+{{ end }}

@@ -6,31 +6,12 @@ disable_nav: true
 date: 2021-04-25T18:00:00+00:00
 ---
 
-<style>
-    #qsbuttons{ 
-        text-align:center;
-    }
-    #qsbuttons > p{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-
-    .qsbtn{
-      flex-grow: 1
-        
-    }
-    #jme-initializer{
-        margin-top:1em;
-        border:none;
-    }
-</style>
 <script>
 function showSubPage(id){
     const subpages=document.querySelectorAll(".qspage");
-    subpages.forEach(sp=>sp.style.display="none");
+    subpages.forEach(sp=>sp.hidden=true);
     const selectedSubPage=document.querySelector(".qspage#"+id);
-    selectedSubPage.style.display="block";
+    selectedSubPage.hidden=false;
 
     const buttons=document.querySelectorAll("button.qsbtn");
     buttons.forEach(el=>el.classList.remove("highlightedCl"));
@@ -39,7 +20,7 @@ function showSubPage(id){
     selectedBtn.classList.add("highlightedCl");
 }
 </script>
-<div id="qsbuttons" style="text-align:center">
+<div id="qsbuttons">
 jMonkeyEngine is not bound to any specific IDE or SDK and it can be used as any other java library.
 <br>
 There are several ways to start a project with jMonkeyEngine:
@@ -51,7 +32,7 @@ There are several ways to start a project with jMonkeyEngine:
 
 </div>
 <hr>
-<div class="qspage" id="qssdk" style="display:none">
+<div class="qspage" id="qssdk" hidden>
 
 Using the Netbeans-based SDK is by far the quickest solution to get you up and running. Everything needed is provided, along with extra tools and integrations, and is generally the place most users start their endevour. [Download the SDK](https://github.com/jMonkeyEngine/sdk/releases).
 
@@ -59,13 +40,12 @@ Using the Netbeans-based SDK is by far the quickest solution to get you up and r
 
 
 
-<div class="qspage" id="qsinitializer" style="text-align:center;display:block">
+<div class="qspage qspage--center" id="qsinitializer">
 
 The initializer is a convenient online tool that build a starter gradle script and template for your application.
 You can access the tool directly from [here](https://start.jmonkeyengine.org) or use the embedded version below.
 
-<iframe id="jme-initializer" 
-    style="width:100%;height:800px;" 
+<iframe id="jme-initializer"
     src="https://start.jmonkeyengine.org"
 ></iframe>
 
@@ -97,7 +77,7 @@ You can access the tool directly from [here](https://start.jmonkeyengine.org) or
 
 
 
-<div class="qspage" id="qscustom" style="display:none">
+<div class="qspage" id="qscustom" hidden>
 
 The engine itself and its dependencies can be downloaded from [the releases page](https://github.com/jMonkeyEngine/jmonkeyengine/releases) and used as any other java library.
 
@@ -176,4 +156,3 @@ For a more thorough tutorial on jMonkey browse through our [wiki](https://wiki.j
 If you ever find yourself confused or wondering how something is done, head over to our [community hub](https://hub.jmonkeyengine.org) and create a new thread. Our ultra-helpful team and community will be more than happy to give you a hand in getting you back on track.
 
 </div>
-

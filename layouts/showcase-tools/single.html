@@ -1,0 +1,77 @@
+{{ define "main" }}
+<section class="game-page tool-page">
+    {{ $images := partial "showcase-images.html" (dict "page" . "fallback" .Params.images) }}
+    {{ $cover := "" }}
+    {{ if $images }}{{ $cover = index $images 0 }}{{ end }}
+
+    <div class="game-page-hero tool-page-hero">
+        {{ if $cover }}
+        <div class="game-page-hero-bg" style="background-image: url('{{ $cover }}');"></div>
+        {{ else }}
+        <div class="game-page-hero-bg game-page-hero-placeholder"></div>
+        {{ end }}
+        <div class="game-page-hero-overlay"></div>
+        <div class="game-page-hero-content">
+            <div class="game-hero-badges">
+                {{ with .Params.tool_type }}<span class="hero-badge tag">{{ . }}</span>{{ end }}
+                {{ with .Params.tags }}{{ range first 3 . }}{{ if ne (lower .) (lower $.Params.tool_type) }}<span class="hero-badge tag">{{ . }}</span>{{ end }}{{ end }}{{ end }}
+            </div>
+            {{ $description := .Params.description | default .Params.summary | default "" }}
+            {{ if and (not $description) .Content }}{{ $description = .Content | plainify }}{{ end }}
+            <h1 class="game-hero-title">{{ .Title }}</h1>
+            {{ with $description }}<p class="game-hero-summary">{{ . }}</p>{{ end }}
+        </div>
+    </div>
+
+    <div class="game-page-body">
+        {{ $platforms := .Params.platforms }}
+        {{ if $platforms }}
+        <div class="game-section platforms-section">
+            <div class="game-section-label"><i class="fas fa-desktop"></i> Available on</div>
+            {{ partial "showcase-platform-chips.html" (dict "platforms" $platforms) }}
+        </div>
+        {{ end }}
+
+        {{ if or .Params.external_link .Params.github_link .Params.indiedb_link .Params.website_link }}
+        <div class="game-section links-section">
+            <div class="game-section-label"><i class="fas fa-link"></i> Links</div>
+            <div class="links-grid">
+                {{ partial "showcase-link-card.html" (dict "url" .Params.external_link "class" "link-web" "icon" "fas fa-up-right-from-square" "name" "Project page" "sub" "Open the official project link") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.github_link "class" "link-web" "icon" "fab fa-github" "name" "GitHub" "sub" "View source, releases, or issues") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.indiedb_link "class" "link-indiedb" "icon" "fas fa-database" "name" "IndieDB" "sub" "Project profile on IndieDB") }}
+                {{ partial "showcase-link-card.html" (dict "url" .Params.website_link "class" "link-web" "icon" "fas fa-globe" "name" "Website" "sub" "Official website") }}
+            </div>
+        </div>
+        {{ end }}
+
+        {{ $gallery := .Params.gallery }}
+        {{ $all_imgs := slice }}
+        {{ if $gallery }}
+            {{ range $gallery }}
+                {{ if not (strings.HasPrefix . "youtube:") }}
+                {{ if not (strings.HasSuffix . ".webm") }}
+                {{ if not (strings.HasSuffix . ".mp4") }}
+                    {{ $all_imgs = $all_imgs | append . }}
+                {{ end }}{{ end }}{{ end }}
+                {{ end }}
+        {{ else if $images }}
+            {{ range after 1 $images }}
+                {{ $all_imgs = $all_imgs | append . }}
+            {{ end }}
+        {{ end }}
+
+        {{ partial "screenshots-carousel.html" (dict "items" $all_imgs "id" "tool-screenshots-carousel" "label" "Screenshots") }}
+
+        {{ $body := .Content | replaceRE "^\\s+|\\s+$" "" }}
+        {{ if $body }}
+        <div class="game-section game-page-story">
+            <div class="game-section-label"><i class="fas fa-book-open"></i> About this tool</div>
+            <div class="article-body">{{ $body | safeHTML }}</div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ partial "showcase-lightbox.html" . }}
+
+{{ partial "showcase-carousel-script.html" . }}
+{{ end }}

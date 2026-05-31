@@ -1,62 +1,149 @@
 {{ define "main" }}
-{{ .Scratch.Set "asBanner" "true" }}
+{{- $community := index .Site.Data "community" | default dict -}}
+{{- $githubData := index $community "github" | default dict -}}
+{{- $repoData := index $githubData "repository" | default dict -}}
+{{- $starsRaw := index $repoData "stars" | default 4200 -}}
+{{- $forksRaw := index $repoData "forks" | default 1200 -}}
+{{- $stars := cond (ge (int $starsRaw) 1000) (printf "%.1fk" (div (float $starsRaw) 1000)) (printf "%v" $starsRaw) -}}
+{{- $forks := cond (ge (int $forksRaw) 1000) (printf "%.1fk" (div (float $forksRaw) 1000)) (printf "%v" $forksRaw) -}}
 
-{{ $filter := slice "showcase" }}
-{{ range first 1 (shuffle  (where   .Site.Pages  "Params.tags"  "intersect" $filter    ) ) }}
-{{ partial "showcaseBanner.html" . }}
-{{ end }}
-
-
-<section class="list vlist responsive responsiveWidth">
-    {{ $filter := slice "devlog" }}
-    {{ $pages := (where  .Site.Pages  "Params.tags"  "intersect" $filter )}}
-    {{ range first 1 $pages  }}
-    {{ partial "articlePreview.html" . }}
-    {{ end }}
+<!-- ======== HERO ======== -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">jMonkeyEngine</h1>
+        <p class="hero-subtitle">The modern game engine for Java developers.<br>Code-first. Flexible. Built for creators who want full control.</p>
+        <div class="hero-actions">
+            <a href="/start/" class="btn btn-primary">
+                <i class="fas fa-rocket"></i> Get Started
+            </a>
+            <a href="https://github.com/jMonkeyEngine/jmonkeyengine" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+        <div class="hero-tech">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Cross-platform</span>
+            <span class="tech-tag">Code-first</span>
+            <span class="tech-tag">Open source</span>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-showcase-shell" id="hero-showcase-shell" aria-label="Community showcase image spotlight" role="img">
+            <div class="hero-showcase-copy">
+                <span class="hero-showcase-text">Real games and experiments from the community</span>
+                <a href="/showcase/" class="hero-showcase-link">Open showcase <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
 </section>
-<a class="more responsiveWidth" href="tags/devlog">More development updates...</a>
 
-<section class="list vlist responsive responsiveWidth">
-    {{ $filter := slice "communitylog" }}
-    {{ $pages := (where  .Site.Pages  "Params.tags"  "intersect" $filter )}}
-    {{ range first 1 $pages  }}
-    {{ partial "articlePreview.html" . }}
-    {{ end }}
+<!-- ======== STATS BAR ======== -->
+<section class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat">
+            <span class="stat-value">21+</span>
+            <span class="stat-label">Years active</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat stat--github-action">
+            <span class="stat-value">{{ $stars }}</span>
+            <span class="stat-label">Stars on GitHub</span>
+            <a class="stat-action" href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Star</a>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat stat--github-action">
+            <span class="stat-value">{{ $forks }}</span>
+            <span class="stat-label">Forks on GitHub</span>
+            <a class="stat-action" href="https://github.com/jMonkeyEngine/jmonkeyengine/fork" target="_blank" rel="noopener noreferrer"><i class="fas fa-code-branch"></i> Fork</a>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <span class="stat-value">BSD-3</span>
+            <span class="stat-label">Permissive license</span>
+        </div>
+    </div>
 </section>
-<a class="more responsiveWidth" href="tags/communitylog">More community updates...</a>
 
-<section class="list vlist responsive responsiveWidth">
-    {{ $filter := slice "misc" }}
-    {{ $pages :=  (where  .Site.Pages  "Params.tags"  "intersect" $filter )}}
-    {{ range first 1 $pages  }}
-    {{ partial "articlePreview.html" . }}
-    {{ end }}
-     
+{{ partial "community-banner" . }}
+
+<!-- ======== FEATURES ======== -->
+<section class="features-section">
+    <div class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">Everything you need to build games</h2>
+            <p class="section-subtitle">A code-first Java engine with one rendering model, cross-platform targets, networking, audio, UI, assets, and room to build your own pipeline.</p>
+        </div>
+        {{ partial "features.html" . }}
+    </div>
 </section>
 
-<ul class="more responsiveWidth">
-    {{ $pages :=  (where  .Site.Pages  "Params.tags"  "intersect" $filter )}}
-    {{ range first 3 ( after 1 $pages )  }}
-        <li>
-            <a href="{{ .RelPermalink }}">
-            {{ if .Params.summarytitle }}
-            {{ .Params.summarytitle }}
-           {{ else }}
-           {{ if .Title }}  {{ .Title }} {{ end }}
-           {{ end }}
+<!-- ======== NEWS ======== -->
+{{- $updatesData := index $community "open-collective-updates" | default dict -}}
+{{- $updates := index $updatesData "updates" | default slice -}}
+<section class="news-section" aria-labelledby="news-title">
+    <div class="section-container">
+        <div class="section-header news-header">
+            <div>
+                <h2 class="section-title" id="news-title">News</h2>
+                <p class="section-subtitle">Latest news from the jMonkeyEngine project.</p>
+            </div>
+            <div class="news-controls" aria-label="News carousel controls">
+                <button class="news-control" type="button" data-news-prev aria-label="Previous news"><i class="fas fa-arrow-left"></i></button>
+                <button class="news-control" type="button" data-news-next aria-label="Next news"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+        {{ if gt (len $updates) 0 }}
+        <div class="news-carousel" data-news-carousel tabindex="0" aria-label="Project news carousel">
+            {{ range $updates }}
+            <article class="news-card">
+                <div class="news-card-meta">
+                    <span class="news-card-source"><i class="fas fa-bullhorn"></i> News</span>
+                    {{ with .publishedAt }}<time datetime="{{ . }}">{{ (time .).Format "Jan 2, 2006" }}</time>{{ end }}
+                </div>
+                <h3 class="news-card-title">{{ .title }}</h3>
+                <p class="news-card-excerpt">{{ .summary | plainify | truncate 150 }}</p>
+                <div class="news-card-actions">
+                    <a href="{{ .localUrl }}" class="news-card-read">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        {{ else }}
+        <div class="news-empty">No project news found yet.</div>
+        {{ end }}
+    </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.querySelector('[data-news-carousel]');
+    if (!carousel) return;
+    const step = () => Math.max(280, Math.floor(carousel.clientWidth * 0.82));
+    const prev = document.querySelector('[data-news-prev]');
+    const next = document.querySelector('[data-news-next]');
+    if (prev) prev.addEventListener('click', () => carousel.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if (next) next.addEventListener('click', () => carousel.scrollBy({ left: step(), behavior: 'smooth' }));
+});
+</script>
 
-           ...
+<!-- ======== GET STARTED CTA ======== -->
+<section class="cta-section">
+    <div class="section-container">
+        <div class="cta-box">
+            <h2>Ready to build your game?</h2>
+            <p>Get set up in minutes. No account required, no splash screens, no fees.</p>
+            <div class="cta-buttons">
+                <a href="/start/" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i> Get Started
+                </a>
+                <a href="https://wiki.jmonkeyengine.org" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-book"></i> Read the Docs
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-        </a>
-        </li>
-    {{ end }}
-     
-    <li><a  href="tags/blog">More from the blog...</a></li>
-
-</ul>
-
-{{ partial "features.html" . }}
 {{ partial "contribute.html" . }}
-
 
 {{ end }}

@@ -1,5 +1,8 @@
 ---
+
 title: "Skullstone"
+indiedb_link: "https://www.indiedb.com/games/skullstone"
+platforms: ['Windows', 'Mac', 'Linux']
 date: 2019-10-16T08:00:00+00:00
 draft: false
 type: "default"
@@ -13,10 +16,7 @@ tags:
 
 publisher_link: "http://skullstonegame.com/"
 
-images: [
-    "/images/showcase/skullstone/7.jpg"
-]
-
+summary: "A retro grid-based dungeon crawler RPG where a party of mercenaries explores monster-filled dungeons, solves puzzles, and uncovers Skullstone's story."
 
 
 gallery: [
@@ -42,6 +42,7 @@ gallery: [
  ]
 
 ---
+
 
 Skullstone – a retro styled grid-based dungeon crawler RPG inspired by the good old titles such as Dungeon Master, Stonekeep, Eye of Beholder and many other classics.
 

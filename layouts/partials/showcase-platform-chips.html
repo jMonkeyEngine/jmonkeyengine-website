@@ -1,0 +1,19 @@
+{{- $platforms := .platforms | default (slice) -}}
+{{- if gt (len $platforms) 0 -}}
+<div class="platforms-row">
+    {{- range $platforms -}}
+        {{- $p := lower . -}}
+        <span class="platform-chip {{ $p }}">
+            {{- if eq $p "windows" -}}<i class="fab fa-windows"></i>{{- end -}}
+            {{- if eq $p "mac" -}}<i class="fab fa-apple"></i>{{- end -}}
+            {{- if eq $p "linux" -}}<i class="fab fa-linux"></i>{{- end -}}
+            {{- if eq $p "android" -}}<i class="fab fa-android"></i>{{- end -}}
+            {{- if eq $p "web" -}}<i class="fas fa-globe"></i>{{- end -}}
+            {{- if eq $p "ios" -}}<i class="fab fa-app-store-ios"></i>{{- end -}}
+            {{- if eq $p "java" -}}<i class="fab fa-java"></i>{{- end -}}
+            {{- if eq $p "blender" -}}<i class="fas fa-cube"></i>{{- end -}}
+            {{ . }}
+        </span>
+    {{- end -}}
+</div>
+{{- end -}}

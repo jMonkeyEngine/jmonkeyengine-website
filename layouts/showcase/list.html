@@ -1,0 +1,88 @@
+{{ define "main" }}
+{{ partial "page-hero.html" . }}
+{{ $showcasePages := where .Site.RegularPages "Section" "showcase" }}
+{{ $showcaseTools := where .Site.RegularPages "Section" "showcase-tools" }}
+{{ $experimentDir := "static/images/showcase/experiments" }}
+{{ $experimentImages := slice }}
+{{ if fileExists $experimentDir }}
+    {{ range readDir $experimentDir }}
+        {{ if not .IsDir }}
+            {{ $ext := lower (path.Ext .Name) }}
+            {{ if in (slice ".jpg" ".jpeg" ".png" ".webp" ".gif" ".bmp" ".tiff") $ext }}
+                {{ $experimentImages = $experimentImages | append . }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+<section id="showcase">
+    <div class="section-container">
+        <div class="showcase-experiments game-section">
+            <div class="showcase-header showcase-header--experiments">
+                <div>
+                    <h2 class="section-title">Experiments</h2>
+                    <p class="section-subtitle">{{ len $experimentImages }} experiments — extra screenshots, prototypes, renders, and visual tests from the community.</p>
+                </div>
+            </div>
+
+            {{ if gt (len $experimentImages) 0 }}
+            <div class="screenshots-carousel experiments-carousel" id="experiments-carousel">
+                <button class="carousel-btn carousel-prev" type="button" data-carousel-target="experiments-carousel" data-carousel-dir="-1" title="Previous experiment">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="screenshots-track experiments-track">
+                    {{ range $experimentImages }}
+                    {{ $src := printf "/images/showcase/experiments/%s" .Name }}
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="{{ $src | relURL }}" aria-label="Open experiment screenshot">
+                        <img src="{{ $src | relURL }}" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                    </button>
+                    {{ end }}
+                </div>
+                <button class="carousel-btn carousel-next" type="button" data-carousel-target="experiments-carousel" data-carousel-dir="1" title="Next experiment">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            {{ else }}
+            <div class="experiments-empty">
+                <i class="fa-solid fa-flask-vial"></i>
+                <div>
+                    <strong>No experiments yet</strong>
+                    <p>Community experiments, prototypes, renders, and visual tests will appear here as they are added.</p>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+
+        <div class="showcase-header">
+            <div>
+                <h2 class="section-title">Games made with jMonkeyEngine</h2>
+                <p class="section-subtitle">{{ len $showcasePages }} playable projects built on jMonkeyEngine — from indie experiments to full releases.</p>
+            </div>
+        </div>
+
+        <div class="games-grid">
+            {{ range $showcasePages }}
+                {{ partial "showcase-game-card.html" . }}
+            {{ end }}
+        </div>
+
+        {{ if gt (len $showcaseTools) 0 }}
+        <div class="showcase-tools game-section">
+            <div class="showcase-header showcase-header--tools">
+                <div>
+                    <h2 class="section-title">Engines, editors & tools</h2>
+                    <p class="section-subtitle">{{ len $showcaseTools }} jMonkeyEngine engines, editors, and practical production tools from the ecosystem.</p>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                {{ range $showcaseTools.ByWeight }}
+                    {{ partial "showcase-tool-card.html" . }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ partial "showcase-lightbox.html" . }}
+{{ partial "showcase-carousel-script.html" . }}
+{{ end }}

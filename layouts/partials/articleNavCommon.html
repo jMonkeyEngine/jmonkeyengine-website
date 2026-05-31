@@ -1,14 +1,4 @@
 
-{{ if isset .Params "tags" }}
-
-    <ul class="tags smaller">
-
-        <h3  class="tags">Tags</h3>
-        {{ range  .Params.tags  }}
-        <li><a class="{{ urlize . }}" href="/tags/{{ urlize . }}"><i class="fas fa-hashtag"></i>{{ . }}</a></li>
-        {{ end }}
-    </ul>
-{{ end }}
 {{ if isset .Params "authors" }}
 
     <ul class="authors smaller">

@@ -1,0 +1,33 @@
+{{- $slug := .slug | default "" -}}
+{{- $fallback := .fallback | default (slice) -}}
+{{- $images := slice -}}
+
+{{- if not $slug -}}
+    {{- with .page -}}
+        {{- with .File -}}
+            {{- $slug = path.Base .Dir -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $dir := printf "static/images/showcase/%s" $slug -}}
+{{- if and $slug (fileExists $dir) -}}
+    {{- range sort (readDir $dir) "Name" "asc" -}}
+        {{- if not .IsDir -}}
+            {{- $ext := lower (path.Ext .Name) -}}
+            {{- if in (slice ".jpg" ".jpeg" ".png" ".webp" ".gif" ".bmp" ".tiff") $ext -}}
+                {{- $images = $images | append (printf "/images/showcase/%s/%s" $slug .Name) -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if eq (len $images) 0 -}}
+    {{- with $fallback -}}
+        {{- range . -}}
+            {{- $images = $images | append . -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- return $images -}}

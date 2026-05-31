@@ -1,10 +1,19 @@
-<html>
-<head> 
-    <meta http-equiv="refresh" content="0; url=/tags/{{.Section}}" />
-    </head> 
-    <body>
-        <p style="text-align: center;">
-        You are being redirected to <a href="/tags/{{.Section}}">/tags/{{.Section}}</a>
-        </p>
-    </body>
-</html>
+{{ define "main" }}
+{{ partial "page-hero.html" . }}
+<section class="article-list">
+  <div class="list vlist responsiveWidth">
+    {{ range .Pages.ByDate.Reverse }}
+    <article>
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{ with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}
+      <a class="more" href="{{ .RelPermalink }}">Read more <i class="fas fa-arrow-right"></i></a>
+    </article>
+    {{ else }}
+    <article>
+      <h2>No items here</h2>
+      <p>This section does not contain published pages.</p>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

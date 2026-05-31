@@ -1,24 +1,22 @@
 ---
 title: "Spoxel"
+indiedb_link: "https://www.indiedb.com/games/spoxel"
 date: 2019-10-15T06:27:00+00:00
 draft: false
 type: "default"
 layout: "post_layout_showcase"
 
-authors:
-    - "Jeddic"
+authors: ["Jedic"]
 
 tags:
     - "steam"
     - "spoxel"
     - "showcase"
 
-publisher_link: "http://epagagames.com/spoxel/"
 steam_link: "https://store.steampowered.com/app/746880/Spoxel/"
+platforms: ["Windows", "Mac", "Linux"]
 
-images: [
-        "/images/showcase/spoxel/7.jpg",
-]
+summary: "Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful spells, infuse weapons and armor with rare resources to create legendary items of power."
 gallery: [
     "/images/showcase/spoxel/1.jpg",
     "/images/showcase/spoxel/2.jpg",

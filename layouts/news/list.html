@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{ partial "page-hero.html" . }}
+<section class="news-list-page">
+  <div class="section-container">
+    <div class="news-list-grid">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="news-card">
+        <div class="news-card-meta">
+          <span class="news-card-source"><i class="fas fa-bullhorn"></i> News</span>
+          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        </div>
+        <h2 class="news-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="news-card-excerpt">{{ .Summary | plainify | truncate 160 }}</p>
+        <a href="{{ .RelPermalink }}" class="news-card-read">Read more <i class="fas fa-arrow-right"></i></a>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -3,20 +3,29 @@
 
 name: Build
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 * * 1"
   push:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
- 
+  # Use workflow token for API reads in the build and keep least-privilege runtime access.
+  # Write is required only for publishing gh-pages below.
   build:
-    runs-on: ubuntu-latest    
-    container:
-      image: jmonkeyengine/buildenv-jme3:hugo
-    
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
     steps: 
+    - name: Install build tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg node-less python3-numpy python3-yaml
+
     - name: Clone master
       run: |
           git config --global user.name "GithubActions"
@@ -34,11 +43,12 @@ jobs:
 
 
 
-    - name: Build
+    - name: Refresh dynamic data and build
       run: |
         cd project
         chmod +x ./make.sh
-        NO_CONTAINER=1 HEADLESS=1  ./make.sh         
+        # make.sh refreshes OpenCollective/GitHub data and the showcase mashup.
+        HEADLESS=1 SHOWCASE_MASHUP_MAX_IMAGES=30 ./make.sh
         mkdir -p public
         echo "1" > public/.nojekyll
 
@@ -50,7 +60,7 @@ jobs:
         cd generated
         git add .
         git commit -m "Update data - `date`"        
-        header=$(echo -n "ad-m:${{ secrets.GITHUB_TOKEN }}" | base64)
+        header=$(echo -n "ad-m:${{ github.token }}" | base64)
         set +e
         (git -c http.extraheader="AUTHORIZATION: basic $header" push origin gh-pages --force )
 

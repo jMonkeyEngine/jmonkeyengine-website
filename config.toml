@@ -1,12 +1,15 @@
 baseURL = "https://jmonkeyengine.org"
 languageCode = "en-us"
 title = "jMonkeyEngine"
-paginate=9
 summarylength = 60
 enableRobotsTXT = true
 ignoreErrors = ["error-output-taxonomy"]
 pygmentsCodeFences=false
-disableKinds = ["RSS"]
+disableKinds = ["RSS", "taxonomy", "term"]
+
+[pagination]
+  pagerSize = 9
+
 [markup.goldmark.renderer]
   hardWraps = true
   unsafe= true
@@ -19,13 +22,6 @@ disableKinds = ["RSS"]
 [params]
   hostname="jmonkeyengine.org"
 
-[taxonomies]
-  tag = "tags"
-  author = "authors"
-
 [outputs]
   home = ["HTML"]
   page = ["HTML","JSON"]
-  taxonomy = ["HTML","JSON"]
-  term=["HTML","JSON"]
-

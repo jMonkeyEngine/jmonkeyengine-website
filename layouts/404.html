@@ -1,12 +1,13 @@
-
-{{ define "main" }} {{ $featured_image := .Param "featured_image"}}
-{{ $featured_image := (trim $featured_image "/") | absURL }}
-<article>
-  <h1 style="font-size:6rem;text-align:center">
-    404
-  </h1>
-  <h1 style="text-align:center">
-    This is not the page you were looking for
-  </h1>
-</article>
+{{ define "main" }}
+<section class="not-found-page">
+  <div class="not-found-card">
+    <p class="not-found-kicker">404</p>
+    <h1>This is not the page you were looking for</h1>
+    <p>The monkey checked the usual branches. Nothing. Utterly typical.</p>
+    <div class="not-found-actions">
+      <a class="btn btn-primary" href="/"><i class="fas fa-home"></i> Back home</a>
+      <a class="btn btn-outline" href="/showcase/"><i class="fas fa-images"></i> Browse showcase</a>
+    </div>
+  </div>
+</section>
 {{ end }}

@@ -6,23 +6,42 @@ disable_nav: true
 date: 2021-04-25T18:00:00+00:00
 ---
 
-<!-- There are two ways to donate to jMonkeyEngine and its community: -->
-
-
-
-<a rel='noopener noreferrer' target="_blank" href="https://opencollective.com/jmonkeyengine"><h2>Donate to our Collective with PayPal / Credit Card / Bank Transfer </h2></a>
-<div style="display:flex;flex-direction:row;align-items:center;margin-top:1rem">
-<a rel='noopener noreferrer' target="_blank" href="https://opencollective.com/jmonkeyengine">
-    <i style="font-size:6rem;color:var(--foreground)" class="fa-solid fa-building-columns"></i>
-</a>
-<p style="margin-left:2rem;">
-We accept donations through our collective at <a rel='noopener noreferrer' target="_blank" href="https://opencollective.com/jmonkeyengine">opencollective/jmonkeyengine</a>.
-<br>
-The collective is managed by the Core Developers and the funds will be used to promote and fund the development and maintenance of the engine and its related services.
-<br>
-<br>
-<i>Backers can leave a message to the community that will be featured in the homepage.</i>
-</p>
+<div class="donate-card donate-card--funds">
+  <div class="donate-card__icon"><i class="fa-solid fa-building-columns"></i></div>
+  <div class="donate-card__body">
+    <h2>Choose where your donation goes</h2>
+    <p>jMonkeyEngine accepts donations through OpenCollective. If you donate to the main fund, the Core Developers decide how to allocate the money across development, maintenance, releases, hosting, and community services.</p>
+    <p>You can also target a dedicated project fund if you want your contribution reserved for a specific purpose.</p>
+    <p><em>Backers can leave a message to the community that may be featured on the homepage.</em></p>
+    <div class="special-support-note">
+      <span><i class="fa-solid fa-handshake-angle"></i> Want to support the project in a more tailored way?</span>
+      <a class="special-support-btn" href="mailto:contact@jmonkeyengine.org">Talk with us</a>
+    </div>
+    <div class="donate-funds" aria-label="OpenCollective donation funds">
+      <a class="donate-fund donate-fund--primary" rel="noopener noreferrer" target="_blank" href="https://opencollective.com/jmonkeyengine">
+        <span class="donate-fund__icon"><i class="fa-solid fa-heart"></i></span>
+        <span class="donate-fund__copy">
+          <strong>Main fund</strong>
+          <small>Flexible support. The core team allocates funds where they are most needed.</small>
+        </span>
+        <span class="donate-fund__action">Donate</span>
+      </a>
+      <a class="donate-fund" rel="noopener noreferrer" target="_blank" href="https://opencollective.com/jmonkeyengine/projects/jmonkeyengine-hosting">
+        <span class="donate-fund__icon"><i class="fa-solid fa-server"></i></span>
+        <span class="donate-fund__copy">
+          <strong>Hosting fund</strong>
+          <small>Dedicated only to servers, infrastructure, downloads, and community hosting costs.</small>
+        </span>
+        <span class="donate-fund__action">Donate</span>
+      </a>
+      <a class="donate-fund" rel="noopener noreferrer" target="_blank" href="https://opencollective.com/jmonkeyengine/projects/jmonkeyengine-bountry-trial">
+        <span class="donate-fund__icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+        <span class="donate-fund__copy">
+          <strong>Bounty fund</strong>
+          <small>Dedicated only to bounties that reward contributors for targeted work.</small>
+        </span>
+        <span class="donate-fund__action">Donate</span>
+      </a>
+    </div>
+  </div>
 </div>
-
-<br>

@@ -1,0 +1,15 @@
+{{- $url := .url -}}
+{{- $class := .class | default "link-web" -}}
+{{- $icon := .icon | default "fas fa-link" -}}
+{{- $name := .name | default "Link" -}}
+{{- $sub := .sub | default "Open link" -}}
+{{- if $url -}}
+<a href="{{ $url }}" class="link-card {{ $class }}" target="_blank" rel="noopener noreferrer">
+    <div class="link-card-icon"><i class="{{ $icon }}"></i></div>
+    <div class="link-card-info">
+        <div class="link-card-name">{{ $name }}</div>
+        <div class="link-card-sub">{{ $sub }}</div>
+    </div>
+    <div class="link-card-arrow"><i class="fas fa-arrow-right"></i></div>
+</a>
+{{- end -}}

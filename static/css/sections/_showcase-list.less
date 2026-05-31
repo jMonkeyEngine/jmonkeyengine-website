@@ -1,0 +1,240 @@
+// === SHOWCASE SECTION ===
+#showcase {
+    padding: 5rem 0;
+    background: @bg-secondary;
+    border-top: 1px solid @border;
+    border-bottom: 1px solid @border;
+}
+.showcase-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
+}
+.showcase-header .section-title { font-size: 2rem; }
+.showcase-header .btn-outline { padding: 0.6rem 1.25rem; font-size: 0.875rem; }
+.showcase-experiments,
+.showcase-tools {
+    margin-bottom: 3.25rem;
+    padding: 1.3rem;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255,208,0,0.075), rgba(255,255,255,0.025));
+    border: 1px solid rgba(255,208,0,0.13);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.035);
+}
+.showcase-tools {
+    margin-top: 3.25rem;
+    background: linear-gradient(135deg, rgba(76,195,255,0.075), rgba(255,208,0,0.035));
+    border-color: rgba(76,195,255,0.16);
+}
+.showcase-header--experiments { margin-bottom: 1rem; }
+.experiments-carousel { align-items: stretch; }
+.experiments-track { flex: 1; }
+.experiment-item {
+    width: min(420px, 72vw);
+    height: 236px;
+    display: block;
+}
+.experiments-empty {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-radius: 18px;
+    color: @text-secondary;
+    background: rgba(255,255,255,0.035);
+    border: 1px dashed rgba(255,208,0,0.22);
+}
+.experiments-empty > i {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: @accent;
+    background: rgba(255,208,0,0.10);
+}
+.experiments-empty strong { color: @text-primary; display: block; margin-bottom: 0.2rem; }
+.experiments-empty p { margin: 0; line-height: 1.5; }
+.experiments-empty code { color: @accent; }
+
+/* GAMES GRID — clean card layout */
+.games-grid,
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.game-card,
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid @border;
+    background: @bg-card;
+    .focus-transition(0.3s);
+    position: relative;
+}
+.game-card:hover,
+.tool-card:hover {
+    border-color: @border-accent;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 30px rgba(255,208,0,0.06);
+}
+.game-card-img,
+.tool-card__image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    .media-cover();
+    flex-shrink: 0;
+    filter: brightness(0.85) saturate(0.95);
+    transition: filter 0.3s ease;
+}
+.game-card:hover .game-card-img,
+.tool-card:hover .tool-card__image { filter: brightness(0.95) saturate(1.1); }
+.game-card-placeholder {
+    background: linear-gradient(135deg, @bg-card-hover 0%, #1a1a24 100%) !important;
+    .flex-center();
+    filter: none !important;
+}
+.game-card-placeholder i { font-size: 3rem; color: @text-muted; }
+.tool-card__image--icon,
+.tool-card__image--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 35% 30%, rgba(255,208,0,0.22), transparent 32%),
+        linear-gradient(135deg, rgba(76,195,255,0.16), rgba(255,208,0,0.07)),
+        @bg-card-hover;
+}
+.tool-card__image--icon i,
+.tool-card__image--placeholder i {
+    font-size: 3.25rem;
+    color: @accent;
+    filter: drop-shadow(0 0 18px rgba(255,208,0,0.18));
+}
+.tool-card__image--placeholder i { color: @text-muted; }
+
+.game-card-body,
+.tool-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem 1.1rem 1.1rem;
+    flex: 1;
+}
+.game-card-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    min-height: 1.4rem;
+}
+.game-card-bottom { display: flex; flex-direction: column; gap: 0.3rem; }
+.game-card-title,
+.tool-card__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: @text-primary;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+.game-card-author {
+    font-size: 0.75rem;
+    color: @text-secondary;
+}
+.game-card-summary {
+    margin: 0.35rem 0 0.75rem;
+    color: @text-secondary;
+    line-height: 1.48;
+    font-size: 0.84rem;
+}
+.tool-card__body p {
+    margin: 0;
+    color: @text-secondary;
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+.tool-card__type { width: fit-content; }
+.game-card-links {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.2rem;
+    flex-wrap: wrap;
+}
+.glink {
+    width: 26px; height: 26px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.glink:hover { transform: scale(1.15); }
+.glink.steam { background: #1b2838; color: #c7c7c7; }
+.glink.itch { background: #fa5c5c; color: #fff; }
+.glink.web { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); }
+.glink.indiedb { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.15); }
+
+@media (max-width: 900px) { .games-grid, .tools-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; } .showcase-header { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 560px) { .games-grid, .tools-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; } .tool-card__body p { display: none; } }
+
+// === SHOWCASE ELEMENTS ===
+section.gallery {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding: 0 2rem;
+}
+
+.showcaseElement {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 16px;
+    overflow: hidden;
+    background: @bg-card;
+    border: 1px solid @border;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.cover {
+    position: absolute;
+    inset: 0;
+    .media-cover();
+}
+
+.cover.blur {
+    filter: blur(20px);
+    transform: scale(1.1);
+    opacity: 0.6;
+}
+
+#playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255,208,0,0.9);
+    color: #000;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 30px rgba(255,208,0,0.4);
+}
+
+#playButton:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 12px 40px rgba(255,208,0,0.5);
+}
+
+.showcaseElement.gallery {
+    cursor: pointer;
+}

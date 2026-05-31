@@ -1,35 +1,24 @@
 {{ define "main" }}
-{{ .Scratch.Set "asBanner" "true" }}
-{{ $filter := slice "showcase" }}
-    {{ range first 1 (shuffle  (where   .Site.Pages  "Params.tags"  "intersect" $filter    ) ) }}
-    {{ partial "showcaseBanner.html" . }}
-{{ end }}
-<a id="content"></a>
+{{ partial "page-hero.html" . }}
 
-<section class="full responsiveWidth">
-
-<article>
-        <h1 >
-            {{ partial "postIcon.html" . }}
-           
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-            <div class="content">
-                <span>
+<section class="page-content">
+    <div class="section-container">
+        <article class="content-article{{ if eq .RelPermalink "/start/" }} content-article--start{{ end }}{{ if or (eq .RelPermalink "/contact/") (eq .RelPermalink "/donate/") }} content-article--special{{ end }}{{ if eq .RelPermalink "/contact/" }} content-article--contact{{ end }}{{ if eq .RelPermalink "/donate/" }} content-article--donate{{ end }}">
+            <header class="article-header">
+                {{ if .Params.icon }}<i class="{{ .Params.icon }} article-icon"></i>{{ end }}
+                <h1>{{ .Title }}</h1>
+                {{ with .Description }}<p class="article-description">{{ . }}</p>{{ end }}
+            </header>
+            <div class="article-body">
                 {{ .Content }}
-
-                </span>
-                {{ if not .Params.disable_nav }}
-
-                    {{ partial "articleNavPost.html" . }}
-                {{ end }}
             </div>
-
-
-
-    </article>
+            {{ if not .Params.disable_nav }}
+                {{ partial "articleNavPost.html" . }}
+            {{ end }}
+        </article>
+    </div>
 </section>
 
 {{ partial "comments.html" . }}
-
 
 {{ end }}

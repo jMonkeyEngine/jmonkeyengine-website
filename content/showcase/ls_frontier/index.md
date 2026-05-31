@@ -16,10 +16,9 @@ tags:
 
 
 steam_link: "https://store.steampowered.com/app/548650/Lightspeed_Frontier/"
+platforms: ["Windows", "Mac", "Linux"]
 
-images: [
-        "/images/showcase/ls_frontier/5.jpg",
-]
+summary: "Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize your vessel piece by piece to tackle whatever adventures await. Take on crime lords and space pirates, undercut corporations monopolizing business, influence the galactic stock market, and become the most successful captain you can be."
 
 gallery: [
     "/images/showcase/ls_frontier/1.jpg",

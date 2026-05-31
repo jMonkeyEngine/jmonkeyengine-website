@@ -1,5 +1,6 @@
 ---
 type: "default"
+title: "Contribute"
 disable_nav: true
 layout: "post_layout_default"
 ---
@@ -26,3 +27,9 @@ To report any bugs in the engine or errors in documentation you can submit a new
 
 - [Report an issue with the wiki](https://github.com/jMonkeyEngine/wiki/issues/new)
 - [Report an issue with the engine](https://github.com/jMonkeyEngine/jmonkeyengine/issues/new)
+
+## Funding and Project Support
+
+Direct funding helps keep jMonkeyEngine independent. You can [donate through OpenCollective](/donate/) to the main project, hosting fund, or bounty fund.
+
+If your company or organization wants to help the project in a more tailored way, [talk with the project team](mailto:contact@jmonkeyengine.org).

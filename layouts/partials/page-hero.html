@@ -1,0 +1,107 @@
+{{- $title := .Title -}}
+{{- $eyebrow := "jMonkeyEngine" -}}
+{{- $description := .Description -}}
+{{- $icon := "fa-cube" -}}
+{{- $showcasePages := where .Site.RegularPages "Section" "showcase" -}}
+{{- $community := index .Site.Data "community" | default dict -}}
+{{- $openCollectiveData := index $community "open-collective" | default (index $community "openCollective") | default dict -}}
+{{- $backersData := index $openCollectiveData "backers" | default dict -}}
+{{- $backers := index $backersData "all" | default (slice) -}}
+{{- $backersCount := len $backers -}}
+{{- $term := "" -}}
+{{- with .Data -}}{{- with .Term -}}{{- $term = lower . -}}{{- end -}}{{- end -}}
+{{- $showcaseTools := where .Site.RegularPages "Section" "showcase-tools" -}}
+{{- $experimentDir := "static/images/showcase/experiments" -}}
+{{- $experimentImages := slice -}}
+{{- if fileExists $experimentDir -}}
+  {{- range readDir $experimentDir -}}
+    {{- if not .IsDir -}}
+      {{- $ext := lower (path.Ext .Name) -}}
+      {{- if in (slice ".jpg" ".jpeg" ".png" ".webp" ".gif" ".bmp" ".tiff") $ext -}}
+        {{- $experimentImages = $experimentImages | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $showcaseToolExperimentCount := add (len $showcaseTools) (len $experimentImages) -}}
+{{- if or (eq .Section "showcase") (eq $term "showcase") -}}
+  {{- $eyebrow = "Community Showcase" -}}
+  {{- $description = printf "%d games plus %d tools and experiments built around jMonkeyEngine — from indie releases to engines, editors, and production tools." (len $showcasePages) $showcaseToolExperimentCount -}}
+  {{- $icon = "fa-gamepad" -}}
+{{- else if eq .RelPermalink "/license/" -}}
+  {{- $eyebrow = "Open Source" -}}
+  {{- $description = "BSD-3 licensed: permissive, commercial-friendly, and free of runtime fees or splash-screen requirements." -}}
+  {{- $icon = "fa-scale-balanced" -}}
+{{- else if eq .RelPermalink "/donate/" -}}
+  {{- $eyebrow = "Support the Engine" -}}
+  {{- $description = "Help fund maintenance, infrastructure, bounties, releases, and community services through OpenCollective." -}}
+  {{- $icon = "fa-heart" -}}
+{{- else if eq .Section "news" -}}
+  {{- $eyebrow = "News" -}}
+  {{- $description = "Latest news from the jMonkeyEngine project." -}}
+  {{- $icon = "fa-bullhorn" -}}
+{{- else if eq .RelPermalink "/start/" -}}
+  {{- $eyebrow = "Get Started" -}}
+  {{- $description = "Set up the SDK, create your first project, and start building with a code-first Java game engine." -}}
+  {{- $icon = "fa-rocket" -}}
+{{- else if eq .RelPermalink "/contribute/" -}}
+  {{- $eyebrow = "Contribute" -}}
+  {{- $description = "Join the community: improve code, write docs, report issues, publish libraries, or support development." -}}
+  {{- $icon = "fa-code-branch" -}}
+{{- else if eq .RelPermalink "/contact/" -}}
+  {{- $eyebrow = "Contact" -}}
+  {{- $description = "Reach the jMonkeyEngine community, core maintainers, or contact us directly by email." -}}
+  {{- $icon = "fa-envelope" -}}
+{{- else if eq .Kind "taxonomy" -}}
+  {{- $eyebrow = "Browse" -}}
+  {{- $description = "Explore site categories and discover related pages from the jMonkeyEngine community." -}}
+  {{- $icon = "fa-tags" -}}
+{{- else if eq .Kind "term" -}}
+  {{- $eyebrow = "Tagged Content" -}}
+  {{- $description = printf "%d items tagged with %q." (len .Pages) .Title -}}
+  {{- $icon = "fa-tag" -}}
+{{- else if not $description -}}
+  {{- $description = "Resources, updates, and documentation from the jMonkeyEngine project." -}}
+{{- end -}}
+{{- $showPanel := ne .RelPermalink "/contact/" -}}
+
+<section class="page-hero page-hero--{{ .Section | default .Kind | urlize }}{{ if not $showPanel }} page-hero--no-panel{{ end }}">
+  <div class="page-hero__bg" aria-hidden="true"></div>
+  <div class="page-hero__inner">
+    <div class="page-hero__copy">
+      <div class="page-hero__eyebrow"><i class="fa-solid {{ $icon }}"></i><span>{{ $eyebrow }}</span></div>
+      <h1>{{ $title }}</h1>
+      {{ with $description }}<p>{{ . }}</p>{{ end }}
+    </div>
+
+    {{ if $showPanel }}
+    <div class="page-hero__panel">
+      {{ if or (eq .Section "showcase") (eq $term "showcase") }}
+      <span class="page-hero__metric"><strong>{{ len $showcasePages }}</strong><small>games</small></span>
+      <span class="page-hero__metric"><strong>{{ $showcaseToolExperimentCount }}</strong><small>tools & experiments</small></span>
+      {{ else if eq .RelPermalink "/license/" }}
+      <span class="page-hero__metric"><strong>BSD-3</strong><small>license</small></span>
+      <span class="page-hero__metric"><strong>0%</strong><small>royalties</small></span>
+      {{ else if eq .RelPermalink "/donate/" }}
+      <span class="page-hero__metric"><strong>3</strong><small>funds</small></span>
+      <span class="page-hero__metric"><strong>{{ $backersCount }}</strong><small>backers</small></span>
+      {{ else if eq .Section "news" }}
+      <span class="page-hero__metric"><strong>{{ .Date.Format "2006/01/02" }}</strong><small>date</small></span>
+      <span class="page-hero__metric page-hero__metric--source">
+        {{- $sourceUrl := .Params.source_url | default .Params.opencollective_url -}}
+        {{- if $sourceUrl -}}
+        <strong><a href="{{ $sourceUrl }}" target="_blank" rel="noopener noreferrer">{{ .Params.source_name | default "News" }}</a></strong>
+        <small>source</small>
+        {{- else -}}
+        <strong>{{ .Params.source_name | default "News" }}</strong>
+        <small>source</small>
+        {{- end -}}
+      </span>
+      {{ else }}
+      <span class="page-hero__metric"><strong>Java</strong><small>engine</small></span>
+      <span class="page-hero__metric"><strong>BSD</strong><small>open source</small></span>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>

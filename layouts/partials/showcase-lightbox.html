@@ -1,0 +1,58 @@
+<div class="showcase-lightbox" id="showcase-lightbox" aria-hidden="true">
+    <button class="showcase-lightbox__close" type="button" aria-label="Close screenshot preview">
+        <i class="fas fa-times"></i>
+    </button>
+    <button class="showcase-lightbox__backdrop" type="button" aria-label="Close screenshot preview"></button>
+    <figure class="showcase-lightbox__figure">
+        <img class="showcase-lightbox__image" src="" alt="Screenshot preview">
+    </figure>
+</div>
+
+<script>
+(function () {
+    if (window.__showcaseLightboxReady) return;
+    window.__showcaseLightboxReady = true;
+
+    function getLightbox() {
+        return document.getElementById('showcase-lightbox');
+    }
+
+    function openLightbox(src, alt) {
+        var lightbox = getLightbox();
+        if (!lightbox || !src) return;
+        var img = lightbox.querySelector('.showcase-lightbox__image');
+        if (!img) return;
+        img.src = src;
+        img.alt = alt || 'Screenshot preview';
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('showcase-lightbox-open');
+    }
+
+    function closeLightbox() {
+        var lightbox = getLightbox();
+        if (!lightbox) return;
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('showcase-lightbox-open');
+        var img = lightbox.querySelector('.showcase-lightbox__image');
+        if (img) img.removeAttribute('src');
+    }
+
+    document.addEventListener('click', function (event) {
+        var trigger = event.target.closest('.screenshot-lightbox-trigger');
+        if (trigger) {
+            event.preventDefault();
+            openLightbox(trigger.getAttribute('data-full') || trigger.getAttribute('href'), trigger.querySelector('img')?.alt);
+            return;
+        }
+        if (event.target.closest('.showcase-lightbox__close') || event.target.closest('.showcase-lightbox__backdrop')) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeLightbox();
+    });
+})();
+</script>

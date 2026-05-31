@@ -1,0 +1,23 @@
+{{- $items := .items | default (slice) -}}
+{{- $id := .id | default "screenshots-carousel" -}}
+{{- $label := .label | default "Screenshots" -}}
+{{- if gt (len $items) 0 -}}
+<div class="game-section screenshots-section">
+    <div class="game-section-label"><i class="fas fa-images"></i> {{ $label }}</div>
+    <div class="screenshots-carousel" id="{{ $id }}">
+        <button class="carousel-btn carousel-prev" type="button" data-carousel-target="{{ $id }}" data-carousel-dir="-1" title="Previous">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="screenshots-track">
+            {{- range $items -}}
+            <button class="screenshot-item screenshot-lightbox-trigger" type="button" data-full="{{ . }}" aria-label="Open screenshot preview">
+                <img src="{{ . }}" alt="Screenshot" loading="lazy">
+            </button>
+            {{- end -}}
+        </div>
+        <button class="carousel-btn carousel-next" type="button" data-carousel-target="{{ $id }}" data-carousel-dir="1" title="Next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>
+{{- end -}}

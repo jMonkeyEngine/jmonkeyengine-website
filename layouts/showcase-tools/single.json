@@ -1,0 +1,12 @@
+{
+  {{ $images := partial "showcase-images.html" (dict "page" . "fallback" .Params.images) }}
+  "title": {{ .Title | jsonify }},
+  "summary": {{ .Params.summary | default .Summary | jsonify }},
+  "images": {{ $images | jsonify }},
+  "tags": {{ .Params.tags | jsonify }},
+  "tool_type": {{ .Params.tool_type | jsonify }},
+  "external_link": {{ .Params.external_link | jsonify }},
+  "github_link": {{ .Params.github_link | jsonify }},
+  "indiedb_link": {{ .Params.indiedb_link | jsonify }},
+  "website_link": {{ .Params.website_link | jsonify }}
+}
