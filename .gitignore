@@ -9,5 +9,6 @@ __pycache__/
 *.pyc
 hugo
 .hugo_*
-data/
+data/*
 static/images/showcase-mashup/
+!data/features.json
