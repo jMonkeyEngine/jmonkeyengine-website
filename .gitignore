@@ -10,4 +10,4 @@ __pycache__/
 hugo
 .hugo_*
 data/
-static/images/showcase-*
+static/images/showcase-mashup/

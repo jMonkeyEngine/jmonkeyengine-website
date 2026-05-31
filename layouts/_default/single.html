@@ -1,9 +1,10 @@
 {{ define "main" }}
 <section class="game-page">
-    {{ $images := .Params.images }}
+    {{ $images := .Params.images | default (slice) }}
     {{ if eq .Section "showcase" }}
-        {{ $images = partial "showcase-images.html" (dict "page" . "fallback" .Params.images) }}
+        {{ $images = partial "showcase-images.html" (dict "page" .) }}
     {{ end }}
+    {{ $cover := partial "showcase-cover.html" (dict "items" $images) }}
     {{ $descriptionSource := "" }}
     {{ $descriptionSourceRaw := "" }}
     {{ with .Params.description }}
@@ -43,9 +44,9 @@
 
     {{/* Hero */}}
     <div class="game-page-hero">
-        {{ if $images }}{{ range first 1 $images }}
-        <div class="game-page-hero-bg" style="background-image: url('{{ . }}');"></div>
-        {{ end }}{{ else }}
+        {{ if $cover }}
+        <div class="game-page-hero-bg" style="background-image: url('{{ $cover }}');"></div>
+        {{ else }}
         <div class="game-page-hero-bg game-page-hero-placeholder"></div>
         {{ end }}
         <div class="game-page-hero-overlay"></div>
@@ -97,20 +98,11 @@
         {{ end }}
 
         {{/* Screenshots */}}
-        {{ $gallery := .Params.gallery }}
         {{ $all_imgs := slice }}
-        {{ if $gallery }}
-            {{ range $gallery }}
-                {{ if not (strings.HasPrefix . "youtube:") }}
-                {{ if not (strings.HasSuffix . ".webm") }}
-                {{ if not (strings.HasSuffix . ".mp4") }}
-                    {{ $all_imgs = $all_imgs | append . }}
-                {{ end }}{{ end }}{{ end }}
-                {{ end }}
-        {{ else if $images }}
+        {{ if $images }}
             {{ range after 1 $images }}
-                {{ $all_imgs = $all_imgs | append . }}
-                {{ end }}
+                {{ if ne . $cover }}{{ $all_imgs = $all_imgs | append . }}{{ end }}
+            {{ end }}
         {{ end }}
 
         {{ partial "screenshots-carousel.html" (dict "items" $all_imgs "id" "screenshots-carousel" "label" "Screenshots") }}

@@ -1,13 +1,7 @@
 {{- $p := . -}}
-{{- $images := partial "showcase-images.html" (dict "page" $p "fallback" $p.Params.images) -}}
-{{- $gallery := $p.Params.gallery -}}
-{{- $cover := "" -}}
+{{- $images := partial "showcase-images.html" (dict "page" $p) -}}
+{{- $cover := partial "showcase-cover.html" (dict "items" $images) -}}
 {{- $shortDescription := $p.Params.summary | default $p.Summary | default "" -}}
-{{- if $images -}}
-    {{- $cover = index $images 0 -}}
-{{- else if $gallery -}}
-    {{- $cover = index $gallery 0 -}}
-{{- end -}}
 {{- if $shortDescription -}}{{ $shortDescription = $shortDescription | plainify | truncate 140 }}{{ end }}
 <a href="{{ $p.RelPermalink }}" class="game-card">
     {{ if $cover }}

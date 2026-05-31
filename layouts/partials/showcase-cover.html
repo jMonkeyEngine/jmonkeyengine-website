@@ -1,0 +1,8 @@
+{{- $items := .items | default . | default (slice) -}}
+{{- $cover := "" -}}
+{{- range $items -}}
+    {{- if and (not $cover) (not (partial "showcase-is-video.html" .)) -}}
+        {{- $cover = . -}}
+    {{- end -}}
+{{- end -}}
+{{- return $cover -}}

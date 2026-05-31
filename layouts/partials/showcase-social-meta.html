@@ -1,0 +1,20 @@
+{{- $media := partial "showcase-images.html" (dict "page" .) -}}
+{{- $cover := partial "showcase-cover.html" (dict "items" $media) -}}
+{{- $description := .Params.summary | default .Description | default .Summary | plainify -}}
+{{- $title := .Title -}}
+{{- $permalink := .Permalink -}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+{{ with $description }}<meta name="twitter:description" content="{{ . }}">{{ end }}
+{{ with $cover }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
+<meta property="og:title" content="{{ $title }}">
+{{ with $description }}<meta property="og:description" content="{{ . }}">{{ end }}
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ $permalink }}">
+{{ with $cover }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+<meta property="article:section" content="{{ .Section }}">
+<meta itemprop="name" content="{{ $title }}">
+{{ with $description }}<meta itemprop="description" content="{{ . }}">{{ end }}
+{{ with .Date }}<meta itemprop="datePublished" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{ with .Lastmod }}<meta itemprop="dateModified" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{ with $cover }}<meta itemprop="image" content="{{ . | absURL }}">{{ end }}

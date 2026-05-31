@@ -1,5 +1,5 @@
 {
-  {{ $images := partial "showcase-images.html" (dict "page" . "fallback" .Params.images) }}
+  {{ $images := partial "showcase-images.html" (dict "page" .) }}
   "title": {{ .Title | jsonify }},
   "summary": {{ .Summary | jsonify }},
   "images": {{ $images | jsonify }},

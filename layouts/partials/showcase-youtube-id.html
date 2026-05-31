@@ -1,0 +1,6 @@
+{{- $src := printf "%s" . -}}
+{{- $id := "" -}}
+{{- if strings.HasPrefix (lower $src) "youtube:" -}}
+    {{- $id = replaceRE "^youtube:" "" $src -}}
+{{- end -}}
+{{- return $id -}}

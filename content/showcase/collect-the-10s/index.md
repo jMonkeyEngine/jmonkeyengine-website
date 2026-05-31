@@ -27,17 +27,11 @@ platforms: ["Windows", "Mac", "Linux"]
 summary: "A 3D online adaptation of the Indian trick-taking card game Mendikot, with rated multiplayer, rankings, and single-player AI tournaments."
 
 
-gallery: [
-    "/images/showcase/c10/3.png",
-    "/images/showcase/c10/1.png",
-    "/images/showcase/c10/2.png",
-    "/images/showcase/c10/4.png",
-    "/images/showcase/c10/5.png",
-    "/images/showcase/c10/6.png",
+images: [
     "youtube:c7B6r9fTa3M",
     "youtube:BU9sJGhm9lI",
     "youtube:H1Qqpr-txtc"
- ]
+]
 
 ---
 

@@ -17,15 +17,8 @@ steam_link: "https://store.steampowered.com/app/746880/Spoxel/"
 platforms: ["Windows", "Mac", "Linux"]
 
 summary: "Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful spells, infuse weapons and armor with rare resources to create legendary items of power."
-gallery: [
-    "/images/showcase/spoxel/1.jpg",
-    "/images/showcase/spoxel/2.jpg",
-    "/images/showcase/spoxel/3.jpg",
-    "/images/showcase/spoxel/4.jpg",
-    "/images/showcase/spoxel/5.jpg",
-    "/images/showcase/spoxel/6.jpg",
-    "/images/showcase/spoxel/8.jpg",
-     "https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm",
+images: [
+    "https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm",
     "https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm"
 ]
 

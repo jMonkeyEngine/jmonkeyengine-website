@@ -11,6 +11,107 @@
 }
 .showcase-header .section-title { font-size: 2rem; }
 .showcase-header .btn-outline { padding: 0.6rem 1.25rem; font-size: 0.875rem; }
+.showcase-featured-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.14fr) minmax(320px, 0.86fr);
+    min-height: 336px;
+    margin-bottom: 3.25rem;
+    overflow: hidden;
+    border-radius: 22px;
+    text-decoration: none;
+    color: inherit;
+    background:
+        linear-gradient(135deg, rgba(255,208,0,0.13), rgba(76,195,255,0.055)),
+        @bg-card;
+    border: 1px solid rgba(255,208,0,0.20);
+    box-shadow: 0 28px 70px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.055);
+    .focus-transition(0.3s);
+}
+.showcase-featured-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,208,0,0.36);
+    box-shadow: 0 34px 82px rgba(0,0,0,0.34), 0 0 42px rgba(255,208,0,0.075);
+}
+.showcase-featured-card__media {
+    position: relative;
+    min-height: 336px;
+    background: #111;
+}
+.showcase-featured-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 58%, rgba(23,23,27,0.68));
+    pointer-events: none;
+}
+.showcase-featured-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.86) saturate(1.03);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+.showcase-featured-card:hover .showcase-featured-card__media img {
+    filter: brightness(0.96) saturate(1.12);
+    transform: scale(1.025);
+}
+.showcase-featured-card__placeholder {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: @text-muted;
+    font-size: 4rem;
+    background: linear-gradient(135deg, @bg-card-hover, #171720);
+}
+.showcase-featured-card__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 2rem;
+}
+.showcase-featured-card__label,
+.showcase-featured-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    width: fit-content;
+    color: @accent;
+    font-weight: 800;
+}
+.showcase-featured-card__label {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+.showcase-featured-card__body h2 {
+    margin: 0;
+    color: @text-primary;
+    font-size: 2.05rem;
+    line-height: 1.08;
+}
+.showcase-featured-card__author {
+    margin: -0.25rem 0 0;
+    color: @text-secondary;
+    font-size: 0.9rem;
+}
+.showcase-featured-card__summary {
+    margin: 0;
+    color: @text-secondary;
+    line-height: 1.62;
+    font-size: 0.95rem;
+}
+.showcase-featured-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.42rem;
+    margin-top: 0.15rem;
+}
+.showcase-featured-card__cta {
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+}
 .showcase-experiments,
 .showcase-tools {
     margin-bottom: 3.25rem;
@@ -177,8 +278,8 @@
 .glink.web { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); }
 .glink.indiedb { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.15); }
 
-@media (max-width: 900px) { .games-grid, .tools-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; } .showcase-header { flex-direction: column; align-items: flex-start; } }
-@media (max-width: 560px) { .games-grid, .tools-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; } .tool-card__body p { display: none; } }
+@media (max-width: 900px) { .showcase-featured-card { grid-template-columns: 1fr; } .showcase-featured-card__media { min-height: 260px; } .showcase-featured-card__media::after { background: linear-gradient(180deg, transparent 58%, rgba(23,23,27,0.72)); } .games-grid, .tools-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; } .showcase-header { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 560px) { .showcase-featured-card { min-height: auto; border-radius: 18px; } .showcase-featured-card__media { min-height: 196px; } .showcase-featured-card__body { padding: 1.25rem; } .showcase-featured-card__body h2 { font-size: 1.55rem; } .showcase-featured-card__summary { font-size: 0.88rem; } .games-grid, .tools-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; } .tool-card__body p { display: none; } }
 
 // === SHOWCASE ELEMENTS ===
 section.gallery {

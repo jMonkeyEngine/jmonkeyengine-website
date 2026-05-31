@@ -1,0 +1,26 @@
+{{- $p := . -}}
+{{- $images := partial "showcase-images.html" (dict "page" $p) -}}
+{{- $cover := partial "showcase-cover.html" (dict "items" $images) -}}
+{{- $shortDescription := $p.Params.summary | default $p.Summary | default "" -}}
+{{- if $shortDescription -}}{{ $shortDescription = $shortDescription | plainify | truncate 230 }}{{ end -}}
+
+<a href="{{ $p.RelPermalink }}" class="showcase-featured-card" aria-label="Featured showcase project: {{ $p.Title }}">
+    <div class="showcase-featured-card__media">
+        {{ if $cover }}
+        <img src="{{ $cover }}" alt="{{ $p.Title }} screenshot" loading="eager">
+        {{ else }}
+        <div class="showcase-featured-card__placeholder"><i class="fas fa-gamepad"></i></div>
+        {{ end }}
+    </div>
+    <div class="showcase-featured-card__body">
+        <span class="showcase-featured-card__label"><i class="fa-solid fa-star"></i> Featured project</span>
+        <h2>{{ $p.Title }}</h2>
+        {{ with $p.Params.authors }}<p class="showcase-featured-card__author">by {{ index . 0 }}</p>{{ end }}
+        {{ with $shortDescription }}<p class="showcase-featured-card__summary">{{ . }}</p>{{ end }}
+        <div class="showcase-featured-card__tags">
+            {{ with $p.Params.platforms }}{{ range first 4 . }}<span class="game-tag">{{ . }}</span>{{ end }}{{ end }}
+            {{ with $p.Params.tags }}{{ range first 3 . }}{{ if ne (lower .) "showcase" }}<span class="game-tag">{{ . }}</span>{{ end }}{{ end }}{{ end }}
+        </div>
+        <span class="showcase-featured-card__cta">View project <i class="fas fa-arrow-right"></i></span>
+    </div>
+</a>

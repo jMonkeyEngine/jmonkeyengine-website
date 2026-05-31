@@ -260,6 +260,7 @@ section.game-page {
     &::-webkit-scrollbar-thumb { background: @border; border-radius: 2px; }
 }
 .screenshot-item {
+    position: relative;
     flex-shrink: 0;
     width: 300px;
     height: 170px;
@@ -271,7 +272,8 @@ section.game-page {
     cursor: zoom-in;
     appearance: none;
     text-align: left;
-    img {
+    img,
+    video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -284,7 +286,20 @@ section.game-page {
         outline: none;
     }
     &:hover img,
-    &:focus-visible img { transform: scale(1.04); }
+    &:focus-visible img,
+    &:hover video,
+    &:focus-visible video { transform: scale(1.04); }
+}
+.screenshot-item--video { cursor: pointer; }
+.screenshot-item__play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 1.35rem;
+    background: radial-gradient(circle, rgba(0,0,0,0.42), rgba(0,0,0,0.08) 42%, transparent 62%);
+    pointer-events: none;
 }
 
 .showcase-lightbox-open { overflow: hidden; }
@@ -318,7 +333,9 @@ section.game-page {
     box-shadow: 0 24px 90px rgba(0,0,0,0.65);
     background: #050508;
 }
-.showcase-lightbox__image {
+.showcase-lightbox__image,
+.showcase-lightbox__video,
+.showcase-lightbox__youtube {
     display: block;
     width: auto;
     height: auto;
@@ -326,6 +343,15 @@ section.game-page {
     max-height: 88vh;
     object-fit: contain;
 }
+.showcase-lightbox__youtube {
+    width: ~"min(1500px, 96vw)";
+    max-width: 96vw;
+    max-height: 92vh;
+    aspect-ratio: 16/9;
+    border: 0;
+}
+.showcase-lightbox__video,
+.showcase-lightbox__youtube { display: none; }
 .showcase-lightbox__close {
     position: fixed;
     top: 1.25rem;

@@ -20,18 +20,8 @@ platforms: ["Windows", "Mac", "Linux"]
 
 summary: "Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize your vessel piece by piece to tackle whatever adventures await. Take on crime lords and space pirates, undercut corporations monopolizing business, influence the galactic stock market, and become the most successful captain you can be."
 
-gallery: [
-    "/images/showcase/ls_frontier/1.jpg",
-    "/images/showcase/ls_frontier/2.jpg",
-    "/images/showcase/ls_frontier/3.jpg",
-    "/images/showcase/ls_frontier/4.jpg",
-    "/images/showcase/ls_frontier/6.jpg",
-    "/images/showcase/ls_frontier/7.jpg",
-    "/images/showcase/ls_frontier/8.jpg",
-    "/images/showcase/ls_frontier/9.jpg",
-    "/images/showcase/ls_frontier/10.jpg",
-    "/images/showcase/ls_frontier/11.jpg",
-      "https://steamcdn-a.akamaihd.net/steam/apps/256676876/movie_max.webm"
+images: [
+    "https://steamcdn-a.akamaihd.net/steam/apps/256676876/movie_max.webm"
 ]
 
 

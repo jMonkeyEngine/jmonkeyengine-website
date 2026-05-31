@@ -1,8 +1,7 @@
 {{ define "main" }}
 <section class="game-page tool-page">
-    {{ $images := partial "showcase-images.html" (dict "page" . "fallback" .Params.images) }}
-    {{ $cover := "" }}
-    {{ if $images }}{{ $cover = index $images 0 }}{{ end }}
+    {{ $images := partial "showcase-images.html" (dict "page" .) }}
+    {{ $cover := partial "showcase-cover.html" (dict "items" $images) }}
 
     <div class="game-page-hero tool-page-hero">
         {{ if $cover }}
@@ -44,19 +43,10 @@
         </div>
         {{ end }}
 
-        {{ $gallery := .Params.gallery }}
         {{ $all_imgs := slice }}
-        {{ if $gallery }}
-            {{ range $gallery }}
-                {{ if not (strings.HasPrefix . "youtube:") }}
-                {{ if not (strings.HasSuffix . ".webm") }}
-                {{ if not (strings.HasSuffix . ".mp4") }}
-                    {{ $all_imgs = $all_imgs | append . }}
-                {{ end }}{{ end }}{{ end }}
-                {{ end }}
-        {{ else if $images }}
+        {{ if $images }}
             {{ range after 1 $images }}
-                {{ $all_imgs = $all_imgs | append . }}
+                {{ if ne . $cover }}{{ $all_imgs = $all_imgs | append . }}{{ end }}
             {{ end }}
         {{ end }}
 

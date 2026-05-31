@@ -16,30 +16,8 @@ publisher_link: "https://mythruna.com/"
 
 summary: "An in-development sandbox RPG combining serious role-playing systems with an endless, living, fully modifiable generated world."
 
-gallery: [
-    "/images/showcase/mythruna/1.jpg",
-    "/images/showcase/mythruna/2.png",
-    "/images/showcase/mythruna/3.png",
-    "/images/showcase/mythruna/4.jpg",
-    "/images/showcase/mythruna/5.jpg",
-    "/images/showcase/mythruna/6.jpg",
-    "/images/showcase/mythruna/7.jpg",
-    "/images/showcase/mythruna/8.jpg",
-    "/images/showcase/mythruna/9.jpg",
-    "/images/showcase/mythruna/10.jpg",
-    "/images/showcase/mythruna/12.jpg",
-    "/images/showcase/mythruna/13.jpg",
-    "/images/showcase/mythruna/14.jpg",
-    "/images/showcase/mythruna/15.jpg",
-    "/images/showcase/mythruna/16.jpg",
-    "/images/showcase/mythruna/17.jpg",
-    "/images/showcase/mythruna/18.png",
-    "/images/showcase/mythruna/19.png",
-    "/images/showcase/mythruna/20.png"
-]
-
-videos_youtube: [
-    "tp_g9dvqwY0"
+images: [
+    "youtube:tp_g9dvqwY0"
 ]
 
 ---

@@ -1,0 +1,2 @@
+{{- $kind := partial "showcase-media-kind.html" . -}}
+{{- return (or (eq $kind "video") (eq $kind "youtube")) -}}

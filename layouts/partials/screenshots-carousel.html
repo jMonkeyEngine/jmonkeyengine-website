@@ -10,8 +10,21 @@
         </button>
         <div class="screenshots-track">
             {{- range $items -}}
-            <button class="screenshot-item screenshot-lightbox-trigger" type="button" data-full="{{ . }}" aria-label="Open screenshot preview">
+            {{- $kind := partial "showcase-media-kind.html" . -}}
+            {{- $youtubeId := "" -}}
+            {{- if eq $kind "youtube" -}}{{- $youtubeId = partial "showcase-youtube-id.html" . -}}{{- end -}}
+            <button class="screenshot-item screenshot-lightbox-trigger{{ if ne $kind "image" }} screenshot-item--video{{ end }}" type="button" data-full="{{ . }}" data-media-type="{{ $kind }}" aria-label="Open media preview">
+                {{- if eq $kind "youtube" -}}
+                <img src="https://img.youtube.com/vi/{{ $youtubeId }}/hqdefault.jpg" alt="Video preview" loading="lazy">
+                <span class="screenshot-item__play"><i class="fab fa-youtube"></i></span>
+                {{- else if eq $kind "video" -}}
+                <video muted playsinline preload="metadata">
+                    <source src="{{ . }}">
+                </video>
+                <span class="screenshot-item__play"><i class="fas fa-play"></i></span>
+                {{- else -}}
                 <img src="{{ . }}" alt="Screenshot" loading="lazy">
+                {{- end -}}
             </button>
             {{- end -}}
         </div>

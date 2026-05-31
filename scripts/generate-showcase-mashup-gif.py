@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Generate a static showcase "mashup wall" image.
 
-The script scans `static/images/showcase/<slug>/` for each showcase entry, falls back
-to front matter `images` / `gallery` entries when needed, picks ONE image per showcase,
-randomizes per-game image choice and wall ordering, then composes a single dense grid
-image and writes it next to the website assets.
+The script scans `static/images/showcase/<slug>/` for each showcase entry and
+`static/images/showcase-tools/<slug>/` for tool entries. It falls back to local
+front matter `image` / `images` entries when needed, picks ONE image
+per showcase, randomizes per-game image choice and wall ordering, then composes a
+single dense grid image and writes it next to the website assets.
 """
 
 from __future__ import annotations
@@ -37,7 +38,7 @@ EXTRA_SCREENSHOT_DIRS = (
 
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tiff"}
 
-IMAGE_FIELD_KEYS = ("images", "gallery")
+IMAGE_FIELD_KEYS = ("image", "images")
 DEFAULT_MAX_IMAGES = 16
 DEFAULT_CELL_WIDTH = 256
 DEFAULT_CELL_ASPECT = 16 / 9
@@ -127,14 +128,14 @@ def collect_tool_images_from_content() -> list[Path]:
     """Collect real local images referenced by content/showcase-tools pages.
 
     Tool cards may fall back to Font Awesome icons/placeholders in the site UI. Only
-    actual image assets are included in the mashup so GitHub page screenshots do not
-    leak back into the hero wall.
+    actual local image assets are included in the mashup so remote screenshots do not
+    make the build depend on external image downloads.
     """
     images: list[Path] = []
     seen: set[str] = set()
     for md in sorted(TOOLS_CONTENT_DIR.glob("*/index.md")):
         slug = md.parent.name
-        page_images = collect_images_from_dir(STATIC_DIR / "images" / "showcase" / slug)
+        page_images = collect_images_from_dir(STATIC_DIR / "images" / "showcase-tools" / slug)
 
         if not page_images:
             fm = find_front_matter(md)

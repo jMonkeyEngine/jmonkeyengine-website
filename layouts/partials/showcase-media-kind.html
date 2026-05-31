@@ -1,0 +1,9 @@
+{{- $src := printf "%s" . | lower -}}
+{{- $clean := replaceRE "[?#].*$" "" $src -}}
+{{- $kind := "image" -}}
+{{- if strings.HasPrefix $clean "youtube:" -}}
+    {{- $kind = "youtube" -}}
+{{- else if or (strings.HasSuffix $clean ".mp4") (strings.HasSuffix $clean ".webm") (strings.HasSuffix $clean ".ogg") -}}
+    {{- $kind = "video" -}}
+{{- end -}}
+{{- return $kind -}}

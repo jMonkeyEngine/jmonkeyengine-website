@@ -2,6 +2,15 @@
 {{ partial "page-hero.html" . }}
 {{ $showcasePages := where .Site.RegularPages "Section" "showcase" }}
 {{ $showcaseTools := where .Site.RegularPages "Section" "showcase-tools" }}
+{{ $featuredPages := slice }}
+{{ range $showcasePages }}{{ if .Params.featured }}{{ $featuredPages = $featuredPages | append . }}{{ end }}{{ end }}
+{{ range $showcaseTools }}{{ if .Params.featured }}{{ $featuredPages = $featuredPages | append . }}{{ end }}{{ end }}
+{{ $featuredProject := "" }}
+{{ if gt (len $featuredPages) 0 }}{{ $featuredProject = index (first 1 $featuredPages) 0 }}{{ end }}
+{{ $gameGridPages := $showcasePages }}
+{{ $toolGridPages := $showcaseTools }}
+{{ with $featuredProject }}{{ $gameGridPages = where $showcasePages "RelPermalink" "!=" .RelPermalink }}{{ end }}
+{{ with $featuredProject }}{{ $toolGridPages = where $showcaseTools "RelPermalink" "!=" .RelPermalink }}{{ end }}
 {{ $experimentDir := "static/images/showcase/experiments" }}
 {{ $experimentImages := slice }}
 {{ if fileExists $experimentDir }}
@@ -16,6 +25,10 @@
 {{ end }}
 <section id="showcase">
     <div class="section-container">
+        {{ with $featuredProject }}
+            {{ partial "showcase-featured-card.html" . }}
+        {{ end }}
+
         <div class="showcase-experiments game-section">
             <div class="showcase-header showcase-header--experiments">
                 <div>
@@ -30,7 +43,7 @@
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="screenshots-track experiments-track">
-                    {{ range $experimentImages }}
+                    {{ range shuffle $experimentImages }}
                     {{ $src := printf "/images/showcase/experiments/%s" .Name }}
                     <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="{{ $src | relURL }}" aria-label="Open experiment screenshot">
                         <img src="{{ $src | relURL }}" alt="jMonkeyEngine experiment screenshot" loading="lazy">
@@ -60,7 +73,7 @@
         </div>
 
         <div class="games-grid">
-            {{ range $showcasePages }}
+            {{ range shuffle $gameGridPages }}
                 {{ partial "showcase-game-card.html" . }}
             {{ end }}
         </div>
@@ -75,7 +88,7 @@
             </div>
 
             <div class="tools-grid">
-                {{ range $showcaseTools.ByWeight }}
+                {{ range shuffle $toolGridPages }}
                     {{ partial "showcase-tool-card.html" . }}
                 {{ end }}
             </div>
