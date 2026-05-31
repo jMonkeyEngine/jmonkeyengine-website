@@ -20,11 +20,16 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ github.token }}
+      HUGO_VERSION: 0.162.1
     steps: 
     - name: Install build tools
       run: |
         sudo apt-get update
-        sudo apt-get install -y ffmpeg node-less python3-numpy python3-yaml
+        sudo apt-get install -y ca-certificates curl ffmpeg node-less python3-numpy python3-yaml
+        HUGO_TARBALL="hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+        curl -fsSLo "/tmp/${HUGO_TARBALL}" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_TARBALL}"
+        sudo tar -C /usr/local/bin -xzf "/tmp/${HUGO_TARBALL}" hugo
+        hugo version
 
     - name: Clone master
       run: |
