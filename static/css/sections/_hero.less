@@ -2,7 +2,7 @@
 .hero {
     position: relative; min-height: 585px;
     display: block;
-    padding: 3.75rem max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem)) 3.35rem;
+    padding: 3.75rem ~"max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))" 3.35rem;
     overflow: hidden;
     background: @bg-primary;
 }
@@ -114,14 +114,14 @@
 
 .hero-showcase-copy {
     position: absolute;
-    right: max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem));
+    right: ~"max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))";
     bottom: 1.35rem;
     z-index: 5;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    width: min(510px, calc(100vw - 3rem));
+    width: ~"min(510px, calc(100vw - 3rem))";
     padding: 0.48rem 0.55rem 0.48rem 0.9rem;
     border-radius: 999px;
     background: rgba(11,11,13,0.72);
@@ -166,7 +166,7 @@
     background: @bg-secondary;
     border-top: 1px solid rgba(255,208,0,0.08);
     border-bottom: 1px solid rgba(255,208,0,0.08);
-    padding: 1.25rem max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem));
+    padding: 1.25rem ~"max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem))";
 }
 .stats-inner {
     max-width: 1280px; margin: 0 auto;

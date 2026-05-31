@@ -4,7 +4,7 @@
     overflow: hidden;
     background: linear-gradient(180deg, #101012 0%, @bg-primary 100%);
     border-bottom: 1px solid rgba(255,208,0,0.12);
-    padding: 4.2rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem)) 3.4rem;
+    padding: 4.2rem ~"max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))" 3.4rem;
 }
 .page-hero::before {
     content: "";
@@ -30,7 +30,7 @@
 .page-hero__inner {
     position: relative;
     z-index: 1;
-    width: min(100%, 1200px);
+    width: ~"min(100%, 1200px)";
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -102,4 +102,3 @@
 .page-hero + .page-list-section { padding-top: 3rem; }
 .page-hero + .page-list-section .page-header { display: none; }
 .page-hero + .page-content .article-header { display: none; }
-
