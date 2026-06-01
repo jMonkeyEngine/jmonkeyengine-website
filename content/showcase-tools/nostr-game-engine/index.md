@@ -10,8 +10,6 @@ icon: "fa-network-wired"
 summary: "A game engine and framework for building games and applications integrated with the Nostr ecosystem."
 external_link: "https://ngengine.org/"
 github_link: "https://github.com/NostrGameEngine/ngengine"
-images:
-  - "https://ngengine.org/imgs/cubes-night.webp"
 ---
 
 Nostr Game Engine is a jMonkeyEngine-based framework for building games and applications that integrate with the Nostr ecosystem. It focuses on serverless social features, decentralized matchmaking, peer-to-peer networking, and player identity without a central platform gatekeeper.
