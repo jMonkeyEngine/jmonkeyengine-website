@@ -343,6 +343,18 @@ section.game-page {
     max-height: 88vh;
     object-fit: contain;
 }
+.showcase-lightbox__image {
+    cursor: zoom-in;
+    transform-origin: center;
+    transition: transform 0.18s ease;
+    touch-action: none;
+}
+.showcase-lightbox__image.is-zoomed {
+    cursor: grab;
+}
+.showcase-lightbox__image.is-zoomed:active {
+    cursor: grabbing;
+}
 .showcase-lightbox__youtube {
     width: ~"min(1500px, 96vw)";
     max-width: 96vw;
@@ -384,6 +396,40 @@ section.game-page {
     color: #fff;
     outline: none;
     text-decoration: underline;
+}
+.showcase-lightbox__zoom-controls {
+    position: fixed;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    gap: 0.45rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(10,10,14,0.88);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.28);
+}
+.showcase-lightbox__zoom-controls[hidden] { display: none; }
+.showcase-lightbox__zoom-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.055);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.showcase-lightbox__zoom-btn:hover,
+.showcase-lightbox__zoom-btn:focus-visible {
+    border-color: @accent;
+    color: @accent;
+    outline: none;
 }
 .showcase-lightbox__close {
     position: fixed;

@@ -2,6 +2,11 @@
     <button class="showcase-lightbox__close" type="button" aria-label="Close screenshot preview">
         <i class="fas fa-times"></i>
     </button>
+    <div class="showcase-lightbox__zoom-controls" aria-label="Image zoom controls" hidden>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="out" aria-label="Zoom out"><i class="fas fa-search-minus"></i></button>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="reset" aria-label="Reset zoom"><i class="fas fa-compress-arrows-alt"></i></button>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="in" aria-label="Zoom in"><i class="fas fa-search-plus"></i></button>
+    </div>
     <button class="showcase-lightbox__backdrop" type="button" aria-label="Close screenshot preview"></button>
     <figure class="showcase-lightbox__figure">
         <img class="showcase-lightbox__image" src="" alt="Screenshot preview">
@@ -21,6 +26,64 @@
 
     function getLightbox() {
         return document.getElementById('showcase-lightbox');
+    }
+
+    var zoomState = {
+        scale: 1,
+        x: 0,
+        y: 0,
+        dragging: false,
+        dragged: false,
+        dragX: 0,
+        dragY: 0,
+        startX: 0,
+        startY: 0
+    };
+
+    function getZoomElements(lightbox) {
+        return {
+            img: lightbox && lightbox.querySelector('.showcase-lightbox__image'),
+            controls: lightbox && lightbox.querySelector('.showcase-lightbox__zoom-controls')
+        };
+    }
+
+    function applyZoom(lightbox) {
+        var zoom = getZoomElements(lightbox);
+        if (!zoom.img) return;
+        zoom.img.style.transform = 'translate(' + zoomState.x + 'px, ' + zoomState.y + 'px) scale(' + zoomState.scale + ')';
+        zoom.img.classList.toggle('is-zoomed', zoomState.scale > 1.01);
+        lightbox.classList.toggle('is-zoomed', zoomState.scale > 1.01);
+    }
+
+    function resetZoom(lightbox) {
+        zoomState.scale = 1;
+        zoomState.x = 0;
+        zoomState.y = 0;
+        zoomState.dragging = false;
+        zoomState.dragged = false;
+        applyZoom(lightbox);
+    }
+
+    function setZoom(lightbox, nextScale, originX, originY) {
+        var previous = zoomState.scale;
+        var scale = Math.max(1, Math.min(4, nextScale));
+        if (scale === 1) {
+            resetZoom(lightbox);
+            return;
+        }
+
+        if (originX != null && originY != null && previous > 0) {
+            zoomState.x = originX - ((originX - zoomState.x) * scale / previous);
+            zoomState.y = originY - ((originY - zoomState.y) * scale / previous);
+        }
+
+        zoomState.scale = scale;
+        applyZoom(lightbox);
+    }
+
+    function setZoomControlsVisible(lightbox, visible) {
+        var controls = getZoomElements(lightbox).controls;
+        if (controls) controls.hidden = !visible;
     }
 
     function isSafeLink(link) {
@@ -61,17 +124,20 @@
         var video = lightbox.querySelector('.showcase-lightbox__video');
         var youtube = lightbox.querySelector('.showcase-lightbox__youtube');
         if (!img || !video || !youtube) return;
+        resetZoom(lightbox);
         youtube.removeAttribute('src');
         youtube.style.display = 'none';
         if (mediaType === 'video') {
             img.removeAttribute('src');
             img.style.display = 'none';
+            setZoomControlsVisible(lightbox, false);
             video.src = src;
             video.style.display = 'block';
             video.load();
         } else if (mediaType === 'youtube') {
             img.removeAttribute('src');
             img.style.display = 'none';
+            setZoomControlsVisible(lightbox, false);
             video.pause();
             video.removeAttribute('src');
             video.style.display = 'none';
@@ -84,6 +150,7 @@
             img.src = src;
             img.alt = alt || 'Screenshot preview';
             img.style.display = 'block';
+            setZoomControlsVisible(lightbox, true);
         }
         setLightboxMeta(lightbox, metaData && metaData.name, metaData && metaData.link);
         lightbox.classList.add('is-open');
@@ -99,6 +166,8 @@
         document.documentElement.classList.remove('showcase-lightbox-open');
         var img = lightbox.querySelector('.showcase-lightbox__image');
         if (img) img.removeAttribute('src');
+        resetZoom(lightbox);
+        setZoomControlsVisible(lightbox, false);
         var video = lightbox.querySelector('.showcase-lightbox__video');
         if (video) {
             video.pause();
@@ -124,13 +193,82 @@
             );
             return;
         }
+        var zoomAction = event.target.closest('[data-lightbox-zoom]');
+        if (zoomAction) {
+            event.preventDefault();
+            var lightbox = getLightbox();
+            if (!lightbox) return;
+            var action = zoomAction.getAttribute('data-lightbox-zoom');
+            if (action === 'reset') resetZoom(lightbox);
+            if (action === 'in') setZoom(lightbox, zoomState.scale + 0.5);
+            if (action === 'out') setZoom(lightbox, zoomState.scale - 0.5);
+            return;
+        }
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (image && image.style.display !== 'none') {
+            if (zoomState.dragged) {
+                zoomState.dragged = false;
+                return;
+            }
+            var box = image.getBoundingClientRect();
+            var originX = event.clientX - box.left - box.width / 2;
+            var originY = event.clientY - box.top - box.height / 2;
+            setZoom(getLightbox(), zoomState.scale > 1.01 ? 1 : 2, originX, originY);
+            return;
+        }
         if (event.target.closest('.showcase-lightbox__close') || event.target.closest('.showcase-lightbox__backdrop')) {
             closeLightbox();
         }
     });
 
+    document.addEventListener('wheel', function (event) {
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (!image || image.style.display === 'none') return;
+        var lightbox = getLightbox();
+        if (!lightbox || !lightbox.classList.contains('is-open')) return;
+        event.preventDefault();
+        var box = image.getBoundingClientRect();
+        var originX = event.clientX - box.left - box.width / 2;
+        var originY = event.clientY - box.top - box.height / 2;
+        var delta = event.deltaY < 0 ? 0.25 : -0.25;
+        setZoom(lightbox, zoomState.scale + delta, originX, originY);
+    }, { passive: false });
+
+    document.addEventListener('pointerdown', function (event) {
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (!image || zoomState.scale <= 1.01) return;
+        zoomState.dragging = true;
+        zoomState.dragged = false;
+        zoomState.dragX = event.clientX;
+        zoomState.dragY = event.clientY;
+        zoomState.startX = zoomState.x;
+        zoomState.startY = zoomState.y;
+        image.setPointerCapture(event.pointerId);
+    });
+
+    document.addEventListener('pointermove', function (event) {
+        if (!zoomState.dragging) return;
+        zoomState.x = zoomState.startX + event.clientX - zoomState.dragX;
+        zoomState.y = zoomState.startY + event.clientY - zoomState.dragY;
+        if (Math.abs(event.clientX - zoomState.dragX) > 3 || Math.abs(event.clientY - zoomState.dragY) > 3) {
+            zoomState.dragged = true;
+        }
+        applyZoom(getLightbox());
+    });
+
+    document.addEventListener('pointerup', function () {
+        zoomState.dragging = false;
+    });
+
+    document.addEventListener('pointercancel', function () {
+        zoomState.dragging = false;
+    });
+
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') closeLightbox();
+        if (event.key === '0') resetZoom(getLightbox());
+        if (event.key === '+' || event.key === '=') setZoom(getLightbox(), zoomState.scale + 0.5);
+        if (event.key === '-' || event.key === '_') setZoom(getLightbox(), zoomState.scale - 0.5);
     });
 })();
 </script>
