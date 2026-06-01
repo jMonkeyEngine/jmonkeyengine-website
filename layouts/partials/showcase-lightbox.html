@@ -7,6 +7,10 @@
         <img class="showcase-lightbox__image" src="" alt="Screenshot preview">
         <video class="showcase-lightbox__video" controls playsinline></video>
         <iframe class="showcase-lightbox__youtube" title="Video preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <figcaption class="showcase-lightbox__meta" hidden>
+            <strong class="showcase-lightbox__meta-name"></strong>
+            <a class="showcase-lightbox__meta-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </figcaption>
     </figure>
 </div>
 
@@ -19,7 +23,38 @@
         return document.getElementById('showcase-lightbox');
     }
 
-    function openLightbox(src, alt, mediaType) {
+    function isSafeLink(link) {
+        if (!link) return false;
+        try {
+            var url = new URL(link, window.location.href);
+            return url.protocol === 'http:' || url.protocol === 'https:' || url.protocol === 'mailto:' || link.charAt(0) === '/';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function setLightboxMeta(lightbox, name, link) {
+        var meta = lightbox.querySelector('.showcase-lightbox__meta');
+        var metaName = lightbox.querySelector('.showcase-lightbox__meta-name');
+        var metaLink = lightbox.querySelector('.showcase-lightbox__meta-link');
+        if (!meta || !metaName || !metaLink) return;
+
+        metaName.textContent = name || '';
+        metaName.style.display = name ? '' : 'none';
+        metaLink.textContent = link || '';
+        metaLink.style.display = isSafeLink(link) ? '' : 'none';
+        if (isSafeLink(link)) {
+            metaLink.href = link;
+        } else {
+            metaLink.removeAttribute('href');
+        }
+
+        var hasMeta = Boolean(name) || isSafeLink(link);
+        meta.hidden = !hasMeta;
+        lightbox.classList.toggle('has-meta', hasMeta);
+    }
+
+    function openLightbox(src, alt, mediaType, metaData) {
         var lightbox = getLightbox();
         if (!lightbox || !src) return;
         var img = lightbox.querySelector('.showcase-lightbox__image');
@@ -50,6 +85,7 @@
             img.alt = alt || 'Screenshot preview';
             img.style.display = 'block';
         }
+        setLightboxMeta(lightbox, metaData && metaData.name, metaData && metaData.link);
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.documentElement.classList.add('showcase-lightbox-open');
@@ -70,13 +106,22 @@
         }
         var youtube = lightbox.querySelector('.showcase-lightbox__youtube');
         if (youtube) youtube.removeAttribute('src');
+        setLightboxMeta(lightbox, '', '');
     }
 
     document.addEventListener('click', function (event) {
         var trigger = event.target.closest('.screenshot-lightbox-trigger');
         if (trigger) {
             event.preventDefault();
-            openLightbox(trigger.getAttribute('data-full') || trigger.getAttribute('href'), trigger.querySelector('img')?.alt, trigger.getAttribute('data-media-type'));
+            openLightbox(
+                trigger.getAttribute('data-full') || trigger.getAttribute('href'),
+                trigger.querySelector('img')?.alt,
+                trigger.getAttribute('data-media-type'),
+                {
+                    name: trigger.getAttribute('data-experiment-name') || '',
+                    link: trigger.getAttribute('data-experiment-link') || ''
+                }
+            );
             return;
         }
         if (event.target.closest('.showcase-lightbox__close') || event.target.closest('.showcase-lightbox__backdrop')) {

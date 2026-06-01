@@ -16,17 +16,17 @@ steam_link: "xxx"
 itch_link: "xxx"
 
 images: [
-    "image.jpg",
+    "image.webp",
     "img.webp",
-    "img.png"
+    "img.webp"
 ]
 
 
 
 gallery: [
-    "img.jpg",
     "img.webp",
-    "img.png",
+    "img.webp",
+    "img.webp",
     "video.webm",
     "youtube:XXXXXXXX"
  ]

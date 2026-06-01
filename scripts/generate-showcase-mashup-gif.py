@@ -27,7 +27,6 @@ CONTENT_DIR = ROOT / "content" / "showcase"
 TOOLS_CONTENT_DIR = ROOT / "content" / "showcase-tools"
 STATIC_DIR = ROOT / "static"
 OUTPUT_DIR = STATIC_DIR / "images" / "showcase-mashup"
-OUTPUT_PNG = OUTPUT_DIR / "showcase-mashup.png"
 OUTPUT_WEBP = OUTPUT_DIR / "showcase-mashup.webp"
 EXTRA_SCREENSHOT_DIRS = (
     STATIC_DIR / "images" / "showcase" / "screenshot",
@@ -36,7 +35,7 @@ EXTRA_SCREENSHOT_DIRS = (
     STATIC_DIR / "images" / "showcase" / "tools",
 )
 
-IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tiff"}
+IMAGE_EXTENSIONS = {".webp"}
 
 IMAGE_FIELD_KEYS = ("image", "images")
 DEFAULT_MAX_IMAGES = 16
@@ -473,7 +472,21 @@ def build_static_wall(
             else:
                 final_target = raw_output
 
-        shutil.copy2(final_target, output)
+        if output.suffix.lower() == ".webp":
+            encode_cmd = [
+                "ffmpeg",
+                "-y",
+                "-loglevel",
+                "error",
+                "-i",
+                str(final_target),
+                "-quality",
+                "86",
+                str(output),
+            ]
+            subprocess.check_call(encode_cmd)
+        else:
+            shutil.copy2(final_target, output)
 
     return output
 
@@ -481,7 +494,7 @@ def build_static_wall(
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-images", type=int, default=DEFAULT_MAX_IMAGES, help="Maximum number of source images used in the wall (default 30)")
-    parser.add_argument("--output", type=str, default=str(OUTPUT_PNG))
+    parser.add_argument("--output", type=str, default=str(OUTPUT_WEBP))
     parser.add_argument("--max-width", type=int, default=1024)
     parser.add_argument("--seed", type=int, default=None, help="Optional seed for deterministic shuffling")
     parser.add_argument(
@@ -535,21 +548,6 @@ def main() -> int:
 
     output = Path(args.output)
     build_static_wall(selected, output, max_width=args.max_width, max_cols=target_count)
-
-    if output == OUTPUT_PNG:
-        webp_cmd = [
-            "ffmpeg",
-            "-y",
-            "-loglevel",
-            "error",
-            "-i",
-            str(output),
-            "-quality",
-            "86",
-            str(OUTPUT_WEBP),
-        ]
-        subprocess.check_call(webp_cmd)
-        print(f"Created {OUTPUT_WEBP}")
 
     print(f"Created {output}")
     return 0

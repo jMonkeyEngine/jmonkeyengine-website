@@ -45,8 +45,15 @@
                 <div class="screenshots-track experiments-track">
                     {{ range shuffle $experimentImages }}
                     {{ $src := printf "/images/showcase/experiments/%s" .Name }}
-                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="{{ $src | relURL }}" aria-label="Open experiment screenshot">
-                        <img src="{{ $src | relURL }}" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                    {{ $metaPath := printf "%s/%s" $experimentDir (replaceRE "\\.[^.]+$" ".json" .Name) }}
+                    {{ $meta := dict }}
+                    {{ if fileExists $metaPath }}{{ $meta = (readFile $metaPath | transform.Unmarshal) }}{{ end }}
+                    {{ $experimentName := index $meta "name" }}
+                    {{ $experimentLink := index $meta "link" }}
+                    {{ $alt := "jMonkeyEngine experiment screenshot" }}
+                    {{ with $experimentName }}{{ $alt = printf "%s experiment screenshot" . }}{{ end }}
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="{{ $src | relURL }}"{{ with $experimentName }} data-experiment-name="{{ . }}"{{ end }}{{ with $experimentLink }} data-experiment-link="{{ . }}"{{ end }} aria-label="Open experiment screenshot">
+                        <img src="{{ $src | relURL }}" alt="{{ $alt }}" loading="lazy">
                     </button>
                     {{ end }}
                 </div>
