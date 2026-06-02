@@ -1,3 +1,5 @@
+{{ define "title" }}{{ .Site.Title }} | Showcase{{ end }}
+
 {{ define "main" }}
 {{ partial "page-hero.html" . }}
 {{ $showcasePages := where .Site.RegularPages "Section" "showcase" }}
