@@ -10,7 +10,11 @@
   {{ if or (eq .Section "news") (eq .RelPermalink "/news/") }}
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} News RSS" href="{{ "/news/index.xml" | absURL }}">
   {{ end }}
-  <link rel="stylesheet" href="/css/style.css">
+  {{- $styleFingerprint := now.Unix -}}
+  {{- with resources.Get "css/style.css" -}}
+    {{- $styleFingerprint = .Content | fingerprint "sha256" -}}
+  {{- end }}
+  <link rel="stylesheet" href="/css/style.css?v={{ $styleFingerprint }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   {{ if in (slice "showcase" "showcase-tools") .Section }}
     {{ partial "showcase-social-meta.html" . }}
