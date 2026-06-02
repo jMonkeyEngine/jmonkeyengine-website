@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="description" content="jMonkeyEngine is a modern developer friendly game engine written primarily in Java.">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  {{ if or (eq .Section "news") (eq .RelPermalink "/news/") }}
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} News RSS" href="{{ "/news/index.xml" | absURL }}">
+  {{ end }}
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   {{ if in (slice "showcase" "showcase-tools") .Section }}

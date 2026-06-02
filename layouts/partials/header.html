@@ -26,7 +26,7 @@
                 <a href="https://youtube.com/c/jmonkeyengine" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                 <a href="https://discord.gg/Rv8sfVu" target="_blank" title="Discord" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
             </div>
-            <a href="https://github.com/jMonkeyEngine/jmonkeyengine" class="star-repo-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Star repo</a>
+            <a href="https://github.com/jMonkeyEngine/jmonkeyengine" class="star-repo-btn star-repo-memory" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Star repo</a>
             <a href="/donate/" class="donate-btn donate-btn--banana">
                 <span class="donate-btn__label"><i class="fas fa-donate"></i> Donate</span>
                 <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
@@ -48,10 +48,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const STAR_REPO_STORAGE_KEY = 'jme-star-repo-highlighted';
     const button = document.querySelector('.menu-toggle');
     const menu = document.getElementById('site-menu');
-    const starRepoButton = document.querySelector('.star-repo-btn');
+    const starRepoButtons = Array.from(document.querySelectorAll('.star-repo-memory'));
+    const applyStarRepoState = function (active) {
+        starRepoButtons.forEach(function (starRepoButton) {
+            starRepoButton.classList.toggle('star-repo-memory--active', active);
+            if (starRepoButton.classList.contains('star-repo-btn')) {
+                starRepoButton.classList.toggle('star-repo-btn--active', active);
+            }
+        });
+    };
     try {
-        if (localStorage.getItem(STAR_REPO_STORAGE_KEY) === '1' && starRepoButton) {
-            starRepoButton.classList.add('star-repo-btn--active');
+        if (localStorage.getItem(STAR_REPO_STORAGE_KEY) === '1') {
+            applyStarRepoState(true);
         }
     } catch (_) {
         // storage unavailable; fallback to stateless behavior
@@ -65,33 +73,34 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const clearStarRepoPersistedState = function () {
-        if (!starRepoButton) return;
         try {
             localStorage.removeItem(STAR_REPO_STORAGE_KEY);
         } catch (_) {
             // storage unavailable; nothing to clear
         }
-        starRepoButton.classList.remove('star-repo-btn--active');
+        applyStarRepoState(false);
     };
 
-    if (starRepoButton) {
-        starRepoButton.addEventListener('click', function () {
-            try {
-                localStorage.setItem(STAR_REPO_STORAGE_KEY, '1');
-            } catch (_) {
-                // ignore storage failures
-            }
-            this.classList.add('star-repo-btn--active');
-        });
-        starRepoButton.addEventListener('pointerdown', function (event) {
-            if (event && (event.button === 2 || event.which === 3)) {
+    if (starRepoButtons.length) {
+        starRepoButtons.forEach(function (starRepoButton) {
+            starRepoButton.addEventListener('click', function () {
+                try {
+                    localStorage.setItem(STAR_REPO_STORAGE_KEY, '1');
+                } catch (_) {
+                    // ignore storage failures
+                }
+                applyStarRepoState(true);
+            });
+            starRepoButton.addEventListener('pointerdown', function (event) {
+                if (event && (event.button === 2 || event.which === 3)) {
+                    event.preventDefault();
+                    clearStarRepoPersistedState();
+                }
+            });
+            starRepoButton.addEventListener('contextmenu', function (event) {
                 event.preventDefault();
                 clearStarRepoPersistedState();
-            }
-        });
-        starRepoButton.addEventListener('contextmenu', function (event) {
-            event.preventDefault();
-            clearStarRepoPersistedState();
+            });
         });
     }
 

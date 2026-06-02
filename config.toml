@@ -5,7 +5,7 @@ summarylength = 60
 enableRobotsTXT = true
 ignoreErrors = ["error-output-taxonomy"]
 pygmentsCodeFences=false
-disableKinds = ["RSS", "taxonomy", "term"]
+disableKinds = ["taxonomy", "term"]
 
 [pagination]
   pagerSize = 9
@@ -28,4 +28,5 @@ disableKinds = ["RSS", "taxonomy", "term"]
 
 [outputs]
   home = ["HTML"]
+  section = ["HTML"]
   page = ["HTML","JSON"]

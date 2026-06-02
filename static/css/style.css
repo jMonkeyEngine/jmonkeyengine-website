@@ -631,13 +631,132 @@ nav li a.active {
   background: linear-gradient(90deg, transparent 0%, rgba(255, 208, 0, 0.36) 48%, transparent 100%);
   opacity: 0.55;
 }
-.community-card:nth-child(3) {
+.community-card--message {
   border-color: rgba(255, 208, 0, 0.22);
   background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(255, 208, 0, 0.09) 0%, transparent 58%), linear-gradient(180deg, rgba(26, 25, 21, 0.98) 0%, rgba(14, 14, 17, 0.98) 100%);
 }
-.community-card:nth-child(3)::before {
+.community-card--message::before {
   opacity: 1;
   height: 4px;
+}
+.community-card--announcement {
+  grid-column: 1 / -1;
+  min-height: 0;
+  padding: 1.55rem 1.65rem;
+  gap: 0.72rem;
+  border-color: rgba(255, 208, 0, 0.26);
+  background: radial-gradient(ellipse 62% 92% at 8% 0%, rgba(255, 208, 0, 0.14) 0%, transparent 58%), radial-gradient(ellipse 60% 90% at 88% 8%, rgba(76, 195, 255, 0.08) 0%, transparent 60%), linear-gradient(180deg, rgba(28, 27, 22, 0.98) 0%, rgba(14, 14, 17, 0.98) 100%);
+}
+.community-card--announcement::before {
+  opacity: 1;
+  height: 4px;
+}
+.community-announcement__eyebrow {
+  color: #ffd000;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.community-announcement__body {
+  display: grid;
+  gap: 0.72rem;
+  max-width: 980px;
+  color: #a8a8a2;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+.community-announcement__body p {
+  margin: 0;
+}
+.community-announcement__body a {
+  color: #ffd000;
+  font-weight: 750;
+  text-decoration: none;
+}
+.community-announcement__body a:hover,
+.community-announcement__body a:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+  outline: none;
+}
+.community-announcement__actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.58rem;
+  align-items: stretch;
+  margin-top: 0.22rem;
+  padding: 0.66rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+}
+.community-announcement__actions-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.62rem;
+  min-width: 0;
+}
+.community-announcement__star {
+  margin-top: 0;
+}
+.community-announcement__follow-label {
+  color: #fff;
+  font-size: 0.84rem;
+  font-weight: 760;
+  line-height: 1.3;
+}
+.community-announcement__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.48rem;
+}
+.community-announcement__step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.48rem;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 100%;
+  padding: 0.56rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.18);
+  color: #a8a8a2;
+  font-size: 0.74rem;
+  line-height: 1.36;
+  text-decoration: none;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.community-announcement__step:hover,
+.community-announcement__step:focus-visible {
+  border-color: rgba(255, 208, 0, 0.3);
+  background: rgba(255, 208, 0, 0.075);
+  color: #a8a8a2;
+  text-decoration: none;
+  transform: translateY(-1px);
+  outline: none;
+}
+.community-announcement__step strong {
+  display: block;
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+.community-announcement__step b {
+  color: #fff;
+  font-weight: 760;
+}
+.community-announcement__step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 6px;
+  background: rgba(255, 208, 0, 0.12);
+  color: #ffd000;
 }
 .community-card__title {
   margin: 0;
@@ -755,6 +874,12 @@ nav li a.active {
   }
   .community-card {
     min-height: auto;
+  }
+  .community-card--announcement {
+    padding: 1.35rem 1.2rem;
+  }
+  .community-announcement__steps {
+    grid-template-columns: 1fr;
   }
   .community-card__chips {
     gap: 0.35rem;
@@ -2545,6 +2670,14 @@ article .content * {
   border-color: #ffd000 !important;
   color: #ffd000 !important;
   text-decoration: none;
+  box-shadow: none !important;
+}
+.star-repo-memory--active,
+.star-repo-memory--active:hover,
+.star-repo-memory--active:focus-visible {
+  background: rgba(255, 208, 0, 0.08) !important;
+  border-color: rgba(255, 208, 0, 0.28) !important;
+  color: #ffd000 !important;
   box-shadow: none !important;
 }
 .btn-ghost,
