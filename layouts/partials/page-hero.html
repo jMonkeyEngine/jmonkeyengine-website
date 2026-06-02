@@ -4,6 +4,8 @@
 {{- $icon := "fa-cube" -}}
 {{- $showcasePages := where .Site.RegularPages "Section" "showcase" -}}
 {{- $community := index .Site.Data "community" | default dict -}}
+{{- $monthlyWip := index $community "monthly-wip" | default dict -}}
+{{- $monthlyWipItems := index $monthlyWip "items" | default slice -}}
 {{- $openCollectiveData := index $community "open-collective" | default (index $community "openCollective") | default dict -}}
 {{- $backersData := index $openCollectiveData "backers" | default dict -}}
 {{- $communityParams := .Site.Params.community | default dict -}}
@@ -37,7 +39,7 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
-{{- $showcaseToolExperimentCount := add (len $showcaseTools) (len $experimentImages) -}}
+{{- $showcaseToolExperimentCount := add (add (len $showcaseTools) (len $experimentImages)) (len $monthlyWipItems) -}}
 {{- if or (eq .Section "showcase") (eq $term "showcase") -}}
   {{- $eyebrow = "Community Showcase" -}}
   {{- $description = printf "%d games plus %d tools and experiments built around jMonkeyEngine — from indie releases to engines, editors, and production tools." (len $showcasePages) $showcaseToolExperimentCount -}}
