@@ -2773,84 +2773,8 @@ article .content * {
 .experiments-empty code {
   color: #ffd000;
 }
-/* MONTHLY WIP SECTION */
-.monthly-wip-section {
-  padding: 5rem 0;
-  background: radial-gradient(ellipse 62% 92% at 18% 88%, rgba(76, 195, 255, 0.055), transparent 58%), #111114;
-  border-top: 1px solid #28282e;
-  border-bottom: 1px solid #28282e;
-}
-.showcase-header--monthly-wip {
-  margin-bottom: 1rem;
-}
-.showcase-header--monthly-wip .section-title {
-  font-size: 1.7rem;
-}
-.monthly-wip-carousel {
-  align-items: stretch;
-}
-.monthly-wip-track {
-  flex: 1;
-}
-.monthly-wip-item {
-  width: min(420px, 72vw);
-  height: 236px;
-  display: block;
-  position: relative;
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid #28282e;
-  background: #17171b;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-.monthly-wip-item:hover {
-  border-color: rgba(255, 208, 0, 0.24);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
-}
-.monthly-wip-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0.88) saturate(0.96);
-  transition: filter 0.3s ease;
-}
-.monthly-wip-item:hover img {
-  filter: brightness(0.96) saturate(1.1);
-}
 .monthly-wip-video {
   cursor: pointer;
-}
-.monthly-wip-video-overlay {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: rgba(0, 0, 0, 0.25);
-  pointer-events: none;
-  transition: background 0.3s ease;
-}
-.monthly-wip-video:hover .monthly-wip-video-overlay {
-  background: rgba(0, 0, 0, 0.4);
-}
-.monthly-wip-video-overlay i {
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: rgba(255, 208, 0, 0.9);
-  color: #000;
-  font-size: 1.25rem;
-  box-shadow: 0 6px 24px rgba(255, 208, 0, 0.35);
-  transition: transform 0.25s ease;
-}
-.monthly-wip-video:hover .monthly-wip-video-overlay i {
-  transform: scale(1.1);
 }
 .monthly-wip-author {
   position: absolute;
@@ -3683,9 +3607,12 @@ section.game-page {
 .showcase-lightbox__meta[hidden] {
   display: none;
 }
-.showcase-lightbox__meta-name {
+.showcase-lightbox__meta-description {
+  margin: 0;
+  font-weight: 400;
   font-size: 0.98rem;
-  line-height: 1.25;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.92);
 }
 .showcase-lightbox__meta-link {
   max-width: 100%;

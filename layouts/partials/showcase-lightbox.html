@@ -13,7 +13,7 @@
         <video class="showcase-lightbox__video" controls playsinline></video>
         <iframe class="showcase-lightbox__youtube" title="Video preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
         <figcaption class="showcase-lightbox__meta" hidden>
-            <strong class="showcase-lightbox__meta-name"></strong>
+            <p class="showcase-lightbox__meta-description"></p>
             <a class="showcase-lightbox__meta-link" href="#" target="_blank" rel="noopener noreferrer"></a>
         </figcaption>
     </figure>
@@ -96,14 +96,14 @@
         }
     }
 
-    function setLightboxMeta(lightbox, name, link) {
+    function setLightboxMeta(lightbox, description, link) {
         var meta = lightbox.querySelector('.showcase-lightbox__meta');
-        var metaName = lightbox.querySelector('.showcase-lightbox__meta-name');
+        var metaDescription = lightbox.querySelector('.showcase-lightbox__meta-description');
         var metaLink = lightbox.querySelector('.showcase-lightbox__meta-link');
-        if (!meta || !metaName || !metaLink) return;
+        if (!meta || !metaDescription || !metaLink) return;
 
-        metaName.textContent = name || '';
-        metaName.style.display = name ? '' : 'none';
+        metaDescription.textContent = description || '';
+        metaDescription.style.display = description ? '' : 'none';
         metaLink.textContent = link || '';
         metaLink.style.display = isSafeLink(link) ? '' : 'none';
         if (isSafeLink(link)) {
@@ -112,7 +112,7 @@
             metaLink.removeAttribute('href');
         }
 
-        var hasMeta = Boolean(name) || isSafeLink(link);
+        var hasMeta = Boolean(description) || isSafeLink(link);
         meta.hidden = !hasMeta;
         lightbox.classList.toggle('has-meta', hasMeta);
     }
@@ -152,7 +152,7 @@
             img.style.display = 'block';
             setZoomControlsVisible(lightbox, true);
         }
-        setLightboxMeta(lightbox, metaData && metaData.name, metaData && metaData.link);
+        setLightboxMeta(lightbox, metaData && metaData.description, metaData && metaData.link);
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.documentElement.classList.add('showcase-lightbox-open');
@@ -187,7 +187,7 @@
                 trigger.querySelector('img')?.alt,
                 trigger.getAttribute('data-media-type'),
                 {
-                    name: trigger.getAttribute('data-experiment-name') || '',
+                    description: trigger.getAttribute('data-experiment-description') || '',
                     link: trigger.getAttribute('data-experiment-link') || ''
                 }
             );

@@ -8,7 +8,6 @@ platforms: ["Windows", "Mac", "Linux", "Java"]
 tags: ["Editor", "Models", "Assets"]
 icon: "fa-pen-ruler"
 summary: "A dedicated editor for jMonkeyEngine 3D models, focused on inspecting and editing assets outside the game runtime."
-external_link: "https://github.com/stephengold/Maud"
 github_link: "https://github.com/stephengold/Maud"
 ---
 

@@ -26,8 +26,40 @@
 {{ $community := index .Site.Data "community" | default dict }}
 {{ $monthlyWip := index $community "monthly-wip" | default dict }}
 {{ $wipItems := index $monthlyWip "items" | default slice }}
-{{ $wipSubtitle := index $monthlyWip "subtitle" | default "Screenshots and videos from this month's community WIP thread." }}
 {{ $wipTopic := index $monthlyWip "topic" | default dict }}
+{{ $wipCta := index $monthlyWip "cta" | default dict }}
+{{ $wipCtaUrl := index $wipCta "url" | default (index $wipTopic "url") }}
+{{ $wipCtaLabel := index $wipCta "label" | default "Current WIP thread" }}
+{{ $fixedExperimentItems := slice }}
+{{ range $experimentImages }}
+    {{ $src := printf "/images/showcase/experiments/%s" .Name }}
+    {{ $metaPath := printf "%s/%s" $experimentDir (replaceRE "\\.[^.]+$" ".json" .Name) }}
+    {{ $meta := dict }}
+    {{ if fileExists $metaPath }}{{ $meta = (readFile $metaPath | transform.Unmarshal) }}{{ end }}
+    {{ $experimentDescription := index $meta "description" }}
+    {{ $experimentLink := index $meta "link" }}
+    {{ $alt := "jMonkeyEngine experiment screenshot" }}
+    {{ with $experimentDescription }}{{ $alt = printf "%s experiment screenshot" . }}{{ end }}
+    {{ $fixedExperimentItems = $fixedExperimentItems | append (dict "type" "image" "src" ($src | relURL) "description" $experimentDescription "link" $experimentLink "alt" $alt) }}
+{{ end }}
+{{ $leadExperimentItems := first 2 (shuffle $fixedExperimentItems) }}
+{{ $leadExperimentSources := slice }}
+{{ range $leadExperimentItems }}
+    {{ $leadExperimentSources = $leadExperimentSources | append .src }}
+{{ end }}
+{{ $remainingCommunityItems := slice }}
+{{ range $fixedExperimentItems }}
+    {{ if not (in $leadExperimentSources .src) }}
+        {{ $remainingCommunityItems = $remainingCommunityItems | append . }}
+    {{ end }}
+{{ end }}
+{{ range $wipItems }}
+    {{ $remainingCommunityItems = $remainingCommunityItems | append . }}
+{{ end }}
+{{ $communityItems := $leadExperimentItems }}
+{{ range shuffle $remainingCommunityItems }}
+    {{ $communityItems = $communityItems | append . }}
+{{ end }}
 <section id="showcase">
     <div class="section-container">
         {{ with $featuredProject }}
@@ -38,28 +70,40 @@
             <div class="showcase-header showcase-header--experiments">
                 <div>
                     <h2 class="section-title">Experiments</h2>
-                    <p class="section-subtitle">{{ len $experimentImages }} experiments — extra screenshots, prototypes, renders, and visual tests from the community.</p>
+                    <p class="section-subtitle">{{ len $communityItems }} screenshots, videos, prototypes, renders, and visual tests from the community.</p>
                 </div>
+                {{ with $wipCtaUrl }}<a href="{{ . }}" class="btn btn-outline" target="_blank" rel="noopener noreferrer">{{ $wipCtaLabel }} <i class="fas fa-arrow-right"></i></a>{{ end }}
             </div>
 
-            {{ if gt (len $experimentImages) 0 }}
+            {{ if gt (len $communityItems) 0 }}
             <div class="screenshots-carousel experiments-carousel" id="experiments-carousel">
                 <button class="carousel-btn carousel-prev" type="button" data-carousel-target="experiments-carousel" data-carousel-dir="-1" title="Previous experiment">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="screenshots-track experiments-track">
-                    {{ range shuffle $experimentImages }}
-                    {{ $src := printf "/images/showcase/experiments/%s" .Name }}
-                    {{ $metaPath := printf "%s/%s" $experimentDir (replaceRE "\\.[^.]+$" ".json" .Name) }}
-                    {{ $meta := dict }}
-                    {{ if fileExists $metaPath }}{{ $meta = (readFile $metaPath | transform.Unmarshal) }}{{ end }}
-                    {{ $experimentName := index $meta "name" }}
-                    {{ $experimentLink := index $meta "link" }}
-                    {{ $alt := "jMonkeyEngine experiment screenshot" }}
-                    {{ with $experimentName }}{{ $alt = printf "%s experiment screenshot" . }}{{ end }}
-                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="{{ $src | relURL }}"{{ with $experimentName }} data-experiment-name="{{ . }}"{{ end }}{{ with $experimentLink }} data-experiment-link="{{ . }}"{{ end }} aria-label="Open experiment screenshot">
-                        <img src="{{ $src | relURL }}" alt="{{ $alt }}" loading="lazy">
+                    {{ range $communityItems }}
+                    {{ if eq .type "image" }}
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="{{ .src }}"{{ with or .description .preview }} data-experiment-description="{{ . }}"{{ end }}{{ with or .link .postUrl }} data-experiment-link="{{ . }}"{{ end }} aria-label="Open experiment screenshot">
+                        <img src="{{ .src }}" alt="{{ .alt | default "Community screenshot" }}" loading="lazy">
+                        {{ if or .author .description .preview }}
+                        <span class="monthly-wip-author">
+                            {{ with .author }}<span class="monthly-wip-author-name">{{ . }}</span>{{ end }}
+                            {{ with or .description .preview }}<span class="monthly-wip-author-preview">{{ . }}</span>{{ end }}
+                        </span>
+                        {{ end }}
                     </button>
+                    {{ else if eq .type "video" }}
+                    <button class="screenshot-item screenshot-lightbox-trigger screenshot-item--video experiment-item monthly-wip-video" type="button" data-full="{{ .videoId }}" data-media-type="youtube"{{ with or .description .preview }} data-experiment-description="{{ . }}"{{ end }}{{ with .postUrl }} data-experiment-link="{{ . }}"{{ end }} aria-label="Watch video">
+                        <img src="{{ .src }}" alt="Video thumbnail" loading="lazy">
+                        <span class="screenshot-item__play"><i class="fab fa-youtube"></i></span>
+                        {{ if or .author .description .preview }}
+                        <span class="monthly-wip-author">
+                            {{ with .author }}<span class="monthly-wip-author-name">{{ . }}</span>{{ end }}
+                            {{ with or .description .preview }}<span class="monthly-wip-author-preview">{{ . }}</span>{{ end }}
+                        </span>
+                        {{ end }}
+                    </button>
+                    {{ end }}
                     {{ end }}
                 </div>
                 <button class="carousel-btn carousel-next" type="button" data-carousel-target="experiments-carousel" data-carousel-dir="1" title="Next experiment">
@@ -77,58 +121,10 @@
             {{ end }}
         </div>
 
-        {{ if gt (len $wipItems) 0 }}
-        <div class="showcase-experiments game-section">
-            <div class="showcase-header showcase-header--experiments">
-                <div>
-                    <h2 class="section-title">{{ $wipTopic.title | default "Monthly Work in Progress" }}</h2>
-                    <p class="section-subtitle">{{ $wipSubtitle }}</p>
-                </div>
-                {{ with $wipTopic.url }}<a href="{{ . }}" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View thread <i class="fas fa-arrow-right"></i></a>{{ end }}
-            </div>
-            <div class="screenshots-carousel experiments-carousel" id="monthly-wip-carousel">
-                <button class="carousel-btn carousel-prev" type="button" data-carousel-target="monthly-wip-carousel" data-carousel-dir="-1" title="Previous">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="screenshots-track experiments-track">
-                    {{ range $wipItems }}
-                    {{ if eq .type "image" }}
-                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="{{ .src }}"{{ with .author }} data-experiment-name="{{ . }}"{{ end }}{{ with .postUrl }} data-experiment-link="{{ . }}"{{ end }} aria-label="Open screenshot">
-                        <img src="{{ .src }}" alt="Monthly WIP screenshot" loading="lazy">
-                        {{ if or .author .preview }}
-                        <span class="monthly-wip-author">
-                            {{ with .author }}<span class="monthly-wip-author-name">{{ . }}</span>{{ end }}
-                            {{ with .preview }}<span class="monthly-wip-author-preview">{{ . }}</span>{{ end }}
-                        </span>
-                        {{ end }}
-                    </button>
-                    {{ else if eq .type "video" }}
-                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item monthly-wip-video" type="button" data-full="{{ .videoId }}" data-media-type="youtube"{{ with .author }} data-experiment-name="{{ . }}"{{ end }}{{ with .postUrl }} data-experiment-link="{{ . }}"{{ end }} aria-label="Watch video">
-                        <img src="{{ .src }}" alt="Video thumbnail" loading="lazy">
-                        <div class="monthly-wip-video-overlay">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        {{ if or .author .preview }}
-                        <span class="monthly-wip-author">
-                            {{ with .author }}<span class="monthly-wip-author-name">{{ . }}</span>{{ end }}
-                            {{ with .preview }}<span class="monthly-wip-author-preview">{{ . }}</span>{{ end }}
-                        </span>
-                        {{ end }}
-                    </button>
-                    {{ end }}
-                    {{ end }}
-                </div>
-                <button class="carousel-btn carousel-next" type="button" data-carousel-target="monthly-wip-carousel" data-carousel-dir="1" title="Next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-        {{ end }}
-
         <div class="showcase-header">
             <div>
                 <h2 class="section-title">Games made with jMonkeyEngine</h2>
-                <p class="section-subtitle">{{ len $showcasePages }} playable projects built on jMonkeyEngine — from indie experiments to full releases.</p>
+                <p class="section-subtitle">{{ len $showcasePages }} playable projects built on jMonkeyEngine.</p>
             </div>
         </div>
 

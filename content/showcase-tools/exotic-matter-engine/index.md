@@ -8,10 +8,9 @@ platforms: ["Windows", "Mac", "Linux"]
 tags: ["Engine", "Voxel", "Sandbox"]
 icon: "fa-cube"
 summary: "A custom voxel/sandbox engine and technology stack built around jMonkeyEngine for the Exotic Matter project."
-external_link: "https://www.indiedb.com/engines/exotic-matter-engine"
 indiedb_link: "https://www.indiedb.com/engines/exotic-matter-engine"
 images:
   - "/images/showcase/exotic-matter/screenshot_00025.2.webp"
 ---
 
-Exotic Matter Engine is a custom voxel and sandbox technology stack built around jMonkeyEngine. It shows how jME can be used as a foundation for a specialized engine with its own world systems, tooling, rendering needs, and production pipeline.
+An engine written in Java and based on jMonkeyEngine that allows to create fully customize voxel worlds in JavaScript.

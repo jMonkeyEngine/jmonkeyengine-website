@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Fetch the current month's WIP screenshot thread from the Discourse forum.
+"""Fetch last month's WIP screenshot thread from the Discourse forum.
 
 This runs at build time so the public site never performs per-visitor API calls.
 The generated output is stored in `data/community/monthly-wip.json`.
 
-The script finds the topic whose title matches "(Month YYYY) Monthly WIP Screenshot
-Thread" for the current month, then extracts images and YouTube video thumbnails
-from the post content.
+The script finds the topic whose title matches "(Month YYYY) Monthly WIP
+Screenshot Thread" for the previous calendar month, then extracts images and
+YouTube video thumbnails from the post content.
 
-If the current month has fewer items than MIN_MONTHLY_WIP_ITEMS (default 10),
-the script aggregates items from previous months until the minimum is reached,
-respecting MAX_MONTHLY_WIP_LOOKBACK (default 3).
+It keeps every item from that month. If that thread has fewer items than
+MIN_MONTHLY_WIP_ITEMS, the script adds only the missing number of items from
+earlier months, respecting MAX_MONTHLY_WIP_LOOKBACK (default 3).
 
 If no thread is found within the lookback window, the script exits with an error.
 """
@@ -22,6 +22,7 @@ import random
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,6 +30,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 DISCOURSE_BASE_URL = "https://hub.jmonkeyengine.org"
 MONTHLY_CATEGORY_URL = f"{DISCOURSE_BASE_URL}/c/monthly/57.json"
+MONTHLY_CATEGORY_SLUG = "monthly"
 USER_AGENT = "jMonkeyEngine-Website-MonthlyWipFetcher/1.0"
 
 MONTH_NAMES = [
@@ -133,21 +135,20 @@ def _extract_items_from_posts(posts: List[Dict[str, Any]], topic_url: str, month
             continue
 
         author = _to_str(post.get("username", ""))
-        preview = _extract_text_preview(cooked)
+        description = _extract_text_preview(cooked)
         post_number = post.get("post_number", 1)
         post_url = f"{topic_url}/{post_number}"
 
-        images = _extract_images_from_cooked(cooked)
-        if images:
-            item: Dict[str, Any] = {"type": "image", "src": random.choice(images), "author": author, "postUrl": post_url, "_sort": month_sort_key}
-            if preview:
-                item["preview"] = preview
+        for image in _extract_images_from_cooked(cooked):
+            item: Dict[str, Any] = {"type": "image", "src": image, "author": author, "postUrl": post_url, "_sort": month_sort_key}
+            if description:
+                item["description"] = description
             items.append(item)
 
         for video in _extract_videos_from_cooked(cooked):
             v: Dict[str, Any] = {"type": "video", "author": author, "postUrl": post_url, "_sort": month_sort_key}
-            if preview:
-                v["preview"] = preview
+            if description:
+                v["description"] = description
             v.update(video)
             items.append(v)
 
@@ -200,11 +201,45 @@ def find_thread_for_month(year: int, month: int) -> Optional[Dict[str, Any]]:
     return None
 
 
+def _topic_url(topic: Dict[str, Any]) -> str:
+    topic_id = topic["id"]
+    topic_slug = topic.get("slug", "")
+    return f"{DISCOURSE_BASE_URL}/t/{topic_slug}/{topic_id}"
+
+
+def _monthly_thread_title(year: int, month: int) -> str:
+    month_name = MONTH_NAMES[month - 1]
+    return f"({month_name} {year}) Monthly WIP Screenshot Thread"
+
+
+def _new_monthly_thread_url(year: int, month: int) -> str:
+    title = _monthly_thread_title(year, month)
+    body = (
+        "Share screenshots, videos, or progress notes from what you are "
+        "building with jMonkeyEngine this month."
+    )
+    query = urllib.parse.urlencode({
+        "title": title,
+        "body": body,
+        "category": MONTHLY_CATEGORY_SLUG,
+    })
+    return f"{DISCOURSE_BASE_URL}/new-topic?{query}"
+
+
 def _decrement_month(year: int, month: int) -> Tuple[int, int]:
     """Return the previous month as (year, month)."""
     if month == 1:
         return year - 1, 12
     return year, month - 1
+
+
+def _select_backfill_items(items: List[Dict[str, Any]], count: int) -> List[Dict[str, Any]]:
+    """Return up to count backfill items from an older month."""
+    if count <= 0:
+        return []
+    if len(items) <= count:
+        return items
+    return random.sample(items, count)
 
 
 def main() -> None:
@@ -221,9 +256,33 @@ def main() -> None:
     min_items = int(os.environ.get("MIN_MONTHLY_WIP_ITEMS", DEFAULT_MIN_ITEMS))
 
     now = datetime.now(timezone.utc)
-    year, month = now.year, now.month
+    current_year, current_month = now.year, now.month
+    current_topic = find_thread_for_month(current_year, current_month)
+    current_month_name = MONTH_NAMES[current_month - 1]
+    if current_topic is not None:
+        current_topic_title = _to_str(current_topic.get("title"))
+        current_topic_url = _topic_url(current_topic)
+        current_cta = {
+            "label": "Post in this month's WIP thread",
+            "url": current_topic_url,
+            "title": current_topic_title,
+            "exists": True,
+        }
+        print(f"[INFO] Current month thread exists: {current_topic_title}")
+    else:
+        current_topic_title = _monthly_thread_title(current_year, current_month)
+        current_topic_url = _new_monthly_thread_url(current_year, current_month)
+        current_cta = {
+            "label": "Start this month's WIP thread",
+            "url": current_topic_url,
+            "title": current_topic_title,
+            "exists": False,
+        }
+        print(f"[INFO] Current month thread not found for {current_month_name} {current_year}; using new-topic link")
 
-    print(f"[INFO] Looking for WIP thread (max {max_lookback} months lookback, min {min_items} items)...")
+    year, month = _decrement_month(current_year, current_month)
+
+    print(f"[INFO] Looking for last month's WIP thread (max {max_lookback} months lookback, min {min_items} items)...")
 
     all_items: List[Dict[str, Any]] = []
     source_topics: List[Dict[str, Any]] = []
@@ -236,9 +295,8 @@ def main() -> None:
         topic = find_thread_for_month(year, month)
         if topic is not None:
             topic_id = topic["id"]
-            topic_slug = topic.get("slug", "")
             topic_title = _to_str(topic.get("title"))
-            topic_url = f"{DISCOURSE_BASE_URL}/t/{topic_slug}/{topic_id}"
+            topic_url = _topic_url(topic)
 
             print(f"[INFO] Found thread: {topic_title} (id={topic_id})")
             print(f"[INFO] Fetching posts...")
@@ -252,7 +310,16 @@ def main() -> None:
             month_items = _extract_items_from_posts(posts, topic_url, month_sort_key=sort_key)
             print(f"[INFO] Extracted {len(month_items)} items from {month_name} {year}")
 
-            all_items.extend(month_items)
+            if primary_topic is None:
+                primary_topic = topic
+                all_items.extend(month_items)
+                print(f"[INFO] Keeping all {len(month_items)} items from primary month")
+            else:
+                missing_items = min_items - len(all_items)
+                backfill_items = _select_backfill_items(month_items, missing_items)
+                all_items.extend(backfill_items)
+                print(f"[INFO] Added {len(backfill_items)} backfill items from {month_name} {year}")
+
             source_topics.append({
                 "id": topic_id,
                 "title": topic_title,
@@ -265,10 +332,7 @@ def main() -> None:
                 "views": _to_str(topic.get("views")),
             })
 
-            if primary_topic is None:
-                primary_topic = topic
-
-            if len(all_items) >= min_items:
+            if primary_topic is not None and len(all_items) >= min_items:
                 print(f"[INFO] Reached minimum {min_items} items (have {len(all_items)})")
                 break
 
@@ -282,10 +346,6 @@ def main() -> None:
             f"Tried back to {MONTH_NAMES[month - 1]} {year}."
         )
         sys.exit(1)
-
-    if len(all_items) > min_items:
-        print(f"[INFO] Randomly selecting {min_items} items from {len(all_items)} total")
-        all_items = random.sample(all_items, min_items)
 
     # Sort items by recency: most recent month first (left), oldest month last (right)
     all_items.sort(key=lambda x: x.get("_sort", 0), reverse=True)
@@ -319,6 +379,15 @@ def main() -> None:
             "likeCount": primary.get("likeCount", ""),
             "views": primary.get("views", ""),
         },
+        "currentTopic": {
+            "title": current_cta["title"],
+            "url": current_cta["url"],
+            "exists": current_cta["exists"],
+            "year": current_year,
+            "month": current_month,
+            "monthName": current_month_name,
+        },
+        "cta": current_cta,
         "items": all_items,
         "sources": source_topics,
         "status": {

@@ -8,7 +8,6 @@ platforms: ["Windows", "Mac", "Linux", "Blender"]
 tags: ["Tool", "Blender", "Importer"]
 icon: "fa-file-import"
 summary: "A Blender asset importer for jMonkeyEngine workflows, useful for moving production models into jME projects."
-external_link: "https://github.com/stephengold/MonkeyWrench"
 github_link: "https://github.com/stephengold/MonkeyWrench"
 ---
 

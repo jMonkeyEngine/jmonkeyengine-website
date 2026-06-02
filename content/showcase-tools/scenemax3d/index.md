@@ -17,5 +17,3 @@ images:
 SceneMax3D Developer Studio is a desktop 3D scene editor and game development environment built with Java, jMonkeyEngine 3, and Swing. It is designed around a visual workflow: developers can compose scenes, write game logic through a custom scripting language, and export projects as standalone PC executables or Android apps.
 
 The project combines several production tools in one workspace, including a visual scene designer, syntax-highlighted code editor, model import tools, cinematic camera authoring, Effekseer particle effects, and physics support through Minie / Bullet. Recent tooling also covers weapon authoring, reusable throw motions, inverse-kinematics setup, plugin development, and MCP-assisted workflows for external coding agents.
-
-SceneMax3D started as a C++ / DirectX educational game engine in 2005, then was rebuilt in Java around jMonkeyEngine and ANTLR. The current open source release shows how jME can be used as the rendering and runtime foundation for a larger editor, scripting environment, and game production toolchain.
