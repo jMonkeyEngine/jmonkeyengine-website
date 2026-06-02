@@ -38,7 +38,7 @@ MONTH_NAMES = [
 
 DEFAULT_OUTPUT = "data/community/monthly-wip.json"
 DEFAULT_LOOKBACK_MONTHS = 3
-DEFAULT_MIN_ITEMS = 10
+DEFAULT_MIN_ITEMS = 4
 
 
 def _read_json(url: str, payload: Optional[dict] = None, timeout: int = 30) -> Tuple[Any, dict]:
