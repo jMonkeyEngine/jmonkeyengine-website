@@ -23,6 +23,11 @@ if [ "${SKIP_COMMUNITY_DATA:-}" != "1" ]; then
     python3 scripts/fetch-home-community-data.py
 fi
 
+# Fetch the current month's WIP screenshot thread from the forum.
+if [ "${SKIP_MONTHLY_WIP:-}" != "1" ]; then
+    python3 scripts/fetch-monthly-wip-data.py
+fi
+
 if [ "${SKIP_SHOWCASE_MASHUP:-}" != "1" ]; then
     SHOWCASE_MASHUP_MAX_IMAGES="${SHOWCASE_MASHUP_MAX_IMAGES:-30}"
     python3 scripts/generate-showcase-mashup-gif.py --max-width 1600 --max-images "$SHOWCASE_MASHUP_MAX_IMAGES"

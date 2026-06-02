@@ -23,6 +23,11 @@
         {{ end }}
     {{ end }}
 {{ end }}
+{{ $community := index .Site.Data "community" | default dict }}
+{{ $monthlyWip := index $community "monthly-wip" | default dict }}
+{{ $wipItems := index $monthlyWip "items" | default slice }}
+{{ $wipSubtitle := index $monthlyWip "subtitle" | default "Screenshots and videos from this month's community WIP thread." }}
+{{ $wipTopic := index $monthlyWip "topic" | default dict }}
 <section id="showcase">
     <div class="section-container">
         {{ with $featuredProject }}
@@ -71,6 +76,54 @@
             </div>
             {{ end }}
         </div>
+
+        {{ if gt (len $wipItems) 0 }}
+        <div class="showcase-experiments game-section">
+            <div class="showcase-header showcase-header--experiments">
+                <div>
+                    <h2 class="section-title">{{ $wipTopic.title | default "Monthly Work in Progress" }}</h2>
+                    <p class="section-subtitle">{{ $wipSubtitle }}</p>
+                </div>
+                {{ with $wipTopic.url }}<a href="{{ . }}" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View thread <i class="fas fa-arrow-right"></i></a>{{ end }}
+            </div>
+            <div class="screenshots-carousel experiments-carousel" id="monthly-wip-carousel">
+                <button class="carousel-btn carousel-prev" type="button" data-carousel-target="monthly-wip-carousel" data-carousel-dir="-1" title="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="screenshots-track experiments-track">
+                    {{ range $wipItems }}
+                    {{ if eq .type "image" }}
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="{{ .src }}"{{ with .author }} data-experiment-name="{{ . }}"{{ end }}{{ with .postUrl }} data-experiment-link="{{ . }}"{{ end }} aria-label="Open screenshot">
+                        <img src="{{ .src }}" alt="Monthly WIP screenshot" loading="lazy">
+                        {{ if or .author .preview }}
+                        <span class="monthly-wip-author">
+                            {{ with .author }}<span class="monthly-wip-author-name">{{ . }}</span>{{ end }}
+                            {{ with .preview }}<span class="monthly-wip-author-preview">{{ . }}</span>{{ end }}
+                        </span>
+                        {{ end }}
+                    </button>
+                    {{ else if eq .type "video" }}
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item monthly-wip-video" type="button" data-full="{{ .videoId }}" data-media-type="youtube"{{ with .author }} data-experiment-name="{{ . }}"{{ end }}{{ with .postUrl }} data-experiment-link="{{ . }}"{{ end }} aria-label="Watch video">
+                        <img src="{{ .src }}" alt="Video thumbnail" loading="lazy">
+                        <div class="monthly-wip-video-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        {{ if or .author .preview }}
+                        <span class="monthly-wip-author">
+                            {{ with .author }}<span class="monthly-wip-author-name">{{ . }}</span>{{ end }}
+                            {{ with .preview }}<span class="monthly-wip-author-preview">{{ . }}</span>{{ end }}
+                        </span>
+                        {{ end }}
+                    </button>
+                    {{ end }}
+                    {{ end }}
+                </div>
+                <button class="carousel-btn carousel-next" type="button" data-carousel-target="monthly-wip-carousel" data-carousel-dir="1" title="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        {{ end }}
 
         <div class="showcase-header">
             <div>

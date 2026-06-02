@@ -313,6 +313,15 @@ section.game-page {
     padding: clamp(1rem, 4vw, 3rem);
 }
 .showcase-lightbox.is-open { display: flex; }
+.showcase-lightbox__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: ~"min(1200px, 94vw)";
+    max-height: 92vh;
+}
 .showcase-lightbox__backdrop {
     position: absolute;
     inset: 0;
@@ -325,8 +334,6 @@ section.game-page {
     position: relative;
     z-index: 1;
     margin: 0;
-    max-width: ~"min(1200px, 94vw)";
-    max-height: 88vh;
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.16);
@@ -435,7 +442,7 @@ section.game-page {
     position: fixed;
     top: 1.25rem;
     right: 1.25rem;
-    z-index: 2;
+    z-index: 5001;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -454,7 +461,6 @@ section.game-page {
     color: @accent;
     outline: none;
 }
-
 /* Game tags in page body */
 .game-tag {
     background: fade(@accent, 12%);

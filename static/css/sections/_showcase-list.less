@@ -187,6 +187,109 @@
 .experiments-empty p { margin: 0; line-height: 1.5; }
 .experiments-empty code { color: @accent; }
 
+/* MONTHLY WIP SECTION */
+.monthly-wip-section {
+    padding: 5rem 0;
+    background:
+        radial-gradient(ellipse 62% 92% at 18% 88%, rgba(76,195,255,0.055), transparent 58%),
+        @bg-secondary;
+    border-top: 1px solid @border;
+    border-bottom: 1px solid @border;
+}
+.showcase-header--monthly-wip { margin-bottom: 1rem; }
+.showcase-header--monthly-wip .section-title { font-size: 1.7rem; }
+.monthly-wip-carousel { align-items: stretch; }
+.monthly-wip-track { flex: 1; }
+.monthly-wip-item {
+    width: ~"min(420px, 72vw)";
+    height: 236px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid @border;
+    background: @bg-card;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.monthly-wip-item:hover {
+    border-color: @border-accent;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+}
+.monthly-wip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.88) saturate(0.96);
+    transition: filter 0.3s ease;
+}
+.monthly-wip-item:hover img { filter: brightness(0.96) saturate(1.1); }
+.monthly-wip-video { cursor: pointer; }
+.monthly-wip-video-overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(0,0,0,0.25);
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+.monthly-wip-video:hover .monthly-wip-video-overlay { background: rgba(0,0,0,0.4); }
+.monthly-wip-video-overlay i {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255,208,0,0.9);
+    color: #000;
+    font-size: 1.25rem;
+    box-shadow: 0 6px 24px rgba(255,208,0,0.35);
+    transition: transform 0.25s ease;
+}
+.monthly-wip-video:hover .monthly-wip-video-overlay i { transform: scale(1.1); }
+.monthly-wip-author {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 0.5rem 0.7rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+.monthly-wip-author-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #fff;
+}
+.monthly-wip-author-preview {
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.35;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.experiment-item:hover .monthly-wip-author,
+.experiment-item.monthly-wip-video:hover .monthly-wip-author {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* GAMES GRID — clean card layout */
 .games-grid,
 .tools-grid {
