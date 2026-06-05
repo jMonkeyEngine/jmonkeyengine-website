@@ -26,12 +26,14 @@
 </head>
 
 <body>
+  
   {{ if .IsHome }}{{ partial "matrix.html" . }}{{ end }}
   {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
   <main>
     {{ block "main" . }}{{ end }}
   </main>
   {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
+  <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=7dff2945-0147-4e61-a0af-8440774fcc7d" />
 </body>
 
 </html>
