@@ -25,6 +25,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
+from html import unescape
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -105,6 +106,22 @@ def _extract_text_preview(cooked: str, max_len: int = 100) -> str:
     return text
 
 
+def _html_to_plain_text(html: str) -> str:
+    text = re.sub(r'<[^>]+>', ' ', html)
+    text = unescape(text)
+    return re.sub(r'\s+', ' ', text).strip()
+
+
+def _has_noshare_marker(cooked: str) -> bool:
+    """Return True when a post contains inline-code `noshare` opt-out marker."""
+    for match in re.finditer(r'<code\b[^>]*>(.*?)</code>', cooked, flags=re.DOTALL | re.IGNORECASE):
+        code_text = _html_to_plain_text(match.group(1))
+        if code_text.lower() == "noshare":
+            return True
+
+    return False
+
+
 def _extract_videos_from_cooked(cooked: str) -> List[Dict[str, str]]:
     """Extract YouTube video thumbnails from Discourse onebox embeds in cooked HTML."""
     videos: List[Dict[str, str]] = []
@@ -132,6 +149,8 @@ def _extract_items_from_posts(posts: List[Dict[str, Any]], topic_url: str, month
     for post in posts:
         cooked = _to_str(post.get("cooked", ""))
         if not cooked:
+            continue
+        if _has_noshare_marker(cooked):
             continue
 
         author = _to_str(post.get("username", ""))
