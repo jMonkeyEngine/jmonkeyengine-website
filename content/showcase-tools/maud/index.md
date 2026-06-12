@@ -11,4 +11,4 @@ summary: "A dedicated editor for jMonkeyEngine 3D models, focused on inspecting 
 github_link: "https://github.com/stephengold/Maud"
 ---
 
-Maud is a focused editor for jMonkeyEngine 3D models. It gives developers a dedicated place to inspect and edit assets outside the game runtime, which is useful for asset verification, troubleshooting, and production workflows.
+Maud is an editor for jMonkeyEngine 3D models. It gives developers a dedicated place to inspect and edit assets outside the game runtime, which is useful for asset verification, troubleshooting, and production workflows.

@@ -35,12 +35,5 @@ images: [
 
 ---
 
+
 A playing card game (taken from the popular Indian game <i>mendikot / mindi cot / dehla pakad</i>) brought to life in a 3D world! Simply enter the game room, walk around, sit at a table, and start playing Collect The 10s!
-<br><br>
-<a href="https://collectthe10s.com/download" target="_blank"  rel="noopener noreferrer">Download</a> this game which is focused on bringing <b>recognition</b> to the players in <b>ONLINE play</b> by offering players an 
-<b>ELO rating</b> (similar to chess) when they play <i>rated games</i>, and getting a <b>world and country</b> 
-<a href="https://collectthe10s.com/rankings" target="_blank"  rel="noopener noreferrer">ranking</a> 
-based on this rating.<br><br>
-<b><i>Single player</i></b> 
-mode is also available where you play at different skill levels against <i>CPU</i> players in <b>Ladder</b> 
-and <b>Round Robin tournaments</b>. The <i>CPU</i> uses a <b>strong fine-tuned AI</b> when set at the higher skill levels and is a very formidable opponent!
