@@ -21,6 +21,6 @@
             {{ with $p.Params.platforms }}{{ range first 4 . }}<span class="game-tag">{{ . }}</span>{{ end }}{{ end }}
             {{ with $p.Params.tags }}{{ range first 3 . }}{{ if ne (lower .) "showcase" }}<span class="game-tag">{{ . }}</span>{{ end }}{{ end }}{{ end }}
         </div>
-        <span class="showcase-featured-card__cta">View project <i class="fas fa-arrow-right"></i></span>
+        <span class="showcase-featured-card__cta"><span class="showcase-featured-card__cta-text">View project</span><i class="fas fa-arrow-right"></i></span>
     </div>
 </a>

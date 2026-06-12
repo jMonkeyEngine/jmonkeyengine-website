@@ -43,5 +43,9 @@ date: 2021-04-25T18:00:00+00:00
         <span class="donate-fund__action">Donate</span>
       </a>
     </div>
+    <div class="special-support-note merch-support-note">
+      <span><i class="fa-solid fa-bag-shopping"></i> Want to buy some merch? The proceeds from our store, plus any extra donation you add, are automatically donated to the main fund.</span>
+      <a class="special-support-btn" href="https://shop.jmonkeyengine.org/" target="_blank" rel="noopener noreferrer">Visit store</a>
+    </div>
   </div>
 </div>

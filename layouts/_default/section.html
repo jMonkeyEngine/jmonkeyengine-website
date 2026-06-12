@@ -6,7 +6,7 @@
     <article>
       <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
       {{ with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}
-      <a class="more" href="{{ .RelPermalink }}">Read more <i class="fas fa-arrow-right"></i></a>
+      <a class="more" href="{{ .RelPermalink }}"><span>Read more</span><i class="fas fa-arrow-right"></i></a>
     </article>
     {{ else }}
     <article>

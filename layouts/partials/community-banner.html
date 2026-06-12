@@ -75,6 +75,11 @@
 {{- if $announcementPage -}}
   {{- $announcementEnabled = and (or $announcementPage.Params.enabled $announcementPage.Params.enableForce) (ne ($announcementPage.Content | plainify | replaceRE "^\\s+|\\s+$" "") "") -}}
 {{- end -}}
+{{- $shopAnnouncementPage := .Site.GetPage "announcements/merch-store" -}}
+{{- $shopAnnouncementEnabled := false -}}
+{{- if $shopAnnouncementPage -}}
+  {{- $shopAnnouncementEnabled = and (or $shopAnnouncementPage.Params.enabled $shopAnnouncementPage.Params.enableForce) (ne ($shopAnnouncementPage.Content | plainify | replaceRE "^\\s+|\\s+$" "") "") -}}
+{{- end -}}
 
 {{- if gt (len $backerMessageBackers) 0 -}}
   {{- $firstMessage := index $backerMessageBackers 0 -}}
@@ -85,7 +90,7 @@
   {{- end -}}
 {{- end -}}
 
-{{- if or $announcementEnabled (gt $backersCount 0) -}}
+{{- if or $announcementEnabled $shopAnnouncementEnabled (gt $backersCount 0) -}}
 <section class="community-spotlight" aria-label="Community section">
   <div class="section-container community-spotlight__inner">
     {{- if $announcementEnabled }}
@@ -119,6 +124,24 @@
             <span><strong>Backer newsletter</strong> Subscribe to the backer newsletter on OpenCollective.</span>
           </a>
         </div>
+      </div>
+    </article>
+    {{- end }}
+
+    {{- if $shopAnnouncementEnabled }}
+    <article class="community-card community-card--shop-announcement" aria-labelledby="community-shop-announcement-title">
+      <div class="community-shop-announcement__content">
+        <div class="community-shop-announcement__copy">
+          <div class="community-announcement__eyebrow"><i class="fa-solid fa-store"></i> Merch update</div>
+          <h2 id="community-shop-announcement-title" class="community-card__title">{{ $shopAnnouncementPage.Title }}</h2>
+          <div class="community-announcement__body">
+            {{ $shopAnnouncementPage.Content }}
+          </div>
+          <a class="community-shop-announcement__cta" href="https://shop.jmonkeyengine.org/" target="_blank" rel="noopener noreferrer">
+            <span>Visit store</span><i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <img class="community-shop-announcement__image" src="/images/merch.webp" alt="jMonkeyEngine merch store products" loading="lazy" decoding="async">
       </div>
     </article>
     {{- end }}

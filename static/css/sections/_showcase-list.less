@@ -114,6 +114,12 @@
     text-transform: uppercase;
     letter-spacing: 0;
 }
+.showcase-featured-card__label i,
+.showcase-featured-card__cta i {
+    width: 1em;
+    text-align: center;
+    line-height: 1;
+}
 .showcase-featured-card__body h2 {
     margin: 0;
     color: @text-primary;
@@ -140,6 +146,10 @@
 .showcase-featured-card__cta {
     margin-top: 0.35rem;
     font-size: 0.9rem;
+}
+.showcase-featured-card:hover .showcase-featured-card__cta-text,
+.showcase-featured-card:focus-visible .showcase-featured-card__cta-text {
+    text-decoration: underline;
 }
 .showcase-experiments,
 .showcase-tools {

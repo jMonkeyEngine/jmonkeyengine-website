@@ -126,7 +126,7 @@
                 <h3 class="news-card-title">{{ .title }}</h3>
                 <p class="news-card-excerpt">{{ .summary | plainify | truncate 150 }}</p>
                 <div class="news-card-actions">
-                    <a href="{{ .localUrl }}" class="news-card-read">Read more <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ .localUrl }}" class="news-card-read"><span>Read more</span><i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
             {{ end }}

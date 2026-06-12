@@ -11,7 +11,7 @@
         </div>
         <h2 class="news-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
         <p class="news-card-excerpt">{{ .Summary | plainify | truncate 160 }}</p>
-        <a href="{{ .RelPermalink }}" class="news-card-read">Read more <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ .RelPermalink }}" class="news-card-read"><span>Read more</span><i class="fas fa-arrow-right"></i></a>
       </article>
       {{ end }}
     </div>
