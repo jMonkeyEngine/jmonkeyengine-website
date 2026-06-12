@@ -38,9 +38,9 @@
   },
   {
     "icon": "fas fa-fire",
-    "title": "Post-processing",
-    "desc": "Built-in filters for bloom, FXAA, cartoon edges, god rays, SSAO, tone mapping, volumetric light, and custom screen-space effects.",
-    "tags": ["Bloom", "FXAA", "SSAO", "Tone mapping"]
+    "title": "Post-processing and shaders",
+    "desc": "Use built-in PBR, custom materials and shaders, plus post-processing effects like bloom, FXAA, SSAO, and tone mapping. Customize the pipeline when your game needs its own look.",
+    "tags": ["Custom shaders", "PBR", "SSAO", "Screen-space"]
   },
   {
     "icon": "fas fa-volume-high",
