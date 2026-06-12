@@ -28,5 +28,5 @@ disableKinds = ["taxonomy", "term"]
 
 [outputs]
   home = ["HTML"]
-  section = ["HTML"]
+  section = ["HTML","RSS"]
   page = ["HTML","JSON"]
