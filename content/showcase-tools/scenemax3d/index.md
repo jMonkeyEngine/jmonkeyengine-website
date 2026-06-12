@@ -7,7 +7,7 @@ draft: false
 platforms: ["Windows", "Mac", "Linux"]
 tags: ["Tool", "Editor"]
 icon: "fa-desktop"
-summary: "A desktop-based SceneMax3D ecosystem built to support jMonkeyEngine workflows with custom tooling and utility modules."
+summary: "A desktop-based game development environment designed around a visual workflow and a custom scripting language."
 external_link: "https://scenemax3d.com/cook-book/"
 github_link: "https://github.com/scenemax3d/scenemax3d-desktop"
 images:
