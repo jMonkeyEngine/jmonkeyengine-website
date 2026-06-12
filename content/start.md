@@ -27,14 +27,25 @@ There are several ways to start a project with jMonkeyEngine:
 <br><br>
 
 <button id="qsinitializerBtn" class="highlightedCl qsbtn" onclick="showSubPage('qsinitializer')">The Initializer</button> 
-<button  class="qsbtn" id="qssdkBtn"  onclick="showSubPage('qssdk')">The SDK</button>
+<button  class="qsbtn" id="qssdkBtn"  onclick="showSubPage('qssdk')">SDK & Editors</button>
 <button class="qsbtn"  id="qscustomBtn" onclick="showSubPage('qscustom')" >DIY</button>
 
 </div>
 <hr>
 <div class="qspage" id="qssdk" hidden>
 
-Using the Netbeans-based SDK is by far the quickest solution to get you up and running. Everything needed is provided, along with extra tools and integrations, and is generally the place most users start their endevour. [Download the SDK](https://github.com/jMonkeyEngine/sdk/releases).
+SDKs and editor integrations can be a good fit if you want a more guided workflow with project templates, asset tools, and a simplified setup. They are also opinionated about how you structure and work on a project, and because they are maintained separately from the engine they may not always track the latest engine features immediately.
+
+<div class="editor-card-grid">
+  <a class="editor-card" href="https://github.com/jMonkeyEngine/sdk/releases" target="_blank" rel="noopener noreferrer">
+    <span class="editor-card__icon"><i class="fa-solid fa-cubes"></i></span>
+    <span class="editor-card__copy">
+      <strong>jMonkeyEngine SDK</strong>
+      <small>NetBeans-based SDK with templates, scene tooling, asset workflow helpers, and a ready-made desktop setup.</small>
+    </span>
+    <span class="editor-card__action">Download <i class="fas fa-arrow-right"></i></span>
+  </a>
+</div>
 
 </div>
 
@@ -42,7 +53,10 @@ Using the Netbeans-based SDK is by far the quickest solution to get you up and r
 
 <div class="qspage qspage--center" id="qsinitializer">
 
-The initializer is a convenient online tool that build a starter gradle script and template for your application.
+The initializer is the most convenient path if you do not want to be tied to a specific editor. It creates a standard Gradle project that you can open with any editor or IDE with Gradle project support, while keeping the full jMonkeyEngine API available directly from code.
+
+You can use any compatible setup, including [Visual Studio Code](https://code.visualstudio.com/), [IntelliJ IDEA](https://www.jetbrains.com/idea/), [Eclipse](https://www.eclipse.org/ide/), or another editor you prefer with Gradle project support.
+
 You can access the tool directly from [here](https://start.jmonkeyengine.org) or use the embedded version below.
 
 <iframe id="jme-initializer"
@@ -79,9 +93,11 @@ You can access the tool directly from [here](https://start.jmonkeyengine.org) or
 
 <div class="qspage" id="qscustom" hidden>
 
-The engine itself and its dependencies can be downloaded from [the releases page](https://github.com/jMonkeyEngine/jmonkeyengine/releases) and used as any other java library.
+Do it yourself means exactly that: bring your own build, source layout, editor, runtime packaging, and workflow. We provide the engine artifacts and Maven coordinates; you decide how to wire them into your project.
 
-If you prefer to use a build automation tool, you can find the engine hosted on the [Maven Central Repository](https://mvnrepository.com/artifact/org.jmonkeyengine). This is the most common approach for users that use an IDE or editor that supports maven or gradle build scripts (such as [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Visual Studio Code](https://code.visualstudio.com/) ).
+The engine itself and its dependencies can be downloaded from [the releases page](https://github.com/jMonkeyEngine/jmonkeyengine/releases) and used as any other Java library.
+
+If you use Maven, Gradle, or another build tool that can consume Maven repositories, check the jMonkeyEngine namespace on [Maven Central](https://mvnrepository.com/artifact/org.jmonkeyengine): `org.jmonkeyengine`.
 
 The code below shows how to include the bare minimum to use the jMonkeyEngine in your gradle project
 
@@ -91,9 +107,9 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jmonkeyengine:jme3-core:3.3.2-stable"
-    implementation "org.jmonkeyengine:jme3-desktop:3.3.2-stable"
-    implementation "org.jmonkeyengine:jme3-lwjgl3:3.3.2-stable" 
+    implementation "org.jmonkeyengine:jme3-core:<version>"
+    implementation "org.jmonkeyengine:jme3-desktop:<version>"
+    implementation "org.jmonkeyengine:jme3-lwjgl3:<version>" 
 }
 ```
 
