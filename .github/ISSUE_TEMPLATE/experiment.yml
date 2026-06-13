@@ -1,0 +1,55 @@
+name: New Experiment
+description: Add a community experiment screenshot and import it automatically.
+title: "Experiment: "
+labels: ["experiment"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to submit an experiment screenshot that will be inserted into the showcase experiments gallery.
+
+  - type: dropdown
+    id: submission_type
+    attributes:
+      label: Submission type
+      options:
+        - Experiment
+    validations:
+      required: true
+
+  - type: input
+    id: project_title
+    attributes:
+      label: Project title
+      description: Name of the experiment.
+      placeholder: "My JME Experiment"
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Short summary
+      description: Short description used for internal metadata.
+      placeholder: "A short one-line description."
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Detailed description
+      description: Optional details about this experiment.
+
+  - type: textarea
+    id: screenshot_urls
+    attributes:
+      label: Screenshots
+      description: "Drag images here, paste screenshots, or add one public image URL per line."
+      placeholder: "Drag or paste images here."
+    validations:
+      required: true
+
+  - type: input
+    id: project_link
+    attributes:
+      label: Project link
+      description: Optional link to the project page.

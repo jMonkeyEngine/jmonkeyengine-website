@@ -1,0 +1,24 @@
+name: Import approved showcase content
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Import approved showcase issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPROVED_LABEL: approved
+          TARGET_BRANCH: master
+        run: |
+          python3 .github/scripts/import-approved-experiment.py
