@@ -1,0 +1,26 @@
+{{- $payload := .Site.Data.donate.funds | default dict -}}
+{{- $funds := $payload.funds | default (slice) -}}
+{{- if not $funds -}}
+  {{- $funds = slice (dict
+    "name" "Main fund"
+    "id" "main"
+    "slug" "jmonkeyengine"
+    "description" "Flexible support. The core team allocates funds where they are most needed."
+    "url" "https://opencollective.com/jmonkeyengine"
+    "primary" true
+  ) -}}
+{{- end -}}
+<div class="donate-funds" aria-label="OpenCollective donation funds">
+  {{- range $funds }}
+  <a class="donate-fund{{ if .primary }} donate-fund--primary{{ end }}" rel="noopener noreferrer" target="_blank" href="{{ .url }}">
+    <span class="donate-fund__icon"><i class="{{ partial "donate-fund-icon.html" (dict "fund" . "site" $.Site) }}"></i></span>
+    <span class="donate-fund__copy">
+      <strong>{{ .name }}</strong>
+      {{- with .description }}
+      <small>{{ . }}</small>
+      {{- end }}
+    </span>
+    <span class="donate-fund__action">Donate</span>
+  </a>
+  {{- end }}
+</div>

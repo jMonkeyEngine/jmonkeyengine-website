@@ -23,6 +23,11 @@ if [ "${SKIP_COMMUNITY_DATA:-}" != "1" ]; then
     python3 scripts/fetch-home-community-data.py
 fi
 
+# Regenerate the donate page funds before the Hugo build.
+if [ "${SKIP_DONATION_FUNDS:-}" != "1" ]; then
+    python3 scripts/fetch-donation-funds.py
+fi
+
 # Fetch the current month's WIP screenshot thread from the forum.
 if [ "${SKIP_MONTHLY_WIP:-}" != "1" ]; then
     python3 scripts/fetch-monthly-wip-data.py

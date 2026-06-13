@@ -22,6 +22,14 @@ disableKinds = ["taxonomy", "term"]
 [params]
   hostname="jmonkeyengine.org"
 
+[params.donate]
+  defaultFundIcon = "fa-solid fa-circle-dollar-to-slot"
+
+[params.donate.fundIcons]
+  jmonkeyengine = "fa-solid fa-heart"
+  jmonkeyengine-hosting = "fa-solid fa-server"
+  jmonkeyengine-bountry-trial = "fa-solid fa-hand-holding-dollar"
+
 [params.community.exclusions]
   backers = []
   contributors = ["Copilot", "dependabot[bot]"]

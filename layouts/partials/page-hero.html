@@ -24,6 +24,12 @@
   {{- if not $excluded -}}{{- $backers = $backers | append $backer -}}{{- end -}}
 {{- end -}}
 {{- $backersCount := len $backers -}}
+{{- $donateData := .Site.Data.donate.funds | default dict -}}
+{{- $donateFunds := $donateData.funds | default (slice) -}}
+{{- $donateFundsCount := len $donateFunds -}}
+{{- if eq $donateFundsCount 0 -}}
+  {{- $donateFundsCount = 1 -}}
+{{- end -}}
 {{- $term := "" -}}
 {{- with .Data -}}{{- with .Term -}}{{- $term = lower . -}}{{- end -}}{{- end -}}
 {{- $showcaseTools := where .Site.RegularPages "Section" "showcase-tools" -}}
@@ -99,7 +105,7 @@
       <span class="page-hero__metric"><strong>BSD-3</strong><small>license</small></span>
       <span class="page-hero__metric"><strong>0%</strong><small>royalties</small></span>
       {{ else if eq .RelPermalink "/donate/" }}
-      <span class="page-hero__metric"><strong>3</strong><small>funds</small></span>
+      <span class="page-hero__metric"><strong>{{ $donateFundsCount }}</strong><small>funds</small></span>
       <span class="page-hero__metric"><strong>{{ $backersCount }}</strong><small>backers</small></span>
       {{ else if eq .Section "news" }}
       <span class="page-hero__metric"><strong>{{ .Date.Format "2006/01/02" }}</strong><small>date</small></span>

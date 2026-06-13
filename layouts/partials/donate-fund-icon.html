@@ -1,0 +1,23 @@
+{{- $fund := .fund | default dict -}}
+{{- $site := .site -}}
+{{- $defaultIcon := "fa-solid fa-circle-dollar-to-slot" -}}
+{{- $icons := dict -}}
+{{- with $site.Params.donate -}}
+  {{- with .defaultFundIcon -}}
+    {{- $defaultIcon = . -}}
+  {{- end -}}
+  {{- with .fundIcons -}}
+    {{- $icons = . -}}
+  {{- end -}}
+{{- end -}}
+{{- $icon := "" -}}
+{{- range slice $fund.slug $fund.id $fund.name -}}
+  {{- $key := . | default "" -}}
+  {{- with index $icons $key -}}
+    {{- $icon = . -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $icon -}}
+  {{- $icon = $defaultIcon -}}
+{{- end -}}
+{{- return $icon -}}
