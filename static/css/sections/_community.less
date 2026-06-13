@@ -274,13 +274,17 @@
 
 @media (max-width: 640px) {
     .community-announcement__actions-head {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.45rem;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.42rem 0.55rem;
     }
 
     .community-announcement__follow-label {
-        display: block;
+        display: inline;
+    }
+
+    .community-announcement__follow-label:last-child {
+        flex-basis: 100%;
     }
 }
 
