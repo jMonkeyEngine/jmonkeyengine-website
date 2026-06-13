@@ -70,8 +70,8 @@
 {{- $homeShowcasePages := where .Site.RegularPages "Section" "showcase" -}}
 {{- $homeShowcaseTools := where .Site.RegularPages "Section" "showcase-tools" -}}
 {{- $homeFeaturedPages := slice -}}
-{{- range $homeShowcasePages -}}{{- if .Params.featured -}}{{- $homeFeaturedPages = $homeFeaturedPages | append . -}}{{- end -}}{{- end -}}
-{{- range $homeShowcaseTools -}}{{- if .Params.featured -}}{{- $homeFeaturedPages = $homeFeaturedPages | append . -}}{{- end -}}{{- end -}}
+{{- range $homeShowcasePages -}}{{- if partial "showcase-is-featured.html" . -}}{{- $homeFeaturedPages = $homeFeaturedPages | append . -}}{{- end -}}{{- end -}}
+{{- range $homeShowcaseTools -}}{{- if partial "showcase-is-featured.html" . -}}{{- $homeFeaturedPages = $homeFeaturedPages | append . -}}{{- end -}}{{- end -}}
 {{- if gt (len $homeFeaturedPages) 0 -}}
 {{- $homeFeaturedProject := index (first 1 $homeFeaturedPages) 0 -}}
 <!-- ======== FEATURED SHOWCASE ======== -->

@@ -1,0 +1,28 @@
+{{- $featured := false -}}
+{{- $value := .Params.featured | default false -}}
+{{- if eq $value true -}}
+  {{- $featured = true -}}
+{{- else if reflect.IsMap $value -}}
+  {{- $nowUnix := now.Unix -}}
+  {{- $activeFrom := true -}}
+  {{- $activeTo := true -}}
+  {{- with index $value "from" -}}
+    {{- $from := time.AsTime . -}}
+    {{- if lt $nowUnix $from.Unix -}}
+      {{- $activeFrom = false -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with index $value "to" -}}
+    {{- $toRaw := printf "%v" . -}}
+    {{- $to := time.AsTime . -}}
+    {{- $toUnix := $to.Unix -}}
+    {{- if findRE "^\\d{4}-\\d{2}-\\d{2}$" $toRaw -}}
+      {{- $toUnix = add $toUnix 86399 -}}
+    {{- end -}}
+    {{- if gt $nowUnix $toUnix -}}
+      {{- $activeTo = false -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $featured = and $activeFrom $activeTo -}}
+{{- end -}}
+{{- return $featured -}}

@@ -15,4 +15,6 @@ platforms: ["Windows", "Mac", "Linux"]
 summary: "3D puzzle game inspired by the classic title for DOS. Move and rotate the pieces so the fit in the spaces and fill as much floors as possibles. But on each level, the pieces will start falling faster, increasing the tension."
 ---
 
-A Tetris-style puzzle game built with jMonkeyEngine.
+3D puzzle game inspired by the classic title for DOS.
+
+Move and rotate the pieces so the fit in the spaces and fill as much floors as possibles. But on each level, the pieces will start falling faster, increasing the tension.

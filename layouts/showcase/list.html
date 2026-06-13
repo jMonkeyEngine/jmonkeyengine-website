@@ -5,14 +5,12 @@
 {{ $showcasePages := where .Site.RegularPages "Section" "showcase" }}
 {{ $showcaseTools := where .Site.RegularPages "Section" "showcase-tools" }}
 {{ $featuredPages := slice }}
-{{ range $showcasePages }}{{ if .Params.featured }}{{ $featuredPages = $featuredPages | append . }}{{ end }}{{ end }}
-{{ range $showcaseTools }}{{ if .Params.featured }}{{ $featuredPages = $featuredPages | append . }}{{ end }}{{ end }}
+{{ range $showcasePages }}{{ if partial "showcase-is-featured.html" . }}{{ $featuredPages = $featuredPages | append . }}{{ end }}{{ end }}
+{{ range $showcaseTools }}{{ if partial "showcase-is-featured.html" . }}{{ $featuredPages = $featuredPages | append . }}{{ end }}{{ end }}
 {{ $featuredProject := "" }}
 {{ if gt (len $featuredPages) 0 }}{{ $featuredProject = index (first 1 $featuredPages) 0 }}{{ end }}
 {{ $gameGridPages := $showcasePages }}
 {{ $toolGridPages := $showcaseTools }}
-{{ with $featuredProject }}{{ $gameGridPages = where $showcasePages "RelPermalink" "!=" .RelPermalink }}{{ end }}
-{{ with $featuredProject }}{{ $toolGridPages = where $showcaseTools "RelPermalink" "!=" .RelPermalink }}{{ end }}
 {{ $experimentDir := "static/images/showcase/experiments" }}
 {{ $experimentImages := slice }}
 {{ if fileExists $experimentDir }}
