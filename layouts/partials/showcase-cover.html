@@ -1,5 +1,8 @@
 {{- $items := .items | default . | default (slice) -}}
 {{- $cover := "" -}}
+{{- with .page -}}
+    {{- with .Params.cover_image -}}{{- $cover = . -}}{{- end -}}
+{{- end -}}
 {{- range $items -}}
     {{- if and (not $cover) (not (partial "showcase-is-video.html" .)) -}}
         {{- $cover = . -}}

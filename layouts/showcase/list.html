@@ -17,7 +17,7 @@
     {{ range readDir $experimentDir }}
         {{ if not .IsDir }}
             {{ $ext := lower (path.Ext .Name) }}
-            {{ if in (slice ".jpg" ".jpeg" ".png" ".webp" ".gif" ".bmp" ".tiff") $ext }}
+            {{ if in (slice ".jpg" ".jpeg" ".png" ".webp" ".gif" ".bmp" ".tiff" ".mp4" ".webm" ".ogg") $ext }}
                 {{ $experimentImages = $experimentImages | append . }}
             {{ end }}
         {{ end }}
@@ -38,9 +38,10 @@
     {{ if fileExists $metaPath }}{{ $meta = (readFile $metaPath | transform.Unmarshal) }}{{ end }}
     {{ $experimentDescription := index $meta "description" }}
     {{ $experimentLink := index $meta "link" }}
+    {{ $experimentKind := partial "showcase-media-kind.html" $src }}
     {{ $alt := "jMonkeyEngine experiment screenshot" }}
     {{ with $experimentDescription }}{{ $alt = printf "%s experiment screenshot" . }}{{ end }}
-    {{ $fixedExperimentItems = $fixedExperimentItems | append (dict "type" "image" "src" ($src | relURL) "description" $experimentDescription "link" $experimentLink "alt" $alt) }}
+    {{ $fixedExperimentItems = $fixedExperimentItems | append (dict "type" $experimentKind "src" ($src | relURL) "description" $experimentDescription "link" $experimentLink "alt" $alt) }}
 {{ end }}
 {{ $leadExperimentItems := first 2 (shuffle $fixedExperimentItems) }}
 {{ $leadExperimentSources := slice }}
@@ -92,10 +93,23 @@
                         </span>
                         {{ end }}
                     </button>
-                    {{ else if eq .type "video" }}
+                    {{ else if and (eq .type "video") .videoId }}
                     <button class="screenshot-item screenshot-lightbox-trigger screenshot-item--video experiment-item monthly-wip-video" type="button" data-full="{{ .videoId }}" data-media-type="youtube"{{ with or .description .preview }} data-experiment-description="{{ . }}"{{ end }}{{ with .postUrl }} data-experiment-link="{{ . }}"{{ end }} aria-label="Watch video">
                         <img src="{{ .src }}" alt="Video thumbnail" loading="lazy">
                         <span class="screenshot-item__play"><i class="fab fa-youtube"></i></span>
+                        {{ if or .author .description .preview }}
+                        <span class="monthly-wip-author">
+                            {{ with .author }}<span class="monthly-wip-author-name">{{ . }}</span>{{ end }}
+                            {{ with or .description .preview }}<span class="monthly-wip-author-preview">{{ . }}</span>{{ end }}
+                        </span>
+                        {{ end }}
+                    </button>
+                    {{ else if eq .type "video" }}
+                    <button class="screenshot-item screenshot-lightbox-trigger screenshot-item--video experiment-item monthly-wip-video" type="button" data-full="{{ .src }}" data-media-type="video"{{ with or .description .preview }} data-experiment-description="{{ . }}"{{ end }}{{ with or .link .postUrl }} data-experiment-link="{{ . }}"{{ end }} aria-label="Watch experiment video">
+                        <video muted playsinline preload="metadata">
+                            <source src="{{ .src }}">
+                        </video>
+                        <span class="screenshot-item__play"><i class="fas fa-play"></i></span>
                         {{ if or .author .description .preview }}
                         <span class="monthly-wip-author">
                             {{ with .author }}<span class="monthly-wip-author-name">{{ . }}</span>{{ end }}

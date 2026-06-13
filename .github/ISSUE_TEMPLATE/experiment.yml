@@ -1,4 +1,4 @@
-name: New Experiment
+name: Experiment
 description: Add a community experiment screenshot and import it automatically.
 title: "Experiment: "
 labels: ["experiment"]
@@ -27,24 +27,17 @@ body:
       required: true
 
   - type: textarea
-    id: summary
-    attributes:
-      label: Short summary
-      description: Short description used for internal metadata.
-      placeholder: "A short one-line description."
-
-  - type: textarea
     id: description
     attributes:
-      label: Detailed description
-      description: Optional details about this experiment.
+      label: Description
+      description: Description shown with the experiment.
 
   - type: textarea
     id: screenshot_urls
     attributes:
-      label: Screenshots
-      description: "Drag images here, paste screenshots, or add one public image URL per line."
-      placeholder: "Drag or paste images here."
+      label: Screenshots and videos
+      description: "Drag images/videos here, paste media, or add one public media URL per line. WebM is kept, WebP is kept, GIF is converted to WebM, other images are converted to WebP."
+      placeholder: "Drag or paste screenshots and videos here."
     validations:
       required: true
 

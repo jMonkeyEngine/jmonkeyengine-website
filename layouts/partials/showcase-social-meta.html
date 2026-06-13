@@ -1,5 +1,5 @@
 {{- $media := partial "showcase-images.html" (dict "page" .) -}}
-{{- $cover := partial "showcase-cover.html" (dict "items" $media) -}}
+{{- $cover := partial "showcase-cover.html" (dict "page" . "items" $media) -}}
 {{- $description := .Params.summary | default .Description | default .Summary | plainify -}}
 {{- $title := .Title -}}
 {{- $permalink := .Permalink -}}

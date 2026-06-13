@@ -4,7 +4,7 @@
     {{ if eq .Section "showcase" }}
         {{ $images = partial "showcase-images.html" (dict "page" .) }}
     {{ end }}
-    {{ $cover := partial "showcase-cover.html" (dict "items" $images) }}
+    {{ $cover := partial "showcase-cover.html" (dict "page" . "items" $images) }}
     {{ $descriptionSource := "" }}
     {{ $descriptionSourceRaw := "" }}
     {{ $descriptionFromContent := false }}
@@ -103,7 +103,7 @@
         {{/* Screenshots */}}
         {{ $all_imgs := slice }}
         {{ if $images }}
-            {{ range after 1 $images }}
+            {{ range $images }}
                 {{ if ne . $cover }}{{ $all_imgs = $all_imgs | append . }}{{ end }}
             {{ end }}
         {{ end }}

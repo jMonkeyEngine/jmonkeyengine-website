@@ -1,7 +1,6 @@
 ---
 title: "Nostr Game Engine"
 tool_type: "Engine"
-weight: 30
 date: 2026-05-30T00:00:00+00:00
 draft: false
 platforms: ["Windows", "Linux", "Mac", "Android", "Web", "iOS", "OpenXR"]

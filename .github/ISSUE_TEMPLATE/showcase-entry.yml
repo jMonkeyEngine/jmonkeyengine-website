@@ -1,19 +1,20 @@
-name: New Showcase Game
-description: Add a full showcase project entry with screenshots and links.
+name: Showcase Entry
+description: Add a game, app, tool, editor, or engine to the showcase.
 title: "Showcase: "
 labels: ["showcase"]
 body:
   - type: markdown
     attributes:
       value: |
-        Use this form for games and playable projects.
+        Use this form for community games, apps, tools, editors, and engines.
 
   - type: dropdown
     id: submission_type
     attributes:
-      label: Submission type
+      label: Entry type
       options:
-        - Showcase
+        - Game or app
+        - Tool, editor, or engine
     validations:
       required: true
 
@@ -21,8 +22,8 @@ body:
     id: project_title
     attributes:
       label: Project title
-      description: Name of the game/project.
-      placeholder: "My JME Game"
+      description: Name of the project.
+      placeholder: "My jMonkeyEngine project"
     validations:
       required: true
 
@@ -54,7 +55,7 @@ body:
     id: tags
     attributes:
       label: Tags
-      description: "Comma-separated list of tags (for example: sandbox, strategy, indie, steam)."
+      description: "Comma-separated list of tags (for example: sandbox, strategy, editor, engine)."
 
   - type: input
     id: platforms
@@ -82,33 +83,25 @@ body:
     attributes:
       label: Website link
 
+  - type: input
+    id: github_link
+    attributes:
+      label: GitHub link
+
+  - type: textarea
+    id: cover_image
+    attributes:
+      label: Cover image
+      description: "Drag or paste the image to use as the showcase cover."
+      placeholder: "Drag or paste the cover image here."
+    validations:
+      required: true
+
   - type: textarea
     id: screenshot_urls
     attributes:
-      label: Screenshots
-      description: "Drag images here, paste screenshots, or add one public image URL per line."
-      placeholder: "Drag or paste images here."
+      label: Screenshots and videos
+      description: "Drag images/videos here, paste media, or add one public media URL per line. WebM is kept, WebP is kept, GIF is converted to WebM, other images are converted to WebP."
+      placeholder: "Drag or paste screenshots and videos here."
     validations:
       required: true
-
-  - type: dropdown
-    id: featured
-    attributes:
-      label: Feature this project
-      options:
-        - "false"
-        - "true"
-    validations:
-      required: true
-
-  - type: input
-    id: featured_from
-    attributes:
-      label: Featured from
-      description: Optional start date (YYYY-MM-DD).
-
-  - type: input
-    id: featured_to
-    attributes:
-      label: Featured to
-      description: Optional end date (YYYY-MM-DD).

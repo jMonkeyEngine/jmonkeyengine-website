@@ -1,6 +1,6 @@
 {{- $tool := . -}}
 {{- $images := partial "showcase-images.html" (dict "page" $tool) -}}
-{{- $image := partial "showcase-cover.html" (dict "items" $images) -}}
+{{- $image := partial "showcase-cover.html" (dict "page" $tool "items" $images) -}}
 <a class="tool-card" href="{{ $tool.RelPermalink }}">
     {{ if $image }}
     <div class="tool-card__image" style="background-image: url('{{ $image | relURL }}')"></div>

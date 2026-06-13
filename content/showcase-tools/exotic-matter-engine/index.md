@@ -1,7 +1,6 @@
 ---
 title: "Exotic Matter Engine"
 tool_type: "Engine"
-weight: 20
 date: 2024-01-01T00:00:00+00:00
 draft: false
 platforms: ["Windows", "Mac", "Linux"]

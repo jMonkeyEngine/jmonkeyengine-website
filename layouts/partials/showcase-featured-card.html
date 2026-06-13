@@ -1,6 +1,6 @@
 {{- $p := . -}}
 {{- $images := partial "showcase-images.html" (dict "page" $p) -}}
-{{- $cover := partial "showcase-cover.html" (dict "items" $images) -}}
+{{- $cover := partial "showcase-cover.html" (dict "page" $p "items" $images) -}}
 {{- $shortDescription := $p.Params.summary | default $p.Summary | default "" -}}
 {{- if $shortDescription -}}{{ $shortDescription = $shortDescription | plainify | truncate 230 }}{{ end -}}
 

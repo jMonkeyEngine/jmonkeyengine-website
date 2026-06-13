@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 
 import json
-import mimetypes
 import os
 import re
 import unicodedata
 import shutil
 import subprocess
+import tempfile
+from io import BytesIO
 from pathlib import Path
 from urllib.parse import urlparse
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 
@@ -16,7 +18,7 @@ APPROVED_LABEL = os.getenv("APPROVED_LABEL", "approved")
 MAX_EXTRA_SUFFIX = 9999
 
 SECTION_HEADER_RE = re.compile(r"^###\s+(.*?)\s*$", re.MULTILINE)
-IMAGE_URL_RE = re.compile(r"https?://[^\s)]+")
+IMAGE_URL_RE = re.compile(r"https?://[^\s<>)\"']+")
 MARKDOWN_IMAGE_RE = re.compile(r"!\[[^\]]*?\]\(([^)\s]+)")
 HTML_IMAGE_RE = re.compile(r"<img[^>]+src=['\"]([^'\"]+)['\"]", re.I)
 
@@ -68,50 +70,27 @@ def parse_issue_sections(body: str):
 
 def canonical_field_name(field_name: str) -> str:
     alias_map = {
+        "entry_type": "submission_type",
         "project_title": "title",
         "title": "title",
         "submission_type": "submission_type",
-        "type": "submission_type",
         "short_summary": "summary",
         "summary": "summary",
-        "description": "description",
         "detailed_description": "description",
-        "detailed_project_description": "description",
+        "description": "description",
         "screenshot_urls": "screenshot_urls",
-        "screenshot_links": "screenshot_urls",
-        "image_urls": "screenshot_urls",
-        "project_links": "project_link",
+        "screenshots_and_videos": "screenshot_urls",
+        "cover_image": "cover_image",
         "project_link": "project_link",
         "tags": "tags",
-        "tag": "tags",
         "authors": "authors",
-        "author": "authors",
         "platforms": "platforms",
-        "platform": "platforms",
         "steam_link": "steam_link",
-        "steam": "steam_link",
         "itch_link": "itch_link",
-        "itch": "itch_link",
         "indiedb_link": "indiedb_link",
-        "indiedb": "indiedb_link",
-        "website_link": "website_link",
-        "website": "website_link",
+        "website_link": "publisher_link",
         "publisher_link": "publisher_link",
-        "publisher": "publisher_link",
-        "external_link": "external_link",
-        "external": "external_link",
         "github_link": "github_link",
-        "github": "github_link",
-        "tool_type": "tool_type",
-        "tool": "tool_type",
-        "icon": "icon",
-        "weight": "weight",
-        "featured": "featured",
-        "featured_from": "featured_from",
-        "from": "featured_from",
-        "featured_to": "featured_to",
-        "to": "featured_to",
-        "date": "date",
     }
     return alias_map.get(field_name, field_name)
 
@@ -122,7 +101,7 @@ def normalize_sections(raw_sections):
         canonical = canonical_field_name(key)
         existing = sections.get(canonical)
         value = (value or "").strip()
-        if not value:
+        if not value or is_no_response(value):
             continue
         if canonical == "tags" or canonical == "platforms":
             sections[canonical] = value
@@ -131,6 +110,11 @@ def normalize_sections(raw_sections):
         else:
             sections[canonical] = value
     return sections
+
+
+def is_no_response(value: str) -> bool:
+    normalized = (value or "").strip().strip("_*`").strip().lower()
+    return normalized == "no response"
 
 
 def extract_image_urls(text: str):
@@ -143,13 +127,17 @@ def extract_image_urls(text: str):
     urls.extend(IMAGE_URL_RE.findall(text))
 
     # Deduplicate while preserving order.
-    return list(dict.fromkeys(urls))
+    return list(dict.fromkeys(sanitize_url(url) for url in urls if sanitize_url(url)))
+
+
+def sanitize_url(url: str) -> str:
+    return (url or "").strip().rstrip("\"'.,;:!?]}")
 
 
 def is_probably_image(url: str) -> bool:
     parsed = urlparse(url)
     path = parsed.path.lower()
-    if any(path.endswith(ext) for ext in [".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".svg"]):
+    if any(path.endswith(ext) for ext in [".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".svg", ".mp4", ".webm", ".ogg", ".mov"]):
         return True
     if "user-images.githubusercontent.com" in parsed.netloc:
         return True
@@ -158,30 +146,163 @@ def is_probably_image(url: str) -> bool:
     return False
 
 
-def infer_extension(content_type: str, path: str) -> str:
-    content_type = (content_type or "").split(";")[0].lower()
-    guessed = mimetypes.guess_extension(content_type)
-    if guessed:
-        return guessed
+def is_github_attachment(url: str) -> bool:
+    parsed = urlparse(url)
+    return "github.com" in parsed.netloc and "/user-attachments/" in parsed.path
 
-    path = path.lower()
-    for ext in [".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".svg"]:
-        if path.endswith(ext):
-            return ext
-    return ".png"
+
+def make_image_request(url: str, include_auth: bool):
+    request = Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 github-issue-showcase-importer",
+            "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,video/webm,video/*,*/*;q=0.8",
+        },
+    )
+    token = os.environ.get("GITHUB_TOKEN")
+    if token and include_auth:
+        request.add_header("Authorization", f"Bearer {token}")
+    return request
 
 
 def download_image(url: str, timeout: int = 60):
-    request = Request(url, headers={"User-Agent": "github-issue-experiment-importer"})
-    token = os.environ.get("GITHUB_TOKEN")
-    if token:
-        request.add_header("Authorization", f"Bearer {token}")
+    url = sanitize_url(url)
+    include_auth = not is_github_attachment(url)
+    request = make_image_request(url, include_auth)
 
-    with urlopen(request, timeout=timeout) as response:
-        content_type = response.headers.get("Content-Type", "")
-        if not content_type.startswith("image/"):
-            raise ValueError(f"URL is not an image: {url} ({content_type})")
-        return response.read(), content_type
+    try:
+        with urlopen(request, timeout=timeout) as response:
+            content_type = response.headers.get("Content-Type", "")
+            if not (content_type.startswith("image/") or content_type.startswith("video/")):
+                raise ValueError(f"URL is not supported media: {url} ({content_type})")
+            return response.read(), content_type
+    except HTTPError:
+        if include_auth:
+            request = make_image_request(url, False)
+            with urlopen(request, timeout=timeout) as response:
+                content_type = response.headers.get("Content-Type", "")
+                if not (content_type.startswith("image/") or content_type.startswith("video/")):
+                    raise ValueError(f"URL is not supported media: {url} ({content_type})")
+                return response.read(), content_type
+        raise
+
+
+def convert_image_to_webp(image_data: bytes):
+    try:
+        from PIL import Image, ImageSequence
+    except ImportError as exc:
+        raise RuntimeError("Pillow is required to convert imported images to WebP.") from exc
+
+    with Image.open(BytesIO(image_data)) as image:
+        output = BytesIO()
+        if getattr(image, "is_animated", False):
+            frames = []
+            durations = []
+            for frame in ImageSequence.Iterator(image):
+                frames.append(frame.convert("RGBA"))
+                durations.append(frame.info.get("duration", image.info.get("duration", 100)))
+            frames[0].save(
+                output,
+                format="WEBP",
+                save_all=True,
+                append_images=frames[1:],
+                duration=durations,
+                loop=image.info.get("loop", 0),
+                quality=82,
+                method=6,
+            )
+        else:
+            target = image.convert("RGBA" if "A" in image.getbands() else "RGB")
+            target.save(output, format="WEBP", quality=82, method=6)
+        return output.getvalue()
+
+
+def convert_video_to_webm(media_data: bytes, input_suffix: str = ".bin"):
+    with tempfile.TemporaryDirectory() as temp_dir:
+        input_path = Path(temp_dir) / f"input{input_suffix}"
+        output_path = Path(temp_dir) / "output.webm"
+        input_path.write_bytes(media_data)
+        subprocess.run(
+            [
+                "ffmpeg",
+                "-y",
+                "-hide_banner",
+                "-loglevel",
+                "error",
+                "-i",
+                str(input_path),
+                "-an",
+                "-c:v",
+                "libvpx-vp9",
+                "-b:v",
+                "0",
+                "-crf",
+                "35",
+                "-pix_fmt",
+                "yuv420p",
+                str(output_path),
+            ],
+            check=True,
+        )
+        return output_path.read_bytes()
+
+
+def convert_cover_to_webp(image_data: bytes):
+    try:
+        from PIL import Image
+    except ImportError as exc:
+        raise RuntimeError("Pillow is required to convert imported cover images to WebP.") from exc
+
+    with Image.open(BytesIO(image_data)) as image:
+        output = BytesIO()
+        target = image.convert("RGBA" if "A" in image.getbands() else "RGB")
+        target.save(output, format="WEBP", quality=86, method=6)
+        return output.getvalue()
+
+
+def media_suffix_from_url(url: str):
+    path = urlparse(url).path.lower()
+    suffix = Path(path).suffix
+    if suffix:
+        return suffix
+    return ".bin"
+
+
+def normalize_downloaded_media(raw_url: str, media_data: bytes, content_type: str):
+    content_type = (content_type or "").split(";")[0].lower()
+    suffix = media_suffix_from_url(raw_url)
+
+    if content_type == "image/webp" or suffix == ".webp":
+        return {"url": raw_url, "data": media_data, "extension": ".webp", "kind": "image"}
+
+    if content_type == "image/gif" or suffix == ".gif":
+        return {
+            "url": raw_url,
+            "data": convert_video_to_webm(media_data, ".gif"),
+            "extension": ".webm",
+            "kind": "video",
+        }
+
+    if content_type == "video/webm" or suffix == ".webm":
+        return {"url": raw_url, "data": media_data, "extension": ".webm", "kind": "video"}
+
+    if content_type.startswith("video/") or suffix in {".mp4", ".ogg", ".mov"}:
+        return {
+            "url": raw_url,
+            "data": convert_video_to_webm(media_data, suffix),
+            "extension": ".webm",
+            "kind": "video",
+        }
+
+    if content_type.startswith("image/") or suffix in {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff", ".svg"}:
+        return {
+            "url": raw_url,
+            "data": convert_image_to_webp(media_data),
+            "extension": ".webp",
+            "kind": "image",
+        }
+
+    raise ValueError(f"Unsupported media type: {content_type or suffix}")
 
 
 def json_api_request(method: str, url: str, payload: dict):
@@ -234,43 +355,19 @@ def split_list(value: str):
     return result
 
 
-def parse_bool(value: str):
-    return str(value or "").strip().lower() in {"true", "yes", "y", "1", "on"}
-
-
-def parse_featured(section: dict):
-    featured = parse_bool(get_field_value(section, "featured"))
-    from_date = (get_field_value(section, "featured_from") or "").strip()
-    to_date = (get_field_value(section, "featured_to") or "").strip()
-
-    if featured:
-        return True
-    if not featured and not from_date and not to_date:
-        return None
-    value = {}
-    if from_date:
-        value["from"] = from_date
-    if to_date:
-        value["to"] = to_date
-    return value
-
-
 def make_entry_type(issue):
     body = issue.get("body", "") or ""
     sections = normalize_sections(parse_issue_sections(body))
 
     body_type = (get_field_value(sections, "submission_type") or "").lower().strip()
-    if body_type in {"experiment", "showcase", "tool", "tools"}:
-        return "tools" if body_type == "tool" else body_type
-    for label in issue.get("labels", []):
-        label_name = (label.get("name") or "").strip().lower()
-        if label_name == "experiment":
-            return "experiment"
-        if label_name == "showcase":
-            return "showcase"
-        if label_name in {"tool", "tools"}:
-            return "tools"
-    return "experiment"
+    if body_type == "game or app":
+        return "showcase"
+    if body_type == "tool, editor, or engine":
+        return "tools"
+    if body_type == "experiment":
+        return "experiment"
+
+    return ""
 
 
 def next_available_path(target_dir: Path, base_name: str, extension: str):
@@ -284,13 +381,20 @@ def next_available_path(target_dir: Path, base_name: str, extension: str):
     raise RuntimeError("Unable to find a free filename for downloaded image.")
 
 
-def collect_image_urls(body: str, sections: dict):
+def collect_image_urls(sections: dict):
     screenshot_urls = split_list(get_field_value(sections, "screenshot_urls"))
     all_urls = []
     for line in screenshot_urls:
-        all_urls.extend(IMAGE_URL_RE.findall(line))
-    all_urls.extend(extract_image_urls(body))
-    return [url for url in dict.fromkeys([u for u in all_urls if is_probably_image(u)])]
+        all_urls.extend(extract_image_urls(line))
+    return [url for url in dict.fromkeys([sanitize_url(u) for u in all_urls if is_probably_image(sanitize_url(u))])]
+
+
+def collect_cover_urls(sections: dict):
+    cover_value = get_field_value(sections, "cover_image")
+    all_urls = []
+    for line in split_list(cover_value):
+        all_urls.extend(extract_image_urls(line))
+    return [url for url in dict.fromkeys([sanitize_url(u) for u in all_urls if is_probably_image(sanitize_url(u))])]
 
 
 def collect_downloaded_images(image_urls):
@@ -298,10 +402,24 @@ def collect_downloaded_images(image_urls):
     for raw_url in image_urls:
         try:
             image_data, content_type = download_image(raw_url)
-            downloaded.append((raw_url, image_data, content_type))
+            downloaded.append(normalize_downloaded_media(raw_url, image_data, content_type))
         except Exception as exc:
             print(f"Skipping URL (download failed): {raw_url} ({exc})")
     return downloaded
+
+
+def collect_downloaded_cover(cover_urls):
+    for raw_url in cover_urls:
+        try:
+            image_data, content_type = download_image(raw_url)
+            content_type = (content_type or "").split(";")[0].lower()
+            if content_type.startswith("video/"):
+                print(f"Skipping cover URL (video is not valid as cover): {raw_url}")
+                continue
+            return {"url": raw_url, "data": convert_cover_to_webp(image_data), "extension": ".webp", "kind": "image"}
+        except Exception as exc:
+            print(f"Skipping cover URL (download failed): {raw_url} ({exc})")
+    return None
 
 
 def collect_image_paths(target_dir: Path, slug: str):
@@ -309,7 +427,7 @@ def collect_image_paths(target_dir: Path, slug: str):
     if not target_dir.exists():
         return removed
     escaped = re.escape(slug)
-    pattern = re.compile(rf"^{escaped}(?:-\d+)?(?:-\d+)?$")
+    pattern = re.compile(rf"^{escaped}(?:-\d{{2}})?$")
     for item in sorted(target_dir.glob("*")):
         if not item.is_file():
             continue
@@ -322,12 +440,10 @@ def remove_matching_dirs(base_dir: Path, slug: str):
     removed = []
     if not base_dir.exists():
         return removed
-    escaped = re.escape(slug)
-    pattern = re.compile(rf"^{escaped}(?:-\d+)?$")
     for child in sorted(base_dir.iterdir()):
         if not child.is_dir():
             continue
-        if not pattern.match(child.name):
+        if child.name != slug:
             continue
         removed.extend(p for p in child.rglob("*") if p.is_file())
         shutil.rmtree(child)
@@ -335,12 +451,6 @@ def remove_matching_dirs(base_dir: Path, slug: str):
 
 
 def section_date_or_fallback(issue):
-    date_value = get_field_value(
-        normalize_sections(parse_issue_sections(issue.get("body", "") or "")),
-        "date",
-    )
-    if date_value:
-        return date_value
     return issue.get("created_at", "").replace("Z", "+00:00") or "2000-01-01T00:00:00+00:00"
 
 
@@ -364,18 +474,7 @@ def write_yaml_list(lines, key, values, indent=""):
         lines.append(f"{item_prefix}{yaml_scalar(item)}")
 
 
-def write_yaml_map(lines, key, mapping: dict, indent=""):
-    if not mapping:
-        return
-    lines.append(f"{indent}{key}:")
-    nested = f"{indent}  "
-    for map_key in ["from", "to"]:
-        value = mapping.get(map_key)
-        if value:
-            lines.append(f"{nested}{map_key}: {yaml_scalar(value)}")
-
-
-def build_frontmatter_for_showcase(title: str, sections: dict, issue: dict):
+def build_frontmatter_for_showcase(title: str, sections: dict, issue: dict, cover_image: str = ""):
     lines = []
     lines.append("---")
     lines.append(f'title: {yaml_scalar(title)}')
@@ -383,6 +482,8 @@ def build_frontmatter_for_showcase(title: str, sections: dict, issue: dict):
     lines.append("draft: false")
     lines.append('type: "default"')
     lines.append('layout: "post_layout_showcase"')
+    if cover_image:
+        lines.append(f'cover_image: {yaml_scalar(cover_image)}')
 
     authors = split_list(get_field_value(sections, "authors"))
     if authors:
@@ -393,13 +494,10 @@ def build_frontmatter_for_showcase(title: str, sections: dict, issue: dict):
         tags.insert(0, "showcase")
     write_yaml_list(lines, "tags", tags or ["showcase"])
 
-    for key in ["steam_link", "itch_link", "indiedb_link", "publisher_link", "website_link", "project_link"]:
+    for key in ["steam_link", "itch_link", "indiedb_link", "publisher_link", "github_link"]:
         value = get_field_value(sections, key)
         if value:
-            if key == "project_link":
-                lines.append(f'publisher_link: {yaml_scalar(value)}')
-            else:
-                lines.append(f'{key}: {yaml_scalar(value)}')
+            lines.append(f'{key}: {yaml_scalar(value)}')
 
     platforms = split_list(get_field_value(sections, "platforms"))
     if platforms:
@@ -408,12 +506,6 @@ def build_frontmatter_for_showcase(title: str, sections: dict, issue: dict):
     summary = get_field_value(sections, "summary")
     if summary:
         lines.append(f'summary: {yaml_scalar(summary)}')
-
-    featured = parse_featured(sections)
-    if featured is True:
-        lines.append("featured: true")
-    elif featured and isinstance(featured, dict):
-        write_yaml_map(lines, "featured", featured)
 
     lines.append("---")
     return lines
@@ -425,11 +517,7 @@ def build_frontmatter_for_tools(title: str, sections: dict, issue: dict, image_i
     lines.append(f'title: {yaml_scalar(title)}')
     lines.append(f'date: {yaml_scalar(section_date_or_fallback(issue))}')
     lines.append("draft: false")
-    lines.append('tool_type: "Tool"' if not get_field_value(sections, "tool_type") else f'tool_type: {yaml_scalar(get_field_value(sections, "tool_type"))}')
-
-    weight = get_field_value(sections, "weight").strip()
-    if weight.isdigit():
-        lines.append(f'weight: {int(weight)}')
+    lines.append('tool_type: "Tool"')
 
     tags = split_list(get_field_value(sections, "tags"))
     if tags:
@@ -443,23 +531,13 @@ def build_frontmatter_for_tools(title: str, sections: dict, issue: dict, image_i
     if summary:
         lines.append(f'summary: {yaml_scalar(summary)}')
 
-    icon = get_field_value(sections, "icon")
-    if icon:
-        icon = icon.strip()
-        if icon and not icon.startswith("fa-"):
-            icon = f"fa-{icon}"
-        lines.append(f'icon: {yaml_scalar(icon)}')
-
-    for key in ["external_link", "github_link", "indiedb_link", "website_link"]:
+    for key in ["github_link", "indiedb_link", "publisher_link"]:
         value = get_field_value(sections, key)
         if value:
-            lines.append(f'{key}: {yaml_scalar(value)}')
-
-    featured = parse_featured(sections)
-    if featured is True:
-        lines.append("featured: true")
-    elif featured and isinstance(featured, dict):
-        write_yaml_map(lines, "featured", featured)
+            if key == "publisher_link":
+                lines.append(f'website_link: {yaml_scalar(value)}')
+            else:
+                lines.append(f'{key}: {yaml_scalar(value)}')
 
     if image_items:
         write_yaml_list(lines, "images", image_items)
@@ -487,12 +565,21 @@ def close_issue(issue: dict):
         raise SystemExit(1)
 
 
+def dispatch_build_workflow(branch: str):
+    repo = os.environ["GITHUB_REPOSITORY"]
+    workflow = os.environ.get("BUILD_WORKFLOW", "main.yml")
+    url = f"https://api.github.com/repos/{repo}/actions/workflows/{workflow}/dispatches"
+    payload = {"ref": branch}
+    status, response = json_api_request("POST", url, payload)
+    print(f"Dispatched build workflow {workflow} on {branch}: status={status}")
+    if status >= 300:
+        print(response)
+        raise SystemExit(1)
+
+
 def process_experiment(issue, sections, image_urls, issue_number):
     title = get_field_value(sections, "title") or (issue.get("title") or "").strip() or "experiment"
-    description = (
-        get_field_value(sections, "description")
-        or get_field_value(sections, "summary")
-    )
+    description = get_field_value(sections, "description")
     if not description:
         description = (issue.get("body") or "").strip() or "No description provided."
 
@@ -511,18 +598,16 @@ def process_experiment(issue, sections, image_urls, issue_number):
         removed_file.unlink()
 
     created_files = []
-    for idx, (raw_url, image_data, content_type) in enumerate(downloaded_images, start=1):
-        parsed = urlparse(raw_url)
-        ext = infer_extension(content_type, parsed.path)
+    for idx, media in enumerate(downloaded_images, start=1):
         stem = (
             f"{candidate_stem}-{idx:02d}" if len(downloaded_images) > 1 else candidate_stem
         )
-        filename = next_available_path(target_dir, stem, ext)
+        filename = next_available_path(target_dir, stem, media["extension"])
         image_path = target_dir / filename
         json_path = target_dir / f"{Path(filename).stem}.json"
 
         with image_path.open("wb") as image_file:
-            image_file.write(image_data)
+            image_file.write(media["data"])
 
         metadata = {
             "description": description,
@@ -550,10 +635,17 @@ def process_content_entry(issue, sections, entry_type: str, issue_number: int, i
         content_root = Path("content/showcase-tools")
         media_root = Path("static/images/showcase-tools")
 
-    downloaded_images = collect_downloaded_images(image_urls)
-    if not downloaded_images:
+    downloaded_media = collect_downloaded_images(image_urls)
+    if not downloaded_media:
         print("No files were created due to download issues.")
         return []
+
+    downloaded_cover = None
+    if entry_type == "showcase":
+        downloaded_cover = collect_downloaded_cover(collect_cover_urls(sections))
+        if not downloaded_cover:
+            print("No cover image found for showcase issue, skipping import.")
+            return []
 
     if not content_root.exists():
         content_root.mkdir(parents=True, exist_ok=True)
@@ -568,15 +660,22 @@ def process_content_entry(issue, sections, entry_type: str, issue_number: int, i
     media_dir.mkdir(parents=True, exist_ok=True)
 
     created_files = []
+    cover_image_url = ""
+    if downloaded_cover:
+        cover_filename = next_available_path(media_dir, "00-cover", ".webp")
+        cover_path = media_dir / cover_filename
+        with cover_path.open("wb") as cover_file:
+            cover_file.write(downloaded_cover["data"])
+        created_files.append(cover_path)
+        cover_image_url = f"/images/showcase/{slug}/{cover_path.name}"
+
     images_urls = []
-    for idx, (raw_url, image_data, content_type) in enumerate(downloaded_images, start=1):
-        parsed = urlparse(raw_url)
-        ext = infer_extension(content_type, parsed.path)
-        stem = f"{slug}-{idx:02d}" if len(downloaded_images) > 1 else slug
-        filename = next_available_path(media_dir, stem, ext)
+    for idx, media in enumerate(downloaded_media, start=1):
+        stem = f"{slug}-{idx:02d}" if len(downloaded_media) > 1 else slug
+        filename = next_available_path(media_dir, stem, media["extension"])
         image_path = media_dir / filename
         with image_path.open("wb") as image_file:
-            image_file.write(image_data)
+            image_file.write(media["data"])
         created_files.append(image_path)
         images_urls.append(
             f"/images/{'showcase' if entry_type == 'showcase' else 'showcase-tools'}/{slug}/{image_path.name}"
@@ -589,7 +688,7 @@ def process_content_entry(issue, sections, entry_type: str, issue_number: int, i
     content_dir.mkdir(parents=True, exist_ok=True)
     if entry_type == "showcase":
         frontmatter_lines = build_frontmatter_for_showcase(
-            title, sections, issue
+            title, sections, issue, cover_image_url
         )
     else:
         frontmatter_lines = build_frontmatter_for_tools(
@@ -628,6 +727,7 @@ def commit_and_push(issue_number, created_files):
         f"https://x-access-token:{os.environ['GITHUB_TOKEN']}@github.com/{repo}.git",
         f"HEAD:{branch}",
     )
+    dispatch_build_workflow(branch)
 
 
 def main():
@@ -646,7 +746,11 @@ def main():
     sections = normalize_sections(parse_issue_sections(body))
 
     entry_type = make_entry_type(issue)
-    image_urls = collect_image_urls(body, sections)
+    if not entry_type:
+        print("Issue submission type is not supported, skipping.")
+        return 0
+
+    image_urls = collect_image_urls(sections)
     if not image_urls:
         print("No image URLs found in issue body, nothing to import.")
         return 0

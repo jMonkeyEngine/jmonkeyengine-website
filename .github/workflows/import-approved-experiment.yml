@@ -5,6 +5,7 @@ on:
     types: [opened, labeled]
 
 permissions:
+  actions: write
   contents: write
   issues: write
 
@@ -15,10 +16,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install image tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-pil
+
       - name: Import approved showcase issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPROVED_LABEL: approved
+          BUILD_WORKFLOW: main.yml
           TARGET_BRANCH: master
         run: |
           python3 .github/scripts/import-approved-experiment.py
