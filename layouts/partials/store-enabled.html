@@ -1,0 +1,5 @@
+{{- $enabled := true -}}
+{{- if isset .Site.Params "store" -}}
+  {{- $enabled = .Site.Params.store -}}
+{{- end -}}
+{{- return $enabled -}}

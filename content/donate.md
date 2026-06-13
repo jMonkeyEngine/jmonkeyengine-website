@@ -18,9 +18,6 @@ date: 2021-04-25T18:00:00+00:00
       <a class="special-support-btn" href="mailto:contact@jmonkeyengine.org">Talk with us</a>
     </div>
     {{< donate-funds >}}
-    <div class="special-support-note merch-support-note">
-      <span><i class="fa-solid fa-bag-shopping"></i> Want to buy some merch? The proceeds from our store, plus any extra donation you add, are automatically donated to the main fund.</span>
-      <a class="special-support-btn" href="https://shop.jmonkeyengine.org/" target="_blank" rel="noopener noreferrer">Visit store</a>
-    </div>
+    {{< store-support-note >}}
   </div>
 </div>

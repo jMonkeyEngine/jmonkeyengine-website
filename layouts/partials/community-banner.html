@@ -75,9 +75,10 @@
 {{- if $announcementPage -}}
   {{- $announcementEnabled = and (or $announcementPage.Params.enabled $announcementPage.Params.enableForce) (ne ($announcementPage.Content | plainify | replaceRE "^\\s+|\\s+$" "") "") -}}
 {{- end -}}
+{{- $storeEnabled := partial "store-enabled.html" . -}}
 {{- $shopAnnouncementPage := .Site.GetPage "announcements/merch-store" -}}
 {{- $shopAnnouncementEnabled := false -}}
-{{- if $shopAnnouncementPage -}}
+{{- if and $storeEnabled $shopAnnouncementPage -}}
   {{- $shopAnnouncementEnabled = and (or $shopAnnouncementPage.Params.enabled $shopAnnouncementPage.Params.enableForce) (ne ($shopAnnouncementPage.Content | plainify | replaceRE "^\\s+|\\s+$" "") "") -}}
 {{- end -}}
 
