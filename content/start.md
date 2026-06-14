@@ -11,13 +11,23 @@ function showSubPage(id){
     const subpages=document.querySelectorAll(".qspage");
     subpages.forEach(sp=>sp.hidden=true);
     const selectedSubPage=document.querySelector(".qspage#"+id);
+    if (!selectedSubPage) {
+        return;
+    }
     selectedSubPage.hidden=false;
 
     const buttons=document.querySelectorAll("button.qsbtn");
     buttons.forEach(el=>el.classList.remove("highlightedCl"));
     
     const selectedBtn=document.querySelector("button#"+id+"Btn");
-    selectedBtn.classList.add("highlightedCl");
+    if (selectedBtn) {
+        selectedBtn.classList.add("highlightedCl");
+    }
+
+    selectedSubPage.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
 </script>
 <div id="qsbuttons">
