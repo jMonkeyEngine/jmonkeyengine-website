@@ -21,7 +21,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   hostname="jmonkeyengine.org"
-  store=false
+  store=true
 
 [params.donate]
   defaultFundIcon = "fa-solid fa-circle-dollar-to-slot"
