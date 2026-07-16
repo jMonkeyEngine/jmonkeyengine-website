@@ -3,6 +3,7 @@ title: "EnvisionPlay"
 date: "2026-07-16T17:30:10+00:00"
 draft: false
 tool_type: "Tool"
+cover_image: "/images/showcase-tools/envisionplay/00-cover.webp"
 tags:
   - "gamedev"
   - "game-development"
