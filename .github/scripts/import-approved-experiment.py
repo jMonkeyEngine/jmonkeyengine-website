@@ -511,13 +511,17 @@ def build_frontmatter_for_showcase(title: str, sections: dict, issue: dict, cove
     return lines
 
 
-def build_frontmatter_for_tools(title: str, sections: dict, issue: dict, image_items):
+def build_frontmatter_for_tools(
+    title: str, sections: dict, issue: dict, image_items, cover_image: str = ""
+):
     lines = []
     lines.append("---")
     lines.append(f'title: {yaml_scalar(title)}')
     lines.append(f'date: {yaml_scalar(section_date_or_fallback(issue))}')
     lines.append("draft: false")
     lines.append('tool_type: "Tool"')
+    if cover_image:
+        lines.append(f'cover_image: {yaml_scalar(cover_image)}')
 
     tags = split_list(get_field_value(sections, "tags"))
     if tags:
@@ -640,12 +644,10 @@ def process_content_entry(issue, sections, entry_type: str, issue_number: int, i
         print("No files were created due to download issues.")
         return []
 
-    downloaded_cover = None
-    if entry_type == "showcase":
-        downloaded_cover = collect_downloaded_cover(collect_cover_urls(sections))
-        if not downloaded_cover:
-            print("No cover image found for showcase issue, skipping import.")
-            return []
+    downloaded_cover = collect_downloaded_cover(collect_cover_urls(sections))
+    if not downloaded_cover:
+        print("No cover image found for content issue, skipping import.")
+        return []
 
     if not content_root.exists():
         content_root.mkdir(parents=True, exist_ok=True)
@@ -667,7 +669,7 @@ def process_content_entry(issue, sections, entry_type: str, issue_number: int, i
         with cover_path.open("wb") as cover_file:
             cover_file.write(downloaded_cover["data"])
         created_files.append(cover_path)
-        cover_image_url = f"/images/showcase/{slug}/{cover_path.name}"
+        cover_image_url = f"/images/{'showcase' if entry_type == 'showcase' else 'showcase-tools'}/{slug}/{cover_path.name}"
 
     images_urls = []
     for idx, media in enumerate(downloaded_media, start=1):
@@ -692,7 +694,7 @@ def process_content_entry(issue, sections, entry_type: str, issue_number: int, i
         )
     else:
         frontmatter_lines = build_frontmatter_for_tools(
-            title, sections, issue, images_urls
+            title, sections, issue, images_urls, cover_image_url
         )
 
     create_markdown_page(
