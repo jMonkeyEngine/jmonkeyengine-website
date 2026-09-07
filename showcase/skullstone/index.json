@@ -1,0 +1,13 @@
+{
+  
+  "title": "Skullstone",
+  "summary": "A retro grid-based dungeon crawler RPG where a party of mercenaries explores monster-filled dungeons, solves puzzles, and uncovers Skullstone\u0026rsquo;s story.",
+  "images": ["/images/showcase/skullstone/1.webp","/images/showcase/skullstone/10.webp","/images/showcase/skullstone/11.webp","/images/showcase/skullstone/12.webp","/images/showcase/skullstone/13.webp","/images/showcase/skullstone/14.webp","/images/showcase/skullstone/15.webp","/images/showcase/skullstone/16.webp","/images/showcase/skullstone/17.webp","/images/showcase/skullstone/18.webp","/images/showcase/skullstone/19.webp","/images/showcase/skullstone/2.webp","/images/showcase/skullstone/3.webp","/images/showcase/skullstone/4.webp","/images/showcase/skullstone/5.webp","/images/showcase/skullstone/6.webp","/images/showcase/skullstone/7.webp","/images/showcase/skullstone/8.webp","/images/showcase/skullstone/9.webp","youtube:AnqzGANkPG8"],
+  "tags": ["skullstone","showcase"],
+  "authors": ["FrozenShade666"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": "http://skullstonegame.com/",
+  "indiedb_link": "https://www.indiedb.com/games/skullstone"
+}

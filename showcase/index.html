@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jMonkeyEngine | Showcase</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description" content="jMonkeyEngine is a modern developer friendly game engine written primarily in Java.">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  
+  <link rel="stylesheet" href="/css/style.css?v=1788749127">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Showcases">
+
+<meta name="twitter:image" content="https://jmonkeyengine.org/showcase">
+<meta property="og:title" content="Showcases">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jmonkeyengine.org/showcase/">
+<meta property="og:image" content="https://jmonkeyengine.org/showcase">
+<meta property="article:section" content="showcase">
+<meta itemprop="name" content="Showcases">
+
+<meta itemprop="datePublished" content="2026-05-31T00:00:00Z">
+<meta itemprop="dateModified" content="2026-05-31T00:00:00Z">
+<meta itemprop="image" content="https://jmonkeyengine.org/showcase">
+
+  
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x6jmsl7kyo");
+  </script>
+
+</head>
+
+<body>
+  
+  
+  <header class="header">
+    <div class="topmenu">
+        <div class="topmenu-left" id="site-menu">
+            <nav aria-label="Primary navigation">
+                <ul>
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/showcase"><i class="fas fa-images"></i> Showcase</a></li>
+                    <li><a href="https://hub.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fab fa-discourse"></i> Discussions</a></li>
+                    <li><a href="https://library.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-puzzle-piece"></i> Library</a></li>
+                    <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-book"></i> Docs</a></li>
+                    
+                    <li><a href="https://shop.jmonkeyengine.org/" target="_blank" rel="noopener noreferrer"><i class="fas fa-bag-shopping"></i> Merch</a></li>
+                    
+                    <li><a href="/contact/"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-social-links" aria-label="Social links">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i><span>GitHub</span></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" title="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+                <a href="https://discord.gg/Rv8sfVu" target="_blank" title="Discord" rel="noopener noreferrer"><i class="fab fa-discord"></i><span>Discord</span></a>
+            </div>
+        </div>
+        <div class="topmenu-right">
+            <div class="social-links">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" title="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/Rv8sfVu" target="_blank" title="Discord" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
+            </div>
+            <a href="https://github.com/jMonkeyEngine/jmonkeyengine" class="star-repo-btn star-repo-memory" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Star repo</a>
+            <a href="/donate/" class="donate-btn donate-btn--banana">
+                <span class="donate-btn__label"><i class="fas fa-donate"></i> Donate</span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="site-menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const STAR_REPO_STORAGE_KEY = 'jme-star-repo-highlighted';
+    const button = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('site-menu');
+    const starRepoButtons = Array.from(document.querySelectorAll('.star-repo-memory'));
+    const applyStarRepoState = function (active) {
+        starRepoButtons.forEach(function (starRepoButton) {
+            starRepoButton.classList.toggle('star-repo-memory--active', active);
+            if (starRepoButton.classList.contains('star-repo-btn')) {
+                starRepoButton.classList.toggle('star-repo-btn--active', active);
+            }
+        });
+    };
+    try {
+        if (localStorage.getItem(STAR_REPO_STORAGE_KEY) === '1') {
+            applyStarRepoState(true);
+        }
+    } catch (_) {
+        
+    }
+
+    const setOpen = function (open) {
+        menu.classList.toggle('is-open', open);
+        button.classList.toggle('is-open', open);
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        button.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    };
+
+    const clearStarRepoPersistedState = function () {
+        try {
+            localStorage.removeItem(STAR_REPO_STORAGE_KEY);
+        } catch (_) {
+            
+        }
+        applyStarRepoState(false);
+    };
+
+    if (starRepoButtons.length) {
+        starRepoButtons.forEach(function (starRepoButton) {
+            starRepoButton.addEventListener('click', function () {
+                try {
+                    localStorage.setItem(STAR_REPO_STORAGE_KEY, '1');
+                } catch (_) {
+                    
+                }
+                applyStarRepoState(true);
+            });
+            starRepoButton.addEventListener('pointerdown', function (event) {
+                if (event && (event.button === 2 || event.which === 3)) {
+                    event.preventDefault();
+                    clearStarRepoPersistedState();
+                }
+            });
+            starRepoButton.addEventListener('contextmenu', function (event) {
+                event.preventDefault();
+                clearStarRepoPersistedState();
+            });
+        });
+    }
+
+    if (!button || !menu) {
+        return;
+    }
+
+    button.addEventListener('click', function (event) {
+        event.stopPropagation();
+        setOpen(!menu.classList.contains('is-open'));
+    });
+    menu.addEventListener('click', function (event) {
+        if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', function (event) {
+        if (!menu.contains(event.target) && !button.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') setOpen(false);
+    });
+});
+</script>
+
+  <main>
+    
+<section class="page-hero page-hero--showcase">
+  <div class="page-hero__bg" aria-hidden="true"></div>
+  <div class="page-hero__inner">
+    <div class="page-hero__copy">
+      <div class="page-hero__eyebrow"><i class="fa-solid fa-gamepad"></i><span>Community Showcase</span></div>
+      <h1>Showcases</h1>
+      <p>26 games plus 44 tools and experiments built around jMonkeyEngine — from indie releases to engines, editors, and production tools.</p>
+    </div>
+
+    
+    <div class="page-hero__panel">
+      
+      <span class="page-hero__metric"><strong>26</strong><small>games</small></span>
+      <span class="page-hero__metric"><strong>44</strong><small>tools & experiments</small></span>
+      
+    </div>
+    
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+        
+            
+            
+                
+            
+        
+    
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+    
+
+    
+
+
+
+    
+        
+    
+
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<section id="showcase">
+    <div class="section-container">
+        
+            <a href="/showcase/rapid-escalation/" class="showcase-featured-card" aria-label="Featured showcase project: Rapid Escalation">
+    <div class="showcase-featured-card__media">
+        
+        <img src="/images/showcase/rapid-escalation/01.webp" alt="Rapid Escalation screenshot" loading="eager">
+        
+    </div>
+    <div class="showcase-featured-card__body">
+        <span class="showcase-featured-card__label"><i class="fa-solid fa-star"></i> Featured project</span>
+        <h2>Rapid Escalation</h2>
+        <p class="showcase-featured-card__author">by bruynhuisgames</p>
+        <p class="showcase-featured-card__summary">Rapid Escalation is a fast-paced incremental space arena game built around short, explosive battles, permanent upgrades, and exponential growth.</p>
+        <div class="showcase-featured-card__tags">
+            <span class="game-tag">Windows</span><span class="game-tag">Linux</span>
+            <span class="game-tag">steam</span><span class="game-tag">space</span>
+        </div>
+        <span class="showcase-featured-card__cta"><span class="showcase-featured-card__cta-text">View project</span><i class="fas fa-arrow-right"></i></span>
+    </div>
+</a>
+
+        
+
+        <div class="showcase-experiments game-section">
+            <div class="showcase-header showcase-header--experiments">
+                <div>
+                    <h2 class="section-title">Experiments</h2>
+                    <p class="section-subtitle">38 screenshots, videos, prototypes, renders, and visual tests from the community.</p>
+                </div>
+                <a href="https://hub.jmonkeyengine.org/t/september-2026-monthly-wip-screenshot-thread/49668" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Post in this month&#39;s WIP thread <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            
+            <div class="screenshots-carousel experiments-carousel" id="experiments-carousel">
+                <button class="carousel-btn carousel-prev" type="button" data-carousel-target="experiments-carousel" data-carousel-dir="-1" title="Previous experiment">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="screenshots-track experiments-track">
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/Screenshot from 2019-05-28 11-34-09.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/Screenshot%20from%202019-05-28%2011-34-09.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file4.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file4.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file5.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file5.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file12.webp" data-experiment-description="Community work-in-progress screenshot from the January 2026 Monthly WIP thread." data-experiment-link="https://hub.jmonkeyengine.org/t/january-2026-monthly-wip-screenshot-thread/49362/8" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file12.webp" alt="Community work-in-progress screenshot from the January 2026 Monthly WIP thread. experiment screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            
+                            <span class="monthly-wip-author-preview">Community work-in-progress screenshot from the January 2026 Monthly WIP thread.</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/4/d/3/4d39486dfc5671cc80547ffca9925d88e67300ae.jpeg" data-experiment-description="The past two live streams, I took a break from AI to work on some cloud ideas. So far the technique…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/18" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/4/d/3/4d39486dfc5671cc80547ffca9925d88e67300ae.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">pspeed</span>
+                            <span class="monthly-wip-author-preview">The past two live streams, I took a break from AI to work on some cloud ideas. So far the technique…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/5/0/3/503f49b5d74ee391d440502a4a25888c6385b7e3.jpeg" data-experiment-description="Here is how I restyled the Lemur Panel for my game Ialon (Android game), using the same technique :…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/14" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/5/0/3/503f49b5d74ee391d440502a4a25888c6385b7e3.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">vxel</span>
+                            <span class="monthly-wip-author-preview">Here is how I restyled the Lemur Panel for my game Ialon (Android game), using the same technique :…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/b/4/c/b4c1afc9fa2003ff9cde3f09e89dace52345a338.jpeg" data-experiment-description="A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/3" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/b/4/c/b4c1afc9fa2003ff9cde3f09e89dace52345a338.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">Ivan1</span>
+                            <span class="monthly-wip-author-preview">A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/d/c/0/dc01f2c939c605e5b1cac7b3b2c0527f88e0f373.jpeg" data-experiment-description="The past two live streams, I took a break from AI to work on some cloud ideas. So far the technique…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/18" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/d/c/0/dc01f2c939c605e5b1cac7b3b2c0527f88e0f373.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">pspeed</span>
+                            <span class="monthly-wip-author-preview">The past two live streams, I took a break from AI to work on some cloud ideas. So far the technique…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file2.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file2.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/7/4/2/742c22a0ead1387eac3a67dcf6f5ccc4726061b7.jpeg" data-experiment-description="A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/3" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/7/4/2/742c22a0ead1387eac3a67dcf6f5ccc4726061b7.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">Ivan1</span>
+                            <span class="monthly-wip-author-preview">A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/e/3/c/e3c3544f6a3eed57eb8061244478c2dbe14194a6.jpeg" data-experiment-description="Hello everyone! New month, new gameplay mechanic: sliding on steep slopes (think Uncharted 4…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/2" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/e/3/c/e3c3544f6a3eed57eb8061244478c2dbe14194a6.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">capdevon</span>
+                            <span class="monthly-wip-author-preview">Hello everyone! New month, new gameplay mechanic: sliding on steep slopes (think Uncharted 4…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file7.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file7.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/0/5/3/053a109f7f8d839ba6017b6d25944556266bdc47.jpeg" data-experiment-description="A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/3" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/0/5/3/053a109f7f8d839ba6017b6d25944556266bdc47.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">Ivan1</span>
+                            <span class="monthly-wip-author-preview">A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/1/1/a/11a9d85e6b84ef88979e1a2bbc51a1b77780180b.jpeg" data-experiment-description="A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/3" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/1/1/a/11a9d85e6b84ef88979e1a2bbc51a1b77780180b.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">Ivan1</span>
+                            <span class="monthly-wip-author-preview">A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/4/5/3/453a49f53f28c2dac8f8b5419e49614a8725d7d0.jpeg" data-experiment-description="A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/3" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/4/5/3/453a49f53f28c2dac8f8b5419e49614a8725d7d0.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">Ivan1</span>
+                            <span class="monthly-wip-author-preview">A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file8.webp" data-experiment-description="Community work-in-progress screenshot from the February 2026 Monthly WIP thread." data-experiment-link="https://hub.jmonkeyengine.org/t/february-2026-monthly-wip-screenshot-thread/49404/10" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file8.webp" alt="Community work-in-progress screenshot from the February 2026 Monthly WIP thread. experiment screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            
+                            <span class="monthly-wip-author-preview">Community work-in-progress screenshot from the February 2026 Monthly WIP thread.</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/f/0/6/f064048d2a94162d844a3719c734709963f1430e.jpeg" data-experiment-description="A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/3" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/f/0/6/f064048d2a94162d844a3719c734709963f1430e.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">Ivan1</span>
+                            <span class="monthly-wip-author-preview">A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger screenshot-item--video experiment-item monthly-wip-video" type="button" data-full="XrWYr1L8wTc" data-media-type="youtube" data-experiment-description="I’ve added some water ripple effects to my game." data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/15" aria-label="Watch video">
+                        <img src="https://img.youtube.com/vi/XrWYr1L8wTc/maxresdefault.jpg" alt="Video thumbnail" loading="lazy">
+                        <span class="screenshot-item__play"><i class="fab fa-youtube"></i></span>
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">FoxCC</span>
+                            <span class="monthly-wip-author-preview">I’ve added some water ripple effects to my game.</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/nge2.webp" data-experiment-description="Adcity - Nostr Game Engine" data-experiment-link="https://github.com/NostrGameEngine/adcity-demo" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/nge2.webp" alt="Adcity - Nostr Game Engine experiment screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            
+                            <span class="monthly-wip-author-preview">Adcity - Nostr Game Engine</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file11.webp" data-experiment-description="Community work-in-progress screenshot from the October 2025 Monthly WIP thread." data-experiment-link="https://hub.jmonkeyengine.org/t/october-2025-monthly-wip-screenshot-thread/48655/12" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file11.webp" alt="Community work-in-progress screenshot from the October 2025 Monthly WIP thread. experiment screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            
+                            <span class="monthly-wip-author-preview">Community work-in-progress screenshot from the October 2025 Monthly WIP thread.</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger screenshot-item--video experiment-item monthly-wip-video" type="button" data-full="hrrekVu0WuQ" data-media-type="youtube" data-experiment-description="I played around what Minie is capable on my processor. (i5 13600). I am very curious how Jolt will…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/4" aria-label="Watch video">
+                        <img src="https://img.youtube.com/vi/hrrekVu0WuQ/maxresdefault.jpg" alt="Video thumbnail" loading="lazy">
+                        <span class="screenshot-item__play"><i class="fab fa-youtube"></i></span>
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">ZoltanTheHun</span>
+                            <span class="monthly-wip-author-preview">I played around what Minie is capable on my processor. (i5 13600). I am very curious how Jolt will…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/8/1/0/810de9710594f9dd9bb783a52b7dd51f275e7e5d.jpeg" data-experiment-description="A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/3" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/8/1/0/810de9710594f9dd9bb783a52b7dd51f275e7e5d.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">Ivan1</span>
+                            <span class="monthly-wip-author-preview">A (very early) glimpse into what is going to be my first ever proper game. I’ve been working on…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/rabbits_fury.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/rabbits_fury.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger screenshot-item--video experiment-item monthly-wip-video" type="button" data-full="qc4g8slgnRs" data-media-type="youtube" data-experiment-description="I have been working on some cut scenes for Beer League:" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/20" aria-label="Watch video">
+                        <img src="https://img.youtube.com/vi/qc4g8slgnRs/maxresdefault.jpg" alt="Video thumbnail" loading="lazy">
+                        <span class="screenshot-item__play"><i class="fab fa-youtube"></i></span>
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">Fedor_van_Eldijk</span>
+                            <span class="monthly-wip-author-preview">I have been working on some cut scenes for Beer League:</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/2026_03_02_trail_test.jpg" data-experiment-description="Trail rendering experiment from the March 2026 Monthly WIP thread." data-experiment-link="https://hub.jmonkeyengine.org/t/march-2026-monthly-wip-screenshot-thread/49428/4" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/2026_03_02_trail_test.jpg" alt="Trail rendering experiment from the March 2026 Monthly WIP thread. experiment screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            
+                            <span class="monthly-wip-author-preview">Trail rendering experiment from the March 2026 Monthly WIP thread.</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file10.webp" data-experiment-description="Community work-in-progress screenshot from the October 2025 Monthly WIP thread." data-experiment-link="https://hub.jmonkeyengine.org/t/october-2025-monthly-wip-screenshot-thread/48655/2" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file10.webp" alt="Community work-in-progress screenshot from the October 2025 Monthly WIP thread. experiment screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            
+                            <span class="monthly-wip-author-preview">Community work-in-progress screenshot from the October 2025 Monthly WIP thread.</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/0/9/3/093c84212fbbbc22829762f3c16a242b2e9fb79b.jpeg" data-experiment-description="The past two live streams, I took a break from AI to work on some cloud ideas. So far the technique…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/18" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/0/9/3/093c84212fbbbc22829762f3c16a242b2e9fb79b.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">pspeed</span>
+                            <span class="monthly-wip-author-preview">The past two live streams, I took a break from AI to work on some cloud ideas. So far the technique…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/c/1/a/c1a026d5b6ac89626beca610ce2a5282abccb375.jpeg" data-experiment-description="Thanks for sharing. It already looks really nice to me, so well done! Your clean UI looks already…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/7" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/c/1/a/c1a026d5b6ac89626beca610ce2a5282abccb375.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">drothindev</span>
+                            <span class="monthly-wip-author-preview">Thanks for sharing. It already looks really nice to me, so well done! Your clean UI looks already…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/0/2/6/02640fffaa7fdea794d07f7ac04c6c7fa44d79ab.jpeg" data-experiment-description="Thanks for sharing. It already looks really nice to me, so well done! Your clean UI looks already…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/7" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/0/2/6/02640fffaa7fdea794d07f7ac04c6c7fa44d79ab.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">drothindev</span>
+                            <span class="monthly-wip-author-preview">Thanks for sharing. It already looks really nice to me, so well done! Your clean UI looks already…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file3.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file3.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/nge1.webp" data-experiment-description="Sea of Nostriches - Nostr Game Engine" data-experiment-link="https://github.com/NostrGameEngine/sea-of-nostriches-demo" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/nge1.webp" alt="Sea of Nostriches - Nostr Game Engine experiment screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            
+                            <span class="monthly-wip-author-preview">Sea of Nostriches - Nostr Game Engine</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/f/5/e/f5e44c7c519baf1932f491b3630ac87ab2173907.jpeg" data-experiment-description="As Paul mentioned, I just created my own Style class replacing the GlassStyle. And then I created…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/12" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/f/5/e/f5e44c7c519baf1932f491b3630ac87ab2173907.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">drothindev</span>
+                            <span class="monthly-wip-author-preview">As Paul mentioned, I just created my own Style class replacing the GlassStyle. And then I created…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/1/1/d/11dec555f8920f64f8ade9d7e67d3b7d9fa43425.gif" data-experiment-description="to be fair, jolt and bullet would have put the towers to sleep before they collapse, so sleeping is…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/5" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/1/1/d/11dec555f8920f64f8ade9d7e67d3b7d9fa43425.gif" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">zzuegg</span>
+                            <span class="monthly-wip-author-preview">to be fair, jolt and bullet would have put the towers to sleep before they collapse, so sleeping is…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/7/5/e/75e406ddf7fb2da6f382c8d0f4fd06756c766773.png" data-experiment-description="Here is how I restyled the Lemur Panel for my game Ialon (Android game), using the same technique :…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/14" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/7/5/e/75e406ddf7fb2da6f382c8d0f4fd06756c766773.png" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">vxel</span>
+                            <span class="monthly-wip-author-preview">Here is how I restyled the Lemur Panel for my game Ialon (Android game), using the same technique :…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="/images/showcase/experiments/pasted file6.webp" aria-label="Open experiment screenshot">
+                        <img src="/images/showcase/experiments/pasted%20file6.webp" alt="jMonkeyEngine experiment screenshot" loading="lazy">
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger experiment-item" type="button" data-full="https://hub.jmonkeyengine.org/uploads/default/original/4X/6/2/7/627c04e08a93284a46fa49e2f787c3a871881535.jpeg" data-experiment-description="The past two live streams, I took a break from AI to work on some cloud ideas. So far the technique…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/18" aria-label="Open experiment screenshot">
+                        <img src="https://hub.jmonkeyengine.org/uploads/default/original/4X/6/2/7/627c04e08a93284a46fa49e2f787c3a871881535.jpeg" alt="Community screenshot" loading="lazy">
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">pspeed</span>
+                            <span class="monthly-wip-author-preview">The past two live streams, I took a break from AI to work on some cloud ideas. So far the technique…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                    
+                    <button class="screenshot-item screenshot-lightbox-trigger screenshot-item--video experiment-item monthly-wip-video" type="button" data-full="dEABI_INRLc" data-media-type="youtube" data-experiment-description="Hello everyone! New month, new gameplay mechanic: sliding on steep slopes (think Uncharted 4…" data-experiment-link="https://hub.jmonkeyengine.org/t/august-2026-monthly-wip-screenshot-thread/49648/2" aria-label="Watch video">
+                        <img src="https://img.youtube.com/vi/dEABI_INRLc/maxresdefault.jpg" alt="Video thumbnail" loading="lazy">
+                        <span class="screenshot-item__play"><i class="fab fa-youtube"></i></span>
+                        
+                        <span class="monthly-wip-author">
+                            <span class="monthly-wip-author-name">capdevon</span>
+                            <span class="monthly-wip-author-preview">Hello everyone! New month, new gameplay mechanic: sliding on steep slopes (think Uncharted 4…</span>
+                        </span>
+                        
+                    </button>
+                    
+                    
+                </div>
+                <button class="carousel-btn carousel-next" type="button" data-carousel-target="experiments-carousel" data-carousel-dir="1" title="Next experiment">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+        </div>
+
+        <div class="showcase-header">
+            <div>
+                <h2 class="section-title">Games made with jMonkeyEngine</h2>
+                <p class="section-subtitle">26 playable projects built on jMonkeyEngine.</p>
+            </div>
+        </div>
+
+        <div class="games-grid">
+            
+                
+<a href="/showcase/system-recovery/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/system-recovery/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">System Recovery</h3>
+            <p class="game-card-author">by PoshDan</p>
+            <p class="game-card-summary">System Recovery is a top-down-view arcade shooter with a computer virus theme. Time to show those nasties who's really in control! Fight …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/forging-life/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/forging-life/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Forging Life</h3>
+            <p class="game-card-author">by DGC Productions</p>
+            <p class="game-card-summary">Forging Life is a survival role-playing game where you decide your own path. Realism is the keyword. Can you survive long enough to become …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/one-million-worlds/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/one-million-worlds/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">One Million Worlds</h3>
+            <p class="game-card-author">by Richard Tingle</p>
+            <p class="game-card-summary">One Million Worlds is a block world game — but unlike other block worlds, it's not focused on buildings and architecture. It's about …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/3079/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/3079/ss1.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">steam</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">3079</h3>
+            <p class="game-card-author">by Phr00t&#39;s Software</p>
+            <p class="game-card-summary">3079 is a futuristic, open-world action first-person role playing game. All areas, buildings, items, quests and characters are randomly …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/gentrieve-2/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/gentrieve-2/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Gentrieve 2</h3>
+            <p class="game-card-author">by gentrieve team</p>
+            <p class="game-card-summary">Gentrieve 2 is a Metroid-style 3D action game featuring completely random and customizable worlds. The year is 3080. Mass Generators are …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/cubegate/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/cubegate/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">CubeGate</h3>
+            <p class="game-card-author">by CubeGate</p>
+            <p class="game-card-summary">CubeGate is a 3D puzzle game where you must escape test chambers full of dangers and hassles. Solve intricate puzzles by shooting portals, …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/spoxel/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/spoxel/1.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">steam</span><span class="game-tag">spoxel</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Spoxel</h3>
+            <p class="game-card-author">by Jedic</p>
+            <p class="game-card-summary">Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/the-afflicted-forests/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/the-afflicted-forests/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">The Afflicted Forests</h3>
+            <p class="game-card-author">by Luatic</p>
+            <p class="game-card-summary">The Sacred Forests have been afflicted by an undead plague, and as one of the last remaining Wood Elf Spirits, you have arisen to protect …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/skullstone/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/skullstone/1.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">skullstone</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Skullstone</h3>
+            <p class="game-card-author">by FrozenShade666</p>
+            <p class="game-card-summary">A retro grid-based dungeon crawler RPG where a party of mercenaries explores monster-filled dungeons, solves puzzles, and uncovers …</p>
+            <div class="game-card-links">
+                
+                
+                <span class="glink web" title="Website"><i class="fas fa-globe"></i></span>
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/exotic-matter/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/exotic-matter/0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indie</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Exotic Matter</h3>
+            <p class="game-card-author">by Moebiusgames</p>
+            <p class="game-card-summary">Shipwrecked on an alien planet, light-years away from Earth - your primary mission: survive. Explore the open-world of planet Xcylin and …</p>
+            <div class="game-card-links">
+                
+                
+                <span class="glink web" title="Website"><i class="fas fa-globe"></i></span>
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/ls_frontier/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/ls_frontier/1.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">steam</span><span class="game-tag">lightspeed frontier</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Lightspeed Frontier</h3>
+            <p class="game-card-author">by moffkalast</p>
+            <p class="game-card-summary">Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize your vessel piece by piece to tackle …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/risingworld/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/risingworld/ss1.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Rising World</h3>
+            <p class="game-card-author">by JIW-Games</p>
+            <p class="game-card-summary">Rising World is an open-world sandbox game with randomly generated, fully destructible environments. Starting with the most basic tools, …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/rapid-escalation/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/rapid-escalation/01.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">steam</span><span class="game-tag">space</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Rapid Escalation</h3>
+            <p class="game-card-author">by bruynhuisgames</p>
+            <p class="game-card-summary">Rapid Escalation is a fast-paced incremental space arena game built around short, explosive battles, permanent upgrades, and exponential …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/makers-tale/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/makers-tale/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Maker&#39;s Tale</h3>
+            <p class="game-card-author">by thetoucher</p>
+            <p class="game-card-summary">Maker's Tale is a unique fantasy RTS that takes place on a tabletop board game sprung to life in a young boy's imagination. Features Fantasy …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/hostile-sector/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/hostile-sector/ss2.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Hostile Sector</h3>
+            <p class="game-card-author">by midemia</p>
+            <p class="game-card-summary">Command your troops and fight together and against other players in a persistent world. Watch your soldiers grow from rookies to hardened …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/pirate-hell/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/pirate-hell/ss1.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">steam</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">PirateHell</h3>
+            <p class="game-card-author">by Sascha Hartleb</p>
+            <p class="game-card-summary">Arrr maytees! Welcome to Pirate Hell — take command of a sturdy vessel and fight your way to honor, loot and glory in this frantic arcade …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/depthris/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/depthris/0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">tetris</span><span class="game-tag">puzzle</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">DEPTHRIS</h3>
+            <p class="game-card-author">by codewalker</p>
+            <p class="game-card-summary">3D puzzle game inspired by the classic title for DOS. Move and rotate the pieces so the fit in the spaces and fill as much floors as …</p>
+            <div class="game-card-links">
+                
+                <span class="glink itch" title="itch.io"><i class="fab fa-itch-io"></i></span>
+                
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/starfire/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/starfire/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indiedb</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">StarFire</h3>
+            <p class="game-card-author">by neutronio</p>
+            <p class="game-card-summary">StarFire was created with the intention to provide a tool to explore the depths of the universe and its secrets in a playful, educational, …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/chatter-games/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/chatter-games/ss1.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">indie</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Chatter Games</h3>
+            <p class="game-card-author">by Anthony Wilshaw</p>
+            <p class="game-card-summary">Collection of 4 classic board games — Chess, Checkers, 4 In A Row and Othello — all in one cross-platform multiplayer package. Play against …</p>
+            <div class="game-card-links">
+                
+                
+                <span class="glink web" title="Website"><i class="fas fa-globe"></i></span>
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/mythruna/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/mythruna/0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">mythruna</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Mythruna</h3>
+            <p class="game-card-author">by pspeed42</p>
+            <p class="game-card-summary">An in-development sandbox RPG combining serious role-playing systems with an endless, living, fully modifiable generated world.</p>
+            <div class="game-card-links">
+                
+                
+                <span class="glink web" title="Website"><i class="fas fa-globe"></i></span>
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/totallynotuno/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/totallynotuno/Screenshot_20220619-100025.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">card-game</span><span class="game-tag">multiplayer</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">TotallyNotUno</h3>
+            <p class="game-card-author">by DGC Productions</p>
+            <p class="game-card-summary">TotallyNotUno is a fun card game based on the popular UNO game. Play with 3 other players — human or AI — in this digital take on the …</p>
+            <div class="game-card-links">
+                
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/stranded/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/stranded/Desert_Area_Cliff.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">itch</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Stranded</h3>
+            <p class="game-card-author">by Nyx Studios</p>
+            <p class="game-card-summary">Survival adventure game on a mysterious island. You find yourself alone and stranded — gather resources, craft tools and shelter, explore …</p>
+            <div class="game-card-links">
+                
+                <span class="glink itch" title="itch.io"><i class="fab fa-itch-io"></i></span>
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/3089/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/3089/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">steam</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">3089</h3>
+            <p class="game-card-author">by Phr00t&#39;s Software</p>
+            <p class="game-card-summary">3089 is a futuristic, procedurally generated, open-world action role-playing game set on planet Xax. You are a promising robotic android …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/collect-the-10s/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/collect-the-10s/1.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">cardgame</span><span class="game-tag">cards</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Collect The 10s</h3>
+            <p class="game-card-author">by bkz</p>
+            <p class="game-card-summary">A 3D online adaptation of the Indian trick-taking card game Mendikot, with rated multiplayer, rankings, and single-player AI tournaments.</p>
+            <div class="game-card-links">
+                
+                <span class="glink itch" title="itch.io"><i class="fab fa-itch-io"></i></span>
+                <span class="glink web" title="Website"><i class="fas fa-globe"></i></span>
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/marvelous-marbles/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/marvelous-marbles/0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">steam</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">Marvelous Marbles</h3>
+            <p class="game-card-author">by mindemia</p>
+            <p class="game-card-summary">Build marble runs where your imagination is the only limit. Design intricate tracks and mechanisms in a physics simulation where ramps and …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                <span class="glink indiedb" title="IndieDB"><i class="fab fa-buffer"></i></span>
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+                
+<a href="/showcase/high-impact/" class="game-card">
+    
+    <div class="game-card-img" style="background-image: url('/images/showcase/high-impact/ss0.webp')"></div>
+    
+    <div class="game-card-body">
+        <div class="game-card-top">
+            <span class="game-tag">steam</span>
+        </div>
+        <div class="game-card-bottom">
+            <h3 class="game-card-title">High Impact</h3>
+            <p class="game-card-author">by pixelapp</p>
+            <p class="game-card-summary">High Impact is a first-person shooter with very detailed worlds featuring platforming and puzzle rooms. Navigate through alien environments, …</p>
+            <div class="game-card-links">
+                <span class="glink steam" title="Steam"><i class="fab fa-steam"></i></span>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</a>
+
+            
+        </div>
+
+        
+        <div class="showcase-tools game-section">
+            <div class="showcase-header showcase-header--tools">
+                <div>
+                    <h2 class="section-title">Engines, editors & tools</h2>
+                    <p class="section-subtitle">6 jMonkeyEngine based engines, editors, and practical production tools from the ecosystem.</p>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                
+                    <a class="tool-card" href="/showcase-tools/exotic-matter-engine/">
+    
+    <div class="tool-card__image" style="background-image: url('/images/showcase/exotic-matter/screenshot_00025.2.webp')"></div>
+    
+    <div class="tool-card__body">
+        <span class="game-tag tool-card__type">Engine</span>
+        <h3 class="tool-card__title">Exotic Matter Engine</h3>
+        <p>A custom voxel/sandbox engine and technology stack built around jMonkeyEngine for the Exotic Matter project.</p>
+    </div>
+</a>
+
+                
+                    <a class="tool-card" href="/showcase-tools/jmonkeyengine-sdk/">
+    
+    <div class="tool-card__image" style="background-image: url('/home/runner/work/jmonkeyengine-website/jmonkeyengine-website/project/content/showcase-tools/jmonkeyengine-sdk/index.md')"></div>
+    
+    <div class="tool-card__body">
+        <span class="game-tag tool-card__type">Editor</span>
+        <h3 class="tool-card__title">jMonkeyEngine SDK</h3>
+        <p>NetBeans-based development environment for jMonkeyEngine projects: templates, scene tooling, asset workflow helpers, and desktop project setup.</p>
+    </div>
+</a>
+
+                
+                    <a class="tool-card" href="/showcase-tools/scenemax3d/">
+    
+    <div class="tool-card__image" style="background-image: url('https://github.com/user-attachments/assets/8e83d0b0-950e-425d-94a0-d38db5fc4fd3')"></div>
+    
+    <div class="tool-card__body">
+        <span class="game-tag tool-card__type">Tool</span>
+        <h3 class="tool-card__title">SceneMax3D</h3>
+        <p>A desktop-based game development environment designed around a visual workflow and a custom scripting language.</p>
+    </div>
+</a>
+
+                
+                    <a class="tool-card" href="/showcase-tools/envisionplay/">
+    
+    <div class="tool-card__image" style="background-image: url('/images/showcase-tools/envisionplay/00-cover.webp')"></div>
+    
+    <div class="tool-card__body">
+        <span class="game-tag tool-card__type">Tool</span>
+        <h3 class="tool-card__title">EnvisionPlay</h3>
+        <p>EnvisionPlay is a visual game editor designed to make creating 2D and 3D games simple and accessible. It provides an intuitive workflow that allows developers to focus on building gameplay instead of writing boilerplate code.</p>
+    </div>
+</a>
+
+                
+                    <a class="tool-card" href="/showcase-tools/nostr-game-engine/">
+    
+    <div class="tool-card__image" style="background-image: url('/images/showcase-tools/nostr-game-engine/0.png')"></div>
+    
+    <div class="tool-card__body">
+        <span class="game-tag tool-card__type">Engine</span>
+        <h3 class="tool-card__title">Nostr Game Engine</h3>
+        <p>A game engine and framework for building games and applications integrated with the Nostr ecosystem.</p>
+    </div>
+</a>
+
+                
+                    <a class="tool-card" href="/showcase-tools/maud/">
+    
+    <div class="tool-card__image" style="background-image: url('/home/runner/work/jmonkeyengine-website/jmonkeyengine-website/project/content/showcase-tools/maud/index.md')"></div>
+    
+    <div class="tool-card__body">
+        <span class="game-tag tool-card__type">Editor</span>
+        <h3 class="tool-card__title">Maud</h3>
+        <p>A dedicated editor for jMonkeyEngine 3D models, focused on inspecting and editing assets outside the game runtime.</p>
+    </div>
+</a>
+
+                
+            </div>
+        </div>
+        
+    </div>
+</section>
+<div class="showcase-lightbox" id="showcase-lightbox" aria-hidden="true">
+    <button class="showcase-lightbox__close" type="button" aria-label="Close screenshot preview">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="showcase-lightbox__zoom-controls" aria-label="Image zoom controls" hidden>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="out" aria-label="Zoom out"><i class="fas fa-search-minus"></i></button>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="reset" aria-label="Reset zoom"><i class="fas fa-compress-arrows-alt"></i></button>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="in" aria-label="Zoom in"><i class="fas fa-search-plus"></i></button>
+    </div>
+    <button class="showcase-lightbox__backdrop" type="button" aria-label="Close screenshot preview"></button>
+    <figure class="showcase-lightbox__figure">
+        <img class="showcase-lightbox__image" src="" alt="Screenshot preview">
+        <video class="showcase-lightbox__video" controls playsinline></video>
+        <iframe class="showcase-lightbox__youtube" title="Video preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <figcaption class="showcase-lightbox__meta" hidden>
+            <p class="showcase-lightbox__meta-description"></p>
+            <a class="showcase-lightbox__meta-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </figcaption>
+    </figure>
+</div>
+
+<script>
+(function () {
+    if (window.__showcaseLightboxReady) return;
+    window.__showcaseLightboxReady = true;
+
+    function getLightbox() {
+        return document.getElementById('showcase-lightbox');
+    }
+
+    var zoomState = {
+        scale: 1,
+        x: 0,
+        y: 0,
+        dragging: false,
+        dragged: false,
+        dragX: 0,
+        dragY: 0,
+        startX: 0,
+        startY: 0
+    };
+
+    function getZoomElements(lightbox) {
+        return {
+            img: lightbox && lightbox.querySelector('.showcase-lightbox__image'),
+            controls: lightbox && lightbox.querySelector('.showcase-lightbox__zoom-controls')
+        };
+    }
+
+    function applyZoom(lightbox) {
+        var zoom = getZoomElements(lightbox);
+        if (!zoom.img) return;
+        zoom.img.style.transform = 'translate(' + zoomState.x + 'px, ' + zoomState.y + 'px) scale(' + zoomState.scale + ')';
+        zoom.img.classList.toggle('is-zoomed', zoomState.scale > 1.01);
+        lightbox.classList.toggle('is-zoomed', zoomState.scale > 1.01);
+    }
+
+    function resetZoom(lightbox) {
+        zoomState.scale = 1;
+        zoomState.x = 0;
+        zoomState.y = 0;
+        zoomState.dragging = false;
+        zoomState.dragged = false;
+        applyZoom(lightbox);
+    }
+
+    function setZoom(lightbox, nextScale, originX, originY) {
+        var previous = zoomState.scale;
+        var scale = Math.max(1, Math.min(4, nextScale));
+        if (scale === 1) {
+            resetZoom(lightbox);
+            return;
+        }
+
+        if (originX != null && originY != null && previous > 0) {
+            zoomState.x = originX - ((originX - zoomState.x) * scale / previous);
+            zoomState.y = originY - ((originY - zoomState.y) * scale / previous);
+        }
+
+        zoomState.scale = scale;
+        applyZoom(lightbox);
+    }
+
+    function setZoomControlsVisible(lightbox, visible) {
+        var controls = getZoomElements(lightbox).controls;
+        if (controls) controls.hidden = !visible;
+    }
+
+    function isSafeLink(link) {
+        if (!link) return false;
+        try {
+            var url = new URL(link, window.location.href);
+            return url.protocol === 'http:' || url.protocol === 'https:' || url.protocol === 'mailto:' || link.charAt(0) === '/';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function setLightboxMeta(lightbox, description, link) {
+        var meta = lightbox.querySelector('.showcase-lightbox__meta');
+        var metaDescription = lightbox.querySelector('.showcase-lightbox__meta-description');
+        var metaLink = lightbox.querySelector('.showcase-lightbox__meta-link');
+        if (!meta || !metaDescription || !metaLink) return;
+
+        metaDescription.textContent = description || '';
+        metaDescription.style.display = description ? '' : 'none';
+        metaLink.textContent = link || '';
+        metaLink.style.display = isSafeLink(link) ? '' : 'none';
+        if (isSafeLink(link)) {
+            metaLink.href = link;
+        } else {
+            metaLink.removeAttribute('href');
+        }
+
+        var hasMeta = Boolean(description) || isSafeLink(link);
+        meta.hidden = !hasMeta;
+        lightbox.classList.toggle('has-meta', hasMeta);
+    }
+
+    function openLightbox(src, alt, mediaType, metaData) {
+        var lightbox = getLightbox();
+        if (!lightbox || !src) return;
+        var img = lightbox.querySelector('.showcase-lightbox__image');
+        var video = lightbox.querySelector('.showcase-lightbox__video');
+        var youtube = lightbox.querySelector('.showcase-lightbox__youtube');
+        if (!img || !video || !youtube) return;
+        resetZoom(lightbox);
+        youtube.removeAttribute('src');
+        youtube.style.display = 'none';
+        if (mediaType === 'video') {
+            img.removeAttribute('src');
+            img.style.display = 'none';
+            setZoomControlsVisible(lightbox, false);
+            video.src = src;
+            video.style.display = 'block';
+            video.load();
+        } else if (mediaType === 'youtube') {
+            img.removeAttribute('src');
+            img.style.display = 'none';
+            setZoomControlsVisible(lightbox, false);
+            video.pause();
+            video.removeAttribute('src');
+            video.style.display = 'none';
+            youtube.src = 'https://www.youtube-nocookie.com/embed/' + String(src || '').replace(/^youtube:/i, '') + '?autoplay=1';
+            youtube.style.display = 'block';
+        } else {
+            video.pause();
+            video.removeAttribute('src');
+            video.style.display = 'none';
+            img.src = src;
+            img.alt = alt || 'Screenshot preview';
+            img.style.display = 'block';
+            setZoomControlsVisible(lightbox, true);
+        }
+        setLightboxMeta(lightbox, metaData && metaData.description, metaData && metaData.link);
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('showcase-lightbox-open');
+    }
+
+    function closeLightbox() {
+        var lightbox = getLightbox();
+        if (!lightbox) return;
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('showcase-lightbox-open');
+        var img = lightbox.querySelector('.showcase-lightbox__image');
+        if (img) img.removeAttribute('src');
+        resetZoom(lightbox);
+        setZoomControlsVisible(lightbox, false);
+        var video = lightbox.querySelector('.showcase-lightbox__video');
+        if (video) {
+            video.pause();
+            video.removeAttribute('src');
+        }
+        var youtube = lightbox.querySelector('.showcase-lightbox__youtube');
+        if (youtube) youtube.removeAttribute('src');
+        setLightboxMeta(lightbox, '', '');
+    }
+
+    document.addEventListener('click', function (event) {
+        var trigger = event.target.closest('.screenshot-lightbox-trigger');
+        if (trigger) {
+            event.preventDefault();
+            openLightbox(
+                trigger.getAttribute('data-full') || trigger.getAttribute('href'),
+                trigger.querySelector('img')?.alt,
+                trigger.getAttribute('data-media-type'),
+                {
+                    description: trigger.getAttribute('data-experiment-description') || '',
+                    link: trigger.getAttribute('data-experiment-link') || ''
+                }
+            );
+            return;
+        }
+        var zoomAction = event.target.closest('[data-lightbox-zoom]');
+        if (zoomAction) {
+            event.preventDefault();
+            var lightbox = getLightbox();
+            if (!lightbox) return;
+            var action = zoomAction.getAttribute('data-lightbox-zoom');
+            if (action === 'reset') resetZoom(lightbox);
+            if (action === 'in') setZoom(lightbox, zoomState.scale + 0.5);
+            if (action === 'out') setZoom(lightbox, zoomState.scale - 0.5);
+            return;
+        }
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (image && image.style.display !== 'none') {
+            if (zoomState.dragged) {
+                zoomState.dragged = false;
+                return;
+            }
+            var box = image.getBoundingClientRect();
+            var originX = event.clientX - box.left - box.width / 2;
+            var originY = event.clientY - box.top - box.height / 2;
+            setZoom(getLightbox(), zoomState.scale > 1.01 ? 1 : 2, originX, originY);
+            return;
+        }
+        if (event.target.closest('.showcase-lightbox__close') || event.target.closest('.showcase-lightbox__backdrop')) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('wheel', function (event) {
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (!image || image.style.display === 'none') return;
+        var lightbox = getLightbox();
+        if (!lightbox || !lightbox.classList.contains('is-open')) return;
+        event.preventDefault();
+        var box = image.getBoundingClientRect();
+        var originX = event.clientX - box.left - box.width / 2;
+        var originY = event.clientY - box.top - box.height / 2;
+        var delta = event.deltaY < 0 ? 0.25 : -0.25;
+        setZoom(lightbox, zoomState.scale + delta, originX, originY);
+    }, { passive: false });
+
+    document.addEventListener('pointerdown', function (event) {
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (!image || zoomState.scale <= 1.01) return;
+        zoomState.dragging = true;
+        zoomState.dragged = false;
+        zoomState.dragX = event.clientX;
+        zoomState.dragY = event.clientY;
+        zoomState.startX = zoomState.x;
+        zoomState.startY = zoomState.y;
+        image.setPointerCapture(event.pointerId);
+    });
+
+    document.addEventListener('pointermove', function (event) {
+        if (!zoomState.dragging) return;
+        zoomState.x = zoomState.startX + event.clientX - zoomState.dragX;
+        zoomState.y = zoomState.startY + event.clientY - zoomState.dragY;
+        if (Math.abs(event.clientX - zoomState.dragX) > 3 || Math.abs(event.clientY - zoomState.dragY) > 3) {
+            zoomState.dragged = true;
+        }
+        applyZoom(getLightbox());
+    });
+
+    document.addEventListener('pointerup', function () {
+        zoomState.dragging = false;
+    });
+
+    document.addEventListener('pointercancel', function () {
+        zoomState.dragging = false;
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === '0') resetZoom(getLightbox());
+        if (event.key === '+' || event.key === '=') setZoom(getLightbox(), zoomState.scale + 0.5);
+        if (event.key === '-' || event.key === '_') setZoom(getLightbox(), zoomState.scale - 0.5);
+    });
+})();
+</script>
+
+<script src="/js/showcase-carousel.js" defer></script>
+
+
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <img src="/images/jme-logo.webp" alt="jMonkeyEngine">
+            <p>The modern game engine for Java developers. Open source, BSD-3 licensed, since 2004.</p>
+            <div class="footer-social footer-social--brand">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://hub.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-comments"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Engine</h4>
+            <ul>
+                <li><a href="/start/">Get Started</a></li>
+                <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+                <li><a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Community</h4>
+            <ul>
+                <li><a href="https://hub.jmonkeyengine.org">Forum</a></li>
+                <li><a href="https://discord.gg/jmonkeyengine" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer">Wiki</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contribute</h4>
+            <ul>
+                <li><a href="/license/">License (BSD-3)</a></li>
+                <li><a href="https://github.com/jMonkeyEngine/jmonkeyengine/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+                <li><a href="/donate/">Donate</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2004–2026 jMonkeyEngine. Released under BSD 3-Clause License.</p>
+        <p class="footer-credit">Made with ☕ and Java by the community</p>
+    </div>
+</footer>
+
+  <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=7dff2945-0147-4e61-a0af-8440774fcc7d" />
+</body>
+
+</html>

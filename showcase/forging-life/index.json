@@ -1,0 +1,13 @@
+{
+  
+  "title": "Forging Life",
+  "summary": "Forging Life is a survival role-playing game where you decide your own path. Realism is the keyword. Can you survive long enough to become someone other people find useful? You start with nothing — what will you do? Craft, build, farm, trade, and carve your place in a hostile world where every choice matters.",
+  "images": ["/images/showcase/forging-life/ss0.webp","/images/showcase/forging-life/ss1.webp","/images/showcase/forging-life/ss2.webp","/images/showcase/forging-life/ss3.webp","/images/showcase/forging-life/ss4.webp","/images/showcase/forging-life/ss6.webp"],
+  "tags": ["showcase","indiedb"],
+  "authors": ["DGC Productions"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/forging-life"
+}

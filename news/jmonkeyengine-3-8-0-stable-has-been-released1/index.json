@@ -1,0 +1,26 @@
+
+{
+    "responseTitle":"jMonkeyEngine  | JMonkeyEngine 3.8.0-stable has been released",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"fe9bbf4e73fec8f943debe602c177469",
+
+    "title":"JMonkeyEngine 3.8.0-stable has been released",
+    "content":"\u003cdiv\u003eWe are excited to announce the release of JMonkeyEngine 3.8.0-stable.\u003cbr /\u003e\u003cbr /\u003eThis new version adds many new features and bug fixes, but most notably, this version features upgrades to the engine's PBR shaders and also introduces a new API to support the creation of custom Render Pipelines.\u003cbr /\u003e\u003cbr /\u003eThe changes to the PBR shader have come with some minor improvements to the rendering quality, but the bulk of the changes were primarily related to cleaning up the codebase. The PBR shaders have been heavily refactored so that the engine's stock PBR shader (and any user created forks) and stock PBR Terrain shaders utilize a new modular GLSL library, which has drastically reduced the amount of redundant shader code and has ultimately made JME's shaders easier to fork and maintain.\u003cbr /\u003e\u003cbr /\u003eWe've also added a new API for creating custom render pipelines, giving JME devs more control and making it easier than ever before to fine tune the rendering pipeline to match your project's specific needs. Check out this \u003ca href=\"https://github.com/jMonkeyEngine/wiki/blob/master/docs/modules/core/pages/renderer/render_pipeline.adoc\"\u003eArticle About Custom Render Pipelines\u003c/a\u003e for a more in depth look into this new addition.\u003cbr /\u003e\u003cbr /\u003eHere are the \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.8.0-stable\"\u003eFull Release Notes for 3.8.0-stable\u003c/a\u003e if you are interested in seeing everything that has changed.\u003cbr /\u003e\u003cbr /\u003eWith 3.8 all finished up, development for 3.9.0 has begun and is already being discussed in the \u003ca href=\"https://opencollective.com/redirect?url=https%3A%2F%2Fhub.jmonkeyengine.org%2Fc%2Fdevelopment-discussion-jme3%2Fengine-dev%2F64\"\u003eEngine Development category on JmonkeyEngineHub.\u003c/a\u003e\u003cbr /\u003e\u003cbr /\u003eThank you for your financial contribution(s) to the JMonkeyEngine project! \u003c/div\u003e\n",
+    "contentPlain":"We are excited to announce the release of JMonkeyEngine 3.8.0-stable.\nThis new version adds many new features and bug fixes, but most notably, this version features upgrades to the engine's PBR shaders and also introduces a new API to support the creation of custom Render Pipelines.\nThe changes to the PBR shader have come with some minor improvements to the rendering quality, but the bulk of the changes were primarily related to cleaning up the codebase. The PBR shaders have been heavily refactored so that the engine's stock PBR shader (and any user created forks) and stock PBR Terrain shaders utilize a new modular GLSL library, which has drastically reduced the amount of redundant shader code and has ultimately made JME's shaders easier to fork and maintain.\nWe've also added a new API for creating custom render pipelines, giving JME devs more control and making it easier than ever before to fine tune the rendering pipeline to match your project's specific needs. Check out this Article About Custom Render Pipelines for a more in depth look into this new addition.\nHere are the Full Release Notes for 3.8.0-stable if you are interested in seeing everything that has changed.\nWith 3.8 all finished up, development for 3.9.0 has begun and is already being discussed in the Engine Development category on JmonkeyEngineHub.\nThank you for your financial contribution(s) to the JMonkeyEngine project! " ,
+    "url":"https://jmonkeyengine.org/news/jmonkeyengine-3-8-0-stable-has-been-released1/",
+
+
+    
+    "summary":"We are excited to announce the release of JMonkeyEngine 3.8.0-stable. This new version adds many new features and bug fixes, but most notably, this version features upgrades to the engine's PBR shaders and also introduces a new API to suppo...",
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}
+

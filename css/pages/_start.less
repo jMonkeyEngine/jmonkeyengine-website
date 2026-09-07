@@ -1,0 +1,160 @@
+// === START PAGE QUICKSTART ===
+.highlightedCl {
+    .accent-pill();
+    border-radius: 10px; padding: 0.85rem 1.5rem; font-weight: 600;
+    cursor: pointer; .inline-center();
+    transition: all 0.25s ease;
+}
+.highlightedCl:hover { background: @accent; color: #000; }
+#qsbuttons {
+    max-width: 980px;
+    margin: 0 auto 1.5rem;
+    padding: 1.4rem;
+    border: 1px solid rgba(255,208,0,0.12);
+    background: linear-gradient(180deg, rgba(23,23,27,0.86), rgba(17,17,20,0.92));
+    border-radius: 18px;
+    color: @text-secondary;
+    text-align: center;
+}
+#qsbuttons > p, #qsbuttons p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+#qsbuttons .qsbtn {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.06);
+    color: @text-primary;
+    border-radius: 999px;
+    padding: 0.78rem 1.2rem;
+    margin: 0.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 190px;
+    min-width: 190px;
+    .inline-center();
+    justify-content: center;
+    line-height: 1.1;
+    flex-grow: 1;
+}
+#qsbuttons .qsbtn:hover,
+#qsbuttons .qsbtn.highlightedCl:hover {
+    color: @accent !important;
+    border-color: @accent !important;
+    background: @accent-dim !important;
+    transform: translateY(-1px);
+}
+#qsbuttons .qsbtn.highlightedCl {
+    color: @accent !important;
+    background: rgba(255, 208, 0, 0.08) !important;
+    border-color: rgba(255, 208, 0, 0.24) !important;
+    box-shadow: none;
+}
+.qspage {
+    scroll-margin-top: 6rem;
+    background: rgba(23,23,27,0.58);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    padding: 1.6rem;
+}
+.qspage--center { text-align: center; }
+.editor-card-grid {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1.2rem;
+}
+.editor-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 16px;
+    color: @text-primary !important;
+    text-decoration: none;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.editor-card:hover,
+.editor-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(255,208,0,0.34);
+    background: rgba(255,208,0,0.075);
+    outline: none;
+}
+.editor-card__icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: #000;
+    background: @accent;
+    box-shadow: 0 10px 28px rgba(255,208,0,0.18);
+}
+.editor-card__copy {
+    display: grid;
+    gap: 0.22rem;
+}
+.editor-card__copy strong {
+    color: @text-primary;
+    font-size: 1rem;
+}
+.editor-card__copy small {
+    color: @text-secondary;
+    line-height: 1.45;
+}
+.editor-card__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: @accent;
+    font-size: 0.85rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+.editor-card__action i {
+    width: 1em;
+    text-align: center;
+    line-height: 1;
+}
+#jme-initializer {
+    width: 100%;
+    height: 800px;
+    margin-top: 1em;
+    border: 0;
+}
+
+.content-article--start {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+}
+.content-article--start .article-body { text-align: center; }
+.content-article--start .qspage { text-align: left; }
+.content-article--start #qsbuttons { text-align: center; }
+
+.readMore { color: @accent; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 1rem; }
+.readMore:hover { text-decoration: underline; }
+
+@media (max-width: 720px) {
+    #qsbuttons .qsbtn {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+        margin: 0.12rem 0;
+        padding: 0.58rem 1rem;
+        box-sizing: border-box;
+    }
+    .editor-card {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+    .editor-card__action {
+        grid-column: ~"2 / -1";
+    }
+}

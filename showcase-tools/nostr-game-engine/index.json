@@ -1,0 +1,12 @@
+{
+  
+  "title": "Nostr Game Engine",
+  "summary": "A game engine and framework for building games and applications integrated with the Nostr ecosystem.",
+  "images": ["/images/showcase-tools/nostr-game-engine/0.png","/images/showcase-tools/nostr-game-engine/nge-v0.gif","/images/showcase-tools/nostr-game-engine/nge-v01.gif","/images/showcase-tools/nostr-game-engine/web.webp"],
+  "tags": ["Engine","Nostr","P2P"],
+  "tool_type": "Engine",
+  "external_link": "https://ngengine.org/",
+  "github_link": "https://github.com/NostrGameEngine/ngengine",
+  "indiedb_link": null,
+  "website_link": null
+}

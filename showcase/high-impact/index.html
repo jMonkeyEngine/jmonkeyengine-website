@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jMonkeyEngine | High Impact</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description" content="jMonkeyEngine is a modern developer friendly game engine written primarily in Java.">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  
+  <link rel="stylesheet" href="/css/style.css?v=1788749127">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="High Impact">
+<meta name="twitter:description" content="High Impact is a first-person shooter with very detailed worlds featuring platforming and puzzle rooms. Navigate through alien environments, fight spider monsters and golem bosses, jump between buildings, and solve underwater puzzles. Includes floating pole grabbing for vertical gameplay, slightly obscured targets to find, and an objective to reach the checkered finish line.">
+<meta name="twitter:image" content="https://jmonkeyengine.org/images/showcase/high-impact/ss0.webp">
+<meta property="og:title" content="High Impact">
+<meta property="og:description" content="High Impact is a first-person shooter with very detailed worlds featuring platforming and puzzle rooms. Navigate through alien environments, fight spider monsters and golem bosses, jump between buildings, and solve underwater puzzles. Includes floating pole grabbing for vertical gameplay, slightly obscured targets to find, and an objective to reach the checkered finish line.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://jmonkeyengine.org/showcase/high-impact/">
+<meta property="og:image" content="https://jmonkeyengine.org/images/showcase/high-impact/ss0.webp">
+<meta property="article:section" content="showcase">
+<meta itemprop="name" content="High Impact">
+<meta itemprop="description" content="High Impact is a first-person shooter with very detailed worlds featuring platforming and puzzle rooms. Navigate through alien environments, fight spider monsters and golem bosses, jump between buildings, and solve underwater puzzles. Includes floating pole grabbing for vertical gameplay, slightly obscured targets to find, and an objective to reach the checkered finish line.">
+<meta itemprop="datePublished" content="2024-01-01T00:00:00Z">
+<meta itemprop="dateModified" content="2024-01-01T00:00:00Z">
+<meta itemprop="image" content="https://jmonkeyengine.org/images/showcase/high-impact/ss0.webp">
+
+  
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x6jmsl7kyo");
+  </script>
+
+</head>
+
+<body>
+  
+  
+  <header class="header">
+    <div class="topmenu">
+        <div class="topmenu-left" id="site-menu">
+            <nav aria-label="Primary navigation">
+                <ul>
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/showcase"><i class="fas fa-images"></i> Showcase</a></li>
+                    <li><a href="https://hub.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fab fa-discourse"></i> Discussions</a></li>
+                    <li><a href="https://library.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-puzzle-piece"></i> Library</a></li>
+                    <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-book"></i> Docs</a></li>
+                    
+                    <li><a href="https://shop.jmonkeyengine.org/" target="_blank" rel="noopener noreferrer"><i class="fas fa-bag-shopping"></i> Merch</a></li>
+                    
+                    <li><a href="/contact/"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-social-links" aria-label="Social links">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i><span>GitHub</span></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" title="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+                <a href="https://discord.gg/Rv8sfVu" target="_blank" title="Discord" rel="noopener noreferrer"><i class="fab fa-discord"></i><span>Discord</span></a>
+            </div>
+        </div>
+        <div class="topmenu-right">
+            <div class="social-links">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" title="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/Rv8sfVu" target="_blank" title="Discord" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
+            </div>
+            <a href="https://github.com/jMonkeyEngine/jmonkeyengine" class="star-repo-btn star-repo-memory" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Star repo</a>
+            <a href="/donate/" class="donate-btn donate-btn--banana">
+                <span class="donate-btn__label"><i class="fas fa-donate"></i> Donate</span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="site-menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const STAR_REPO_STORAGE_KEY = 'jme-star-repo-highlighted';
+    const button = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('site-menu');
+    const starRepoButtons = Array.from(document.querySelectorAll('.star-repo-memory'));
+    const applyStarRepoState = function (active) {
+        starRepoButtons.forEach(function (starRepoButton) {
+            starRepoButton.classList.toggle('star-repo-memory--active', active);
+            if (starRepoButton.classList.contains('star-repo-btn')) {
+                starRepoButton.classList.toggle('star-repo-btn--active', active);
+            }
+        });
+    };
+    try {
+        if (localStorage.getItem(STAR_REPO_STORAGE_KEY) === '1') {
+            applyStarRepoState(true);
+        }
+    } catch (_) {
+        
+    }
+
+    const setOpen = function (open) {
+        menu.classList.toggle('is-open', open);
+        button.classList.toggle('is-open', open);
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        button.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    };
+
+    const clearStarRepoPersistedState = function () {
+        try {
+            localStorage.removeItem(STAR_REPO_STORAGE_KEY);
+        } catch (_) {
+            
+        }
+        applyStarRepoState(false);
+    };
+
+    if (starRepoButtons.length) {
+        starRepoButtons.forEach(function (starRepoButton) {
+            starRepoButton.addEventListener('click', function () {
+                try {
+                    localStorage.setItem(STAR_REPO_STORAGE_KEY, '1');
+                } catch (_) {
+                    
+                }
+                applyStarRepoState(true);
+            });
+            starRepoButton.addEventListener('pointerdown', function (event) {
+                if (event && (event.button === 2 || event.which === 3)) {
+                    event.preventDefault();
+                    clearStarRepoPersistedState();
+                }
+            });
+            starRepoButton.addEventListener('contextmenu', function (event) {
+                event.preventDefault();
+                clearStarRepoPersistedState();
+            });
+        });
+    }
+
+    if (!button || !menu) {
+        return;
+    }
+
+    button.addEventListener('click', function (event) {
+        event.stopPropagation();
+        setOpen(!menu.classList.contains('is-open'));
+    });
+    menu.addEventListener('click', function (event) {
+        if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', function (event) {
+        if (!menu.contains(event.target) && !button.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') setOpen(false);
+    });
+});
+</script>
+
+  <main>
+    
+<section class="game-page">
+    
+    
+        
+    
+    
+    
+    
+    
+    
+    
+        
+            
+            
+        
+    
+    
+    
+    
+    
+        
+    
+    
+    
+        
+    
+
+    
+    <div class="game-page-hero">
+        
+        <div class="game-page-hero-bg" style="background-image: url('/images/showcase/high-impact/ss0.webp');"></div>
+        
+        <div class="game-page-hero-overlay"></div>
+        <div class="game-page-hero-content">
+            <div class="game-hero-badges">
+                <span class="hero-badge author"><i class="fas fa-user"></i>pixelapp</span>
+            <span class="hero-badge tag">steam</span>
+            </div>
+            <h1 class="game-hero-title">High Impact</h1>
+            <p class="game-hero-summary">High Impact is a first-person shooter with very detailed worlds featuring platforming and puzzle rooms. Navigate through alien environments, fight spider monsters and golem bosses, jump between buildings, and...</p>
+        </div>
+    </div>
+
+    <div class="game-page-body">
+
+        
+        
+        
+        <div class="game-section platforms-section">
+            <div class="game-section-label"><i class="fas fa-desktop"></i> Available on</div>
+            
+                <div class="platforms-row"><span class="platform-chip windows"><i class="fab fa-windows"></i>Windows
+        </span></div>
+            
+        </div>
+        
+
+        
+        
+        
+        <div class="game-section links-section">
+            <div class="game-section-label"><i class="fas fa-link"></i> Links</div>
+            <div class="links-grid">
+                <a href="https://store.steampowered.com/app/3059050/High_Impact/" class="link-card link-steam" target="_blank" rel="noopener noreferrer">
+    <div class="link-card-icon"><i class="fab fa-steam"></i></div>
+    <div class="link-card-info">
+        <div class="link-card-name">Steam</div>
+        <div class="link-card-sub">View on Steam Store</div>
+    </div>
+    <div class="link-card-arrow"><i class="fas fa-arrow-right"></i></div>
+</a>
+                
+                
+                
+                
+                
+                
+                
+            </div>
+        </div>
+        
+
+        
+        
+        
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+
+        <div class="game-section screenshots-section">
+    <div class="game-section-label"><i class="fas fa-images"></i> Screenshots</div>
+    <div class="screenshots-carousel" id="screenshots-carousel">
+        <button class="carousel-btn carousel-prev" type="button" data-carousel-target="screenshots-carousel" data-carousel-dir="-1" title="Previous">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="screenshots-track"><button class="screenshot-item screenshot-lightbox-trigger" type="button" data-full="/images/showcase/high-impact/ss1.webp" data-media-type="image" aria-label="Open media preview"><img src="/images/showcase/high-impact/ss1.webp" alt="Screenshot" loading="lazy"></button><button class="screenshot-item screenshot-lightbox-trigger" type="button" data-full="/images/showcase/high-impact/ss2.webp" data-media-type="image" aria-label="Open media preview"><img src="/images/showcase/high-impact/ss2.webp" alt="Screenshot" loading="lazy"></button><button class="screenshot-item screenshot-lightbox-trigger" type="button" data-full="/images/showcase/high-impact/ss3.webp" data-media-type="image" aria-label="Open media preview"><img src="/images/showcase/high-impact/ss3.webp" alt="Screenshot" loading="lazy"></button><button class="screenshot-item screenshot-lightbox-trigger" type="button" data-full="/images/showcase/high-impact/ss5.webp" data-media-type="image" aria-label="Open media preview"><img src="/images/showcase/high-impact/ss5.webp" alt="Screenshot" loading="lazy"></button><button class="screenshot-item screenshot-lightbox-trigger" type="button" data-full="/images/showcase/high-impact/ss6.webp" data-media-type="image" aria-label="Open media preview"><img src="/images/showcase/high-impact/ss6.webp" alt="Screenshot" loading="lazy"></button></div>
+        <button class="carousel-btn carousel-next" type="button" data-carousel-target="screenshots-carousel" data-carousel-dir="1" title="Next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>
+
+        
+        <div class="game-section game-page-story">
+            <div class="game-section-label"><i class="fas fa-book-open"></i> About this game</div>
+            <div class="article-body">High Impact is a first-person shooter with very detailed worlds featuring platforming and puzzle rooms. Navigate through alien environments, fight spider monsters and golem bosses, jump between buildings, and solve underwater puzzles. Includes floating pole grabbing for vertical gameplay, slightly obscured targets to find, and an objective to reach the checkered finish line.</div>
+        </div>
+        
+
+    </div>
+</section>
+<div class="showcase-lightbox" id="showcase-lightbox" aria-hidden="true">
+    <button class="showcase-lightbox__close" type="button" aria-label="Close screenshot preview">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="showcase-lightbox__zoom-controls" aria-label="Image zoom controls" hidden>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="out" aria-label="Zoom out"><i class="fas fa-search-minus"></i></button>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="reset" aria-label="Reset zoom"><i class="fas fa-compress-arrows-alt"></i></button>
+        <button class="showcase-lightbox__zoom-btn" type="button" data-lightbox-zoom="in" aria-label="Zoom in"><i class="fas fa-search-plus"></i></button>
+    </div>
+    <button class="showcase-lightbox__backdrop" type="button" aria-label="Close screenshot preview"></button>
+    <figure class="showcase-lightbox__figure">
+        <img class="showcase-lightbox__image" src="" alt="Screenshot preview">
+        <video class="showcase-lightbox__video" controls playsinline></video>
+        <iframe class="showcase-lightbox__youtube" title="Video preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <figcaption class="showcase-lightbox__meta" hidden>
+            <p class="showcase-lightbox__meta-description"></p>
+            <a class="showcase-lightbox__meta-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </figcaption>
+    </figure>
+</div>
+
+<script>
+(function () {
+    if (window.__showcaseLightboxReady) return;
+    window.__showcaseLightboxReady = true;
+
+    function getLightbox() {
+        return document.getElementById('showcase-lightbox');
+    }
+
+    var zoomState = {
+        scale: 1,
+        x: 0,
+        y: 0,
+        dragging: false,
+        dragged: false,
+        dragX: 0,
+        dragY: 0,
+        startX: 0,
+        startY: 0
+    };
+
+    function getZoomElements(lightbox) {
+        return {
+            img: lightbox && lightbox.querySelector('.showcase-lightbox__image'),
+            controls: lightbox && lightbox.querySelector('.showcase-lightbox__zoom-controls')
+        };
+    }
+
+    function applyZoom(lightbox) {
+        var zoom = getZoomElements(lightbox);
+        if (!zoom.img) return;
+        zoom.img.style.transform = 'translate(' + zoomState.x + 'px, ' + zoomState.y + 'px) scale(' + zoomState.scale + ')';
+        zoom.img.classList.toggle('is-zoomed', zoomState.scale > 1.01);
+        lightbox.classList.toggle('is-zoomed', zoomState.scale > 1.01);
+    }
+
+    function resetZoom(lightbox) {
+        zoomState.scale = 1;
+        zoomState.x = 0;
+        zoomState.y = 0;
+        zoomState.dragging = false;
+        zoomState.dragged = false;
+        applyZoom(lightbox);
+    }
+
+    function setZoom(lightbox, nextScale, originX, originY) {
+        var previous = zoomState.scale;
+        var scale = Math.max(1, Math.min(4, nextScale));
+        if (scale === 1) {
+            resetZoom(lightbox);
+            return;
+        }
+
+        if (originX != null && originY != null && previous > 0) {
+            zoomState.x = originX - ((originX - zoomState.x) * scale / previous);
+            zoomState.y = originY - ((originY - zoomState.y) * scale / previous);
+        }
+
+        zoomState.scale = scale;
+        applyZoom(lightbox);
+    }
+
+    function setZoomControlsVisible(lightbox, visible) {
+        var controls = getZoomElements(lightbox).controls;
+        if (controls) controls.hidden = !visible;
+    }
+
+    function isSafeLink(link) {
+        if (!link) return false;
+        try {
+            var url = new URL(link, window.location.href);
+            return url.protocol === 'http:' || url.protocol === 'https:' || url.protocol === 'mailto:' || link.charAt(0) === '/';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function setLightboxMeta(lightbox, description, link) {
+        var meta = lightbox.querySelector('.showcase-lightbox__meta');
+        var metaDescription = lightbox.querySelector('.showcase-lightbox__meta-description');
+        var metaLink = lightbox.querySelector('.showcase-lightbox__meta-link');
+        if (!meta || !metaDescription || !metaLink) return;
+
+        metaDescription.textContent = description || '';
+        metaDescription.style.display = description ? '' : 'none';
+        metaLink.textContent = link || '';
+        metaLink.style.display = isSafeLink(link) ? '' : 'none';
+        if (isSafeLink(link)) {
+            metaLink.href = link;
+        } else {
+            metaLink.removeAttribute('href');
+        }
+
+        var hasMeta = Boolean(description) || isSafeLink(link);
+        meta.hidden = !hasMeta;
+        lightbox.classList.toggle('has-meta', hasMeta);
+    }
+
+    function openLightbox(src, alt, mediaType, metaData) {
+        var lightbox = getLightbox();
+        if (!lightbox || !src) return;
+        var img = lightbox.querySelector('.showcase-lightbox__image');
+        var video = lightbox.querySelector('.showcase-lightbox__video');
+        var youtube = lightbox.querySelector('.showcase-lightbox__youtube');
+        if (!img || !video || !youtube) return;
+        resetZoom(lightbox);
+        youtube.removeAttribute('src');
+        youtube.style.display = 'none';
+        if (mediaType === 'video') {
+            img.removeAttribute('src');
+            img.style.display = 'none';
+            setZoomControlsVisible(lightbox, false);
+            video.src = src;
+            video.style.display = 'block';
+            video.load();
+        } else if (mediaType === 'youtube') {
+            img.removeAttribute('src');
+            img.style.display = 'none';
+            setZoomControlsVisible(lightbox, false);
+            video.pause();
+            video.removeAttribute('src');
+            video.style.display = 'none';
+            youtube.src = 'https://www.youtube-nocookie.com/embed/' + String(src || '').replace(/^youtube:/i, '') + '?autoplay=1';
+            youtube.style.display = 'block';
+        } else {
+            video.pause();
+            video.removeAttribute('src');
+            video.style.display = 'none';
+            img.src = src;
+            img.alt = alt || 'Screenshot preview';
+            img.style.display = 'block';
+            setZoomControlsVisible(lightbox, true);
+        }
+        setLightboxMeta(lightbox, metaData && metaData.description, metaData && metaData.link);
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('showcase-lightbox-open');
+    }
+
+    function closeLightbox() {
+        var lightbox = getLightbox();
+        if (!lightbox) return;
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('showcase-lightbox-open');
+        var img = lightbox.querySelector('.showcase-lightbox__image');
+        if (img) img.removeAttribute('src');
+        resetZoom(lightbox);
+        setZoomControlsVisible(lightbox, false);
+        var video = lightbox.querySelector('.showcase-lightbox__video');
+        if (video) {
+            video.pause();
+            video.removeAttribute('src');
+        }
+        var youtube = lightbox.querySelector('.showcase-lightbox__youtube');
+        if (youtube) youtube.removeAttribute('src');
+        setLightboxMeta(lightbox, '', '');
+    }
+
+    document.addEventListener('click', function (event) {
+        var trigger = event.target.closest('.screenshot-lightbox-trigger');
+        if (trigger) {
+            event.preventDefault();
+            openLightbox(
+                trigger.getAttribute('data-full') || trigger.getAttribute('href'),
+                trigger.querySelector('img')?.alt,
+                trigger.getAttribute('data-media-type'),
+                {
+                    description: trigger.getAttribute('data-experiment-description') || '',
+                    link: trigger.getAttribute('data-experiment-link') || ''
+                }
+            );
+            return;
+        }
+        var zoomAction = event.target.closest('[data-lightbox-zoom]');
+        if (zoomAction) {
+            event.preventDefault();
+            var lightbox = getLightbox();
+            if (!lightbox) return;
+            var action = zoomAction.getAttribute('data-lightbox-zoom');
+            if (action === 'reset') resetZoom(lightbox);
+            if (action === 'in') setZoom(lightbox, zoomState.scale + 0.5);
+            if (action === 'out') setZoom(lightbox, zoomState.scale - 0.5);
+            return;
+        }
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (image && image.style.display !== 'none') {
+            if (zoomState.dragged) {
+                zoomState.dragged = false;
+                return;
+            }
+            var box = image.getBoundingClientRect();
+            var originX = event.clientX - box.left - box.width / 2;
+            var originY = event.clientY - box.top - box.height / 2;
+            setZoom(getLightbox(), zoomState.scale > 1.01 ? 1 : 2, originX, originY);
+            return;
+        }
+        if (event.target.closest('.showcase-lightbox__close') || event.target.closest('.showcase-lightbox__backdrop')) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('wheel', function (event) {
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (!image || image.style.display === 'none') return;
+        var lightbox = getLightbox();
+        if (!lightbox || !lightbox.classList.contains('is-open')) return;
+        event.preventDefault();
+        var box = image.getBoundingClientRect();
+        var originX = event.clientX - box.left - box.width / 2;
+        var originY = event.clientY - box.top - box.height / 2;
+        var delta = event.deltaY < 0 ? 0.25 : -0.25;
+        setZoom(lightbox, zoomState.scale + delta, originX, originY);
+    }, { passive: false });
+
+    document.addEventListener('pointerdown', function (event) {
+        var image = event.target.closest('.showcase-lightbox__image');
+        if (!image || zoomState.scale <= 1.01) return;
+        zoomState.dragging = true;
+        zoomState.dragged = false;
+        zoomState.dragX = event.clientX;
+        zoomState.dragY = event.clientY;
+        zoomState.startX = zoomState.x;
+        zoomState.startY = zoomState.y;
+        image.setPointerCapture(event.pointerId);
+    });
+
+    document.addEventListener('pointermove', function (event) {
+        if (!zoomState.dragging) return;
+        zoomState.x = zoomState.startX + event.clientX - zoomState.dragX;
+        zoomState.y = zoomState.startY + event.clientY - zoomState.dragY;
+        if (Math.abs(event.clientX - zoomState.dragX) > 3 || Math.abs(event.clientY - zoomState.dragY) > 3) {
+            zoomState.dragged = true;
+        }
+        applyZoom(getLightbox());
+    });
+
+    document.addEventListener('pointerup', function () {
+        zoomState.dragging = false;
+    });
+
+    document.addEventListener('pointercancel', function () {
+        zoomState.dragging = false;
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === '0') resetZoom(getLightbox());
+        if (event.key === '+' || event.key === '=') setZoom(getLightbox(), zoomState.scale + 0.5);
+        if (event.key === '-' || event.key === '_') setZoom(getLightbox(), zoomState.scale - 0.5);
+    });
+})();
+</script>
+
+
+<script src="/js/showcase-carousel.js" defer></script>
+
+
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <img src="/images/jme-logo.webp" alt="jMonkeyEngine">
+            <p>The modern game engine for Java developers. Open source, BSD-3 licensed, since 2004.</p>
+            <div class="footer-social footer-social--brand">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://hub.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-comments"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Engine</h4>
+            <ul>
+                <li><a href="/start/">Get Started</a></li>
+                <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+                <li><a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Community</h4>
+            <ul>
+                <li><a href="https://hub.jmonkeyengine.org">Forum</a></li>
+                <li><a href="https://discord.gg/jmonkeyengine" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer">Wiki</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contribute</h4>
+            <ul>
+                <li><a href="/license/">License (BSD-3)</a></li>
+                <li><a href="https://github.com/jMonkeyEngine/jmonkeyengine/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+                <li><a href="/donate/">Donate</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2004–2026 jMonkeyEngine. Released under BSD 3-Clause License.</p>
+        <p class="footer-credit">Made with ☕ and Java by the community</p>
+    </div>
+</footer>
+
+  <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=7dff2945-0147-4e61-a0af-8440774fcc7d" />
+</body>
+
+</html>

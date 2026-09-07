@@ -1,0 +1,93 @@
+{
+    "version": "v1.0.0",
+    "entity": {
+        "type": "organisation",
+        "role": "owner",
+        "name": "jMonkeyEngine",
+        "email": "contact@jmonkeyengine.org",
+        "description": "jMonkeyEngine allows developers to create games and other 3D visualisation software for Windows, Linux, Mac, Android and the web. The engine includes a powerful scene graph api, custom shader support, physics, GUI, networking and more. jMonkeyEngine also hosts a large ecosystem of community supported libraries and extensions that further expand the capabilities of the engine.",
+        "webpageUrl": {
+            "url": "https://jmonkeyengine.org",
+            "wellKnown": "https://jmonkeyengine.org/.well-known/funding-manifest-urls"
+        }
+    },
+    "projects": [{
+        "guid": "jme",
+        "name": "jMonkeyEngine",
+        "description": "jMonkeyEngine allows developers to create games and other 3D visualisation software for Windows, Linux, Mac, Android and the web. The engine includes a powerful scene graph api, custom shader support, physics, GUI, networking and more. jMonkeyEngine also hosts a large ecosystem of community supported libraries and extensions that further expand the capabilities of the engine.",
+        "webpageUrl": {
+            "url": "https://jmonkeyengine.org",
+            "wellKnown": "https://jmonkeyengine.org/.well-known/funding-manifest-urls"
+        },
+        "repositoryUrl": {
+            "url": "https://github.com/jMonkeyEngine/jmonkeyengine",
+            "wellKnown": "https://github.com/jMonkeyEngine/jmonkeyengine/blob/master/.github/.well-known/funding-manifest-urls"
+        },
+        "licenses": [
+            "spdx:BSD-3-Clause"
+        ],
+        "tags": [
+            "gaming",
+            "development",
+            "graphics",
+            "developer-tools",
+            "virtual-reality"
+        ]
+    }],
+    "funding": {
+        "channels": [{
+            "guid": "opencollective",
+            "type": "payment-provider",
+            "address": "https://opencollective.com/jmonkeyengine",
+            "description": "The fiscal host for the organization"
+        }],
+        "plans": [{
+            "guid": "jme4",
+            "status": "active",
+            "name": "Monthly funding plan",
+            "description": "Fund the ongoing development, modernization, and evolution of jMonkeyEngine.",
+            "amount": 15000,
+            "currency": "USD",
+            "frequency": "monthly",
+            "channels": ["opencollective"]
+        }],
+        "history": [
+            {
+                "year": 2020,
+                "income": 1866.99,
+                "expenses": 0,
+                "currency": "USD",
+                "description": "Community donations for hosting and maintenance"
+            },
+             {
+                "year": 2021,
+                "income": 1062.17,
+                "expenses": 10.25,
+                "currency": "USD",
+                "description": "Community donations for hosting and maintenance"
+            },
+              {
+                "year": 2022,
+                "income": 944.37,
+                "expenses": 104.96,
+                "currency": "USD",
+                "description": "Community donations for hosting and maintenance"
+            },
+             {
+                "year": 2023,
+                "income": 881.34,
+                "expenses": 103.98,
+                "currency": "USD",
+                "description": "Community donations for hosting and maintenance"
+            },
+             {
+                "year": 2024,
+                "income": 1030.00,
+                "expenses": 104.61,
+                "currency": "USD",
+                "description": "Community donations for hosting and maintenance"
+            }
+        ]
+    }
+}
+

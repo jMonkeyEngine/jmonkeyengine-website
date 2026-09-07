@@ -1,0 +1,13 @@
+
+
+
+
+
+
+    
+
+    
+
+
+{"apiVersion":"1.0","funds":[{"description":"Flexible support. The core team allocates funds where they are most needed.","icon":"fa-solid fa-heart","id":"main","name":"Main fund","primary":true,"slug":"jmonkeyengine","url":"https://opencollective.com/jmonkeyengine"},{"description":"Dedicated only to servers, infrastructure and community hosting costs","icon":"fa-solid fa-server","id":"jmonkeyengine-hosting","name":"Hosting","primary":false,"slug":"jmonkeyengine-hosting","url":"https://opencollective.com/jmonkeyengine/projects/jmonkeyengine-hosting","website":""}],"generatedAt":"2026-09-07T02:45:18.596114+00:00","response":"donationFunds","source":{"collective":"jmonkeyengine","endpoint":"https://api.opencollective.com/graphql/v2","provider":"opencollective"},"status":{"errors":[],"stale":false},"summary":{"funds":2,"projectFunds":1},"title":"Fund jMonkeyEngine","url":"https://jmonkeyengine.org/donate/"}
+
