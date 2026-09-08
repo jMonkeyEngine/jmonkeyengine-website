@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Showcase tools on jMonkeyEngine</title>
+		<link>https://jmonkeyengine.org/showcase-tools/</link>
+		<description>Recent content in Showcase tools on jMonkeyEngine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 16 Jul 2026 17:30:10 +0000</lastBuildDate>
+		
+			<atom:link href="https://jmonkeyengine.org/showcase-tools/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>EnvisionPlay</title>
+				<link>https://jmonkeyengine.org/showcase-tools/envisionplay/</link>
+				<pubDate>Thu, 16 Jul 2026 17:30:10 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase-tools/envisionplay/</guid>
+				<description>EnvisionPlay is a visual game editor designed to make creating 2D and 3D games simple and accessible. It provides an intuitive workflow that allows developers to focus on building gameplay instead of writing boilerplate code.</description>
+			</item>
+			<item>
+				<title>Nostr Game Engine</title>
+				<link>https://jmonkeyengine.org/showcase-tools/nostr-game-engine/</link>
+				<pubDate>Sat, 30 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase-tools/nostr-game-engine/</guid>
+				<description>A game engine and framework for building games and applications integrated with the Nostr ecosystem.</description>
+			</item>
+			<item>
+				<title>Exotic Matter Engine</title>
+				<link>https://jmonkeyengine.org/showcase-tools/exotic-matter-engine/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase-tools/exotic-matter-engine/</guid>
+				<description>A custom voxel/sandbox engine and technology stack built around jMonkeyEngine for the Exotic Matter project.</description>
+			</item>
+			<item>
+				<title>jMonkeyEngine SDK</title>
+				<link>https://jmonkeyengine.org/showcase-tools/jmonkeyengine-sdk/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase-tools/jmonkeyengine-sdk/</guid>
+				<description>NetBeans-based development environment for jMonkeyEngine projects: templates, scene tooling, asset workflow helpers, and desktop project setup.</description>
+			</item>
+			<item>
+				<title>Maud</title>
+				<link>https://jmonkeyengine.org/showcase-tools/maud/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase-tools/maud/</guid>
+				<description>A dedicated editor for jMonkeyEngine 3D models, focused on inspecting and editing assets outside the game runtime.</description>
+			</item>
+			<item>
+				<title>SceneMax3D</title>
+				<link>https://jmonkeyengine.org/showcase-tools/scenemax3d/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase-tools/scenemax3d/</guid>
+				<description>A desktop-based game development environment designed around a visual workflow and a custom scripting language.</description>
+			</item>
+	</channel>
+</rss>

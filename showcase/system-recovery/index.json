@@ -1,0 +1,13 @@
+{
+  
+  "title": "System Recovery",
+  "summary": "System Recovery is a top-down-view arcade shooter with a computer virus theme. Time to show those nasties who\u0026rsquo;s really in control! Fight through waves of digital enemies, collect power-ups, and restore the system. A retro-styled arcade shooter with modern polish.",
+  "images": ["/images/showcase/system-recovery/ss0.webp","/images/showcase/system-recovery/ss1.webp","/images/showcase/system-recovery/ss2.webp","/images/showcase/system-recovery/ss5.webp","/images/showcase/system-recovery/ss6.webp","/images/showcase/system-recovery/ss7.webp"],
+  "tags": ["showcase","indiedb"],
+  "authors": ["PoshDan"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/system-recovery"
+}

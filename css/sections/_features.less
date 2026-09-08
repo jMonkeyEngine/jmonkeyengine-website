@@ -1,0 +1,85 @@
+// === FEATURES SECTION ===
+.features-section {
+    padding: 7rem 0; background: @bg-primary;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+.feature-card {
+    background: @bg-card; border: 1px solid @border;
+    border-radius: 16px; padding: 1.75rem;
+    .focus-transition(0.3s);
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+}
+.feature-card::before,
+.news-card::before,
+.contribute-card::before,
+.game-card::before {
+    .card-top-rule();
+}
+.feature-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255,208,0,0.03) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.feature-card:hover {
+    border-color: @border-accent;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 40px rgba(255,208,0,0.06);
+}
+.feature-card:hover::after { opacity: 1; }
+.feature-card--pending {
+    background: #19191b;
+    border-color: rgba(255,255,255,0.08);
+    filter: grayscale(0.85);
+}
+.feature-card--pending::before { background: rgba(255,255,255,0.22); }
+.feature-card--pending::after { background: linear-gradient(135deg, rgba(255,255,255,0.035) 0%, transparent 60%); }
+.feature-card--pending:hover {
+    border-color: rgba(255,255,255,0.18);
+    box-shadow: 0 18px 42px rgba(0,0,0,0.34);
+}
+.feature-card--pending .feature-icon {
+    background: rgba(255,255,255,0.055);
+    border-color: rgba(255,255,255,0.09);
+}
+.feature-card--pending .feature-icon i,
+.feature-card--pending .feature-title,
+.feature-card--pending .feature-desc {
+    color: @text-muted;
+}
+.feature-icon {
+    .icon-tile(48px, 12px);
+    margin-bottom: 1.25rem; flex-shrink: 0;
+}
+.feature-icon i { font-size: 1.2rem; color: @accent; }
+.feature-body { flex: 1; }
+.feature-title {
+    font-size: 1.05rem; font-weight: 700;
+    color: @text-primary; margin-bottom: 0.6rem;
+}
+.feature-desc {
+    font-size: 0.875rem; color: @text-secondary;
+    line-height: 1.65; margin-bottom: 1rem;
+}
+.feature-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+.feature-tag {
+    background: @bg-secondary; border: 1px solid @border;
+    border-radius: 100px; padding: 0.2rem 0.65rem;
+    font-size: 0.7rem; color: @text-muted; font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+}
+.feature-status {
+    margin-top: 0.85rem;
+    color: rgba(255,255,255,0.58);
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}

@@ -1,0 +1,225 @@
+// === PAGE CONTENT (generic pages) ===
+.page-content { padding: 4rem 0; min-height: 60vh; }
+.content-article { max-width: 800px; margin: 0; }
+.page-content .content-article.content-article--start,
+.page-content .content-article.content-article--special {
+    max-width: 980px;
+    margin: 0 auto;
+}
+.page-content .content-article.content-article--start { text-align: center; }
+.content-article--special .article-body {
+    display: flex;
+    justify-content: center;
+}
+.content-article--special .article-body > * { width: 100%; }
+.article-header {
+    margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid @border;
+}
+.article-icon { font-size: 2.5rem; color: @accent; margin-bottom: 1rem; display: block; }
+.article-header h1 { font-size: 2.25rem; font-weight: 800; color: @text-primary; margin-bottom: 0.75rem; }
+.article-description { font-size: 1.1rem; color: @text-secondary; line-height: 1.6; }
+.article-body { color: @text-secondary; line-height: 1.8; font-size: 1.05rem; }
+.article-body h2 { font-size: 1.5rem; font-weight: 700; color: @text-primary; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid @border; }
+.article-body h3 { font-size: 1.2rem; font-weight: 600; color: @text-primary; margin: 2rem 0 0.75rem; }
+.article-body h4 { font-size: 1.05rem; font-weight: 600; color: @accent; margin: 1.5rem 0 0.5rem; }
+.article-body p { margin-bottom: 1.25rem; }
+.article-body a { color: @accent; text-decoration: none; transition: opacity 0.2s ease; }
+.article-body a:hover { opacity: 0.75; }
+.article-body ul, .article-body ol { margin: 1rem 0 1.5rem 1.5rem; }
+.article-body li { margin-bottom: 0.5rem; }
+.article-body code {
+    background: rgba(255,208,0,0.1); color: @accent;
+    padding: 0.15rem 0.4rem; border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.9em;
+}
+.article-body pre {
+    background: @bg-card; border: 1px solid @border;
+    border-radius: 12px; padding: 1.5rem; overflow-x: auto; margin: 1.5rem 0;
+}
+.article-body pre code { background: none; padding: 0; color: @text-primary; }
+.article-body blockquote { border-left: 3px solid @accent; padding-left: 1.5rem; margin: 1.5rem 0; color: @text-secondary; font-style: italic; }
+.article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+.article-body th, .article-body td { padding: 0.75rem 1rem; border: 1px solid @border; text-align: left; }
+.article-body th { background: @bg-card; color: @text-primary; font-weight: 600; }
+.article-body hr { border: none; border-top: 1px solid @border; margin: 2rem 0; }
+.donate-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.6rem;
+    align-items: start;
+    padding: 2rem;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255,208,0,0.10), rgba(255,255,255,0.035));
+    border: 1px solid rgba(255,208,0,0.18);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.045);
+}
+.donate-card__icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,208,0,0.12);
+    border: 1px solid rgba(255,208,0,0.22);
+    color: @accent;
+    font-size: 2rem;
+}
+.donate-card h2 { margin-top: 0; border-bottom: 0; padding-bottom: 0; }
+.contact-panel {
+    background: linear-gradient(135deg, rgba(255,255,255,0.065), rgba(255,255,255,0.025));
+    border-color: rgba(255,255,255,0.11);
+}
+.contact-panel .donate-card__icon,
+.contact-panel__icon {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.14);
+    color: @accent;
+}
+.contact-panel .contact-grid { margin-top: 1.4rem; }
+.donate-card__cta { margin-top: 0.5rem; display: inline-flex; width: auto; }
+.article-body a.btn-primary,
+.article-body a.donate-card__cta { color: #000; }
+.special-support-note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+    margin: 1.15rem 0 1.25rem;
+    padding: 0.78rem 0.9rem;
+    border-radius: 16px;
+    color: @text-secondary;
+    background: rgba(255,255,255,0.035);
+    border: 1px dashed rgba(255,208,0,0.25);
+}
+.special-support-note span { display: inline-flex; align-items: center; gap: 0.78rem; line-height: 1.45; }
+.special-support-note i { color: @accent; }
+.special-support-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #000 !important;
+    background: @accent;
+    border-radius: 999px;
+    padding: 0.42rem 0.82rem;
+    font-size: 0.78rem;
+    font-weight: 850;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(255,208,0,0.18);
+}
+.special-support-btn:hover { opacity: 0.86; }
+.donate-funds {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1.4rem;
+}
+.donate-fund {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 18px;
+    text-decoration: none;
+    color: @text-primary !important;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.donate-fund:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    border-color: rgba(255,208,0,0.34);
+    background: rgba(255,208,0,0.075);
+}
+.donate-fund--primary {
+    background: rgba(255,208,0,0.12);
+    border-color: rgba(255,208,0,0.28);
+}
+.donate-fund__icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: #000;
+    background: @accent;
+    box-shadow: 0 10px 28px rgba(255,208,0,0.18);
+}
+.donate-fund__copy { display: grid; gap: 0.2rem; }
+.donate-fund__copy strong { color: @text-primary; font-size: 1rem; }
+.donate-fund__copy small { color: @text-secondary; line-height: 1.45; }
+.donate-fund__action {
+    color: @accent;
+    font-weight: 800;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    position: relative;
+    overflow: visible;
+    white-space: nowrap;
+}
+.donate-fund__action--banana {
+    padding: 0.02rem 0;
+}
+.donate-fund__action--banana .donate-fund__banana {
+    color: #ffdd78;
+    font-size: 0.98rem;
+    font-weight: 700;
+    pointer-events: none;
+    opacity: 0.4;
+    position: relative;
+    top: -1px;
+    text-shadow: 0 1px 0 rgba(122, 79, 0, 0.4), 0 0 8px rgba(255, 218, 79, 0.32);
+    animation: donate-banana-float 1.95s ease-in-out infinite;
+}
+.donate-fund__action--banana .donate-fund__banana:nth-of-type(2) { animation-delay: 0.28s; }
+.donate-fund__action--banana .donate-fund__banana:nth-of-type(3) { animation-delay: 0.56s; }
+.contact-grid {
+    display: grid;
+    gap: 1rem;
+}
+.contact-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.15rem;
+    border-radius: 20px;
+    text-decoration: none;
+    color: @text-primary !important;
+    background: linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.09);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.contact-card:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    border-color: rgba(255,208,0,0.34);
+    background: rgba(255,208,0,0.07);
+}
+.contact-card--highlight {
+    background: linear-gradient(135deg, rgba(255,208,0,0.13), rgba(255,255,255,0.035));
+    border-color: rgba(255,208,0,0.32);
+}
+.contact-card__icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    color: #000;
+    background: @accent;
+    box-shadow: 0 10px 28px rgba(255,208,0,0.18);
+}
+.contact-card__copy { display: grid; gap: 0.24rem; }
+.contact-card__copy strong { color: @text-primary; font-size: 1rem; }
+.contact-card__copy small { color: @text-secondary; line-height: 1.48; }
+.contact-card__action {
+    color: @accent;
+    font-weight: 850;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+

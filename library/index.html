@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jMonkeyEngine | Library</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description" content="jMonkeyEngine is a modern developer friendly game engine written primarily in Java.">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  
+  <link rel="stylesheet" href="/css/style.css?v=1788872099">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+    
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Library">
+	<meta name="twitter:description" content="Discover community modules for jMonkeyEngine">
+
+    <meta property="og:url" content="https://jmonkeyengine.org/library/">
+	<meta property="og:site_name" content="jMonkeyEngine">
+	<meta property="og:title" content="Library">
+	<meta property="og:description" content="Discover community modules for jMonkeyEngine">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="website">
+
+    
+	<meta itemprop="name" content="Library">
+	<meta itemprop="description" content="Discover community modules for jMonkeyEngine">
+  
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x6jmsl7kyo");
+  </script>
+
+</head>
+
+<body>
+  
+  
+  <header class="header">
+    <div class="topmenu">
+        <div class="topmenu-left" id="site-menu">
+            <nav aria-label="Primary navigation">
+                <ul>
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/showcase"><i class="fas fa-images"></i> Showcase</a></li>
+                    <li><a href="https://hub.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fab fa-discourse"></i> Discussions</a></li>
+                    
+                    <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-book"></i> Docs</a></li>
+                    
+                    <li><a href="https://shop.jmonkeyengine.org/" target="_blank" rel="noopener noreferrer"><i class="fas fa-bag-shopping"></i> Merch</a></li>
+                    
+                    <li><a href="/contact/"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-social-links" aria-label="Social links">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i><span>GitHub</span></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" title="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+                <a href="https://discord.gg/Rv8sfVu" target="_blank" title="Discord" rel="noopener noreferrer"><i class="fab fa-discord"></i><span>Discord</span></a>
+            </div>
+        </div>
+        <div class="topmenu-right">
+            <div class="social-links">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" title="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" title="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/Rv8sfVu" target="_blank" title="Discord" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
+            </div>
+            <a href="https://github.com/jMonkeyEngine/jmonkeyengine" class="star-repo-btn star-repo-memory" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Star repo</a>
+            <a href="/donate/" class="donate-btn donate-btn--banana">
+                <span class="donate-btn__label"><i class="fas fa-donate"></i> Donate</span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <span class="donate-btn__banana" aria-hidden="true"><i class="fas fa-heart"></i></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="site-menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const STAR_REPO_STORAGE_KEY = 'jme-star-repo-highlighted';
+    const button = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('site-menu');
+    const starRepoButtons = Array.from(document.querySelectorAll('.star-repo-memory'));
+    const applyStarRepoState = function (active) {
+        starRepoButtons.forEach(function (starRepoButton) {
+            starRepoButton.classList.toggle('star-repo-memory--active', active);
+            if (starRepoButton.classList.contains('star-repo-btn')) {
+                starRepoButton.classList.toggle('star-repo-btn--active', active);
+            }
+        });
+    };
+    try {
+        if (localStorage.getItem(STAR_REPO_STORAGE_KEY) === '1') {
+            applyStarRepoState(true);
+        }
+    } catch (_) {
+        
+    }
+
+    const setOpen = function (open) {
+        menu.classList.toggle('is-open', open);
+        button.classList.toggle('is-open', open);
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        button.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    };
+
+    const clearStarRepoPersistedState = function () {
+        try {
+            localStorage.removeItem(STAR_REPO_STORAGE_KEY);
+        } catch (_) {
+            
+        }
+        applyStarRepoState(false);
+    };
+
+    if (starRepoButtons.length) {
+        starRepoButtons.forEach(function (starRepoButton) {
+            starRepoButton.addEventListener('click', function () {
+                try {
+                    localStorage.setItem(STAR_REPO_STORAGE_KEY, '1');
+                } catch (_) {
+                    
+                }
+                applyStarRepoState(true);
+            });
+            starRepoButton.addEventListener('pointerdown', function (event) {
+                if (event && (event.button === 2 || event.which === 3)) {
+                    event.preventDefault();
+                    clearStarRepoPersistedState();
+                }
+            });
+            starRepoButton.addEventListener('contextmenu', function (event) {
+                event.preventDefault();
+                clearStarRepoPersistedState();
+            });
+        });
+    }
+
+    if (!button || !menu) {
+        return;
+    }
+
+    button.addEventListener('click', function (event) {
+        event.stopPropagation();
+        setOpen(!menu.classList.contains('is-open'));
+    });
+    menu.addEventListener('click', function (event) {
+        if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', function (event) {
+        if (!menu.contains(event.target) && !button.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') setOpen(false);
+    });
+});
+</script>
+
+  <main>
+    
+<section class="page-hero page-hero--library">
+  <div class="page-hero__bg" aria-hidden="true"></div>
+  <div class="page-hero__inner">
+    <div class="page-hero__copy">
+      <div class="page-hero__eyebrow"><i class="fa-solid fa-puzzle-piece"></i><span>Community Modules</span></div>
+      <h1>Library</h1>
+      <p>Discover libraries, integrations, and tools published for jMonkeyEngine.</p>
+    </div>
+
+    
+    <div class="page-hero__panel">
+      
+      <span class="page-hero__metric">
+        <strong id="library-hero-modules" aria-live="polite" aria-busy="true">…</strong>
+        <small>modules</small>
+      </span>
+      <span class="page-hero__metric">
+        <strong id="library-hero-developers" aria-live="polite" aria-busy="true">…</strong>
+        <small>developers</small>
+      </span>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section class="library-shell" id="library-app"
+  data-api-base="https://backend.jmonkeyengine.org"
+  data-hidden-topics="jmonkey,jmonkeyengine,jmonkeyengine3,jme3,java,java-library,jvm,jvm-library,library,libraries,open-source,opensource">
+  <div class="section-container">
+    <div class="library-catalog-actions">
+      <button class="btn btn-primary library-add-button" id="library-add" type="button"><i class="fas fa-plus"></i> Add module</button>
+    </div>
+    <div class="library-toolbar">
+      <label class="library-search">
+        <span class="sr-only">Search modules</span>
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input id="library-search" type="search" maxlength="100" placeholder="Search modules, authors, tags, or author:username…" autocomplete="off">
+      </label>
+      <details class="library-control-menu" id="library-sort-menu">
+        <summary class="library-icon-control" aria-label="Change module order" title="Order modules">
+          <i class="fas fa-arrow-down-wide-short" aria-hidden="true"></i>
+          <span class="sr-only">Order modules</span>
+        </summary>
+        <div class="library-control-popover library-control-popover--sort">
+          <fieldset>
+            <legend>Order by</legend>
+            <label><input type="radio" name="library-sort" value="stars:desc" checked> <span>Most starred</span></label>
+            <label><input type="radio" name="library-sort" value="score:desc"> <span>Highest score</span></label>
+            <label><input type="radio" name="library-sort" value="updated:desc"> <span>Recently updated</span></label>
+            <label><input type="radio" name="library-sort" value="name:asc"> <span>Name</span></label>
+          </fieldset>
+        </div>
+      </details>
+      <details class="library-control-menu" id="library-filter-menu">
+        <summary class="library-icon-control" aria-label="Filter modules by visibility" title="Filter modules">
+          <i class="fas fa-filter" aria-hidden="true"></i>
+          <span class="library-filter-count" id="library-filter-count">1</span>
+          <span class="sr-only">Filter modules by visibility</span>
+        </summary>
+        <div class="library-control-popover library-control-popover--filter">
+          <fieldset>
+            <legend>Visibility</legend>
+            <label><input id="library-filter-listed" type="checkbox" value="LISTED" checked> <span>Listed</span></label>
+            <label><input id="library-filter-review" type="checkbox" value="NEEDS_REVIEW"> <span>Needs review</span></label>
+            <label><input id="library-filter-hidden" type="checkbox" value="HIDDEN"> <span>Hidden</span></label>
+          </fieldset>
+          <p class="library-filter-warning" id="library-filter-hint"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Unlisted modules have not passed normal publication checks. Inspect their warnings and source before use.</p>
+        </div>
+      </details>
+    </div>
+
+    <nav class="library-category-nav" aria-label="Module categories">
+      <span class="library-category-label"><i class="fas fa-tags" aria-hidden="true"></i> Categories</span>
+      <div id="library-categories" class="library-category-list" aria-live="polite"></div>
+    </nav>
+
+    <div class="library-summary-row">
+      <p id="library-summary" aria-live="polite">Loading reviewed modules…</p>
+      <button id="library-admin-logout" class="library-text-button" type="button" hidden>End admin session</button>
+    </div>
+
+    <div id="library-status" class="library-status" role="status" hidden></div>
+    <section id="library-author-profile" class="library-author-profile" aria-live="polite" hidden></section>
+    <div id="library-grid" class="library-grid" aria-live="polite"></div>
+
+    <nav class="library-pagination" aria-label="Library pages">
+      <button id="library-prev" class="library-page-button" type="button"><i class="fas fa-arrow-left"></i> Previous</button>
+      <span id="library-page-label">Page 1</span>
+      <button id="library-next" class="library-page-button" type="button">Next <i class="fas fa-arrow-right"></i></button>
+    </nav>
+
+    <article id="library-detail" class="library-detail" hidden></article>
+
+    <div class="library-admin-entry">
+      <button class="library-admin-trigger" id="library-admin" type="button" aria-label="Open administrator access" title="Administrator access">
+        <i class="fas fa-shield-halved" aria-hidden="true"></i>
+        <span class="sr-only">Administrator access</span>
+      </button>
+      <button class="library-admin-trigger library-api-debug-trigger" id="library-api-debug" type="button" aria-label="Inspect last Library API exchange" title="API inspector">
+        <i class="fas fa-code" aria-hidden="true"></i>
+        <span class="sr-only">Inspect API exchange</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<dialog class="library-dialog" id="library-add-dialog">
+  <form method="dialog" class="library-dialog-card" id="library-add-form">
+    <button class="library-dialog-close" type="button" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <span class="library-dialog-kicker">Publish a community module</span>
+    <h2>Add your module</h2>
+    <p>Add the <strong>jmonkeyengine</strong> topic to your GitHub repository and it will be discovered periodically. To request discovery now, enter the repository below.</p>
+    <label class="library-field">
+      <span>GitHub repository</span>
+      <input id="library-repository" name="repository" required maxlength="140" pattern="[A-Za-z0-9-]+/[A-Za-z0-9_.-]+" placeholder="owner/repository" autocomplete="off">
+    </label>
+    <div class="library-dialog-actions">
+      <button class="btn btn-primary" id="library-submit-repository" type="submit">Discover module</button>
+      <span id="library-submit-status" role="status"></span>
+    </div>
+    <details class="library-advanced">
+      <summary>Advanced configuration</summary>
+      <p>For exact coordinates, presentation images, and compatibility, add <code>.github/jme.yaml</code>:</p>
+      <pre><code id="library-yaml-template"># Optional. One entry per published root module.
+# If omitted, coordinates are derived from Gradle project metadata.
+mavenCoordinates:
+  - provider: MAVEN_CENTRAL
+    coordinates: com.example:my-module
+  - provider: GITHUB_PACKAGES
+    groupId: com.example
+    artifactId: my-module-desktop
+    # Optional: omit to use the latest published release.
+    version: 1.0.0
+
+# Providers: MAVEN_CENTRAL, GITHUB_PACKAGES, or JITPACK.
+# JitPack versions are Git refs; the backend always emits the resolved full commit SHA.
+
+# Optional presentation metadata.
+displayName: My Module
+description: A concise description for the library catalog.
+homepage: https://example.com/my-module
+coverImage: docs/cover.png
+images:
+  - docs/screenshot-1.png
+  - https://example.com/screenshot-2.webp
+
+# Optional when automatic dependency detection is not precise enough.
+jmeCompatibility:
+  minimum: 3.6.0-stable
+  recommended: 3.7.0-stable
+  maximum: 3.8.0-stable
+
+# Optional. When omitted, native files in the module and its transitive
+# dependencies determine compatibility. A pure Java module supports all.
+platforms:
+  - os: WINDOWS
+    architectures: [X86_64, ARM64]
+  - os: MACOS
+    architectures: [X86_64, ARM64]
+  - os: IOS
+    architectures: [ARM64]</code></pre>
+      <button class="library-copy-button" type="button" data-copy-target="library-yaml-template"><i class="fas fa-copy"></i> Copy template</button>
+    </details>
+  </form>
+</dialog>
+
+<dialog class="library-dialog" id="library-vt-dialog">
+  <form method="dialog" class="library-dialog-card library-dialog-card--compact">
+    <button class="library-dialog-close" type="button" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <span class="library-dialog-kicker">Artifact malware scan</span>
+    <h2 id="library-vt-title">VirusTotal status</h2>
+    <p id="library-vt-description">VirusTotal compares the exact analyzed artifact bytes with multiple security engines.</p>
+    <p>This signal is bound to the SHA-256 shown by the backend. It is useful evidence, but it does not replace source review or guarantee that every possible threat was detected.</p>
+  </form>
+</dialog>
+
+<dialog class="library-dialog library-dialog--debug" id="library-api-debug-dialog">
+  <form method="dialog" class="library-dialog-card">
+    <button class="library-dialog-close" type="button" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <div class="library-dialog-heading">
+      <span class="library-dialog-icon" aria-hidden="true"><i class="fas fa-code"></i></span>
+      <div>
+        <span class="library-dialog-kicker">Local diagnostics</span>
+        <h2>Library API inspector</h2>
+      </div>
+    </div>
+    <p id="library-api-debug-summary">The most recent API request and response are shown below. Authentication secrets are never recorded.</p>
+    <pre class="library-api-debug-code"><code id="library-api-debug-json">No API exchange has been recorded yet.</code></pre>
+    <div class="library-dialog-actions">
+      <button class="btn btn-outline library-pill-button" id="library-api-debug-copy" type="button"><i class="fas fa-copy"></i> Copy JSON</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="library-dialog" id="library-score-dialog">
+  <form method="dialog" class="library-dialog-card library-dialog-card--compact">
+    <button class="library-dialog-close" type="button" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <span class="library-dialog-kicker">Library confidence signal</span>
+    <h2 id="library-score-title">What does the score mean?</h2>
+    <p>The score combines repository trust, artifact integrity, malware and vulnerability checks, code signals, documentation, and jMonkeyEngine compatibility. It helps compare modules, but it is not a security guarantee or a replacement for reviewing code before shipping it.</p>
+    <div id="library-score-summary"></div>
+    <div id="library-score-breakdown"></div>
+  </form>
+</dialog>
+
+<dialog class="library-dialog library-dialog--compact" id="library-admin-dialog">
+  <form method="dialog" class="library-dialog-card" id="library-admin-form">
+    <button class="library-dialog-close" type="button" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <div class="library-dialog-heading">
+      <span class="library-dialog-icon" aria-hidden="true"><i class="fas fa-shield-halved"></i></span>
+      <div>
+        <span class="library-dialog-kicker">Catalog moderation</span>
+        <h2>Admin session</h2>
+      </div>
+    </div>
+    <p>The key is kept only for this browser tab and is removed when the session ends.</p>
+    <label class="library-field">
+      <span>Administrator key</span>
+      <input id="library-admin-key" type="password" required maxlength="4096" autocomplete="off">
+    </label>
+    <div class="library-dialog-actions">
+      <button class="btn btn-primary" type="submit">Unlock moderation</button>
+      <span id="library-admin-status" role="status"></span>
+    </div>
+  </form>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@18.0.7/lib/marked.umd.js"
+        integrity="sha384-7njNzKcJUBdezPGfqUrIFizi2QkXJH0M6wF3o1h9GE/nce6X4YdecMwh31B19yTi"
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.7/dist/purify.min.js"
+        integrity="sha384-C5g1ZoYBpnvKyArNZI21kaBEk3egHOYfHj/cUOHmyJ7CSDMyNMyM+STqfkBt8m2Y"
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="/js/library.js?v=1788872099" defer></script>
+
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <img src="/images/jme-logo.webp" alt="jMonkeyEngine">
+            <p>The modern game engine for Java developers. Open source, BSD-3 licensed, since 2004.</p>
+            <div class="footer-social footer-social--brand">
+                <a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/c/jmonkeyengine" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://hub.jmonkeyengine.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-comments"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Engine</h4>
+            <ul>
+                <li><a href="/start/">Get Started</a></li>
+                <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+                <li><a href="https://github.com/jMonkeyEngine/jmonkeyengine" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Community</h4>
+            <ul>
+                <li><a href="https://hub.jmonkeyengine.org">Forum</a></li>
+                <li><a href="https://discord.gg/jmonkeyengine" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                <li><a href="https://wiki.jmonkeyengine.org" target="_blank" rel="noopener noreferrer">Wiki</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contribute</h4>
+            <ul>
+                <li><a href="/license/">License (BSD-3)</a></li>
+                <li><a href="https://github.com/jMonkeyEngine/jmonkeyengine/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+                <li><a href="/donate/">Donate</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2004–2026 jMonkeyEngine. Released under BSD 3-Clause License.</p>
+        <p class="footer-credit">Made with ☕ and Java by the community</p>
+    </div>
+</footer>
+
+  <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=7dff2945-0147-4e61-a0af-8440774fcc7d" />
+</body>
+
+</html>

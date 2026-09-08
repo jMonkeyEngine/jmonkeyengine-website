@@ -1,0 +1,12 @@
+{
+  
+  "title": "jMonkeyEngine SDK",
+  "summary": "NetBeans-based development environment for jMonkeyEngine projects: templates, scene tooling, asset workflow helpers, and desktop project setup.",
+  "images": [],
+  "tags": ["Editor","SDK","Templates"],
+  "tool_type": "Editor",
+  "external_link": null,
+  "github_link": "https://github.com/jMonkeyEngine/sdk",
+  "indiedb_link": null,
+  "website_link": null
+}
