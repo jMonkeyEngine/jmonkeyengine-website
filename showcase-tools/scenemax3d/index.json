@@ -1,0 +1,12 @@
+{
+  
+  "title": "SceneMax3D",
+  "summary": "A desktop-based game development environment designed around a visual workflow and a custom scripting language.",
+  "images": ["https://github.com/user-attachments/assets/8e83d0b0-950e-425d-94a0-d38db5fc4fd3"],
+  "tags": ["Tool","Editor"],
+  "tool_type": "Tool",
+  "external_link": "https://scenemax3d.com/cook-book/",
+  "github_link": "https://github.com/scenemax3d/scenemax3d-desktop",
+  "indiedb_link": null,
+  "website_link": null
+}

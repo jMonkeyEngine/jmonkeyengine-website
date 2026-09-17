@@ -1,0 +1,26 @@
+
+{
+    "responseTitle":"jMonkeyEngine  | JMonkeyEngine 3.6.0-stable has been released",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"0a3b5b991e2915602a5f441c81b7411e",
+
+    "title":"JMonkeyEngine 3.6.0-stable has been released",
+    "content":"\u003cdiv\u003eWe're super excited about the new release of JMonkeyEngine that arrived today: 3.6.0-stable. It adds many useful features and solves many past issues. For full details, refer to the release notes at \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.6.0-stable\"\u003ehttps://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.6.0-stable\u003c/a\u003e\u003cbr /\u003e\u003cbr /\u003eThe default OpenGL profile has changed, from Compatibility to Core 3.2 . This change makes applications more portable, but limits some graphics capabilities such as line widths. If you prefer Compatibility profile, you can still specify it programmatically during startup.\u003cbr /\u003e\u003cbr /\u003eSimilarly, the familiar \"settings\" dialog has been removed from jme3-desktop. This was done to address portability issues on platforms such as macOS. The \"settings\" dialog remains available, however, as part of the new \"jme3-awt-dialogs\" library.\u003cbr /\u003e\u003cbr /\u003eEngine development is ongoing. For instance, we anticipate a follow-up release to leverage LWJGL v3.3.2 when it becomes available.\u003cbr /\u003e\u003cbr /\u003eThank you for your financial contribution(s) to the JMonkeyEngine project. If you'd like to connect with us and/or learn more about our Engine, our Discourse forum at \u003ca href=\"https://opencollective.com/redirect?url=https%3A%2F%2Fhub.jmonkeyengine.org\"\u003ehttps://hub.jmonkeyengine.org\u003c/a\u003e is an excellent resource.\u003c/div\u003e\n",
+    "contentPlain":"We're super excited about the new release of JMonkeyEngine that arrived today: 3.6.0-stable. It adds many useful features and solves many past issues. For full details, refer to the release notes at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.6.0-stable\nThe default OpenGL profile has changed, from Compatibility to Core 3.2 . This change makes applications more portable, but limits some graphics capabilities such as line widths. If you prefer Compatibility profile, you can still specify it programmatically during startup.\nSimilarly, the familiar \"settings\" dialog has been removed from jme3-desktop. This was done to address portability issues on platforms such as macOS. The \"settings\" dialog remains available, however, as part of the new \"jme3-awt-dialogs\" library.\nEngine development is ongoing. For instance, we anticipate a follow-up release to leverage LWJGL v3.3.2 when it becomes available.\nThank you for your financial contribution(s) to the JMonkeyEngine project. If you'd like to connect with us and/or learn more about our Engine, our Discourse forum at https://hub.jmonkeyengine.org is an excellent resource. " ,
+    "url":"https://jmonkeyengine.org/news/jmonkeyengine-3-6-0-stable-has-been-released/",
+
+
+    
+    "summary":"We're super excited about the new release of JMonkeyEngine that arrived today: 3.6.0-stable. It adds many useful features and solves many past issues. For full details, refer to the release notes at...",
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}
+

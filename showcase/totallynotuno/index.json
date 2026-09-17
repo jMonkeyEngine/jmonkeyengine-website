@@ -1,0 +1,13 @@
+{
+  
+  "title": "TotallyNotUno",
+  "summary": "TotallyNotUno is a fun card game based on the popular UNO game. Play with 3 other players — human or AI — in this digital take on the classic. Race to deplete all your cards by matching them by color or number, and use special action cards strategically to send cards to your opponents.",
+  "images": ["/images/showcase/totallynotuno/Screenshot_20220619-100025.webp","/images/showcase/totallynotuno/Screenshot_20220619-100032.webp","/images/showcase/totallynotuno/Screenshot_20220619-100047.webp","/images/showcase/totallynotuno/Screenshot_20220619-100104.webp"],
+  "tags": ["card-game","multiplayer","indiedb"],
+  "authors": ["DGC Productions"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/totallynotuno"
+}

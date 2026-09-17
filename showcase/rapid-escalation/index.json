@@ -1,0 +1,13 @@
+{
+  
+  "title": "Rapid Escalation",
+  "summary": "Rapid Escalation is a fast-paced incremental space arena game built around short, explosive battles, permanent upgrades, and exponential growth.",
+  "images": ["/images/showcase/rapid-escalation/01.webp","/images/showcase/rapid-escalation/02.webp","/images/showcase/rapid-escalation/03.webp","/images/showcase/rapid-escalation/04.webp","/images/showcase/rapid-escalation/05.webp"],
+  "tags": ["showcase","steam","space","shooter","incremental"],
+  "authors": ["bruynhuisgames"],
+  "platforms": ["Windows","Linux"],
+  "steam_link": "https://store.steampowered.com/app/4411170/Rapid_Escalation/",
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": null
+}

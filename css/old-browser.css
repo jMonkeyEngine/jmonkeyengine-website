@@ -1,0 +1,13 @@
+body .buorg {
+    border-radius:1vmin;
+    border: 0.1vmin solid #030303;
+    color: rgb(0, 0, 0);
+    background-color: #c8b50b;
+    text-shadow: none!important;
+    font-size:0.8rem;
+    opacity:0.9;
+}
+body #buorgig, body #buorgul, body #buorgpermanent{
+    color: rgb(0, 0, 0)!important;
+
+}

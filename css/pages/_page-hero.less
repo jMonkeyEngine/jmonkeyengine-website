@@ -1,0 +1,104 @@
+// === COMPACT PAGE HERO (inner pages) ===
+.page-hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #101012 0%, @bg-primary 100%);
+    border-bottom: 1px solid rgba(255,208,0,0.12);
+    padding: 4.2rem ~"max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))" 3.4rem;
+}
+.page-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 44% 90% at 78% 20%, rgba(255,208,0,0.16) 0%, transparent 62%),
+        radial-gradient(ellipse 55% 80% at 20% 5%, rgba(255,255,255,0.045) 0%, transparent 58%),
+        linear-gradient(90deg, rgba(255,208,0,0.06), transparent 38%, rgba(255,208,0,0.035));
+    pointer-events: none;
+}
+.page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,208,0,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,208,0,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, rgba(255,255,255,0.85), transparent 88%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(255,255,255,0.85), transparent 88%);
+    opacity: 0.45;
+}
+.page-hero__inner {
+    position: relative;
+    z-index: 1;
+    width: ~"min(100%, 1200px)";
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: center;
+}
+.page-hero__copy { max-width: 760px; }
+.page-hero--no-panel .page-hero__inner { grid-template-columns: minmax(0, 1fr); }
+.page-hero--no-panel .page-hero__copy { max-width: 860px; }
+.page-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: @accent;
+    background: rgba(255,208,0,0.09);
+    border: 1px solid rgba(255,208,0,0.20);
+    border-radius: 999px;
+    padding: 0.42rem 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.page-hero h1 {
+    color: @text-primary;
+    font-size: clamp(2.25rem, 5vw, 4.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+    margin: 0;
+}
+.page-hero p {
+    color: @text-secondary;
+    font-size: clamp(1rem, 1.5vw, 1.22rem);
+    line-height: 1.65;
+    margin-top: 1.15rem;
+    max-width: 720px;
+}
+.page-hero__panel {
+    min-width: 270px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 22px;
+    border: 1px solid rgba(255,208,0,0.16);
+    background: rgba(18,18,21,0.72);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.04);
+    backdrop-filter: blur(16px);
+}
+.page-hero__metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.9rem 1rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.065);
+}
+.page-hero__metric strong { color: @text-primary; font-size: 1.15rem; line-height: 1; }
+.page-hero__metric small { color: @text-muted; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.page-hero__metric--source strong a {
+    color: @accent;
+    text-decoration: none;
+}
+.page-hero__metric--source strong a:hover { text-decoration: underline; }
+.page-hero + #showcase { padding-top: 3rem; }
+.page-hero + .page-content { padding-top: 3rem; }
+.page-hero + .page-list-section { padding-top: 3rem; }
+.page-hero + .page-list-section .page-header { display: none; }
+.page-hero + .page-content .article-header { display: none; }

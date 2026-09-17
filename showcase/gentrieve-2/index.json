@@ -1,0 +1,13 @@
+{
+  
+  "title": "Gentrieve 2",
+  "summary": "Gentrieve 2 is a Metroid-style 3D action game featuring completely random and customizable worlds. The year is 3080. Mass Generators are creating everything, everywhere — but thieves steal them to create robot armies. Explore procedurally generated worlds, find upgrades, battle enemies, and uncover the truth in this open-world action platformer.",
+  "images": ["/images/showcase/gentrieve-2/ss0.webp","/images/showcase/gentrieve-2/ss1.webp","/images/showcase/gentrieve-2/ss2.webp","/images/showcase/gentrieve-2/ss3.webp","/images/showcase/gentrieve-2/ss4.webp","/images/showcase/gentrieve-2/ss6.webp"],
+  "tags": ["showcase","indiedb"],
+  "authors": ["gentrieve team"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/gentrieve-2"
+}
