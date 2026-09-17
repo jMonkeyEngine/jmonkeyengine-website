@@ -50,7 +50,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params.community.exclusions]
   backers = []
-  contributors = ["Copilot", "dependabot[bot]"]
+  contributors = ["Copilot", "dependabot[bot]", "jaime-jmebot"]
 
 [outputs]
   home = ["HTML"]
