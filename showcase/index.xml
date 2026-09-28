@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Showcases on jMonkeyEngine</title>
+		<link>https://jmonkeyengine.org/showcase/</link>
+		<description>Recent content in Showcases on jMonkeyEngine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://jmonkeyengine.org/showcase/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Rapid Escalation</title>
+				<link>https://jmonkeyengine.org/showcase/rapid-escalation/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/rapid-escalation/</guid>
+				<description>Rapid Escalation is a fast-paced incremental space arena game built around short, explosive battles, permanent upgrades, and exponential growth.</description>
+			</item>
+			<item>
+				<title>Chatter Games</title>
+				<link>https://jmonkeyengine.org/showcase/chatter-games/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/chatter-games/</guid>
+				<description>Collection of 4 classic board games — Chess, Checkers, 4 In A Row and Othello — all in one cross-platform multiplayer package. Play against the AI opponent Derek, or challenge friends online. Features 15 different 3D environments to play, rotatable 360 degrees, with multiple piece styles and board materials.</description>
+			</item>
+			<item>
+				<title>CubeGate</title>
+				<link>https://jmonkeyengine.org/showcase/cubegate/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/cubegate/</guid>
+				<description>CubeGate is a 3D puzzle game where you must escape test chambers full of dangers and hassles. Solve intricate puzzles by shooting portals, moving cubes, pressing buttons and more. But be careful — one wrong move and you fall to your death.</description>
+			</item>
+			<item>
+				<title>Exotic Matter</title>
+				<link>https://jmonkeyengine.org/showcase/exotic-matter/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/exotic-matter/</guid>
+				<description>Shipwrecked on an alien planet, light-years away from Earth - your primary mission: survive. Explore the open-world of planet Xcylin and dive deep into the underground facilities of an extinct race. Discover countless items, weapons and block types to help you reach your ultimate goal: to get back to earth and save all humanity in the process.</description>
+			</item>
+			<item>
+				<title>Forging Life</title>
+				<link>https://jmonkeyengine.org/showcase/forging-life/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/forging-life/</guid>
+				<description>Forging Life is a survival role-playing game where you decide your own path. Realism is the keyword. Can you survive long enough to become someone other people find useful? You start with nothing — what will you do? Craft, build, farm, trade, and carve your place in a hostile world where every choice matters.</description>
+			</item>
+			<item>
+				<title>Gentrieve 2</title>
+				<link>https://jmonkeyengine.org/showcase/gentrieve-2/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/gentrieve-2/</guid>
+				<description>Gentrieve 2 is a Metroid-style 3D action game featuring completely random and customizable worlds. The year is 3080. Mass Generators are creating everything, everywhere — but thieves steal them to create robot armies. Explore procedurally generated worlds, find upgrades, battle enemies, and uncover the truth in this open-world action platformer.</description>
+			</item>
+			<item>
+				<title>High Impact</title>
+				<link>https://jmonkeyengine.org/showcase/high-impact/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/high-impact/</guid>
+				<description>High Impact is a first-person shooter with very detailed worlds featuring platforming and puzzle rooms. Navigate through alien environments, fight spider monsters and golem bosses, jump between buildings, and solve underwater puzzles. Includes floating pole grabbing for vertical gameplay, slightly obscured targets to find, and an objective to reach the checkered finish line.</description>
+			</item>
+			<item>
+				<title>Hostile Sector</title>
+				<link>https://jmonkeyengine.org/showcase/hostile-sector/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/hostile-sector/</guid>
+				<description>Command your troops and fight together and against other players in a persistent world. Watch your soldiers grow from rookies to hardened veterans. Manage individual soldier skills, gear and combat style to make them stand out on the battlefield. A tactical strategy experience where every decision counts.</description>
+			</item>
+			<item>
+				<title>Maker&#39;s Tale</title>
+				<link>https://jmonkeyengine.org/showcase/makers-tale/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/makers-tale/</guid>
+				<description>Maker&amp;rsquo;s Tale is a unique fantasy RTS that takes place on a tabletop board game sprung to life in a young boy&amp;rsquo;s imagination. Features Fantasy RTS combat in a sandbox environment where you can rebuild the level during play. Recruit units, cast spells, and conquer the board in this creative strategy game.</description>
+			</item>
+			<item>
+				<title>Marvelous Marbles</title>
+				<link>https://jmonkeyengine.org/showcase/marvelous-marbles/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/marvelous-marbles/</guid>
+				<description>Build marble runs where your imagination is the only limit. Design intricate tracks and mechanisms in a physics simulation where ramps and rolling balls create endless possibilities. Watch your marble navigate through your creation in this sandbox physics toy and puzzle experience.</description>
+			</item>
+			<item>
+				<title>One Million Worlds</title>
+				<link>https://jmonkeyengine.org/showcase/one-million-worlds/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/one-million-worlds/</guid>
+				<description>One Million Worlds is a block world game — but unlike other block worlds, it&amp;rsquo;s not focused on buildings and architecture. It&amp;rsquo;s about machines and movement. Design complex contraptions, automate processes, and explore an infinite world of possibilities where your creativity is the only limit.</description>
+			</item>
+			<item>
+				<title>PirateHell</title>
+				<link>https://jmonkeyengine.org/showcase/pirate-hell/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/pirate-hell/</guid>
+				<description>Arrr maytees! Welcome to Pirate Hell — take command of a sturdy vessel and fight your way to honor, loot and glory in this frantic arcade shooter. Power up your ship and fight hoards of enemies while helping an old captain take revenge on his mutinous crew. Explore a large world, make port to buy upgrades and sell loot, engage in naval combat, and discover secrets across the high seas.</description>
+			</item>
+			<item>
+				<title>Rising World</title>
+				<link>https://jmonkeyengine.org/showcase/risingworld/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/risingworld/</guid>
+				<description>Rising World is an open-world sandbox game with randomly generated, fully destructible environments. Starting with the most basic tools, collect resources to survive in the wilderness. Evolve your world to create massive cities, gigantic castles, or anything your imagination allows. Explore the deepest caves, densest forests, highest mountains, and most secret dungeons. Found your own civilization, team up with other players, trade or fight — in a world shaped entirely by you.</description>
+			</item>
+			<item>
+				<title>StarFire</title>
+				<link>https://jmonkeyengine.org/showcase/starfire/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/starfire/</guid>
+				<description>StarFire was created with the intention to provide a tool to explore the depths of the universe and its secrets in a playful, educational, and thought-provoking manner. In order to do so, the player must design his spacecraft in such way it fits his&amp;hellip;</description>
+			</item>
+			<item>
+				<title>Stranded</title>
+				<link>https://jmonkeyengine.org/showcase/stranded/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/stranded/</guid>
+				<description>Survival adventure game on a mysterious island. You find yourself alone and stranded — gather resources, craft tools and shelter, explore the island&amp;rsquo;s secrets, and uncover the mystery of how you got here. Will you survive long enough to find answers?</description>
+			</item>
+			<item>
+				<title>System Recovery</title>
+				<link>https://jmonkeyengine.org/showcase/system-recovery/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/system-recovery/</guid>
+				<description>System Recovery is a top-down-view arcade shooter with a computer virus theme. Time to show those nasties who&amp;rsquo;s really in control! Fight through waves of digital enemies, collect power-ups, and restore the system. A retro-styled arcade shooter with modern polish.</description>
+			</item>
+			<item>
+				<title>The Afflicted Forests</title>
+				<link>https://jmonkeyengine.org/showcase/the-afflicted-forests/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/the-afflicted-forests/</guid>
+				<description>The Sacred Forests have been afflicted by an undead plague, and as one of the last remaining Wood Elf Spirits, you have arisen to protect and restore the world back to its natural state. Level up and progress your character through cooperative and solo gameplay in this atmospheric adventure through haunted forests.</description>
+			</item>
+			<item>
+				<title>TotallyNotUno</title>
+				<link>https://jmonkeyengine.org/showcase/totallynotuno/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/totallynotuno/</guid>
+				<description>TotallyNotUno is a fun card game based on the popular UNO game. Play with 3 other players — human or AI — in this digital take on the classic. Race to deplete all your cards by matching them by color or number, and use special action cards strategically to send cards to your opponents.</description>
+			</item>
+			<item>
+				<title>DEPTHRIS</title>
+				<link>https://jmonkeyengine.org/showcase/depthris/</link>
+				<pubDate>Wed, 09 Aug 2023 06:27:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/depthris/</guid>
+				<description>3D puzzle game inspired by the classic title for DOS. Move and rotate the pieces so the fit in the spaces and fill as much floors as possibles. But on each level, the pieces will start falling faster, increasing the tension.</description>
+			</item>
+			<item>
+				<title>Collect The 10s</title>
+				<link>https://jmonkeyengine.org/showcase/collect-the-10s/</link>
+				<pubDate>Tue, 04 Jul 2023 06:27:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/collect-the-10s/</guid>
+				<description>A 3D online adaptation of the Indian trick-taking card game Mendikot, with rated multiplayer, rankings, and single-player AI tournaments.</description>
+			</item>
+			<item>
+				<title>Mythruna</title>
+				<link>https://jmonkeyengine.org/showcase/mythruna/</link>
+				<pubDate>Wed, 16 Oct 2019 08:27:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/mythruna/</guid>
+				<description>An in-development sandbox RPG combining serious role-playing systems with an endless, living, fully modifiable generated world.</description>
+			</item>
+			<item>
+				<title>Skullstone</title>
+				<link>https://jmonkeyengine.org/showcase/skullstone/</link>
+				<pubDate>Wed, 16 Oct 2019 08:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/skullstone/</guid>
+				<description>A retro grid-based dungeon crawler RPG where a party of mercenaries explores monster-filled dungeons, solves puzzles, and uncovers Skullstone&amp;rsquo;s story.</description>
+			</item>
+			<item>
+				<title>Lightspeed Frontier</title>
+				<link>https://jmonkeyengine.org/showcase/ls_frontier/</link>
+				<pubDate>Tue, 15 Oct 2019 06:27:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/ls_frontier/</guid>
+				<description>Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize your vessel piece by piece to tackle whatever adventures await. Take on crime lords and space pirates, undercut corporations monopolizing business, influence the galactic stock market, and become the most successful captain you can be.</description>
+			</item>
+			<item>
+				<title>Spoxel</title>
+				<link>https://jmonkeyengine.org/showcase/spoxel/</link>
+				<pubDate>Tue, 15 Oct 2019 06:27:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/spoxel/</guid>
+				<description>Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful spells, infuse weapons and armor with rare resources to create legendary items of power.</description>
+			</item>
+			<item>
+				<title>3089</title>
+				<link>https://jmonkeyengine.org/showcase/3089/</link>
+				<pubDate>Fri, 10 Jan 2014 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/3089/</guid>
+				<description>3089 is a futuristic, procedurally generated, open-world action role-playing game set on planet Xax. You are a promising robotic android designed by the Overlord, evaluated in combat, support and intel scenarios — but your growing autonomy raises questions about what else exists on the planet beyond the Overlord&amp;rsquo;s knowledge.</description>
+			</item>
+			<item>
+				<title>3079</title>
+				<link>https://jmonkeyengine.org/showcase/3079/</link>
+				<pubDate>Thu, 25 Oct 2012 00:00:00 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/showcase/3079/</guid>
+				<description>3079 is a futuristic, open-world action first-person role playing game. All areas, buildings, items, quests and characters are randomly generated. You will find unique lands &amp;amp; challenges across a planet locked in constant war. Arrive on a world torn by conflict and work to restore peace while exploring procedurally generated environments, building fortresses, and engaging in combat with advanced AI enemies.</description>
+			</item>
+	</channel>
+</rss>

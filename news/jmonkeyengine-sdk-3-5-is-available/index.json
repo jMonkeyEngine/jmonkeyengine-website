@@ -1,0 +1,26 @@
+
+{
+    "responseTitle":"jMonkeyEngine  | jMonkeyEngine SDK 3.5 is available",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"68143400a8980790897581c97b400d2e",
+
+    "title":"jMonkeyEngine SDK 3.5 is available",
+    "content":"\u003cdiv\u003e\u003cbr /\u003eWe are happy to announce the immediate availability of jMonkeyEngine SDK 3.5!\u003c/div\u003e\u003cdiv\u003e\u003cbr /\u003e\u003cstrong\u003eHighlights\u003c/strong\u003e:\u003c/div\u003e\u003cul\u003e\u003cli\u003eEngine version v3.5.2 used internally and by Ant projects.\u003c/li\u003e\u003cli\u003eAnt projects have sources and javadocs again.\u003c/li\u003e\u003cli\u003eA new Gradle project wizard for jumpstarting your jME journey\u003c/li\u003e\u003cli\u003eScene Composer fixes and enhancements\u003c/li\u003e\u003cli\u003eBased on Netbeans 15\u003c/li\u003e\u003cli\u003eComes with JDK 11.0.17\u003c/li\u003e\u003c/ul\u003e\u003cdiv\u003ePlease report bugs and improvement ideas to our project Github page \u003ca href=\"https://github.com/jMonkeyEngine/sdk\"\u003eGitHub - jMonkeyEngine/sdk: The jMonkeyEngine3 SDK based on netbeans\u003c/a\u003e.\u003cbr /\u003e\u003cbr /\u003e\u003c/div\u003e\u003cdiv\u003eDownload your copy from \u003ca href=\"https://github.com/jMonkeyEngine/sdk/releases/tag/v3.5.2-stable-sdk1\"\u003eSDK Release 3.5\u003c/a\u003e today!\u003cbr /\u003e\u003cbr /\u003e\u003c/div\u003e\n",
+    "contentPlain":"\nWe are happy to announce the immediate availability of jMonkeyEngine SDK 3.5!\nHighlights:Engine version v3.5.2 used internally and by Ant projects.Ant projects have sources and javadocs again.A new Gradle project wizard for jumpstarting your jME journeyScene Composer fixes and enhancementsBased on Netbeans 15Comes with JDK 11.0.17Please report bugs and improvement ideas to our project Github page GitHub - jMonkeyEngine/sdk: The jMonkeyEngine3 SDK based on netbeans.\nDownload your copy from SDK Release 3.5 today!\n" ,
+    "url":"https://jmonkeyengine.org/news/jmonkeyengine-sdk-3-5-is-available/",
+
+
+    
+    "summary":"We are happy to announce the immediate availability of jMonkeyEngine SDK 3.5! Highlights:Engine version v3.5.2 used internally and by Ant projects.Ant projects have sources and javadocs again.A new Gradle project wizard for...",
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}
+

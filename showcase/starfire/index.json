@@ -1,0 +1,13 @@
+{
+  
+  "title": "StarFire",
+  "summary": "StarFire was created with the intention to provide a tool to explore the depths of the universe and its secrets in a playful, educational, and thought-provoking manner. In order to do so, the player must design his spacecraft in such way it fits his\u0026hellip;",
+  "images": ["/images/showcase/starfire/ss0.webp","/images/showcase/starfire/ss1.webp","/images/showcase/starfire/ss3.webp","/images/showcase/starfire/ss4.webp","/images/showcase/starfire/ss7.webp"],
+  "tags": ["showcase","indiedb"],
+  "authors": ["neutronio"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/starfire"
+}
