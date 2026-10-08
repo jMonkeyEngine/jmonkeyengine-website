@@ -9,6 +9,7 @@
     <div class="library-catalog-actions">
       <button class="btn btn-primary library-add-button" id="library-add" type="button"><i class="fas fa-plus"></i> Add module</button>
     </div>
+    <div id="library-admin-feedback" class="library-admin-feedback" role="status" hidden></div>
     <div class="library-toolbar">
       <label class="library-search">
         <span class="sr-only">Search modules</span>
@@ -24,6 +25,7 @@
           <fieldset>
             <legend>Order by</legend>
             <label><input type="radio" name="library-sort" value="stars:desc" checked> <span>Most starred</span></label>
+            <label><input type="radio" name="library-sort" value="likes:desc"> <span>Most liked</span></label>
             <label><input type="radio" name="library-sort" value="score:desc"> <span>Highest score</span></label>
             <label><input type="radio" name="library-sort" value="updated:desc"> <span>Recently updated</span></label>
             <label><input type="radio" name="library-sort" value="name:asc"> <span>Name</span></label>
@@ -43,7 +45,7 @@
             <label><input id="library-filter-review" type="checkbox" value="NEEDS_REVIEW"> <span>Needs review</span></label>
             <label><input id="library-filter-hidden" type="checkbox" value="HIDDEN"> <span>Hidden</span></label>
           </fieldset>
-          <p class="library-filter-warning" id="library-filter-hint"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Unlisted modules have not passed normal publication checks. Inspect their warnings and source before use.</p>
+          <p class="library-filter-warning" id="library-filter-hint"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Review and hidden modules have not passed normal publication checks. Inspect their warnings and source before use.</p>
         </div>
       </details>
     </div>
@@ -55,7 +57,6 @@
 
     <div class="library-summary-row">
       <p id="library-summary" aria-live="polite">Loading reviewed modules…</p>
-      <button id="library-admin-logout" class="library-text-button" type="button" hidden>End admin session</button>
     </div>
 
     <div id="library-status" class="library-status" role="status" hidden></div>
@@ -71,13 +72,13 @@
     <article id="library-detail" class="library-detail" hidden></article>
 
     <div class="library-admin-entry">
-      <button class="library-admin-trigger" id="library-admin" type="button" aria-label="Open administrator access" title="Administrator access">
+      <button class="library-admin-trigger" id="library-admin" type="button" aria-label="Sign in to moderate" title="Sign in to moderate">
         <i class="fas fa-shield-halved" aria-hidden="true"></i>
-        <span class="sr-only">Administrator access</span>
+        <span class="sr-only" id="library-admin-label">Administrator access</span>
       </button>
       <button class="library-admin-trigger library-api-debug-trigger" id="library-api-debug" type="button" aria-label="Inspect last Library API exchange" title="API inspector">
         <i class="fas fa-code" aria-hidden="true"></i>
-        <span class="sr-only">Inspect API exchange</span>
+        <span class="sr-only">Inspect last Library API exchange</span>
       </button>
     </div>
   </div>
@@ -192,13 +193,10 @@ platforms:
         <h2>Admin session</h2>
       </div>
     </div>
-    <p>The key is kept only for this browser tab and is removed when the session ends.</p>
-    <label class="library-field">
-      <span>Administrator key</span>
-      <input id="library-admin-key" type="password" required maxlength="4096" autocomplete="off">
-    </label>
+    <p id="library-admin-explanation">Sign in with GitHub. Moderation is available only to active members of the configured jMonkeyEngine organization. Your GitHub token stays on the Library backend.</p>
     <div class="library-dialog-actions">
-      <button class="btn btn-primary" type="submit">Unlock moderation</button>
+      <button class="btn btn-primary" id="library-admin-login" type="submit">Continue with GitHub</button>
+      <button class="btn btn-outline" id="library-admin-logout" type="button" hidden>Log out</button>
       <span id="library-admin-status" role="status"></span>
     </div>
   </form>
@@ -207,8 +205,8 @@ platforms:
 <script src="https://cdn.jsdelivr.net/npm/marked@18.0.7/lib/marked.umd.js"
         integrity="sha384-7njNzKcJUBdezPGfqUrIFizi2QkXJH0M6wF3o1h9GE/nce6X4YdecMwh31B19yTi"
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.7/dist/purify.min.js"
-        integrity="sha384-C5g1ZoYBpnvKyArNZI21kaBEk3egHOYfHj/cUOHmyJ7CSDMyNMyM+STqfkBt8m2Y"
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.16/dist/purify.min.js"
+        integrity="sha384-a7SzOxErzJ3ZpQz0zJ32d67dSitNzPcbfybc/ykU9KJhMgZkwqfSxlhhdJRS+XGL"
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 <script src="{{ "/js/library.js" | relURL }}?v={{ now.Unix }}" defer></script>
 {{ end }}

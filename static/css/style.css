@@ -4104,6 +4104,8 @@ section.game-page {
 .library-catalog-actions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 0.65rem;
   margin-bottom: 0.8rem;
 }
 .library-add-button {
@@ -4628,6 +4630,39 @@ section.game-page {
 .library-card-fact i {
   color: #ffd000;
 }
+.library-card-action {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0.25rem 0.35rem;
+  border: 0;
+  border-radius: 6px;
+  color: #707076;
+  background: transparent;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.library-card-action:hover,
+.library-card-action:focus-visible {
+  color: #ffd000;
+  background: rgba(255, 208, 0, 0.11);
+  text-decoration: none;
+}
+.library-like-banana {
+  line-height: 1;
+  filter: grayscale(0.35);
+}
+.library-like-button--active {
+  color: #ffd000;
+  border-color: #ffd000;
+  background: rgba(255, 208, 0, 0.11);
+}
+.library-like-button--active .library-like-banana {
+  filter: none;
+}
 .library-card-version {
   max-width: 70%;
   margin-left: auto;
@@ -4721,36 +4756,51 @@ section.game-page {
   margin-top: 2.8rem;
 }
 .library-admin-trigger {
-  display: grid;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  place-items: center;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: #707076;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 36px;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #28282e;
+  border-radius: 9px;
+  background: #17171b;
+  color: #a8a8a2;
   cursor: pointer;
-  font-size: 0.72rem;
-  opacity: 0.28;
-  transition: color 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 .library-admin-trigger:hover,
 .library-admin-trigger:focus-visible {
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 208, 0, 0.24);
+  background: rgba(255, 208, 0, 0.11);
   color: #ffd000;
-  opacity: 0.9;
   outline: none;
 }
 .library-admin-trigger--active {
+  border-color: rgba(255, 208, 0, 0.24);
+  background: rgba(255, 208, 0, 0.11);
   color: #ffd000;
-  opacity: 0.75;
+}
+.library-admin-feedback {
+  margin-bottom: 1rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(255, 208, 0, 0.24);
+  border-radius: 9px;
+  background: rgba(255, 208, 0, 0.11);
+  color: #f2f2ee;
+  font-size: 0.85rem;
+}
+.library-admin-feedback--error {
+  border-color: rgba(255, 100, 100, 0.45);
+  background: rgba(255, 100, 100, 0.08);
 }
 .library-api-debug-trigger {
-  opacity: 0.18;
+  opacity: 0.3;
 }
 .library-api-debug-trigger--ready {
-  opacity: 0.38;
+  opacity: 0.6;
 }
 .library-status,
 .library-empty {
@@ -5284,6 +5334,15 @@ section.game-page {
   white-space: normal;
   text-align: center;
 }
+.library-detail-like {
+  gap: 0.35rem;
+}
+.library-like-privacy {
+  margin: 0.15rem 0 0;
+  color: #707076;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
 .library-pill-button {
   display: inline-flex;
   align-items: center;
@@ -5463,6 +5522,21 @@ section.game-page {
   color: #f2f2ee;
   font-size: 0.95rem;
 }
+.library-score-explanation {
+  margin: 0 0 0.85rem;
+  color: #707076;
+  font-size: 0.82rem;
+}
+.library-score-dependency {
+  margin-top: 1rem;
+}
+.library-score-dependency h4 {
+  margin: 0 0 0.55rem;
+  color: #f2f2ee;
+  font-family: monospace;
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
 .library-score-gates {
   margin: 0;
   padding-left: 1.25rem;
@@ -5568,7 +5642,7 @@ section.game-page {
     justify-content: center;
   }
   .library-add-button {
-    width: 100%;
+    flex: 1;
   }
   .library-control-popover {
     right: 0;

@@ -28,6 +28,8 @@
     pagination: document.querySelector(".library-pagination"),
     addButton: document.getElementById("library-add"),
     adminButton: document.getElementById("library-admin"),
+    adminLabel: document.getElementById("library-admin-label"),
+    adminFeedback: document.getElementById("library-admin-feedback"),
     logoutButton: document.getElementById("library-admin-logout"),
     addDialog: document.getElementById("library-add-dialog"),
     addForm: document.getElementById("library-add-form"),
@@ -35,7 +37,8 @@
     submitStatus: document.getElementById("library-submit-status"),
     adminDialog: document.getElementById("library-admin-dialog"),
     adminForm: document.getElementById("library-admin-form"),
-    adminKey: document.getElementById("library-admin-key"),
+    adminLoginButton: document.getElementById("library-admin-login"),
+    adminExplanation: document.getElementById("library-admin-explanation"),
     adminStatus: document.getElementById("library-admin-status"),
     scoreDialog: document.getElementById("library-score-dialog"),
     scoreTitle: document.getElementById("library-score-title"),
@@ -52,6 +55,8 @@
   };
 
   const initialUrl = new URL(window.location.href);
+  const moderationResult = initialUrl.searchParams.get("moderation");
+  try { sessionStorage.removeItem("jme-library-admin-key"); } catch (_) { /* Storage may be disabled. */ }
   const initialPage = Number.parseInt(initialUrl.searchParams.get("page") || "1", 10);
   const initialSort = initialUrl.searchParams.get("sort") || "stars";
   const initialDirection = initialUrl.searchParams.get("direction") || "desc";
@@ -66,13 +71,15 @@
     items: [],
     query: String(initialUrl.searchParams.get("q") || "").slice(0, 100),
     author: "",
-    sort: ["stars", "score", "updated", "name"].includes(initialSort) ? initialSort : "stars",
+    sort: ["stars", "likes", "score", "updated", "name"].includes(initialSort) ? initialSort : "stars",
     direction: ["asc", "desc"].includes(initialDirection) ? initialDirection : "desc",
     selectedStates: initialStates.length && initialStates.every((value) => allowedStates.has(value))
       ? Array.from(new Set(initialStates)) : ["LISTED"],
     selectedTag: initialUrl.searchParams.get("tag") || "",
     availableTags: [],
-    adminKey: sessionStorage.getItem("jme-library-admin-key") || "",
+    adminSession: false,
+    adminLogin: "",
+    csrfToken: "",
     requestNumber: 0,
     lastApiExchange: null
   };
@@ -82,6 +89,8 @@
     .split(",")
     .map((topic) => topic.trim().toLowerCase())
     .filter(Boolean));
+  const voterStorageKey = "jme-library-voter-v1";
+  const likedStorageKey = "jme-library-liked-v1";
 
   function resolveApiBase(value) {
     try {
@@ -165,6 +174,30 @@
     return result;
   }
 
+  function renderFunding(item) {
+    const links = Array.isArray(item.funding) ? item.funding
+      .map((entry) => ({
+        label: String(entry?.label || "Support this project").slice(0, 80),
+        provider: String(entry?.provider || "funding").slice(0, 40),
+        url: safeUrl(entry?.url)
+      }))
+      .filter((entry) => entry.url)
+      .slice(0, 16) : [];
+    if (!links.length) return null;
+    const section = node("section", "library-funding");
+    const heading = node("div", "library-funding-heading");
+    heading.append(icon("heart"), node("h3", "", "Support this module"));
+    section.append(heading, node("p", "", "Help the maintainers keep this library healthy and available."));
+    const actions = node("div", "library-funding-links");
+    links.forEach((entry) => {
+      const link = externalLink(entry.label, "library-funding-link", entry.url, "arrow-up-right-from-square");
+      link.dataset.provider = entry.provider;
+      actions.append(link);
+    });
+    section.append(actions);
+    return section;
+  }
+
   function showStatus(message, error) {
     elements.status.hidden = !message;
     elements.status.classList.toggle("library-status--error", Boolean(error));
@@ -179,7 +212,7 @@
     const headers = new Headers(request.headers || {});
     headers.set("Accept", "application/json");
     if (request.body) headers.set("Content-Type", "application/json");
-    if (request.admin && state.adminKey) headers.set("X-API-Key", state.adminKey);
+    if (request.admin && method !== "GET" && state.csrfToken) headers.set("X-CSRF-Token", state.csrfToken);
     const url = `${apiBase}${path}`;
     const visibleRequestHeaders = debugHeaders(headers);
     const visibleRequestBody = request.admin && !path.includes("/moderation")
@@ -191,7 +224,7 @@
         headers,
         body: request.body,
         mode: "cors",
-        credentials: "omit",
+        credentials: request.admin ? "include" : "omit",
         referrerPolicy: "no-referrer"
       });
       const responseText = response.status === 204 ? "" : await response.text();
@@ -210,7 +243,8 @@
           status: response.status,
           statusText: response.statusText,
           headers: debugHeaders(response.headers),
-          body: boundedDebugValue(responseBody)
+          body: request.admin && path === "/admin/session"
+            ? "[moderation session omitted]" : boundedDebugValue(responseBody)
         }
       });
       if (!response.ok) {
@@ -250,7 +284,7 @@
   }
 
   function debugHeaders(headers) {
-    const hidden = new Set(["authorization", "cookie", "set-cookie", "x-api-key"]);
+    const hidden = new Set(["authorization", "cookie", "set-cookie", "x-api-key", "x-library-voter", "x-csrf-token"]);
     const result = {};
     headers.forEach((value, name) => {
       if (!hidden.has(name.toLowerCase())) result[name] = value;
@@ -334,6 +368,93 @@
     return Number.isInteger(item.stars) && item.stars >= 0 ? item.stars : null;
   }
 
+  function likeValue(item) {
+    return Number.isInteger(item.likes) && item.likes >= 0 ? item.likes : 0;
+  }
+
+  function storedLikedModules() {
+    try {
+      const values = JSON.parse(localStorage.getItem(likedStorageKey) || "[]");
+      return new Set(Array.isArray(values) ? values.filter((value) => Number.isSafeInteger(value) && value > 0) : []);
+    } catch (_) {
+      return new Set();
+    }
+  }
+
+  function storeLikedModules(values) {
+    try {
+      localStorage.setItem(likedStorageKey, JSON.stringify(Array.from(values).slice(0, 5000)));
+    } catch (_) {
+      // A disabled storage API only prevents remembering the active button state.
+    }
+  }
+
+  function voterToken() {
+    try {
+      const existing = localStorage.getItem(voterStorageKey);
+      if (/^[A-Za-z0-9_-]{43}$/.test(existing || "")) return existing;
+      const bytes = crypto.getRandomValues(new Uint8Array(32));
+      let binary = "";
+      bytes.forEach((value) => { binary += String.fromCharCode(value); });
+      const created = btoa(binary).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, "");
+      localStorage.setItem(voterStorageKey, created);
+      return created;
+    } catch (_) {
+      throw new Error("Browser storage is required only to prevent duplicate module likes.");
+    }
+  }
+
+  function updateLikeButtons(repositoryId, likes, liked) {
+    document.querySelectorAll(`[data-like-module="${repositoryId}"]`).forEach((control) => {
+      control.classList.toggle("library-like-button--active", liked);
+      control.setAttribute("aria-pressed", String(liked));
+      control.setAttribute("aria-label", `${liked ? "Remove" : "Add"} Library like; ${likes} likes`);
+      control.title = liked ? "Remove your Library like" : "Like this module in the Library";
+      const count = control.querySelector("[data-like-count]");
+      if (count) count.textContent = new Intl.NumberFormat().format(likes);
+    });
+    state.items.forEach((entry) => {
+      if (entry.githubRepositoryId === repositoryId) entry.likes = likes;
+    });
+  }
+
+  function createLikeButton(item, className) {
+    const repositoryId = Number(item.githubRepositoryId);
+    const liked = storedLikedModules().has(repositoryId);
+    const control = node("button", `${className} library-like-button${liked ? " library-like-button--active" : ""}`);
+    control.type = "button";
+    control.dataset.likeModule = String(repositoryId);
+    control.setAttribute("aria-pressed", String(liked));
+    control.setAttribute("aria-label", `${liked ? "Remove" : "Add"} Library like; ${likeValue(item)} likes`);
+    control.title = liked ? "Remove your Library like" : "Like this module in the Library";
+    control.append(node("span", "library-like-banana", "🍌"), document.createTextNode(" "));
+    if (className.includes("library-detail-like")) control.append(document.createTextNode("Like · "));
+    const count = node("span", "", new Intl.NumberFormat().format(likeValue(item)));
+    count.dataset.likeCount = "";
+    control.append(count);
+    control.addEventListener("click", async (event) => {
+      event.stopPropagation();
+      const likedModules = storedLikedModules();
+      const nextLiked = !likedModules.has(repositoryId);
+      control.disabled = true;
+      try {
+        const result = await fetchJson(`/api/extensions/${repositoryId}/like`, {
+          method: "PUT",
+          headers: { "X-Library-Voter": voterToken() },
+          body: JSON.stringify({ liked: nextLiked })
+        });
+        if (result.liked) likedModules.add(repositoryId); else likedModules.delete(repositoryId);
+        storeLikedModules(likedModules);
+        updateLikeButtons(repositoryId, Number(result.likes) || 0, Boolean(result.liked));
+      } catch (error) {
+        showStatus(error.message || "The module like could not be saved.", true);
+      } finally {
+        control.disabled = false;
+      }
+    });
+    return control;
+  }
+
   function stateLabel(item) {
     if (item.processingStatus === "PENDING") return "PENDING";
     if (item.moderationState && item.moderationState !== "AUTO") {
@@ -406,6 +527,9 @@
     }
     if (gate.startsWith("scm-url-mismatch:")) {
       return "The published package does not identify this GitHub repository as its source.";
+    }
+    if (gate.startsWith("mutable-registry:")) {
+      return "The package registry does not guarantee an immutable artifact version.";
     }
     if (gate.startsWith("optional-adapter-failed:")) {
       return "An additional security analyzer failed and the configured policy blocks publication.";
@@ -660,7 +784,7 @@
       imageWrap.append(image);
     }
     imageWrap.append(node("span", "library-card-monogram", moduleTitle(item).slice(0, 1).toUpperCase()));
-    if (state.adminKey || isInactive(item)) {
+    if (state.adminSession || isInactive(item)) {
       imageWrap.append(node("span", "library-state-chip", stateLabel(item)));
     }
 
@@ -675,14 +799,20 @@
     const warning = createVisibilityWarning(item, false);
 
     const facts = node("div", "library-card-facts");
-    const stars = node("span", "library-card-fact");
+    const repository = safeUrl(item.repositoryUrl, true);
+    const stars = repository
+      ? externalLink("", "library-card-fact library-card-action", repository, "star")
+      : node("span", "library-card-fact");
     const knownStars = starValue(item);
-    stars.append(icon("star"), document.createTextNode(knownStars === null ? " —" : ` ${knownStars}`));
+    if (!repository) stars.append(icon("star"));
+    stars.append(document.createTextNode(knownStars === null ? " —" : ` ${knownStars}`));
     if (knownStars === null) stars.title = "GitHub star count is being refreshed";
+    else if (repository) stars.title = "Star this module on GitHub";
+    const likes = createLikeButton(item, "library-card-fact library-card-action");
     const compatibility = node("span", "library-card-fact library-card-version", compatibilityText(item));
     compatibility.title = compatibilityTooltip(item);
     compatibility.setAttribute("aria-label", compatibilityTooltip(item));
-    facts.append(stars, compatibility);
+    facts.append(stars, likes, compatibility);
     body.append(heading, byline, description, tags);
     if (warning) body.append(warning);
     body.append(facts);
@@ -729,9 +859,9 @@
     });
     params.set("states", selectedVisibilityStates().join(","));
     if (state.selectedTag) params.set("tag", state.selectedTag);
-    const path = state.adminKey ? `/admin/extensions?${params}` : `/api/extensions?${params}`;
+    const path = state.adminSession ? `/admin/extensions?${params}` : `/api/extensions?${params}`;
     try {
-      const result = await fetchJson(path, { admin: Boolean(state.adminKey) });
+      const result = await fetchJson(path, { admin: state.adminSession });
       if (requestNumber !== state.requestNumber) return;
       state.items = Array.isArray(result.items) ? result.items : [];
       state.page = Number(result.page) || 0;
@@ -1175,9 +1305,25 @@
   }
 
   function humanScoreCheck(value) {
+    const key = String(value || "check").toLowerCase();
+    const labels = {
+      "missing-coordinate": "Verified artifact missing",
+      "missing-root-coordinate": "Verified artifact missing",
+      "mutable-registry": "Mutable registry risk",
+      "spotbugs-finding": "SpotBugs finding",
+      "spotbugs-advisory": "SpotBugs advisory warning",
+      "spotbugs-high": "SpotBugs high-severity findings",
+      "spotbugs-medium": "SpotBugs medium-severity findings",
+      "spotbugs-low": "SpotBugs low-severity findings"
+    };
+    if (labels[key]) return labels[key];
     return String(value || "check")
       .replaceAll(/[:._-]+/g, " ")
       .replace(/\b\w/g, (letter) => letter.toUpperCase());
+  }
+
+  function isSpotBugsCheck(check) {
+    return /^spotbugs(?:-finding|-advisory|-high|-medium|-low)?$/i.test(String(check?.name || ""));
   }
 
   function scoreDelta(value) {
@@ -1218,18 +1364,6 @@
       elements.scoreBreakdown.append(pendingSection);
     }
 
-    const gates = Array.isArray(score.hardGateFailures) ? score.hardGateFailures : [];
-    const gateSection = node("section", "library-score-section");
-    gateSection.append(node("h3", "", gates.length ? "Blocking gates" : "Blocking gates passed"));
-    if (gates.length) {
-      const list = node("ul", "library-score-gates");
-      gates.forEach((gate) => list.append(node("li", "", hardGateReason(gate))));
-      gateSection.append(list);
-    } else {
-      gateSection.append(node("p", "library-score-passed", "No hard gate failure was reported."));
-    }
-    elements.scoreBreakdown.append(gateSection);
-
     const rawChecks = Array.isArray(score.breakdown) ? score.breakdown : [];
     // Older scorer versions incorrectly repeated the module author's trust on
     // every dependency. Never present those legacy rows as dependency evidence.
@@ -1237,44 +1371,164 @@
       String(check.scope || "").toLowerCase() === "dependency"
       && String(check.name || "").toLowerCase() === "github-author-trust"
     ));
-    const checks = relevantChecks.slice(0, 256);
-    const appendCheckList = (section, sectionChecks, includeCoordinate) => {
+    const visibleChecks = relevantChecks;
+    const spotbugsFindings = visibleChecks.filter((check) =>
+      String(check?.name || "").toLowerCase() === "spotbugs-finding");
+    const spotbugsAdvisories = visibleChecks.filter((check) =>
+      String(check?.name || "").toLowerCase() === "spotbugs-advisory");
+    const spotbugsFindingsByArtifact = new Map();
+    const spotbugsAdvisoriesByArtifact = new Map();
+    const artifactKey = (check) => `${String(check?.scope || "")}\u0000${String(check?.coordinate || "")}`;
+    const groupSpotBugsDetails = (details, target, fallback) => details.forEach((detail) => {
+      const key = artifactKey(detail);
+      if (!target.has(key)) target.set(key, new Map());
+      const message = String(detail.message || fallback);
+      target.get(key).set(message, detail);
+    });
+    groupSpotBugsDetails(spotbugsFindings, spotbugsFindingsByArtifact, "Unknown SpotBugs finding");
+    groupSpotBugsDetails(spotbugsAdvisories, spotbugsAdvisoriesByArtifact, "Unknown SpotBugs warning");
+    // Finding and advisory detail rows are nested under the single SpotBugs summary card.
+    // Keep the summary itself visible even when the scan is clean or partial.
+    const checks = visibleChecks.filter((check) => {
+      const name = String(check?.name || "").toLowerCase();
+      if (name === "spotbugs-finding" || name === "spotbugs-advisory") return false;
+      return true;
+    });
+    const checkTone = (check) => {
+      const status = String(check?.status || "").toUpperCase();
+      if (status === "BLOCKING") return "blocking";
+      if (Number(check?.scoreDelta) < 0) return "negative";
+      if (Number(check?.scoreDelta) > 0) return "positive";
+      return "neutral";
+    };
+    const checkEffect = (check) => {
+      if (Number.isFinite(check?.scoreCeiling)) return `CAP ${scoreDelta(check.scoreCeiling)}`;
+      return scoreDelta(check?.scoreDelta);
+    };
+    const createCheckRow = (check, includeCoordinate, forcedTone = "") => {
+      const tone = forcedTone || checkTone(check);
+      const row = node("li", `library-score-check library-score-check--${tone}`);
+      const heading = node("div", "library-score-check-heading");
+      const title = node("strong", "", humanScoreCheck(check.name));
+      const deltaTone = tone === "blocking" || Number(check.scoreDelta) < 0
+        ? "negative" : Number(check.scoreDelta) > 0 ? "positive" : "neutral";
+      const delta = node("span", `library-score-delta library-score-delta--${deltaTone}`,
+        checkEffect(check));
+      heading.append(title, delta);
+      const confidence = Number(check?.confidenceDelta);
+      if (Number.isFinite(confidence) && confidence !== 0) {
+        heading.append(node("span", `library-score-confidence library-score-confidence--${confidence < 0 ? "negative" : "positive"}`,
+          `confidence ${scoreDelta(confidence)}`));
+      }
+      const metadata = [
+        check.scope,
+        check.status,
+        check.excluded ? "excluded from aggregate" : "",
+        includeCoordinate ? check.coordinate : ""
+      ].filter(Boolean).join(" · ");
+      row.append(heading, node("small", "", metadata));
+      if (check.message) row.append(node("p", "", String(check.message)));
+      const findings = isSpotBugsCheck(check)
+        ? Array.from(spotbugsFindingsByArtifact.get(artifactKey(check))?.values() || [])
+        : [];
+      if (findings.length) {
+        const findingList = node("ul", "library-score-spotbugs-findings");
+        findings.forEach((finding) => findingList.append(
+          node("li", "", String(finding.message || "Unknown SpotBugs finding"))));
+        row.append(findingList);
+      }
+      const advisories = isSpotBugsCheck(check)
+        ? Array.from(spotbugsAdvisoriesByArtifact.get(artifactKey(check))?.values() || [])
+        : [];
+      if (advisories.length) {
+        const advisoryCard = node("section", "library-score-spotbugs-advisories");
+        advisoryCard.append(
+          node("strong", "", `Advisory warnings (${advisories.length})`),
+          node("p", "", "Potential correctness or concurrency issues. These warnings do not affect the score.")
+        );
+        const advisoryList = node("ul", "library-score-spotbugs-advisory-list");
+        advisories.forEach((advisory) => advisoryList.append(
+          node("li", "", String(advisory.message || "Unknown SpotBugs warning"))));
+        advisoryCard.append(advisoryList);
+        row.append(advisoryCard);
+      }
+      return row;
+    };
+    const appendCheckList = (section, sectionChecks, includeCoordinate, forcedTone = "") => {
       const list = node("ol", "library-score-checks");
-      sectionChecks.forEach((check) => {
-        const row = node("li", "library-score-check");
-        const heading = node("div", "library-score-check-heading");
-        const title = node("strong", "", humanScoreCheck(check.name));
-        const delta = node("span", `library-score-delta library-score-delta--${Number(check.scoreDelta) < 0 ? "negative" : Number(check.scoreDelta) > 0 ? "positive" : "neutral"}`,
-          scoreDelta(check.scoreDelta));
-        heading.append(title, delta);
-        const metadata = [
-          check.scope,
-          check.status,
-          check.excluded ? "excluded from aggregate" : "",
-          includeCoordinate ? check.coordinate : ""
-        ].filter(Boolean).join(" · ");
-        row.append(heading, node("small", "", metadata));
-        if (check.message) row.append(node("p", "", String(check.message)));
-        list.append(row);
-      });
+      sectionChecks.forEach((check) => list.append(createCheckRow(check, includeCoordinate, forcedTone)));
       section.append(list);
     };
+    const gateCheckName = (gate) => {
+      const value = String(gate || "");
+      if (value === "missing-root-coordinate" || value === "missing-coordinate") return "missing-coordinate";
+      if (value.startsWith("artifact-not-downloaded:")) return "artifact-download";
+      if (value.startsWith("jar-analysis-failed:")) return "jar-inspection";
+      if (value.startsWith("virustotal-")) return "virustotal";
+      if (value.startsWith("osv-advisory:")) return "osv";
+      if (value.startsWith("scm-url-mismatch:")) return "scm-url";
+      if (value.startsWith("dependency-resolution-failed")) return "dependency-resolution-failed";
+      return value.split(":", 1)[0];
+    };
+    const gateCoordinate = (gate) => {
+      const value = String(gate || "");
+      const separator = value.indexOf(":");
+      return separator < 0 ? "" : value.substring(separator + 1);
+    };
+    const consumedBlockingChecks = new Set();
+    const gates = Array.isArray(score.hardGateFailures) ? score.hardGateFailures : [];
+    const blockingChecks = gates.map((gate) => {
+      const expectedName = gateCheckName(gate);
+      const coordinate = gateCoordinate(gate);
+      const match = checks.find((check) => !consumedBlockingChecks.has(check)
+        && (String(check?.name || "").toLowerCase() === expectedName
+          || (expectedName === "missing-coordinate"
+            && String(check?.name || "").toLowerCase() === "missing-root-coordinate"))
+        && (!coordinate || !check.coordinate || coordinate.includes(String(check.coordinate))));
+      if (match) consumedBlockingChecks.add(match);
+      return {
+        ...(match || {}),
+        name: match?.name || expectedName,
+        status: "BLOCKING",
+        scope: match?.scope || (expectedName === "dependency-resolution-failed" ? "snapshot" : "root"),
+        coordinate: match?.coordinate || coordinate,
+        message: hardGateReason(gate)
+      };
+    });
 
-    if (!checks.length) {
+    const gateSection = node("section", "library-score-section");
+    gateSection.append(node("h3", "", gates.length ? "Blocking reasons" : "Blocking checks passed"));
+    if (blockingChecks.length) {
+      appendCheckList(gateSection, blockingChecks, true, "blocking");
+    } else {
+      gateSection.append(node("p", "library-score-passed", "No blocking condition was reported."));
+    }
+    elements.scoreBreakdown.append(gateSection);
+
+    const assessmentChecks = checks.filter((check) => !consumedBlockingChecks.has(check));
+    const appendAssessment = (section, sectionChecks, includeCoordinate) => {
+      section.append(node("h4", "library-score-subheading", "Score contributions"));
+      section.append(node("p", "library-score-legend",
+        "Green increases the score, red reduces it, and gray is neutral. Confidence changes are shown separately."));
+      appendCheckList(section, sectionChecks, includeCoordinate);
+    };
+
+    if (!assessmentChecks.length && !blockingChecks.length) {
       const checkSection = node("section", "library-score-section");
       checkSection.append(node("h3", "", "Score checks"));
       checkSection.append(node("p", "", "A per-check breakdown is not available for this older snapshot. It will appear after the next analysis."));
       elements.scoreBreakdown.append(checkSection);
     } else {
-      const moduleChecks = checks.filter((check) => String(check.scope || "").toLowerCase() !== "dependency");
+      const moduleChecks = assessmentChecks.filter((check) => String(check.scope || "").toLowerCase() !== "dependency");
       const moduleSection = node("section", "library-score-section");
       moduleSection.append(node("h3", "", "Module assessment"));
       moduleSection.append(node("p", "library-score-explanation",
         "Author trust applies only to the submitted module. These signals determine the module's own score."));
-      if (moduleChecks.length) appendCheckList(moduleSection, moduleChecks, true);
+      if (moduleChecks.length) appendAssessment(moduleSection, moduleChecks, true);
+      else moduleSection.append(node("p", "library-score-passed", "No additional module checks were reported."));
       elements.scoreBreakdown.append(moduleSection);
 
-      const dependencyChecks = checks.filter((check) => String(check.scope || "").toLowerCase() === "dependency");
+      const dependencyChecks = assessmentChecks.filter((check) => String(check.scope || "").toLowerCase() === "dependency");
       const dependencySection = node("section", "library-score-section");
       dependencySection.append(node("h3", "", "Dependency risk"));
       dependencySection.append(node("p", "library-score-explanation",
@@ -1291,14 +1545,11 @@
         byCoordinate.forEach((coordinateChecks, coordinate) => {
           const group = node("section", "library-score-dependency");
           group.append(node("h4", "", coordinate));
-          appendCheckList(group, coordinateChecks, false);
+          appendAssessment(group, coordinateChecks, false);
           dependencySection.append(group);
         });
       }
       elements.scoreBreakdown.append(dependencySection);
-      if (relevantChecks.length > checks.length) {
-        dependencySection.append(node("p", "library-score-truncated", `Showing the first ${checks.length} of ${relevantChecks.length} relevant checks.`));
-      }
     }
     elements.scoreDialog.showModal();
   }
@@ -1417,7 +1668,7 @@
     badges.append(score, virusTotalIndicator(item));
     const jitPackWarning = jitPackIndicator(item);
     if (jitPackWarning) badges.append(jitPackWarning);
-    if (state.adminKey) badges.append(node("span", "library-state-chip library-state-chip--inline", stateLabel(item)));
+    if (state.adminSession) badges.append(node("span", "library-state-chip library-state-chip--inline", stateLabel(item)));
     header.append(badges);
     main.append(header);
     const warning = createVisibilityWarning(item, true);
@@ -1461,10 +1712,13 @@
     if (platforms) aside.append(platforms);
     const publishedModules = renderPublishedModules(item);
     if (publishedModules) aside.append(publishedModules);
+    const funding = renderFunding(item);
+    if (funding) aside.append(funding);
 
     const links = node("div", "library-detail-links");
     const repository = safeUrl(item.repositoryUrl, true);
     const homepage = safeUrl(item.homepageUrl);
+    links.append(createLikeButton(item, "btn btn-outline library-pill-button library-detail-like"));
     if (repository) {
       const star = externalLink("Star on GitHub", "btn btn-primary library-pill-button", repository, "star");
       const source = externalLink("View source", "btn btn-outline library-pill-button", repository, "code-branch");
@@ -1474,8 +1728,9 @@
       const website = externalLink("Project website", "btn btn-outline library-pill-button", homepage, "arrow-up-right-from-square");
       links.append(website);
     }
+    links.append(node("p", "library-like-privacy", "Likes use a random identifier stored only in this browser to prevent duplicate votes. It is not used for analytics or cross-site tracking."));
     aside.append(links);
-    if (state.adminKey) aside.append(renderModeration(item));
+    if (state.adminSession) aside.append(renderModeration(item));
     layout.append(main, aside);
     elements.detail.append(back, layout);
     window.scrollTo({ top: elements.detail.offsetTop - 90, behavior: "smooth" });
@@ -1615,7 +1870,7 @@
     state.selectedTag = url.searchParams.get("tag") || "";
     const sort = url.searchParams.get("sort") || "stars";
     const direction = url.searchParams.get("direction") || "desc";
-    state.sort = ["stars", "score", "updated", "name"].includes(sort) ? sort : "stars";
+    state.sort = ["stars", "likes", "score", "updated", "name"].includes(sort) ? sort : "stars";
     state.direction = ["asc", "desc"].includes(direction) ? direction : "desc";
     const requestedStates = (url.searchParams.get("states") || "LISTED")
       .split(",").map((value) => value.trim().toUpperCase()).filter((value) => allowedStates.has(value));
@@ -1642,17 +1897,27 @@
   }
 
   function updateAdminUi() {
-    const active = Boolean(state.adminKey);
+    const active = state.adminSession;
     elements.logoutButton.hidden = !active;
     visibilityInputs().forEach((input) => { input.disabled = false; });
     elements.filterHint.hidden = false;
     updateFilterCount();
     elements.adminButton.classList.toggle("library-admin-trigger--active", active);
-    elements.adminButton.setAttribute("aria-label", active ? "Moderation is active" : "Open administrator access");
-    elements.adminButton.title = active ? "Moderation active" : "Administrator access";
-    elements.adminButton.replaceChildren();
-    elements.adminButton.append(icon(active ? "shield" : "shield-halved"));
-    elements.adminButton.append(node("span", "sr-only", active ? "Moderation is active" : "Administrator access"));
+    const label = active ? `Admin session active as @${state.adminLogin}` : "Administrator access";
+    elements.adminButton.setAttribute("aria-label", active ? `Admin session active as ${state.adminLogin}` : "Sign in to moderate");
+    elements.adminButton.title = active ? `Admin session active as ${state.adminLogin}` : "Sign in to moderate";
+    elements.adminLabel.textContent = label;
+    elements.adminButton.replaceChildren(icon(active ? "shield" : "shield-halved"), elements.adminLabel);
+    elements.adminLoginButton.hidden = active;
+    elements.adminExplanation.textContent = active
+      ? `You are already an admin, signed in as @${state.adminLogin}. Open a module to use its moderation controls, or log out below.`
+      : "Sign in with GitHub. Moderation is available only to active members of the configured jMonkeyEngine organization. Your GitHub token stays on the Library backend.";
+  }
+
+  function showAdminFeedback(message, error) {
+    elements.adminFeedback.hidden = !message;
+    elements.adminFeedback.classList.toggle("library-admin-feedback--error", Boolean(error));
+    elements.adminFeedback.textContent = message || "";
   }
 
   function showApiDebug() {
@@ -1668,8 +1933,10 @@
   }
 
   function endAdminSession(reload) {
-    sessionStorage.removeItem("jme-library-admin-key");
-    state.adminKey = "";
+    state.adminSession = false;
+    state.adminLogin = "";
+    state.csrfToken = "";
+    showAdminFeedback("", false);
     resetVisibilityFilters();
     updateAdminUi();
     if (reload !== false) {
@@ -1734,10 +2001,8 @@
     elements.addDialog.showModal();
   });
   elements.adminButton.addEventListener("click", () => {
-    if (state.adminKey) return;
-    elements.adminStatus.textContent = "";
+    elements.adminStatus.textContent = state.adminSession ? "Your admin session is active." : "";
     elements.adminDialog.showModal();
-    elements.adminKey.focus();
   });
   elements.apiDebugButton.addEventListener("click", showApiDebug);
   elements.apiDebugCopy.addEventListener("click", async () => {
@@ -1745,7 +2010,16 @@
       await copyText(JSON.stringify(state.lastApiExchange, null, 2), elements.apiDebugCopy);
     }
   });
-  elements.logoutButton.addEventListener("click", () => endAdminSession(true));
+  elements.logoutButton.addEventListener("click", async () => {
+    try {
+      await fetchJson("/admin/logout", { admin: true, method: "POST" });
+    } catch (error) {
+      showStatus(error.message || "Could not end the moderation session.", true);
+      return;
+    }
+    elements.adminDialog.close();
+    endAdminSession(true);
+  });
 
   elements.addForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -1762,27 +2036,37 @@
     }
   });
 
-  elements.adminForm.addEventListener("submit", async (event) => {
+  elements.adminForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (!elements.adminForm.reportValidity()) return;
-    const candidate = elements.adminKey.value;
-    elements.adminStatus.textContent = "Checking key…";
-    state.adminKey = candidate;
+    if (state.adminSession) return;
+    elements.adminStatus.textContent = "Opening GitHub…";
+    window.location.assign(`${apiBase}/admin/oauth/start`);
+  });
+
+  async function restoreAdminSession() {
     try {
-      await fetchJson("/admin/session", { admin: true });
-      sessionStorage.setItem("jme-library-admin-key", candidate);
-      elements.adminKey.value = "";
-      elements.adminDialog.close();
+      const session = await fetchJson("/admin/session", { admin: true });
+      if (!session?.authenticated || !session.csrfToken || !session.login) {
+        throw new Error("The backend returned an incomplete admin session.");
+      }
+      state.adminSession = true;
+      state.adminLogin = session.login;
+      state.csrfToken = session.csrfToken;
       updateAdminUi();
+      showAdminFeedback("", false);
       state.page = 0;
       syncCatalogUrl("replace");
       loadModules();
     } catch (error) {
-      state.adminKey = "";
-      elements.adminStatus.textContent = error.status === 401 || error.status === 403
-        ? "The administrator key is not valid." : (error.message || "Could not start the admin session.");
+      if (moderationResult === "ok") {
+        showAdminFeedback(error.status === 401
+          ? "GitHub sign-in completed, but this browser did not return the admin session cookie. The LAN HTTP site and HTTPS backend may be treated as separate sites by your browser."
+          : `GitHub sign-in completed, but moderation could not be activated: ${error.message || "session check failed"}.`, true);
+      } else if (error.status !== 401 && error.status !== 403) {
+        showAdminFeedback(error.message || "Could not check the moderation session.", true);
+      }
     }
-  });
+  }
 
   document.querySelectorAll("[data-copy-target]").forEach((source) => {
     source.addEventListener("click", () => {
@@ -1818,6 +2102,12 @@
 
   restoreCatalogStateFromUrl();
   updateAdminUi();
+  if (moderationResult) {
+    initialUrl.searchParams.delete("moderation");
+    history.replaceState(history.state, "", initialUrl);
+    if (moderationResult === "denied") showAdminFeedback("GitHub sign-in succeeded, but the backend could not verify an active jMonkeyEngine organization membership for this account. No moderation permissions were granted.", true);
+  }
+  restoreAdminSession();
   const requestedModule = initialUrl.searchParams.get("module");
   const requestedSnapshot = initialUrl.searchParams.get("snapshot");
   if (requestedModule && /^\d+$/.test(requestedModule)
