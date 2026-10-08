@@ -80,6 +80,8 @@
     adminSession: false,
     adminLogin: "",
     csrfToken: "",
+    detailRequestNumber: 0,
+    moderationFeedback: null,
     requestNumber: 0,
     lastApiExchange: null
   };
@@ -790,8 +792,14 @@
 
     const body = node("div", "library-card-body");
     const heading = node("h2", "library-card-title");
-    const openButton = button(moduleTitle(item), "library-card-open", () => openDetail(item, true));
-    heading.append(openButton);
+    const openLink = node("a", "library-card-open", moduleTitle(item));
+    openLink.href = moduleDetailUrl(item.githubRepositoryId, "latest");
+    openLink.addEventListener("click", (event) => {
+      if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      openDetail(item, true);
+    });
+    heading.append(openLink);
     const byline = authorByline(item, "library-card-author");
     const description = node("p", "library-card-description", item.description || "A community module for jMonkeyEngine.");
     const tags = node("div", "library-tags");
@@ -819,7 +827,17 @@
     card.append(imageWrap, body);
 
     card.addEventListener("click", (event) => {
-      if (!event.target.closest("a, button")) openDetail(item, true);
+      if (!event.target.closest("a, button")) {
+        if (event.ctrlKey || event.metaKey || event.shiftKey) {
+          window.open(openLink.href, "_blank", "noopener,noreferrer");
+        } else openDetail(item, true);
+      }
+    });
+    card.addEventListener("auxclick", (event) => {
+      if (event.button === 1 && !event.target.closest("a, button")) {
+        event.preventDefault();
+        window.open(openLink.href, "_blank", "noopener,noreferrer");
+      }
     });
     return card;
   }
@@ -1280,6 +1298,12 @@
     section.append(node("h3", "", "Moderation"));
     section.append(node("p", "", `Current state: ${stateLabel(item)}.`));
     const actions = node("div", "library-moderation-actions");
+    const feedback = node("p", "library-moderation-status");
+    feedback.setAttribute("role", "status");
+    if (state.moderationFeedback?.module === item.githubRepositoryId) {
+      feedback.textContent = state.moderationFeedback.message;
+      feedback.classList.toggle("library-moderation-status--error", state.moderationFeedback.error);
+    }
     [
       ["AUTO", "Use automatic decision"],
       ["LISTED", "List"],
@@ -1287,20 +1311,38 @@
       ["HIDDEN", "Hide"],
       ["BANNED", "Ban"]
     ].forEach(([value, label]) => {
-      actions.append(button(label, value === "BANNED" ? "btn library-danger-button" : "btn btn-outline", async () => {
+      const control = button(label, value === "BANNED" ? "btn library-danger-button" : "btn btn-outline", async () => {
         if (value === "BANNED" && !window.confirm("Ban this module? It will not be rescanned or shown publicly.")) return;
+        const disabledStates = new Map(Array.from(actions.querySelectorAll("button"), (action) => [action, action.disabled]));
+        disabledStates.forEach((_, action) => { action.disabled = true; });
+        feedback.textContent = "Saving moderation decision…";
+        feedback.classList.remove("library-moderation-status--error");
         try {
           const updated = await fetchJson(`/admin/extensions/${encodeURIComponent(item.githubRepositoryId)}/moderation`, {
             method: "POST", admin: true, body: JSON.stringify({ state: value })
           });
           Object.assign(item, updated);
+          state.moderationFeedback = {
+            module: item.githubRepositoryId, message: `Saved. Current state: ${stateLabel(updated)}.`, error: false
+          };
           await loadModules();
         } catch (error) {
-          showStatus(error.message || "Moderation failed.", true);
+          feedback.textContent = error.message || "Moderation failed. No change was saved.";
+          feedback.classList.add("library-moderation-status--error");
+        } finally {
+          disabledStates.forEach((disabled, action) => { action.disabled = disabled; });
         }
-      }));
+      });
+      if (value === "LISTED" && (item.processingStatus === "PENDING" || item.score?.decision === "REJECTED")) {
+        control.disabled = true;
+        control.title = item.processingStatus === "PENDING"
+          ? "Verification must finish before this module can be listed."
+          : "A blocking security rejection cannot be overridden by moderation.";
+        section.append(node("p", "library-moderation-limit", control.title));
+      }
+      actions.append(control);
     });
-    section.append(actions);
+    section.append(actions, feedback);
     return section;
   }
 
@@ -1414,12 +1456,19 @@
         ? "negative" : Number(check.scoreDelta) > 0 ? "positive" : "neutral";
       const delta = node("span", `library-score-delta library-score-delta--${deltaTone}`,
         checkEffect(check));
-      heading.append(title, delta);
+      delta.title = `Score change: ${checkEffect(check)} points`;
+      delta.setAttribute("aria-label", delta.title);
+      const effects = node("div", "library-score-effects");
+      effects.append(delta);
       const confidence = Number(check?.confidenceDelta);
-      if (Number.isFinite(confidence) && confidence !== 0) {
-        heading.append(node("span", `library-score-confidence library-score-confidence--${confidence < 0 ? "negative" : "positive"}`,
-          `confidence ${scoreDelta(confidence)}`));
+      if (Number.isFinite(confidence)) {
+        const confidenceEffect = node("span", `library-score-confidence library-score-confidence--${confidence < 0 ? "negative" : confidence > 0 ? "positive" : "neutral"}`,
+          scoreDelta(confidence));
+        confidenceEffect.title = `Confidence change: ${scoreDelta(confidence)} percentage points`;
+        confidenceEffect.setAttribute("aria-label", confidenceEffect.title);
+        effects.append(confidenceEffect);
       }
+      heading.append(title, effects);
       const metadata = [
         check.scope,
         check.status,
@@ -1576,7 +1625,7 @@
     }).format(parsed);
   }
 
-  function createSnapshotSelector(item, historyItems) {
+  function createSnapshotSelector(item, historyItems, selectedSnapshot) {
     if (!Array.isArray(historyItems) || !historyItems.length) return null;
     const section = node("section", "library-snapshot-selector");
     const label = node("label", "library-snapshot-label");
@@ -1584,15 +1633,29 @@
     const selectControl = node("div", "library-snapshot-select-control");
     const select = node("select", "library-snapshot-select");
     select.setAttribute("aria-label", "Select an analyzed module version");
+    const latest = node("option", "", "Latest available version");
+    latest.value = "latest";
+    latest.selected = selectedSnapshot === "latest";
+    select.append(latest);
+    const latestId = historyItems.find((snapshot) => state.adminSession
+      ? snapshot.processingStatus === "COMPLETED" && snapshot.decision : snapshot.published)?.snapshotId;
     historyItems.forEach((snapshot) => {
+      if (String(snapshot.snapshotId) === String(latestId)) return;
       const option = node("option");
       option.value = String(snapshot.snapshotId);
       const provider = snapshot.provider
         ? ` · ${String(snapshot.provider).replaceAll("_", " ").toLowerCase()}` : "";
       option.textContent = `${snapshot.version || "Unresolved"} — ${snapshotStatus(snapshot)}${provider} · ${snapshotDate(snapshot.createdAt)}`;
-      option.selected = String(snapshot.snapshotId) === String(item.snapshotId);
+      option.selected = selectedSnapshot !== "latest" && String(snapshot.snapshotId) === String(item.snapshotId);
       select.append(option);
     });
+    // Preserve explicitly pinned links even when that snapshot is currently the newest.
+    if (selectedSnapshot !== "latest" && !Array.from(select.options).some((option) => option.value === String(selectedSnapshot))) {
+      const pinned = node("option", "", `${item.version || "Selected version"} · snapshot ${selectedSnapshot}`);
+      pinned.value = String(selectedSnapshot);
+      pinned.selected = true;
+      select.append(pinned);
+    }
     const selectIcon = icon("chevron-down");
     selectIcon.setAttribute("aria-hidden", "true");
     selectControl.append(select, selectIcon);
@@ -1608,17 +1671,19 @@
       `${selectedStatus} snapshot`);
     select.addEventListener("change", async () => {
       select.disabled = true;
+      const selection = select.value;
       try {
-        const snapshot = await fetchJson(`/api/extensions/${encodeURIComponent(item.githubRepositoryId)}/snapshots/${encodeURIComponent(select.value)}`);
+        const snapshot = await fetchJson(moduleApiPath(item.githubRepositoryId, selection), { admin: state.adminSession });
         const catalogUrl = validCatalogReturnUrl(history.state?.catalogUrl);
         history.pushState({
           module: item.githubRepositoryId,
-          snapshot: Number(select.value),
+          snapshot: selection,
           catalogUrl
-        }, "", moduleDetailUrl(item.githubRepositoryId, select.value));
-        await openDetail(snapshot, false, historyItems);
+        }, "", moduleDetailUrl(item.githubRepositoryId, selection));
+        await openDetail(snapshot, false, historyItems, selection);
       } catch (error) {
         select.disabled = false;
+        select.value = selectedSnapshot;
         showStatus(error.message || "The selected module snapshot could not be loaded.", true);
       }
     });
@@ -1626,13 +1691,25 @@
     return section;
   }
 
-  async function openDetail(item, updateHistory, suppliedHistory) {
+  function moduleApiPath(repositoryId, selectedSnapshot = "latest") {
+    const prefix = state.adminSession ? "/admin/extensions" : "/api/extensions";
+    return `${prefix}/${encodeURIComponent(repositoryId)}`
+      + (selectedSnapshot === "latest" ? "" : `/snapshots/${encodeURIComponent(selectedSnapshot)}`);
+  }
+
+  async function openDetail(item, updateHistory, suppliedHistory, selectedSnapshot = "latest") {
+    const requestNumber = ++state.detailRequestNumber;
+    if (updateHistory) {
+      const current = new URL(window.location.href);
+      const catalogUrl = current.searchParams.has("module")
+        ? validCatalogReturnUrl(history.state?.catalogUrl) : current.href;
+      history.pushState({ module: item.githubRepositoryId, snapshot: selectedSnapshot, catalogUrl },
+        "", moduleDetailUrl(item.githubRepositoryId, selectedSnapshot));
+    }
     if (!item.readmeIncluded && item.githubRepositoryId) {
       try {
-        const requestedSnapshot = item.snapshotId
-          ? `/snapshots/${encodeURIComponent(item.snapshotId)}` : "";
-        const detailed = await fetchJson(`/api/extensions/${encodeURIComponent(item.githubRepositoryId)}${requestedSnapshot}`);
-        Object.assign(item, detailed);
+        const detailed = await fetchJson(moduleApiPath(item.githubRepositoryId, selectedSnapshot), { admin: state.adminSession });
+        item = { ...item, ...detailed };
       } catch (error) {
         showStatus(error.message || "Module documentation could not be loaded.", true);
       }
@@ -1640,12 +1717,13 @@
     let snapshotHistory = suppliedHistory;
     if (!Array.isArray(snapshotHistory) && item.githubRepositoryId) {
       try {
-        const historyResult = await fetchJson(`/api/extensions/${encodeURIComponent(item.githubRepositoryId)}/snapshots`);
+        const historyResult = await fetchJson(`${moduleApiPath(item.githubRepositoryId)}/snapshots`, { admin: state.adminSession });
         snapshotHistory = Array.isArray(historyResult.items) ? historyResult.items : [];
       } catch (_) {
         snapshotHistory = [];
       }
     }
+    if (requestNumber !== state.detailRequestNumber) return;
     elements.grid.hidden = true;
     elements.pagination.hidden = true;
     elements.authorProfile.hidden = true;
@@ -1697,7 +1775,10 @@
     if (readme) main.append(readme);
 
     const aside = node("aside", "library-detail-aside");
-    const snapshotSelector = createSnapshotSelector(item, snapshotHistory);
+    aside.tabIndex = 0;
+    aside.setAttribute("aria-label", "Module information and actions");
+    if (state.adminSession) aside.append(renderModeration(item));
+    const snapshotSelector = createSnapshotSelector(item, snapshotHistory, selectedSnapshot);
     if (snapshotSelector) aside.append(snapshotSelector);
     const facts = node("dl", "library-detail-facts");
     [
@@ -1730,25 +1811,14 @@
     }
     links.append(node("p", "library-like-privacy", "Likes use a random identifier stored only in this browser to prevent duplicate votes. It is not used for analytics or cross-site tracking."));
     aside.append(links);
-    if (state.adminSession) aside.append(renderModeration(item));
     layout.append(main, aside);
     elements.detail.append(back, layout);
     window.scrollTo({ top: elements.detail.offsetTop - 90, behavior: "smooth" });
 
-    if (updateHistory) {
-      const current = new URL(window.location.href);
-      const catalogUrl = current.searchParams.has("module")
-        ? validCatalogReturnUrl(history.state?.catalogUrl)
-        : current.href;
-      history.pushState({
-        module: item.githubRepositoryId,
-        snapshot: item.snapshotId,
-        catalogUrl
-      }, "", moduleDetailUrl(item.githubRepositoryId, item.snapshotId));
-    }
   }
 
   function closeDetail() {
+    state.detailRequestNumber++;
     const url = validCatalogReturnUrl(history.state?.catalogUrl)
       || new URL(window.location.pathname, window.location.origin).href;
     history.pushState({}, "", url);
@@ -1759,25 +1829,17 @@
   async function openRequestedModule(updateHistory) {
     const id = new URL(window.location.href).searchParams.get("module");
     if (!id || !/^\d+$/.test(id)) return;
-    const snapshotId = new URL(window.location.href).searchParams.get("snapshot");
-    let item = state.items.find((candidate) => String(candidate.githubRepositoryId) === id);
-    if (snapshotId && /^\d+$/.test(snapshotId)) {
-      try {
-        item = await fetchJson(`/api/extensions/${encodeURIComponent(id)}/snapshots/${encodeURIComponent(snapshotId)}`);
-      } catch (_) {
-        showStatus("This module snapshot is not publicly available.", true);
-        return;
-      }
+    const snapshotId = new URL(window.location.href).searchParams.get("snapshot") || "latest";
+    if (snapshotId !== "latest" && !/^\d+$/.test(snapshotId)) return;
+    const requestedUrl = window.location.href;
+    let item;
+    try {
+      item = await fetchJson(moduleApiPath(id, snapshotId), { admin: state.adminSession });
+    } catch (_) {
+      if (requestedUrl === window.location.href) showStatus("This module snapshot is not available.", true);
+      return;
     }
-    if (!item) {
-      try {
-        item = await fetchJson(`/api/extensions/${encodeURIComponent(id)}`);
-      } catch (_) {
-        showStatus("This module is not publicly available.", true);
-        return;
-      }
-    }
-    if (item) openDetail(item, updateHistory);
+    if (requestedUrl === window.location.href) await openDetail(item, updateHistory, undefined, snapshotId);
   }
 
   async function copyText(value, source) {
@@ -1843,10 +1905,10 @@
     else history.replaceState(history.state, "", url);
   }
 
-  function moduleDetailUrl(repositoryId, snapshotId) {
+  function moduleDetailUrl(repositoryId, snapshotId = "latest") {
     const url = new URL(window.location.pathname, window.location.origin);
     url.searchParams.set("module", String(repositoryId));
-    if (snapshotId) url.searchParams.set("snapshot", String(snapshotId));
+    url.searchParams.set("snapshot", String(snapshotId || "latest"));
     return url.href;
   }
 
@@ -2054,9 +2116,6 @@
       state.csrfToken = session.csrfToken;
       updateAdminUi();
       showAdminFeedback("", false);
-      state.page = 0;
-      syncCatalogUrl("replace");
-      loadModules();
     } catch (error) {
       if (moderationResult === "ok") {
         showAdminFeedback(error.status === 401
@@ -2107,20 +2166,21 @@
     history.replaceState(history.state, "", initialUrl);
     if (moderationResult === "denied") showAdminFeedback("GitHub sign-in succeeded, but the backend could not verify an active jMonkeyEngine organization membership for this account. No moderation permissions were granted.", true);
   }
-  restoreAdminSession();
   const requestedModule = initialUrl.searchParams.get("module");
   const requestedSnapshot = initialUrl.searchParams.get("snapshot");
   if (requestedModule && /^\d+$/.test(requestedModule)
-      && (!requestedSnapshot || /^\d+$/.test(requestedSnapshot))) {
+      && (!requestedSnapshot || requestedSnapshot === "latest" || /^\d+$/.test(requestedSnapshot))) {
     history.replaceState({
       module: Number(requestedModule),
-      snapshot: requestedSnapshot ? Number(requestedSnapshot) : null,
+      snapshot: requestedSnapshot || "latest",
       catalogUrl: validCatalogReturnUrl(history.state?.catalogUrl)
     }, "", moduleDetailUrl(requestedModule, requestedSnapshot));
   } else {
     syncCatalogUrl("replace");
   }
-  loadCatalogStats();
-  loadCategories();
-  loadModules();
+  restoreAdminSession().then(() => {
+    loadCatalogStats();
+    loadCategories();
+    loadModules();
+  });
 }());

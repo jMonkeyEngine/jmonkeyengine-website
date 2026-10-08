@@ -4802,8 +4802,7 @@ section.game-page {
 .library-api-debug-trigger--ready {
   opacity: 0.6;
 }
-.library-status,
-.library-empty {
+.library-status {
   margin: 1rem 0;
   padding: 1rem;
   border: 1px solid #28282e;
@@ -4818,7 +4817,14 @@ section.game-page {
 }
 .library-empty {
   grid-column: 1 / -1;
-  padding: 4rem 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 5rem 1rem;
+  box-sizing: border-box;
+  background: none;
+  border: 0;
+  color: #a8a8a2;
+  text-align: center;
 }
 .library-detail {
   color: #a8a8a2;
@@ -4852,6 +4858,23 @@ section.game-page {
   padding: 1.4rem;
   position: sticky;
   top: 100px;
+  max-height: calc(100dvh - 120px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.library-moderation-status {
+  color: #83d19a;
+}
+.library-moderation-status:empty {
+  display: none;
+}
+.library-moderation-status--error {
+  color: #ff8e8e;
+}
+.library-moderation-limit {
+  color: #ffc943;
+  font-size: 0.78rem;
 }
 .library-detail-header {
   margin-top: 1.8rem;
@@ -5564,6 +5587,30 @@ section.game-page {
   gap: 1rem;
   color: #f2f2ee;
 }
+.library-score-check-heading > strong {
+  flex: 1;
+  min-width: 0;
+}
+.library-score-effects {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 0.2rem;
+  text-align: right;
+  align-content: start;
+}
+.library-score-confidence {
+  font-family: monospace;
+  font-size: 0.78rem;
+}
+.library-score-confidence--positive {
+  color: #83d19a;
+}
+.library-score-confidence--negative {
+  color: #ff8e8e;
+}
+.library-score-confidence--neutral {
+  color: #707076;
+}
 .library-score-check small {
   display: block;
   margin-top: 0.2rem;
@@ -5606,6 +5653,9 @@ section.game-page {
   }
   .library-detail-aside {
     position: static;
+    max-height: none;
+    overflow-y: visible;
+    overscroll-behavior: auto;
   }
 }
 @media (max-width: 640px) {
