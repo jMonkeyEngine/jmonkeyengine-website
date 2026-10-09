@@ -4526,9 +4526,6 @@ section.game-page {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-.library-state-chip--inline {
-  position: static;
-}
 .library-card-body {
   display: flex;
   flex: 1;
@@ -5052,7 +5049,7 @@ section.game-page {
   color: #707076;
   font-size: 0.7rem;
 }
-.library-snapshot-status--published {
+.library-snapshot-status--passed-automatic-review {
   color: #72d99a;
 }
 .library-snapshot-status--needs-review,
@@ -5195,6 +5192,33 @@ section.game-page {
 .library-install h2 {
   color: #f2f2ee;
 }
+.library-install-note {
+  color: #98989f;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.library-install-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.library-install-controls .library-install-choice {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.library-install-controls .library-install-choice[hidden] {
+  display: none;
+}
+.library-install-controls select {
+  width: 100%;
+  max-width: 100%;
+}
+.library-install-choice {
+  display: grid;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  color: #c5c5cb;
+}
 .library-code {
   overflow-x: auto;
   padding: 1rem;
@@ -5202,6 +5226,10 @@ section.game-page {
   border-radius: 9px;
   background: #0c0c0f;
   color: #f2f2ee;
+}
+.library-install .library-code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .library-copy-button {
   padding: 0.55rem 0;
@@ -5359,12 +5387,6 @@ section.game-page {
 }
 .library-detail-like {
   gap: 0.35rem;
-}
-.library-like-privacy {
-  margin: 0.15rem 0 0;
-  color: #707076;
-  font-size: 0.68rem;
-  line-height: 1.45;
 }
 .library-pill-button {
   display: inline-flex;
@@ -5545,11 +5567,6 @@ section.game-page {
   color: #f2f2ee;
   font-size: 0.95rem;
 }
-.library-score-explanation {
-  margin: 0 0 0.85rem;
-  color: #707076;
-  font-size: 0.82rem;
-}
 .library-score-dependency {
   margin-top: 1rem;
 }
@@ -5570,12 +5587,15 @@ section.game-page {
 }
 .library-score-checks {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.65rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .library-score-check {
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding: 0.75rem;
   border: 1px solid #28282e;
   border-radius: 9px;

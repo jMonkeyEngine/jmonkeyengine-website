@@ -458,6 +458,7 @@
   }
 
   function stateLabel(item) {
+    if (item.repositoryArchived) return "HIDDEN";
     if (item.processingStatus === "PENDING") return "PENDING";
     if (item.moderationState && item.moderationState !== "AUTO") {
       return item.moderationState.replaceAll("_", " ");
@@ -555,6 +556,7 @@
   }
 
   function visibilityReasons(item, limit = 3) {
+    if (item.repositoryArchived) return ["Repository archived on GitHub. Hidden from recommendations; historical snapshots remain available."];
     if (item.processingStatus === "PENDING") {
       const pending = Array.isArray(item.pendingChecks) ? item.pendingChecks : [];
       const reasons = pending.map(pendingCheckReason).filter(Boolean);
@@ -1321,6 +1323,9 @@
           const updated = await fetchJson(`/admin/extensions/${encodeURIComponent(item.githubRepositoryId)}/moderation`, {
             method: "POST", admin: true, body: JSON.stringify({ state: value })
           });
+          if (updated.moderationState !== value) {
+            throw new Error("The backend did not confirm the requested moderation state. No successful save was reported.");
+          }
           Object.assign(item, updated);
           state.moderationFeedback = {
             module: item.githubRepositoryId, message: `Saved. Current state: ${stateLabel(updated)}.`, error: false
@@ -1333,9 +1338,11 @@
           disabledStates.forEach((disabled, action) => { action.disabled = disabled; });
         }
       });
-      if (value === "LISTED" && (item.processingStatus === "PENDING" || item.score?.decision === "REJECTED")) {
+      if (value === "LISTED" && (item.repositoryArchived || item.processingStatus === "PENDING" || item.score?.decision === "REJECTED")) {
         control.disabled = true;
-        control.title = item.processingStatus === "PENDING"
+        control.title = item.repositoryArchived
+          ? "Archived GitHub repositories are hidden from recommendations."
+          : item.processingStatus === "PENDING"
           ? "Verification must finish before this module can be listed."
           : "A blocking security rejection cannot be overridden by moderation.";
         section.append(node("p", "library-moderation-limit", control.title));
@@ -1395,7 +1402,7 @@
       const pendingSection = node("section", "library-score-section");
       pendingSection.append(node("h3", "", "Pending verification"));
       const list = node("ul", "library-score-gates");
-      (pendingChecks.length ? pendingChecks : [{ message: "Automated verification has not completed yet." }])
+      (pendingChecks.length ? pendingChecks : [{ message: "Verification in progress." }])
         .forEach((check) => {
           list.append(node("li", "", pendingCheckReason({
             ...check,
@@ -1493,7 +1500,7 @@
         const advisoryCard = node("section", "library-score-spotbugs-advisories");
         advisoryCard.append(
           node("strong", "", `Advisory warnings (${advisories.length})`),
-          node("p", "", "Potential correctness or concurrency issues. These warnings do not affect the score.")
+          node("p", "", "No score impact.")
         );
         const advisoryList = node("ul", "library-score-spotbugs-advisory-list");
         advisories.forEach((advisory) => advisoryList.append(
@@ -1545,46 +1552,33 @@
       };
     });
 
-    const gateSection = node("section", "library-score-section");
-    gateSection.append(node("h3", "", gates.length ? "Blocking reasons" : "Blocking checks passed"));
     if (blockingChecks.length) {
+      const gateSection = node("section", "library-score-section");
+      gateSection.append(node("h3", "", "Blocking issues"));
       appendCheckList(gateSection, blockingChecks, true, "blocking");
-    } else {
-      gateSection.append(node("p", "library-score-passed", "No blocking condition was reported."));
+      elements.scoreBreakdown.append(gateSection);
     }
-    elements.scoreBreakdown.append(gateSection);
 
     const assessmentChecks = checks.filter((check) => !consumedBlockingChecks.has(check));
-    const appendAssessment = (section, sectionChecks, includeCoordinate) => {
-      section.append(node("h4", "library-score-subheading", "Score contributions"));
-      section.append(node("p", "library-score-legend",
-        "Green increases the score, red reduces it, and gray is neutral. Confidence changes are shown separately."));
-      appendCheckList(section, sectionChecks, includeCoordinate);
-    };
 
     if (!assessmentChecks.length && !blockingChecks.length) {
       const checkSection = node("section", "library-score-section");
       checkSection.append(node("h3", "", "Score checks"));
-      checkSection.append(node("p", "", "A per-check breakdown is not available for this older snapshot. It will appear after the next analysis."));
+      checkSection.append(node("p", "", "No score breakdown is available."));
       elements.scoreBreakdown.append(checkSection);
     } else {
       const moduleChecks = assessmentChecks.filter((check) => String(check.scope || "").toLowerCase() !== "dependency");
-      const moduleSection = node("section", "library-score-section");
-      moduleSection.append(node("h3", "", "Module assessment"));
-      moduleSection.append(node("p", "library-score-explanation",
-        "Author trust applies only to the submitted module. These signals determine the module's own score."));
-      if (moduleChecks.length) appendAssessment(moduleSection, moduleChecks, true);
-      else moduleSection.append(node("p", "library-score-passed", "No additional module checks were reported."));
-      elements.scoreBreakdown.append(moduleSection);
+      if (moduleChecks.length) {
+        const moduleSection = node("section", "library-score-section");
+        moduleSection.append(node("h3", "", "Module checks"));
+        appendCheckList(moduleSection, moduleChecks, true);
+        elements.scoreBreakdown.append(moduleSection);
+      }
 
       const dependencyChecks = assessmentChecks.filter((check) => String(check.scope || "").toLowerCase() === "dependency");
-      const dependencySection = node("section", "library-score-section");
-      dependencySection.append(node("h3", "", "Dependency risk"));
-      dependencySection.append(node("p", "library-score-explanation",
-        "A dependency can maintain or lower the final score, but it can never increase the module's score."));
-      if (!dependencyChecks.length) {
-        dependencySection.append(node("p", "library-score-passed", "No included dependency checks were reported."));
-      } else {
+      if (dependencyChecks.length) {
+        const dependencySection = node("section", "library-score-section");
+        dependencySection.append(node("h3", "", "Dependencies"));
         const byCoordinate = new Map();
         dependencyChecks.forEach((check) => {
           const coordinate = String(check.coordinate || "Unknown dependency");
@@ -1594,11 +1588,11 @@
         byCoordinate.forEach((coordinateChecks, coordinate) => {
           const group = node("section", "library-score-dependency");
           group.append(node("h4", "", coordinate));
-          appendAssessment(group, coordinateChecks, false);
+          appendCheckList(group, coordinateChecks, false);
           dependencySection.append(group);
         });
+        elements.scoreBreakdown.append(dependencySection);
       }
-      elements.scoreBreakdown.append(dependencySection);
     }
     elements.scoreDialog.showModal();
   }
@@ -1609,7 +1603,7 @@
     }
     const decision = String(snapshot?.decision || "").toUpperCase();
     return {
-      LISTED: "Published",
+      LISTED: "Passed automatic review",
       NEEDS_REVIEW: "Needs review",
       HIDDEN: "Hidden",
       REJECTED: "Rejected"
@@ -1629,11 +1623,11 @@
     if (!Array.isArray(historyItems) || !historyItems.length) return null;
     const section = node("section", "library-snapshot-selector");
     const label = node("label", "library-snapshot-label");
-    label.append(icon("clock-rotate-left"), document.createTextNode(" Module version"));
+    label.append(icon("clock-rotate-left"), document.createTextNode(" Analysis snapshot"));
     const selectControl = node("div", "library-snapshot-select-control");
     const select = node("select", "library-snapshot-select");
     select.setAttribute("aria-label", "Select an analyzed module version");
-    const latest = node("option", "", "Latest available version");
+    const latest = node("option", "", "Latest available snapshot (not necessarily a stable release)");
     latest.value = "latest";
     latest.selected = selectedSnapshot === "latest";
     select.append(latest);
@@ -1668,7 +1662,9 @@
         decision: item.score?.decision || item.visibilityDecision
       });
     const status = node("p", `library-snapshot-status library-snapshot-status--${String(selectedStatus).toLowerCase().replaceAll(" ", "-")}`,
-      `${selectedStatus} snapshot`);
+      `Selected snapshot #${item.snapshotId}: ${selectedStatus}`);
+    const explanation = node("p", "library-snapshot-status",
+      "Automatic assessment applies to this snapshot. Module moderation is separate; an approved module can have a snapshot that needs review.");
     select.addEventListener("change", async () => {
       select.disabled = true;
       const selection = select.value;
@@ -1687,7 +1683,7 @@
         showStatus(error.message || "The selected module snapshot could not be loaded.", true);
       }
     });
-    section.append(label, selectControl, status);
+    section.append(label, selectControl, status, explanation);
     return section;
   }
 
@@ -1695,6 +1691,114 @@
     const prefix = state.adminSession ? "/admin/extensions" : "/api/extensions";
     return `${prefix}/${encodeURIComponent(repositoryId)}`
       + (selectedSnapshot === "latest" ? "" : `/snapshots/${encodeURIComponent(selectedSnapshot)}`);
+  }
+
+  function installationTargets(option) {
+    const known = new Set(["ANDROID", "WINDOWS", "LINUX", "MACOS", "IOS"]);
+    const declared = Array.isArray(option.platforms) ? option.platforms
+      .map(platform => platform?.operatingSystem).filter(os => known.has(os)) : [];
+    if (option.platformsKnown) return [...new Set(declared)];
+    return declared.length ? [...new Set(declared)] : [option.target === "ANDROID" ? "ANDROID" : "JVM"];
+  }
+
+  function installationRecipes(item) {
+    let options = Array.isArray(item.installationOptions) ? item.installationOptions : [];
+    if (!options.length && item.gradleSnippet) options = [{
+      artifact: item.rootArtifact || {}, gradleSnippet: item.gradleSnippet,
+      target: item.rootArtifact?.packaging === "aar" ? "ANDROID" : "JVM"
+    }];
+    const grouped = new Map();
+    for (const option of options) {
+      if (!option?.artifact || typeof option.gradleSnippet !== "string") continue;
+      const snippet = option.gradleSnippet.replace(/\r\n/g, "\n").trim();
+      const targets = installationTargets(option);
+      if (!snippet || !targets.length) continue;
+      let recipe = grouped.get(snippet);
+      if (!recipe) {
+        recipe = {gradleSnippet: snippet, targets: [], artifacts: []};
+        grouped.set(snippet, recipe);
+      }
+      recipe.targets = [...new Set([...recipe.targets, ...targets])];
+      recipe.artifacts.push(option.artifact);
+    }
+    const order = ["WINDOWS", "LINUX", "MACOS", "ANDROID", "IOS", "JVM"];
+    return [...grouped.values()].map(recipe => ({...recipe,
+      targets: order.filter(target => recipe.targets.includes(target))}));
+  }
+
+  function installationRecipeLabel(recipe) {
+    const labels = {JVM: "JVM", ANDROID: "Android", WINDOWS: "Windows", LINUX: "Linux", MACOS: "macOS", IOS: "iOS"};
+    return recipe.targets.map(target => labels[target]).join(", ");
+  }
+
+  function installationSnippetParts(snippet) {
+    const match = snippet.match(/^(?:repositories \{\n([\s\S]*?)\n\}\n\n)?dependencies \{\n[ \t]+(implementation\("[^"\n]+"\))\n\}$/);
+    if (!match) return null;
+    const body = match[1] ? `${match[1]}\n` : "";
+    const entries = body.match(/    mavenCentral\(\)\n|    maven \{\n(?:[^\n]*\n)*?    \}\n/g) || [];
+    if (entries.join("") !== body) return null;
+    return {repositories: entries, dependency: match[2]};
+  }
+
+  function combinedInstallationSnippet(recipes) {
+    const parts = recipes.map(recipe => installationSnippetParts(recipe.gradleSnippet));
+    // Historical custom snippets retain their exact code instead of being
+    // guessed at by a general-purpose Gradle parser.
+    if (parts.some(part => !part)) return recipes.map(recipe =>
+      `// ${installationRecipeLabel(recipe)}\n${recipe.gradleSnippet}`).join("\n\n");
+    const repositories = new Map();
+    const dependencies = new Map();
+    parts.forEach((part, index) => {
+      for (const entry of part.repositories) {
+        const candidate = entry.match(/^([\s\S]*\n        content \{\n)([\s\S]*?)(        \}\n    \}\n)$/);
+        const filterLines = candidate?.[2].split("\n").filter(Boolean) || [];
+        const filtered = filterLines.length && filterLines.every(line =>
+          /^            include(?:Group\("[A-Za-z0-9_.-]+"\)|Module\("[A-Za-z0-9_.-]+", "[A-Za-z0-9_.-]+"\))$/.test(line)) ? candidate : null;
+        const key = filtered ? `${filtered[1]}${filtered[3]}` : entry;
+        let repository = repositories.get(key);
+        if (!repository) {
+          repository = {entry, prefix: filtered?.[1], suffix: filtered?.[3], filters: new Set()};
+          repositories.set(key, repository);
+        }
+        if (filtered) filterLines.forEach(line => repository.filters.add(line));
+      }
+      dependencies.set(part.dependency, [...new Set([
+        ...(dependencies.get(part.dependency) || []), ...recipes[index].targets])]);
+    });
+    const names = new Set();
+    const repositoryCode = [...repositories.values()].map(repository => {
+      let entry = repository.prefix
+        ? `${repository.prefix}${[...repository.filters].join("\n")}\n${repository.suffix}` : repository.entry;
+      const named = entry.match(/\n        name = "([^"]+)"\n/);
+      if (named) {
+        let unique = named[1], suffix = 2;
+        while (names.has(unique)) unique = `${named[1]}_${suffix++}`;
+        names.add(unique);
+        if (unique !== named[1]) entry = entry.replace(named[0], `\n        name = "${unique}"\n`);
+      }
+      return entry;
+    }).join("");
+    const repositoryBlock = repositoryCode ? `repositories {\n${repositoryCode}}\n\n` : "";
+    const order = ["WINDOWS", "LINUX", "MACOS", "ANDROID", "IOS", "JVM"];
+    const dependencyCode = [...dependencies].map(([dependency, targets]) =>
+      `    ${dependency} // ${installationRecipeLabel({targets: order.filter(target => targets.includes(target))})}`).join("\n");
+    return `${repositoryBlock}dependencies {\n${dependencyCode}\n}`;
+  }
+
+  function renderInstallRecipe(item) {
+    const install = node("section", "library-install");
+    install.append(node("h2", "", "Add to your project"));
+    const recipes = installationRecipes(item);
+    if (!recipes.length) {
+      install.append(node("p", "", "No compatible installation recipe is available."));
+      return install;
+    }
+    const code = node("code", "", combinedInstallationSnippet(recipes));
+    const pre = node("pre", "library-code");
+    pre.append(code);
+    const copy = button("Copy Gradle snippet", "library-copy-button", async () => copyText(code.textContent, copy), "copy");
+    install.append(pre, copy);
+    return install;
   }
 
   async function openDetail(item, updateHistory, suppliedHistory, selectedSnapshot = "latest") {
@@ -1746,7 +1850,6 @@
     badges.append(score, virusTotalIndicator(item));
     const jitPackWarning = jitPackIndicator(item);
     if (jitPackWarning) badges.append(jitPackWarning);
-    if (state.adminSession) badges.append(node("span", "library-state-chip library-state-chip--inline", stateLabel(item)));
     header.append(badges);
     main.append(header);
     const warning = createVisibilityWarning(item, true);
@@ -1761,13 +1864,13 @@
       || item.score?.decision === "REJECTED"
       || item.visibilityDecision === "REJECTED";
     if (item.gradleSnippet && !rejectedSnapshot) {
-      const install = node("section", "library-install");
-      install.append(node("h2", "", "Add to your project"));
-      const code = node("code", "", item.gradleSnippet);
-      const pre = node("pre", "library-code");
-      pre.append(code);
-      const copy = button("Copy Gradle snippet", "library-copy-button", async () => copyText(item.gradleSnippet, copy), "copy");
-      install.append(pre, copy);
+      main.append(renderInstallRecipe(item));
+    } else if (item.installation?.status === "UNAVAILABLE" && !rejectedSnapshot) {
+      const install = node("section", "library-install library-visibility-warning");
+      install.append(node("h2", "", "Install recipe unavailable"));
+      install.append(node("p", "", "The publication could not be resolved reliably. No copyable recipe is offered until its metadata or missing artifacts are corrected."));
+      if (item.installation?.note) install.append(node("p", "library-install-note", item.installation.note));
+      (item.analysisErrors || []).forEach(error => install.append(node("p", "library-install-note", error)));
       main.append(install);
     }
 
@@ -1782,7 +1885,6 @@
     if (snapshotSelector) aside.append(snapshotSelector);
     const facts = node("dl", "library-detail-facts");
     [
-      detailRow("Registry", registryLabel(item.rootArtifact)),
       detailRow("Minimum jME", item.compatibility?.minimum),
       detailRow("Recommended jME", item.compatibility?.recommended),
       detailRow("Maximum jME", item.compatibility?.maximum),
@@ -1809,7 +1911,6 @@
       const website = externalLink("Project website", "btn btn-outline library-pill-button", homepage, "arrow-up-right-from-square");
       links.append(website);
     }
-    links.append(node("p", "library-like-privacy", "Likes use a random identifier stored only in this browser to prevent duplicate votes. It is not used for analytics or cross-site tracking."));
     aside.append(links);
     layout.append(main, aside);
     elements.detail.append(back, layout);

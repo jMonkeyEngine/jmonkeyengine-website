@@ -407,7 +407,6 @@
   text-transform: uppercase;
 }
 
-.library-state-chip--inline { position: static; }
 
 .library-card-body { display: flex; flex: 1; flex-direction: column; padding: 1.2rem; }
 .library-card-title { margin: 0 0 0.25rem; color: @text-primary; font-size: 1.18rem; }
@@ -814,6 +813,7 @@
 .library-install { margin-top: 2rem; }
 .library-install h2 { color: @text-primary; }
 .library-code { overflow-x: auto; padding: 1rem; border: 1px solid @border; border-radius: 9px; background: #0c0c0f; color: #f2f2ee; }
+.library-install .library-code { white-space: pre-wrap; overflow-wrap: anywhere; }
 .library-copy-button { padding: 0.55rem 0; }
 .library-readme {
   margin-top: 2.5rem;
@@ -866,7 +866,6 @@
 .library-detail-links { display: grid; gap: 0.65rem; margin-top: 1.2rem; }
 .library-detail-links .btn { justify-content: center; white-space: normal; text-align: center; }
 .library-detail-like { gap: 0.35rem; }
-.library-like-privacy { margin: 0.15rem 0 0; color: @text-muted; font-size: 0.68rem; line-height: 1.45; }
 .library-pill-button {
   display: inline-flex;
   align-items: center;
@@ -965,7 +964,6 @@
 .library-score-summary .library-detail-row { padding: 0.7rem; border: 1px solid @border; border-radius: 9px; }
 .library-score-section { margin-top: 1.5rem; }
 .library-score-section h3 { margin-bottom: 0.65rem; color: @text-primary; font-size: 0.95rem; }
-.library-score-explanation { margin: 0 0 0.85rem; color: @text-muted; font-size: 0.82rem; }
 .library-score-dependency { margin-top: 1rem; }
 .library-score-dependency h4 {
   margin: 0 0 0.55rem;
@@ -976,8 +974,8 @@
 }
 .library-score-gates { margin: 0; padding-left: 1.25rem; color: #ff8e8e; }
 .library-score-passed { color: #83d19a; }
-.library-score-checks { display: grid; gap: 0.65rem; margin: 0; padding: 0; list-style: none; }
-.library-score-check { padding: 0.75rem; border: 1px solid @border; border-radius: 9px; background: #0c0c0f; }
+.library-score-checks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.65rem; margin: 0; padding: 0; list-style: none; }
+.library-score-check { min-width: 0; overflow-wrap: anywhere; padding: 0.75rem; border: 1px solid @border; border-radius: 9px; background: #0c0c0f; }
 .library-score-check-heading { display: flex; justify-content: space-between; gap: 1rem; color: @text-primary; }
 .library-score-check-heading > strong { flex: 1; min-width: 0; }
 .library-score-effects { display: grid; flex: 0 0 auto; gap: 0.2rem; text-align: right; align-content: start; }
