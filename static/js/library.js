@@ -795,11 +795,12 @@
     const body = node("div", "library-card-body");
     const heading = node("h2", "library-card-title");
     const openLink = node("a", "library-card-open", moduleTitle(item));
-    openLink.href = moduleDetailUrl(item.githubRepositoryId, "latest");
+    const selection = catalogSnapshot(item);
+    openLink.href = moduleDetailUrl(item.githubRepositoryId, selection);
     openLink.addEventListener("click", (event) => {
       if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      openDetail(item, true);
+      openDetail(item, true, undefined, selection);
     });
     heading.append(openLink);
     const byline = authorByline(item, "library-card-author");
@@ -832,7 +833,7 @@
       if (!event.target.closest("a, button")) {
         if (event.ctrlKey || event.metaKey || event.shiftKey) {
           window.open(openLink.href, "_blank", "noopener,noreferrer");
-        } else openDetail(item, true);
+        } else openDetail(item, true, undefined, selection);
       }
     });
     card.addEventListener("auxclick", (event) => {
@@ -1393,7 +1394,7 @@
     [
       ["Final score", value === null ? "Not available" : String(value)],
       ["Confidence", Number.isFinite(score.confidence) ? `${score.confidence}%` : "Not available"],
-      ["Decision", String(score.decision || item.visibilityDecision || "Pending").replaceAll("_", " ")]
+      ["Decision", String(item.visibilityDecision || score.decision || "Pending").replaceAll("_", " ")]
     ].forEach(([label, result]) => summary.append(detailRow(label, result)));
     elements.scoreSummary.append(summary);
 
@@ -1601,9 +1602,9 @@
     if (String(snapshot?.processingStatus || "PENDING").toUpperCase() === "PENDING") {
       return "Pending";
     }
-    const decision = String(snapshot?.decision || "").toUpperCase();
+    const decision = String(snapshot?.visibilityDecision || snapshot?.decision || "").toUpperCase();
     return {
-      LISTED: "Passed automatic review",
+      LISTED: "Approved",
       NEEDS_REVIEW: "Needs review",
       HIDDEN: "Hidden",
       REJECTED: "Rejected"
@@ -1619,33 +1620,46 @@
     }).format(parsed);
   }
 
-  function createSnapshotSelector(item, historyItems, selectedSnapshot) {
+  function catalogSnapshot(item) {
+    return (item.visibilityDecision || item.score?.decision) === "LISTED" ? "latest" : String(item.snapshotId);
+  }
+
+  function createSnapshotSelector(item, historyItems, selectedSnapshot, latestSnapshotId) {
     if (!Array.isArray(historyItems) || !historyItems.length) return null;
     const section = node("section", "library-snapshot-selector");
     const label = node("label", "library-snapshot-label");
-    label.append(icon("clock-rotate-left"), document.createTextNode(" Analysis snapshot"));
+    label.append(icon("clock-rotate-left"), document.createTextNode(" Version"));
     const selectControl = node("div", "library-snapshot-select-control");
     const select = node("select", "library-snapshot-select");
     select.setAttribute("aria-label", "Select an analyzed module version");
-    const latest = node("option", "", "Latest available snapshot (not necessarily a stable release)");
-    latest.value = "latest";
-    latest.selected = selectedSnapshot === "latest";
-    select.append(latest);
-    const latestId = historyItems.find((snapshot) => state.adminSession
-      ? snapshot.processingStatus === "COMPLETED" && snapshot.decision : snapshot.published)?.snapshotId;
-    historyItems.forEach((snapshot) => {
-      if (String(snapshot.snapshotId) === String(latestId)) return;
-      const option = node("option");
-      option.value = String(snapshot.snapshotId);
+    const latestId = latestSnapshotId === undefined
+      ? historyItems.find((snapshot) => snapshot.published
+        && (snapshot.visibilityDecision || snapshot.decision) === "LISTED")?.snapshotId : latestSnapshotId;
+    const optionLabel = (snapshot) => {
+      const status = snapshotStatus(snapshot);
       const provider = snapshot.provider
         ? ` · ${String(snapshot.provider).replaceAll("_", " ").toLowerCase()}` : "";
-      option.textContent = `${snapshot.version || "Unresolved"} — ${snapshotStatus(snapshot)}${provider} · ${snapshotDate(snapshot.createdAt)}`;
-      option.selected = selectedSnapshot !== "latest" && String(snapshot.snapshotId) === String(item.snapshotId);
+      return `${snapshot.version || "Unresolved"}${status === "Approved" ? "" : ` — ${status}`}${provider} · ${snapshotDate(snapshot.createdAt)}`;
+    };
+    historyItems.forEach((snapshot) => {
+      const option = node("option", "", optionLabel(snapshot));
+      option.value = String(snapshot.snapshotId) === String(latestId) ? "latest" : String(snapshot.snapshotId);
+      option.selected = selectedSnapshot === "latest" ? option.value === "latest" : option.value === String(selectedSnapshot);
       select.append(option);
     });
+    // The approved version may be older than the bounded history response.
+    if (latestId != null && !Array.from(select.options).some((option) => option.value === "latest")) {
+      const latest = node("option", "", String(item.snapshotId) === String(latestId)
+        ? optionLabel({version: item.rootArtifact?.version, visibilityDecision: item.visibilityDecision,
+          processingStatus: item.processingStatus, createdAt: item.snapshotCreatedAt}) : "Approved version");
+      latest.value = "latest";
+      latest.selected = selectedSnapshot === "latest";
+      select.append(latest);
+    }
     // Preserve explicitly pinned links even when that snapshot is currently the newest.
     if (selectedSnapshot !== "latest" && !Array.from(select.options).some((option) => option.value === String(selectedSnapshot))) {
-      const pinned = node("option", "", `${item.version || "Selected version"} · snapshot ${selectedSnapshot}`);
+      const pinned = node("option", "", optionLabel({version: item.rootArtifact?.version,
+        visibilityDecision: item.visibilityDecision, processingStatus: item.processingStatus, createdAt: item.snapshotCreatedAt}));
       pinned.value = String(selectedSnapshot);
       pinned.selected = true;
       select.append(pinned);
@@ -1653,18 +1667,6 @@
     const selectIcon = icon("chevron-down");
     selectIcon.setAttribute("aria-hidden", "true");
     selectControl.append(select, selectIcon);
-    const selected = historyItems.find((snapshot) =>
-      String(snapshot.snapshotId) === String(item.snapshotId));
-    const selectedStatus = selected
-      ? snapshotStatus(selected)
-      : snapshotStatus({
-        processingStatus: item.processingStatus,
-        decision: item.score?.decision || item.visibilityDecision
-      });
-    const status = node("p", `library-snapshot-status library-snapshot-status--${String(selectedStatus).toLowerCase().replaceAll(" ", "-")}`,
-      `Selected snapshot #${item.snapshotId}: ${selectedStatus}`);
-    const explanation = node("p", "library-snapshot-status",
-      "Automatic assessment applies to this snapshot. Module moderation is separate; an approved module can have a snapshot that needs review.");
     select.addEventListener("change", async () => {
       select.disabled = true;
       const selection = select.value;
@@ -1676,14 +1678,14 @@
           snapshot: selection,
           catalogUrl
         }, "", moduleDetailUrl(item.githubRepositoryId, selection));
-        await openDetail(snapshot, false, historyItems, selection);
+        await openDetail(snapshot, false, undefined, selection);
       } catch (error) {
         select.disabled = false;
         select.value = selectedSnapshot;
         showStatus(error.message || "The selected module snapshot could not be loaded.", true);
       }
     });
-    section.append(label, selectControl, status, explanation);
+    section.append(label, selectControl);
     return section;
   }
 
@@ -1819,12 +1821,12 @@
       }
     }
     let snapshotHistory = suppliedHistory;
-    if (!Array.isArray(snapshotHistory) && item.githubRepositoryId) {
+    if (!Array.isArray(snapshotHistory?.items) && item.githubRepositoryId) {
       try {
         const historyResult = await fetchJson(`${moduleApiPath(item.githubRepositoryId)}/snapshots`, { admin: state.adminSession });
-        snapshotHistory = Array.isArray(historyResult.items) ? historyResult.items : [];
+        snapshotHistory = historyResult;
       } catch (_) {
-        snapshotHistory = [];
+        snapshotHistory = {items: []};
       }
     }
     if (requestNumber !== state.detailRequestNumber) return;
@@ -1881,7 +1883,7 @@
     aside.tabIndex = 0;
     aside.setAttribute("aria-label", "Module information and actions");
     if (state.adminSession) aside.append(renderModeration(item));
-    const snapshotSelector = createSnapshotSelector(item, snapshotHistory, selectedSnapshot);
+    const snapshotSelector = createSnapshotSelector(item, snapshotHistory?.items, selectedSnapshot, snapshotHistory?.latestSnapshotId);
     if (snapshotSelector) aside.append(snapshotSelector);
     const facts = node("dl", "library-detail-facts");
     [
