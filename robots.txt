@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /donate/
+Sitemap: https://jmonkeyengine.org/sitemap.xml

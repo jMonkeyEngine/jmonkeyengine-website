@@ -1,0 +1,12 @@
+{
+  
+  "title": "EnvisionPlay",
+  "summary": "EnvisionPlay is a visual game editor designed to make creating 2D and 3D games simple and accessible. It provides an intuitive workflow that allows developers to focus on building gameplay instead of writing boilerplate code.",
+  "images": ["/images/showcase-tools/envisionplay/00-cover.webp","/images/showcase-tools/envisionplay/envisionplay-01.webm","/images/showcase-tools/envisionplay/envisionplay-02.webm","/images/showcase-tools/envisionplay/envisionplay-03.webm","/images/showcase-tools/envisionplay/envisionplay-04.webp","/images/showcase-tools/envisionplay/envisionplay-05.webp","/images/showcase-tools/envisionplay/envisionplay-06.webp"],
+  "tags": ["gamedev","game-development","game-editor","indie-dev","level-editor","software"],
+  "tool_type": "Tool",
+  "external_link": null,
+  "github_link": null,
+  "indiedb_link": null,
+  "website_link": null
+}

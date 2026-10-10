@@ -1,0 +1,13 @@
+{
+  
+  "title": "Spoxel",
+  "summary": "Explore, customize, and build across the world of Spoxel as you fight the otherworlders who have subjugated the land and forced the grounders below the surface. Use runes to construct custom powerful spells, infuse weapons and armor with rare resources to create legendary items of power.",
+  "images": ["/images/showcase/spoxel/1.webp","/images/showcase/spoxel/2.webp","/images/showcase/spoxel/3.webp","/images/showcase/spoxel/4.webp","/images/showcase/spoxel/5.webp","/images/showcase/spoxel/6.webp","/images/showcase/spoxel/7.webp","/images/showcase/spoxel/8.webp","https://steamcdn-a.akamaihd.net/steam/apps/256746524/movie480.webm","https://steamcdn-a.akamaihd.net/steam/apps/256746530/movie480.webm"],
+  "tags": ["steam","spoxel","showcase"],
+  "authors": ["Jedic"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": "https://store.steampowered.com/app/746880/Spoxel/",
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/spoxel"
+}

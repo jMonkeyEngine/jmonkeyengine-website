@@ -1,0 +1,12 @@
+{
+  
+  "title": "Exotic Matter Engine",
+  "summary": "A custom voxel/sandbox engine and technology stack built around jMonkeyEngine for the Exotic Matter project.",
+  "images": ["/images/showcase/exotic-matter/screenshot_00025.2.webp"],
+  "tags": ["Engine","Voxel","Sandbox"],
+  "tool_type": "Engine",
+  "external_link": null,
+  "github_link": null,
+  "indiedb_link": "https://www.indiedb.com/engines/exotic-matter-engine",
+  "website_link": null
+}

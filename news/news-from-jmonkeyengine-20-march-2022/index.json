@@ -1,0 +1,26 @@
+
+{
+    "responseTitle":"jMonkeyEngine  | News from JMonkeyEngine - 20 March 2022",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"1b7635d2da5ce695f8226cbf073fc4b2",
+
+    "title":"News from JMonkeyEngine - 20 March 2022",
+    "content":"\u003cdiv\u003e\u003cbr /\u003eAs of today, there's a new release of JMonkeyEngine: 3.5.1-stable, which improves our support for the new \"Apple Silicon\" Macs and fixes a couple recently-discovered bugs.\u003cbr /\u003e\u003cbr /\u003eBehind the scenes, discussion about the future of JMonkeyEngine is underway. It's too soon to present a roadmap, but know we aren't satisfied to rest on our laurels.\u003cbr /\u003e\u003cbr /\u003eFinancially, the project is very stable. Thanks again for your financial contribution(s), which give us confidence to move forward.\u003cbr /\u003e\u003cbr /\u003eFor the latest news and discussion of JMonkeyEngine software development,\u003cbr /\u003evisit the Development category at the JME Hub/Forum: \u003ca href=\"https://opencollective.com/redirect?url=https%3A%2F%2Fhub.jmonkeyengine.org%2Fc%2Fdevelopment-discussion-jme3%2F9\"\u003ehttps://hub.jmonkeyengine.org/c/development-discussion-jme3/9\u003c/a\u003e\u003c/div\u003e\n",
+    "contentPlain":"\nAs of today, there's a new release of JMonkeyEngine: 3.5.1-stable, which improves our support for the new \"Apple Silicon\" Macs and fixes a couple recently-discovered bugs.\nBehind the scenes, discussion about the future of JMonkeyEngine is underway. It's too soon to present a roadmap, but know we aren't satisfied to rest on our laurels.\nFinancially, the project is very stable. Thanks again for your financial contribution(s), which give us confidence to move forward.\nFor the latest news and discussion of JMonkeyEngine software development,\nvisit the Development category at the JME Hub/Forum: https://hub.jmonkeyengine.org/c/development-discussion-jme3/9 " ,
+    "url":"https://jmonkeyengine.org/news/news-from-jmonkeyengine-20-march-2022/",
+
+
+    
+    "summary":"As of today, there's a new release of JMonkeyEngine: 3.5.1-stable, which improves our support for the new \"Apple Silicon\" Macs and fixes a couple recently-discovered bugs. Behind the scenes, discussion about the future of JMonkeyEngine is u...",
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}
+
