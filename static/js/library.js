@@ -1724,8 +1724,14 @@
       recipe.artifacts.push(option.artifact);
     }
     const order = ["WINDOWS", "LINUX", "MACOS", "ANDROID", "IOS", "JVM"];
-    return [...grouped.values()].map(recipe => ({...recipe,
+    const recipes = [...grouped.values()].map(recipe => ({...recipe,
       targets: order.filter(target => recipe.targets.includes(target))}));
+    const preferred = item.installation?.artifact || item.rootArtifact;
+    const defaultIndex = recipes.findIndex(recipe => recipe.artifacts.some(artifact =>
+      ["groupId", "artifactId", "version", "classifier", "packaging", "registry"].every(key =>
+        (artifact[key] || null) === (preferred?.[key] || null))));
+    if (defaultIndex > 0) recipes.unshift(...recipes.splice(defaultIndex, 1));
+    return recipes;
   }
 
   function installationRecipeLabel(recipe) {
@@ -1733,58 +1739,10 @@
     return recipe.targets.map(target => labels[target]).join(", ");
   }
 
-  function installationSnippetParts(snippet) {
-    const match = snippet.match(/^(?:repositories \{\n([\s\S]*?)\n\}\n\n)?dependencies \{\n[ \t]+(implementation\("[^"\n]+"\))\n\}$/);
-    if (!match) return null;
-    const body = match[1] ? `${match[1]}\n` : "";
-    const entries = body.match(/    mavenCentral\(\)\n|    maven \{\n(?:[^\n]*\n)*?    \}\n/g) || [];
-    if (entries.join("") !== body) return null;
-    return {repositories: entries, dependency: match[2]};
-  }
-
-  function combinedInstallationSnippet(recipes) {
-    const parts = recipes.map(recipe => installationSnippetParts(recipe.gradleSnippet));
-    // Historical custom snippets retain their exact code instead of being
-    // guessed at by a general-purpose Gradle parser.
-    if (parts.some(part => !part)) return recipes.map(recipe =>
-      `// ${installationRecipeLabel(recipe)}\n${recipe.gradleSnippet}`).join("\n\n");
-    const repositories = new Map();
-    const dependencies = new Map();
-    parts.forEach((part, index) => {
-      for (const entry of part.repositories) {
-        const candidate = entry.match(/^([\s\S]*\n        content \{\n)([\s\S]*?)(        \}\n    \}\n)$/);
-        const filterLines = candidate?.[2].split("\n").filter(Boolean) || [];
-        const filtered = filterLines.length && filterLines.every(line =>
-          /^            include(?:Group\("[A-Za-z0-9_.-]+"\)|Module\("[A-Za-z0-9_.-]+", "[A-Za-z0-9_.-]+"\))$/.test(line)) ? candidate : null;
-        const key = filtered ? `${filtered[1]}${filtered[3]}` : entry;
-        let repository = repositories.get(key);
-        if (!repository) {
-          repository = {entry, prefix: filtered?.[1], suffix: filtered?.[3], filters: new Set()};
-          repositories.set(key, repository);
-        }
-        if (filtered) filterLines.forEach(line => repository.filters.add(line));
-      }
-      dependencies.set(part.dependency, [...new Set([
-        ...(dependencies.get(part.dependency) || []), ...recipes[index].targets])]);
-    });
-    const names = new Set();
-    const repositoryCode = [...repositories.values()].map(repository => {
-      let entry = repository.prefix
-        ? `${repository.prefix}${[...repository.filters].join("\n")}\n${repository.suffix}` : repository.entry;
-      const named = entry.match(/\n        name = "([^"]+)"\n/);
-      if (named) {
-        let unique = named[1], suffix = 2;
-        while (names.has(unique)) unique = `${named[1]}_${suffix++}`;
-        names.add(unique);
-        if (unique !== named[1]) entry = entry.replace(named[0], `\n        name = "${unique}"\n`);
-      }
-      return entry;
-    }).join("");
-    const repositoryBlock = repositoryCode ? `repositories {\n${repositoryCode}}\n\n` : "";
-    const order = ["WINDOWS", "LINUX", "MACOS", "ANDROID", "IOS", "JVM"];
-    const dependencyCode = [...dependencies].map(([dependency, targets]) =>
-      `    ${dependency} // ${installationRecipeLabel({targets: order.filter(target => targets.includes(target))})}`).join("\n");
-    return `${repositoryBlock}dependencies {\n${dependencyCode}\n}`;
+  function installationPrerequisite(recipe) {
+    return recipe?.gradleSnippet?.includes("https://maven.pkg.github.com/")
+      ? "GitHub Packages requires GITHUB_PACKAGES_USERNAME and GITHUB_PACKAGES_TOKEN (a classic token with read:packages access)."
+      : "";
   }
 
   function renderInstallRecipe(item) {
@@ -1795,11 +1753,32 @@
       install.append(node("p", "", "No compatible installation recipe is available."));
       return install;
     }
-    const code = node("code", "", combinedInstallationSnippet(recipes));
+    const code = node("code", "", recipes[0].gradleSnippet);
+    const prerequisite = node("p", "library-install-note library-install-prerequisite", installationPrerequisite(recipes[0]));
+    prerequisite.hidden = !prerequisite.textContent;
     const pre = node("pre", "library-code");
     pre.append(code);
     const copy = button("Copy Gradle snippet", "library-copy-button", async () => copyText(code.textContent, copy), "copy");
-    install.append(pre, copy);
+    if (recipes.length > 1) {
+      const label = node("label", "library-install-choice library-select", "Installation recipe");
+      const select = node("select", "");
+      select.id = "library-install-recipe";
+      label.htmlFor = select.id;
+      recipes.forEach((recipe, index) => {
+        const artifact = recipe.artifacts[0];
+        const option = node("option", "", `${installationRecipeLabel(recipe)} · ${artifact.groupId}:${artifact.artifactId}`);
+        option.value = String(index);
+        select.append(option);
+      });
+      select.addEventListener("change", () => {
+        code.textContent = recipes[Number(select.value)].gradleSnippet;
+        prerequisite.textContent = installationPrerequisite(recipes[Number(select.value)]);
+        prerequisite.hidden = !prerequisite.textContent;
+      });
+      label.append(select);
+      install.append(label);
+    }
+    install.append(prerequisite, pre, copy);
     return install;
   }
 
