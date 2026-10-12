@@ -1,0 +1,121 @@
+// === CONTRIBUTE SECTION ===
+#contribute {
+    background:
+        radial-gradient(ellipse 70% 70% at 50% 0%, rgba(255,208,0,0.06) 0%, transparent 62%),
+        @bg-secondary !important;
+    padding: 5.25rem 0 5.5rem;
+    border-top: 1px solid @border;
+}
+.contribute-shell {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 28px;
+    padding: 2.2rem;
+    background: linear-gradient(180deg, rgba(23,23,27,0.70) 0%, rgba(14,14,17,0.92) 100%);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+}
+.contribute-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 8% 0%, rgba(255,208,0,0.08) 0%, transparent 32%);
+    pointer-events: none;
+}
+.contribute-intro {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto 1.7rem;
+    text-align: center;
+}
+.section-kicker {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    color: @accent;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.contribute-grid {
+    position: relative;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+.contribute-card {
+    background: linear-gradient(180deg, rgba(23,23,27,0.98) 0%, rgba(12,12,15,0.98) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 1.45rem;
+    transition: all 0.25s ease;
+    position: relative; overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+}
+.contribute-card:hover {
+    border-color: @border-accent;
+    transform: translateY(-4px);
+    box-shadow: 0 18px 46px rgba(0,0,0,0.34), 0 0 0 1px rgba(255,208,0,0.06);
+}
+.contribute-card__icon {
+    .icon-tile(46px, 14px, rgba(255,208,0,0.10), rgba(255,208,0,0.22), inline-flex);
+    color: @accent;
+    margin-bottom: 1rem;
+}
+.contribute-card__icon i { font-size: 1.05rem; }
+.contribute-card h3 {
+    color: @text-primary;
+    font-size: 1.04rem;
+    font-weight: 800;
+    margin: 0 0 0.7rem;
+}
+.contribute-card p {
+    color: @text-secondary;
+    font-size: 0.86rem;
+    line-height: 1.62;
+    margin: 0 0 1rem;
+}
+.contribute-card__links {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+.contribute-card__links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    color: @text-primary;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 750;
+    padding: 0.58rem 0.72rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.07);
+}
+.contribute-card__links a:first-child {
+    color: @accent;
+    border-color: rgba(255,208,0,0.24);
+    background: rgba(255,208,0,0.08);
+}
+.contribute-card__links a:nth-child(2) {
+    font-size: 0.82rem;
+    color: @text-primary;
+    border-style: solid;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(14px) saturate(135%);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+.contribute-card__links a:nth-child(2):hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.42);
+}
+.contribute-card__links a:hover {
+    border-color: @border-accent;
+    background: rgba(255,208,0,0.12);
+    transform: translateX(2px);
+}

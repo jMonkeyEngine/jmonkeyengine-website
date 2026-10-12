@@ -1,0 +1,26 @@
+
+{
+    "responseTitle":"jMonkeyEngine  | released JMonkeyEngine 3.6.1-stable",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"cb9cae1ff437446c469fad2320168592",
+
+    "title":"released JMonkeyEngine 3.6.1-stable",
+    "content":"\u003cdiv\u003eA new patch release of JMonkeyEngine arrived on Friday: 3.6.1-stable. This is now the recommended version for all JME projects.  Among other things, it solves issues with instancing, memory management, and restarting LWJGLv2 contexts. The release notes are online at \u003ca href=\"https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.6.1-stable\"\u003ehttps://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.6.1-stable\u003c/a\u003e\u003cbr /\u003e\u003cbr /\u003eOur Engine continues to look to the future and evolve to meet it. For instance, there are efforts underway to support multiple monitors and to leverage OpenXR for virtual-reality applications.\u003cbr /\u003e\u003cbr /\u003eThank you for your financial contribution(s) to the JMonkeyEngine project. With your support, the project remains in good financial health. If you'd like to connect with us and/or learn more about our Engine, the best resource is probably our Discourse forum at \u003ca href=\"https://opencollective.com/redirect?url=https%3A%2F%2Fhub.jmonkeyengine.org\"\u003ehttps://hub.jmonkeyengine.org\u003c/a\u003e \u003c/div\u003e\n",
+    "contentPlain":"A new patch release of JMonkeyEngine arrived on Friday: 3.6.1-stable. This is now the recommended version for all JME projects. Among other things, it solves issues with instancing, memory management, and restarting LWJGLv2 contexts. The release notes are online at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.6.1-stable\nOur Engine continues to look to the future and evolve to meet it. For instance, there are efforts underway to support multiple monitors and to leverage OpenXR for virtual-reality applications.\nThank you for your financial contribution(s) to the JMonkeyEngine project. With your support, the project remains in good financial health. If you'd like to connect with us and/or learn more about our Engine, the best resource is probably our Discourse forum at https://hub.jmonkeyengine.org " ,
+    "url":"https://jmonkeyengine.org/news/released-jmonkeyengine-3-6-1-stable/",
+
+
+    
+    "summary":"A new patch release of JMonkeyEngine arrived on Friday: 3.6.1-stable. This is now the recommended version for all JME projects. Among other things, it solves issues with instancing, memory management, and restarting LWJGLv2 contexts. The re...",
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}
+
