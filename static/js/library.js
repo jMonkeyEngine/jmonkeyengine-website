@@ -366,6 +366,29 @@
     return Number.isFinite(item.score?.score) ? item.score.score : null;
   }
 
+  function moderatorApprovedScore(item) {
+    return item.moderationState === "LISTED"
+      && item.visibilityDecision === "LISTED"
+      && item.processingStatus === "COMPLETED"
+      && !item.repositoryArchived
+      && scoreValue(item) !== null && scoreValue(item) < 0
+      && ["NEEDS_REVIEW", "HIDDEN"].includes(item.score?.decision);
+  }
+
+  function createScoreBadge(item) {
+    const approved = moderatorApprovedScore(item);
+    const value = scoreValue(item);
+    const badge = button(approved ? "Moderator approved" : value === null ? "Unscored" : `Score ${value}`,
+      `library-score library-score--button library-score--${approved ? "good" : scoreTone(value)}`,
+      () => openScoreDialog(item), approved ? "circle-check" : "circle-question");
+    if (approved) {
+      badge.classList.add("library-score--approved");
+      badge.title = "Approved by a moderator. View score details.";
+      badge.setAttribute("aria-label", "Moderator approved. View score details.");
+    }
+    return badge;
+  }
+
   function starValue(item) {
     return Number.isInteger(item.stars) && item.stars >= 0 ? item.stars : null;
   }
@@ -824,6 +847,7 @@
     compatibility.title = compatibilityTooltip(item);
     compatibility.setAttribute("aria-label", compatibilityTooltip(item));
     facts.append(stars, likes, compatibility);
+    if (moderatorApprovedScore(item)) facts.append(createScoreBadge(item));
     body.append(heading, byline, description, tags);
     if (warning) body.append(warning);
     body.append(facts);
@@ -1825,10 +1849,7 @@
     header.append(node("h1", "", moduleTitle(item)));
     header.append(authorByline(item, "library-detail-byline"));
     const badges = node("div", "library-detail-badges");
-    const score = button(scoreValue(item) === null ? "Unscored" : `Score ${scoreValue(item)}`,
-      `library-score library-score--button library-score--${scoreTone(scoreValue(item))}`,
-      () => openScoreDialog(item), "circle-question");
-    badges.append(score, virusTotalIndicator(item));
+    badges.append(createScoreBadge(item), virusTotalIndicator(item));
     const jitPackWarning = jitPackIndicator(item);
     if (jitPackWarning) badges.append(jitPackWarning);
     header.append(badges);
