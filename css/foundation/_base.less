@@ -1,0 +1,18 @@
+// === Reset & Base ===
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: @bg-primary;
+    color: @text-primary;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+// Scrollbar
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: @bg-secondary; }
+::-webkit-scrollbar-thumb { background: @border; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: @text-muted; }
+

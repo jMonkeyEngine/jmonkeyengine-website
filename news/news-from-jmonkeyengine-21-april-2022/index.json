@@ -1,0 +1,26 @@
+
+{
+    "responseTitle":"jMonkeyEngine  | News from JMonkeyEngine - 21 April 2022",
+    "apiVersion":"1.0",
+    "response":"defaultEntry",
+    "uid":"9acc8a033e7ec8618a850974da5c6a1b",
+
+    "title":"News from JMonkeyEngine - 21 April 2022",
+    "content":"\u003cdiv\u003eA new release of JMonkeyEngine arrived today: 3.5.2-stable. Among other things, it improves our support for armhf platforms --- such as Raspberry Pi single-board computers. The release notes are online at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.2-stable\u003cbr /\u003e\u003cbr /\u003eEngine development continues on many other fronts, including buffer objects and the Android application lifecycle.\u003cbr /\u003e\u003cbr /\u003eThank you for your financial contribution(s) to the JMonkeyEngine project. If you'd like to connect with us and/or learn more about our Engine, one excellent resource is our Discourse forum at \u003ca href=\"https://opencollective.com/redirect?url=https%3A%2F%2Fhub.jmonkeyengine.org\"\u003ehttps://hub.jmonkeyengine.org\u003c/a\u003e\u003c/div\u003e\n",
+    "contentPlain":"A new release of JMonkeyEngine arrived today: 3.5.2-stable. Among other things, it improves our support for armhf platforms --- such as Raspberry Pi single-board computers. The release notes are online at https://github.com/jMonkeyEngine/jmonkeyengine/releases/tag/v3.5.2-stable\nEngine development continues on many other fronts, including buffer objects and the Android application lifecycle.\nThank you for your financial contribution(s) to the JMonkeyEngine project. If you'd like to connect with us and/or learn more about our Engine, one excellent resource is our Discourse forum at https://hub.jmonkeyengine.org " ,
+    "url":"https://jmonkeyengine.org/news/news-from-jmonkeyengine-21-april-2022/",
+
+
+    
+    "summary":"A new release of JMonkeyEngine arrived today: 3.5.2-stable. Among other things, it improves our support for armhf platforms --- such as Raspberry Pi single-board computers. The release notes are online at https://github.com/jMonkeyEngine/jm...",
+    
+    "tags":[
+        
+        ],
+        "authors":[
+            
+            ]
+
+
+}
+

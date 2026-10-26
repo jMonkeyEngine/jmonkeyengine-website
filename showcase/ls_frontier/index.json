@@ -1,0 +1,13 @@
+{
+  
+  "title": "Lightspeed Frontier",
+  "summary": "Leave everything behind and try your hand at captaining a ship on the frontier of the galaxy. Customize your vessel piece by piece to tackle whatever adventures await. Take on crime lords and space pirates, undercut corporations monopolizing business, influence the galactic stock market, and become the most successful captain you can be.",
+  "images": ["/images/showcase/ls_frontier/1.webp","/images/showcase/ls_frontier/10.webp","/images/showcase/ls_frontier/11.webp","/images/showcase/ls_frontier/2.webp","/images/showcase/ls_frontier/3.webp","/images/showcase/ls_frontier/4.webp","/images/showcase/ls_frontier/5.webp","/images/showcase/ls_frontier/6.webp","/images/showcase/ls_frontier/7.webp","/images/showcase/ls_frontier/8.webp","/images/showcase/ls_frontier/9.webp","https://steamcdn-a.akamaihd.net/steam/apps/256676876/movie_max.webm"],
+  "tags": ["steam","lightspeed frontier","showcase"],
+  "authors": ["moffkalast","grizeldi","poshdan"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": "https://store.steampowered.com/app/548650/Lightspeed_Frontier/",
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": null
+}

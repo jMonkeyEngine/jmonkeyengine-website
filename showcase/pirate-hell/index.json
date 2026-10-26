@@ -1,0 +1,13 @@
+{
+  
+  "title": "PirateHell",
+  "summary": "Arrr maytees! Welcome to Pirate Hell — take command of a sturdy vessel and fight your way to honor, loot and glory in this frantic arcade shooter. Power up your ship and fight hoards of enemies while helping an old captain take revenge on his mutinous crew. Explore a large world, make port to buy upgrades and sell loot, engage in naval combat, and discover secrets across the high seas.",
+  "images": ["/images/showcase/pirate-hell/ss1.webp","/images/showcase/pirate-hell/ss2.webp","/images/showcase/pirate-hell/ss3.webp","/images/showcase/pirate-hell/ss4.webp","/images/showcase/pirate-hell/ss5.webp","/images/showcase/pirate-hell/ss6.webp"],
+  "tags": ["showcase","steam"],
+  "authors": ["Sascha Hartleb"],
+  "platforms": ["Windows"],
+  "steam_link": "https://store.steampowered.com/app/321080/Pirate_Hell/",
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": null
+}

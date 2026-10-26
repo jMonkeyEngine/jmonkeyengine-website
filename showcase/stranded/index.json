@@ -1,0 +1,13 @@
+{
+  
+  "title": "Stranded",
+  "summary": "Survival adventure game on a mysterious island. You find yourself alone and stranded — gather resources, craft tools and shelter, explore the island\u0026rsquo;s secrets, and uncover the mystery of how you got here. Will you survive long enough to find answers?",
+  "images": ["/images/showcase/stranded/Desert_Area_Cliff.webp","/images/showcase/stranded/Desert_Area_Firefight.webp","/images/showcase/stranded/Desert_Area_Gate.webp","/images/showcase/stranded/forest.webp","/images/showcase/stranded/ss0.webp"],
+  "tags": ["showcase","itch"],
+  "authors": ["Nyx Studios"],
+  "platforms": ["Windows","Linux","Web"],
+  "steam_link": null,
+  "itch_link": "https://tgiant.itch.io/stranded",
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/stranded"
+}

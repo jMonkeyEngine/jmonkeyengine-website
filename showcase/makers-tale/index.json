@@ -1,0 +1,13 @@
+{
+  
+  "title": "Maker's Tale",
+  "summary": "Maker\u0026rsquo;s Tale is a unique fantasy RTS that takes place on a tabletop board game sprung to life in a young boy\u0026rsquo;s imagination. Features Fantasy RTS combat in a sandbox environment where you can rebuild the level during play. Recruit units, cast spells, and conquer the board in this creative strategy game.",
+  "images": ["/images/showcase/makers-tale/ss0.webp","/images/showcase/makers-tale/ss1.webp","/images/showcase/makers-tale/ss2.webp","/images/showcase/makers-tale/ss3.webp","/images/showcase/makers-tale/ss5.webp","/images/showcase/makers-tale/ss7.webp"],
+  "tags": ["showcase","indiedb"],
+  "authors": ["thetoucher"],
+  "platforms": ["Windows","Mac","Linux"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/makers-tale"
+}

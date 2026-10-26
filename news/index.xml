@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>News on jMonkeyEngine</title>
+		<link>https://jmonkeyengine.org/news/</link>
+		<description>Recent content in News on jMonkeyEngine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 28 Jan 2026 05:08:12 +0000</lastBuildDate>
+		
+			<atom:link href="https://jmonkeyengine.org/news/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>JMonkeyEngine 3.9.0-stable Released</title>
+				<link>https://jmonkeyengine.org/news/jmonkeyengine-3-9-0-stable-released1/</link>
+				<pubDate>Wed, 28 Jan 2026 05:08:12 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/jmonkeyengine-3-9-0-stable-released1/</guid>
+				<description>We’re pleased to announce the release of jMonkeyEngine 3.9.0-stable. This new version addresses a wide range of issues and includes many enhancements to the engine&amp;rsquo;s rendering, audio, utilities, and much more. The result is a reliable, prod&amp;hellip;</description>
+			</item>
+			<item>
+				<title>JMonkeyEngine 3.8.0-stable has been released</title>
+				<link>https://jmonkeyengine.org/news/jmonkeyengine-3-8-0-stable-has-been-released1/</link>
+				<pubDate>Thu, 08 May 2025 02:07:22 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/jmonkeyengine-3-8-0-stable-has-been-released1/</guid>
+				<description>We are excited to announce the release of JMonkeyEngine 3.8.0-stable. This new version adds many new features and bug fixes, but most notably, this version features upgrades to the engine&amp;rsquo;s PBR shaders and also introduces a new API to suppo&amp;hellip;</description>
+			</item>
+			<item>
+				<title>released JMonkeyEngine 3.6.1-stable</title>
+				<link>https://jmonkeyengine.org/news/released-jmonkeyengine-3-6-1-stable/</link>
+				<pubDate>Mon, 26 Jun 2023 00:54:08 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/released-jmonkeyengine-3-6-1-stable/</guid>
+				<description>A new patch release of JMonkeyEngine arrived on Friday: 3.6.1-stable. This is now the recommended version for all JME projects. Among other things, it solves issues with instancing, memory management, and restarting LWJGLv2 contexts. The re&amp;hellip;</description>
+			</item>
+			<item>
+				<title>JMonkeyEngine 3.6.0-stable has been released</title>
+				<link>https://jmonkeyengine.org/news/jmonkeyengine-3-6-0-stable-has-been-released/</link>
+				<pubDate>Mon, 20 Mar 2023 18:25:30 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/jmonkeyengine-3-6-0-stable-has-been-released/</guid>
+				<description>We&amp;rsquo;re super excited about the new release of JMonkeyEngine that arrived today: 3.6.0-stable. It adds many useful features and solves many past issues. For full details, refer to the release notes at&amp;hellip;</description>
+			</item>
+			<item>
+				<title>jMonkeyEngine SDK 3.5 is available</title>
+				<link>https://jmonkeyengine.org/news/jmonkeyengine-sdk-3-5-is-available/</link>
+				<pubDate>Mon, 07 Nov 2022 16:30:45 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/jmonkeyengine-sdk-3-5-is-available/</guid>
+				<description>We are happy to announce the immediate availability of jMonkeyEngine SDK 3.5! Highlights:Engine version v3.5.2 used internally and by Ant projects.Ant projects have sources and javadocs again.A new Gradle project wizard for&amp;hellip;</description>
+			</item>
+			<item>
+				<title>News from JMonkeyEngine - 21 April 2022</title>
+				<link>https://jmonkeyengine.org/news/news-from-jmonkeyengine-21-april-2022/</link>
+				<pubDate>Thu, 21 Apr 2022 21:24:11 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/news-from-jmonkeyengine-21-april-2022/</guid>
+				<description>A new release of JMonkeyEngine arrived today: 3.5.2-stable. Among other things, it improves our support for armhf platforms &amp;mdash; such as Raspberry Pi single-board computers. The release notes are online at &lt;a href=&#34;https://github.com/jMonkeyEngine/jm&#34;&gt;https://github.com/jMonkeyEngine/jm&lt;/a&gt;&amp;hellip;</description>
+			</item>
+			<item>
+				<title>News from JMonkeyEngine - 20 March 2022</title>
+				<link>https://jmonkeyengine.org/news/news-from-jmonkeyengine-20-march-2022/</link>
+				<pubDate>Sun, 20 Mar 2022 17:53:23 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/news-from-jmonkeyengine-20-march-2022/</guid>
+				<description>As of today, there&amp;rsquo;s a new release of JMonkeyEngine: 3.5.1-stable, which improves our support for the new &amp;ldquo;Apple Silicon&amp;rdquo; Macs and fixes a couple recently-discovered bugs. Behind the scenes, discussion about the future of JMonkeyEngine is u&amp;hellip;</description>
+			</item>
+			<item>
+				<title>News from JMonkeyEngine - 23 January 2022</title>
+				<link>https://jmonkeyengine.org/news/news-from-jmonkeyengine-23-january-2022/</link>
+				<pubDate>Sun, 23 Jan 2022 20:39:59 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/news-from-jmonkeyengine-23-january-2022/</guid>
+				<description>Thank you for your generous contributions to our open-source software project! We&amp;rsquo;re proud to announce general availability of JMonkeyEngine 3.5.0-stable, the newest release of our game engine. Here&amp;rsquo;s a link to the forum announcement:&amp;hellip;</description>
+			</item>
+			<item>
+				<title>News from JMonkeyEngine - 5 December 2021</title>
+				<link>https://jmonkeyengine.org/news/news-from-jmonkeyengine-5-december-2021/</link>
+				<pubDate>Sun, 05 Dec 2021 09:48:17 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/news-from-jmonkeyengine-5-december-2021/</guid>
+				<description>Thank you for your contributions to our project! We&amp;rsquo;re proud to announce the release of JMonkeyEngine 3.4.1, which patches a handful of bugs and performance issues discovered in the JME 3.4 libraries since they became generally available in&amp;hellip;</description>
+			</item>
+			<item>
+				<title>New release of JMonkeyEngine</title>
+				<link>https://jmonkeyengine.org/news/new-release-of-jmonkeyengine/</link>
+				<pubDate>Tue, 01 Jun 2021 21:23:14 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/new-release-of-jmonkeyengine/</guid>
+				<description>Version 3.4.0-stable of JMonkeyEngine was released to Maven Central on 30 May 2021. For more information, see the Forum announcement:&amp;hellip;</description>
+			</item>
+			<item>
+				<title>News from JMonkeyEngine - 14 April 2021</title>
+				<link>https://jmonkeyengine.org/news/news-from-jmonkeyengine-14-april-2021/</link>
+				<pubDate>Wed, 14 Apr 2021 09:57:10 +0000</pubDate>
+				<guid>https://jmonkeyengine.org/news/news-from-jmonkeyengine-14-april-2021/</guid>
+				<description>Thank you for your contribution(s)! A &amp;ldquo;stable&amp;rdquo; version of the v3.3 SDK was released on 5 April: &lt;a href=&#34;https://github.com/jMonkeyEngine/sdk/releases/tag/v3.3.0-stab&#34;&gt;https://github.com/jMonkeyEngine/sdk/releases/tag/v3.3.0-stab&lt;/a&gt;&amp;hellip;</description>
+			</item>
+	</channel>
+</rss>
