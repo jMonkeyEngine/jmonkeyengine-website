@@ -98,6 +98,23 @@ test('artifact selection, copy, incompatible recipes and compact repository fall
         }
         await context.close();
 
+        const approved = await open({moderationState: 'LISTED', visibilityDecision: 'LISTED',
+            score: {...fixture.score, score: -10, decision: 'NEEDS_REVIEW'}});
+        const detailBadge = approved.page.locator('.library-detail-header .library-score--approved');
+        assert.equal(await detailBadge.textContent(), 'Moderator approved');
+        await detailBadge.click();
+        await approved.page.locator('#library-score-dialog[open]').waitFor();
+        assert.equal(await approved.page.locator('#library-score-title').textContent(), 'jMe3GL2 scored -10');
+        await approved.page.locator('#library-score-dialog .library-dialog-close').click();
+        await approved.page.locator('.library-back').click();
+        await approved.page.locator('.library-card-open').waitFor();
+        assert.equal(await approved.page.locator('.library-card .library-score').count(), 0);
+        assert.doesNotMatch(await approved.page.locator('.library-card').textContent(), /Moderator approved|Score -10/);
+        assert.equal(await approved.page.locator('.library-card-facts .library-card-fact').count(), 3);
+        await approved.page.locator('.library-card-open').click();
+        await approved.page.locator('.library-detail-header .library-score--approved').waitFor();
+        await approved.context.close();
+
         for (const readmeMarkdown of ['# Renthyl', '']) {
             const broken = await open({repositoryUrl: 'https://github.com/codex128/Renthyl', readmeMarkdown,
                 gradleSnippet: null, installationOptions: [], installation: {status: 'UNAVAILABLE', note: 'Internal resolution detail'},

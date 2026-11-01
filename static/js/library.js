@@ -847,7 +847,6 @@
     compatibility.title = compatibilityTooltip(item);
     compatibility.setAttribute("aria-label", compatibilityTooltip(item));
     facts.append(stars, likes, compatibility);
-    if (moderatorApprovedScore(item)) facts.append(createScoreBadge(item));
     body.append(heading, byline, description, tags);
     if (warning) body.append(warning);
     body.append(facts);
