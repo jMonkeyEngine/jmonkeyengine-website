@@ -37,6 +37,9 @@ jobs:
           git config --global user.email "actions@robot.jmonkeyengine.org"
           git clone --single-branch  --depth 1 --recurse-submodules  --branch master https://github.com/${GITHUB_REPOSITORY}.git project
 
+    - name: Test Library presentation
+      run: node --test project/scripts/library-*.test.mjs
+
     - name: Clone gh-pages
       run: |
           git config --global user.name "GithubActions"

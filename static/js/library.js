@@ -1728,6 +1728,7 @@
   }
 
   function installationRecipes(item) {
+    if (item.installation?.status === "UNAVAILABLE") return [];
     let options = Array.isArray(item.installationOptions) ? item.installationOptions : [];
     if (!options.length && item.gradleSnippet) options = [{
       artifact: item.rootArtifact || {}, gradleSnippet: item.gradleSnippet,
@@ -1769,13 +1770,86 @@
       : "";
   }
 
+  function installationRepositoryUrl(item) {
+    const repository = safeUrl(item.repositoryUrl, true);
+    if (!repository) return "";
+    const url = new URL(repository);
+    url.hash = typeof item.readmeMarkdown === "string" && item.readmeMarkdown.trim() ? "readme" : "";
+    return url.href;
+  }
+
+  function renderInstallFallback(item) {
+    const section = node("section", "library-install library-install-fallback");
+    const href = installationRepositoryUrl(item);
+    const message = "See the repository for installation and usage instructions";
+    section.append(href ? externalLink(message, "library-install-help", href, "book-open")
+      : node("p", "library-install-help", message));
+    return section;
+  }
+
+  function combineInstallationRecipes(recipes) {
+    if (!recipes.length) return {message: "Select an artifact to show its installation snippet."};
+    if (recipes.length === 1) return {gradleSnippet: recipes[0].gradleSnippet};
+    // These are published root options, not necessarily interchangeable platforms.
+    // Keep the backend's verified declarations; never invent transitive dependencies.
+    const systems = recipe => recipe.targets.flatMap(target => target === "JVM"
+      ? ["WINDOWS", "LINUX", "MACOS", "IOS"] : [target]);
+    if (!systems(recipes[0]).some(target => recipes.every(recipe => systems(recipe).includes(target)))) {
+      return {message: "Choose artifacts that support the same platform."};
+    }
+    const roots = new Map();
+    const dependencies = new Map();
+    const repositories = new Map();
+    for (const recipe of recipes) {
+      for (const artifact of recipe.artifacts) {
+        const identity = [artifact.groupId, artifact.artifactId, artifact.version, artifact.classifier || ""].join(":");
+        const key = `${artifact.artifactId}:${artifact.classifier || ""}:${artifact.packaging || "jar"}`;
+        const previous = roots.get(key);
+        if (previous && previous !== identity) return {message: "Choose one version or provider of each artifact."};
+        roots.set(key, identity);
+      }
+      // Only combine the bounded, literal format emitted by the backend. A future
+      // recipe format must remain usable individually, never partially rewritten.
+      const parts = recipe.gradleSnippet.length <= 8192 && recipe.gradleSnippet.match(
+        /^repositories \{\n([\s\S]*?)\n\}\n\ndependencies \{\n((?:    implementation\("[A-Za-z0-9_.:+@-]+"\)\n)+)\}$/);
+      if (!parts) return {message: "Use these installation recipes individually."};
+      for (const declaration of parts[2].trim().split("\n")) {
+        const coordinate = declaration.match(/implementation\("([^"]+)"\)/)[1];
+        const [group, artifact, version, classifier = ""] = coordinate.split(":");
+        const identity = `${group}:${artifact}:${classifier}`;
+        if (dependencies.has(identity) && dependencies.get(identity).version !== version) {
+          return {message: "Choose artifacts that use the same dependency versions."};
+        }
+        dependencies.set(identity, {version, declaration: declaration.trim()});
+      }
+      const entries = parts[1].split(/\n(?=    (?:mavenCentral\(\)|maven \{))/);
+      for (const entry of entries) {
+        if (entry === "    mavenCentral()") {
+          repositories.set("central", {prefix: entry, filters: null});
+          continue;
+        }
+        const repository = entry.match(/^(    maven \{\n[\s\S]*?)        content \{\n((?:            include(?:Group|Module)\("[A-Za-z0-9_.-]+"(?:, "[A-Za-z0-9_.-]+")?\)\n)+)        \}\n    \}$/);
+        if (!repository) return {message: "Use these installation recipes individually."};
+        const prefix = repository[1];
+        const merged = repositories.get(prefix) || {prefix, filters: new Set()};
+        repository[2].trimEnd().split("\n").forEach(filter => merged.filters.add(filter));
+        repositories.set(prefix, merged);
+      }
+    }
+    const blocks = [...repositories.values()].map(repository => repository.filters
+      ? `${repository.prefix}        content {\n${[...repository.filters].join("\n")}\n        }\n    }`
+      : repository.prefix);
+    const declarations = [...dependencies.values()].map(value => `    ${value.declaration}`);
+    const gradleSnippet = `repositories {\n${blocks.join("\n")}\n}\n\ndependencies {\n${declarations.join("\n")}\n}`;
+    return gradleSnippet.length <= 32768 ? {gradleSnippet} : {message: "Select fewer artifacts."};
+  }
+
   function renderInstallRecipe(item) {
     const install = node("section", "library-install");
     install.append(node("h2", "", "Add to your project"));
     const recipes = installationRecipes(item);
     if (!recipes.length) {
-      install.append(node("p", "", "No compatible installation recipe is available."));
-      return install;
+      return renderInstallFallback(item);
     }
     const code = node("code", "", recipes[0].gradleSnippet);
     const prerequisite = node("p", "library-install-note library-install-prerequisite", installationPrerequisite(recipes[0]));
@@ -1783,26 +1857,39 @@
     const pre = node("pre", "library-code");
     pre.append(code);
     const copy = button("Copy Gradle snippet", "library-copy-button", async () => copyText(code.textContent, copy), "copy");
+    const selectionMessage = node("p", "library-install-selection-message");
+    selectionMessage.hidden = true;
     if (recipes.length > 1) {
-      const label = node("label", "library-install-choice library-select", "Installation recipe");
-      const select = node("select", "");
-      select.id = "library-install-recipe";
-      label.htmlFor = select.id;
+      const choices = node("fieldset", "library-install-artifacts");
+      choices.append(node("legend", "", "Artifacts"));
+      const inputs = [];
       recipes.forEach((recipe, index) => {
         const artifact = recipe.artifacts[0];
-        const option = node("option", "", `${installationRecipeLabel(recipe)} · ${artifact.groupId}:${artifact.artifactId}`);
-        option.value = String(index);
-        select.append(option);
+        const label = node("label", "library-install-artifact");
+        const input = node("input", "");
+        input.type = "checkbox";
+        input.checked = index === 0;
+        input.value = String(index);
+        const description = node("span", "");
+        description.append(node("code", "", [artifact.groupId, artifact.artifactId, artifact.classifier].filter(Boolean).join(":")),
+          node("small", "", installationRecipeLabel(recipe)));
+        label.append(input, description);
+        choices.append(label);
+        inputs.push(input);
+        input.addEventListener("change", () => {
+          const selected = recipes.filter((_, position) => inputs[position].checked);
+          const result = combineInstallationRecipes(selected);
+          code.textContent = result.gradleSnippet || "";
+          pre.hidden = copy.hidden = !result.gradleSnippet;
+          selectionMessage.textContent = result.message || "";
+          selectionMessage.hidden = !result.message;
+          prerequisite.textContent = installationPrerequisite(result);
+          prerequisite.hidden = !prerequisite.textContent;
+        });
       });
-      select.addEventListener("change", () => {
-        code.textContent = recipes[Number(select.value)].gradleSnippet;
-        prerequisite.textContent = installationPrerequisite(recipes[Number(select.value)]);
-        prerequisite.hidden = !prerequisite.textContent;
-      });
-      label.append(select);
-      install.append(label);
+      install.append(choices);
     }
-    install.append(prerequisite, pre, copy);
+    install.append(selectionMessage, prerequisite, pre, copy);
     return install;
   }
 
@@ -1865,15 +1952,10 @@
     const rejectedSnapshot = item.processingStatus === "PENDING"
       || item.score?.decision === "REJECTED"
       || item.visibilityDecision === "REJECTED";
-    if (item.gradleSnippet && !rejectedSnapshot) {
+    if (installationRecipes(item).length && !rejectedSnapshot) {
       main.append(renderInstallRecipe(item));
-    } else if (item.installation?.status === "UNAVAILABLE" && !rejectedSnapshot) {
-      const install = node("section", "library-install library-visibility-warning");
-      install.append(node("h2", "", "Install recipe unavailable"));
-      install.append(node("p", "", "The publication could not be resolved reliably. No copyable recipe is offered until its metadata or missing artifacts are corrected."));
-      if (item.installation?.note) install.append(node("p", "library-install-note", item.installation.note));
-      (item.analysisErrors || []).forEach(error => install.append(node("p", "library-install-note", error)));
-      main.append(install);
+    } else if (item.installation?.status === "UNAVAILABLE" && item.processingStatus !== "PENDING") {
+      main.append(renderInstallFallback(item));
     }
 
     const readme = renderReadme(item);

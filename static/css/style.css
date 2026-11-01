@@ -5050,7 +5050,7 @@ section.game-page {
   color: #707076;
   font-size: 0.7rem;
 }
-.library-snapshot-status--passed-automatic-review {
+.library-snapshot-status--published {
   color: #72d99a;
 }
 .library-snapshot-status--needs-review,
@@ -5194,31 +5194,9 @@ section.game-page {
   color: #f2f2ee;
 }
 .library-install-note {
-  color: #98989f;
+  color: #a8a8a2;
   font-size: 0.85rem;
   line-height: 1.6;
-}
-.library-install-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.library-install-controls .library-install-choice {
-  flex: 1 1 220px;
-  min-width: 0;
-}
-.library-install-controls .library-install-choice[hidden] {
-  display: none;
-}
-.library-install-controls select {
-  width: 100%;
-  max-width: 100%;
-}
-.library-install-choice {
-  display: grid;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-  color: #c5c5cb;
 }
 .library-code {
   overflow-x: auto;
@@ -5234,6 +5212,73 @@ section.game-page {
 }
 .library-copy-button {
   padding: 0.55rem 0;
+}
+.library-install-artifacts {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.library-install-artifacts legend {
+  margin-bottom: 0.6rem;
+  color: #a8a8a2;
+  font-size: 0.85rem;
+}
+.library-install-artifact {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #28282e;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.library-install-artifact:has(input:checked) {
+  border-color: #ffd000;
+  background: rgba(255, 221, 0, 0.04);
+}
+.library-install-artifact:focus-within {
+  outline: 2px solid #ffd000;
+  outline-offset: 2px;
+}
+.library-install-artifact input {
+  flex: 0 0 auto;
+  accent-color: #ffd000;
+}
+.library-install-artifact span {
+  min-width: 0;
+}
+.library-install-artifact code {
+  display: block;
+  color: #f2f2ee;
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+}
+.library-install-artifact small {
+  display: block;
+  margin-top: 0.2rem;
+  color: #707076;
+}
+.library-install-help,
+.library-install-selection-message {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(255, 221, 0, 0.3);
+  border-radius: 8px;
+  color: #ffd000;
+  background: rgba(255, 221, 0, 0.05);
+  font-size: 0.85rem;
+}
+.library-install-help:hover {
+  color: #f2f2ee;
+  border-color: #ffd000;
+}
+.library-install [hidden] {
+  display: none;
 }
 .library-readme {
   margin-top: 2.5rem;

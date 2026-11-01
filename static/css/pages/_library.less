@@ -610,6 +610,7 @@
 .library-detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 2.5rem; }
 .library-detail-main,
 .library-detail-aside {
+  overflow-anchor: none;
   min-width: 0;
   border: 1px solid @border;
   border-radius: 15px;
@@ -812,9 +813,29 @@
 .library-published-modules-list span { color: @text-secondary; font-size: 0.7rem; }
 .library-install { margin-top: 2rem; }
 .library-install h2 { color: @text-primary; }
+.library-install-note { color: @text-secondary; font-size: 0.85rem; line-height: 1.6; }
 .library-code { overflow-x: auto; padding: 1rem; border: 1px solid @border; border-radius: 9px; background: #0c0c0f; color: #f2f2ee; }
 .library-install .library-code { white-space: pre-wrap; overflow-wrap: anywhere; }
 .library-copy-button { padding: 0.55rem 0; }
+.library-install-artifacts { display: grid; gap: 0.5rem; margin: 0 0 1rem; padding: 0; border: 0; min-width: 0; }
+.library-install-artifacts legend { margin-bottom: 0.6rem; color: @text-secondary; font-size: 0.85rem; }
+.library-install-artifact {
+  display: flex; align-items: center; gap: 0.7rem; padding: 0.65rem 0.8rem;
+  border: 1px solid @border; border-radius: 8px; cursor: pointer;
+}
+.library-install-artifact:has(input:checked) { border-color: @accent; background: rgba(255, 221, 0, 0.04); }
+.library-install-artifact:focus-within { outline: 2px solid @accent; outline-offset: 2px; }
+.library-install-artifact input { flex: 0 0 auto; accent-color: @accent; }
+.library-install-artifact span { min-width: 0; }
+.library-install-artifact code { display: block; color: @text-primary; overflow-wrap: anywhere; font-size: 0.8rem; }
+.library-install-artifact small { display: block; margin-top: 0.2rem; color: @text-muted; }
+.library-install-help, .library-install-selection-message {
+  display: flex; align-items: center; gap: 0.55rem; padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(255, 221, 0, 0.3); border-radius: 8px;
+  color: @accent; background: rgba(255, 221, 0, 0.05); font-size: 0.85rem;
+}
+.library-install-help:hover { color: @text-primary; border-color: @accent; }
+.library-install [hidden] { display: none; }
 .library-readme {
   margin-top: 2.5rem;
   padding-top: 2rem;
