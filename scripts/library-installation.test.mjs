@@ -5,7 +5,7 @@ import vm from 'node:vm';
 
 const source = readFileSync(new URL('../static/js/library.js', import.meta.url), 'utf8');
 const names = ['safeUrl', 'installationTargets', 'installationRecipes', 'installationRecipeLabel',
-    'installationRepositoryUrl', 'combineInstallationRecipes'];
+    'installationRepositoryUrl', 'combineInstallationRecipes', 'packageVerificationFragment'];
 const context = vm.createContext({URL});
 for (const name of names) {
     const match = source.match(new RegExp(`function ${name}\\([^]*?\\n  \\}`));
@@ -104,4 +104,17 @@ test('unsafe and unavailable options are not revived from the artifact inventory
     assert.deepEqual(call('installationRecipes', {artifacts: valid.artifacts}), []);
     assert.deepEqual(call('installationRecipes', {installation: {status: 'UNAVAILABLE'},
         gradleSnippet: valid.gradleSnippet, installationOptions: [{artifact: valid.artifacts[0], gradleSnippet: valid.gradleSnippet}]}), []);
+});
+
+test('verification entries are grouped, deduplicated, and reject malformed or conflicting data', () => {
+    const first = {group: 'org.example', name: 'core', version: '1.0', filename: 'core-1.0.jar', sha256: 'a'.repeat(64)};
+    const second = {...first, filename: 'core-1.0-natives.jar', sha256: 'b'.repeat(64)};
+    const output = call('packageVerificationFragment', [{packageVerification: [second, first]}, {packageVerification: [first]}]);
+    assert.equal((output.match(/<component /g) || []).length, 1);
+    assert.equal((output.match(/<artifact /g) || []).length, 2);
+    assert.match(output, /<component group="org.example" name="core" version="1.0">/);
+    assert.match(output, /<sha256 value="a{64}"\/>/);
+    assert.equal(call('packageVerificationFragment', [{packageVerification: [first, {...first, sha256: 'b'.repeat(64)}]}]), '');
+    assert.equal(call('packageVerificationFragment', [{packageVerification: [{...first, filename: 'x" onload="evil'}]}]), '');
+    assert.equal(call('packageVerificationFragment', [{}]), '');
 });

@@ -41,7 +41,7 @@ test('artifact selection, copy, incompatible recipes and compact repository fall
             {artifact: coordinate('android'), target: 'ANDROID', gradleSnippet: recipe(coordinate('android'))}],
         score: {score: 76, confidence: 60, decision: 'LISTED', hardGateFailures: [], breakdown: [], warnings: []}
     };
-    async function open(changes = {}) {
+    async function open(changes = {}, {admin = false} = {}) {
         const item = {...structuredClone(fixture), ...changes};
         const context = await browser.newContext({viewport: {width: 1280, height: 1000}});
         await context.addInitScript(() => {
@@ -52,11 +52,14 @@ test('artifact selection, copy, incompatible recipes and compact repository fall
             const url = new URL(route.request().url());
             const headers = {'Access-Control-Allow-Origin': base, 'Access-Control-Allow-Credentials': 'true'};
             let body = item, status = 200;
-            if (url.pathname === '/admin/session') { body = {message: 'Login required'}; status = 401; }
+            if (url.pathname === '/admin/session') {
+                body = admin ? {authenticated: true, csrfToken: 'test-csrf', login: 'moderator'} : {message: 'Login required'};
+                status = admin ? 200 : 401;
+            }
             else if (url.pathname.endsWith('/snapshots')) body = {latestSnapshotId: 2536, items: []};
             else if (url.pathname.endsWith('/tags')) body = {items: []};
             else if (url.pathname.endsWith('/stats')) body = {modules: 1, developers: 1};
-            else if (url.pathname === '/api/extensions') body = {items: [item], page: 0, totalPages: 1, totalItems: 1};
+            else if (url.pathname === '/api/extensions' || url.pathname === '/admin/extensions') body = {items: [item], page: 0, totalPages: 1, totalItems: 1};
             return route.fulfill({status, headers, contentType: 'application/json', body: JSON.stringify(body)});
         });
         const page = await context.newPage();
@@ -71,21 +74,21 @@ test('artifact selection, copy, incompatible recipes and compact repository fall
         const inputs = install.getByRole('checkbox');
         assert.equal(await inputs.count(), 5);
         assert.equal(await inputs.nth(0).isChecked(), true);
-        assert.equal((await install.locator('code').last().textContent()).match(/implementation\(/g).length, 1);
+        assert.equal((await install.locator(':scope > pre code').textContent()).match(/implementation\(/g).length, 1);
         for (let index = 1; index < 4; index++) await inputs.nth(index).check();
-        const combined = await install.locator('pre code').textContent();
+        const combined = await install.locator(':scope > pre code').textContent();
         for (const artifact of artifacts) assert.ok(combined.includes(artifact.artifactId));
         assert.equal(combined.match(/implementation\(/g).length, 4);
         await install.getByRole('button', {name: 'Copy Gradle snippet'}).click();
         assert.equal(await page.evaluate(() => window.copiedSnippet), combined);
         await inputs.nth(4).check();
         await install.getByText('Choose artifacts that support the same platform.', {exact: true}).waitFor();
-        assert.equal(await install.locator('pre').isVisible(), false);
+        assert.equal(await install.locator(':scope > pre').isVisible(), false);
         assert.equal(await install.getByRole('button', {name: 'Copy Gradle snippet'}).count(), 0);
         for (let index = 0; index < 4; index++) await inputs.nth(index).uncheck();
-        assert.equal(await install.locator('pre').isVisible(), true);
-        assert.match(await install.locator('pre code').textContent(), /:android:/);
-        assert.doesNotMatch(await install.locator('pre code').textContent(), /jMe3GL2-core/);
+        assert.equal(await install.locator(':scope > pre').isVisible(), true);
+        assert.match(await install.locator(':scope > pre code').textContent(), /:android:/);
+        assert.doesNotMatch(await install.locator(':scope > pre code').textContent(), /jMe3GL2-core/);
         await inputs.nth(4).uncheck();
         assert.equal(await install.getByRole('button', {name: 'Copy Gradle snippet'}).count(), 0);
         await inputs.nth(0).focus();
@@ -97,6 +100,35 @@ test('artifact selection, copy, incompatible recipes and compact repository fall
             await page.screenshot({path: `${process.env.LIBRARY_BROWSER_SCREENSHOT}-artifacts.png`, fullPage: true});
         }
         await context.close();
+
+        const pins = artifacts.slice(0, 2).map((artifact, index) => ({group: artifact.groupId,
+            name: artifact.artifactId, version: artifact.version,
+            filename: `${artifact.artifactId}-${artifact.version}.jar`, sha256: String(index + 1).repeat(64)}));
+        const verified = await open({installationOptions: artifacts.slice(0, 2).map((artifact, index) =>
+            ({artifact, target: 'JVM', gradleSnippet: recipe(artifact), packageVerification: [pins[index]]}))});
+        const verification = verified.page.locator('.library-package-verification');
+        assert.equal(await verification.isVisible(), true);
+        await verification.locator('summary').click();
+        assert.match(await verification.locator('pre code').textContent(), /jMe3GL2-core/);
+        await verified.page.locator('.library-install input').nth(1).check();
+        const verificationEntries = await verification.locator('pre code').textContent();
+        assert.match(verificationEntries, /jMe3GL2-jawt/);
+        assert.match(verificationEntries, /<sha256 value="2{64}"\/>/);
+        await verification.getByRole('button', {name: 'Copy verification entries'}).click();
+        assert.equal(await verified.page.evaluate(() => window.copiedSnippet), verificationEntries);
+        await verified.page.locator('.library-install input').nth(0).uncheck();
+        assert.doesNotMatch(await verification.locator('pre code').textContent(), /jMe3GL2-core/);
+        await verified.page.locator('.library-install input').nth(1).uncheck();
+        assert.equal(await verification.isVisible(), false);
+        await verified.context.close();
+
+        const legacy = await open({sourceProvenanceVerified: false, gradleSnippet: null,
+            installationOptions: [], installation: {status: 'UNAVAILABLE'}}, {admin: true});
+        const notice = legacy.page.locator('.library-moderation-limit');
+        assert.match(await notice.textContent(), /hidden until its source is reanalyzed/i);
+        assert.match(await notice.textContent(), /moderation is preserved/i);
+        assert.equal(await legacy.page.getByRole('button', {name: 'Copy Gradle snippet'}).count(), 0);
+        await legacy.context.close();
 
         const approved = await open({moderationState: 'LISTED', visibilityDecision: 'LISTED',
             score: {...fixture.score, score: -10, decision: 'NEEDS_REVIEW'}});
@@ -138,9 +170,9 @@ test('artifact selection, copy, incompatible recipes and compact repository fall
             const actualInputs = actualInstall.getByRole('checkbox');
             assert.equal(await actualInputs.count(), 4);
             for (let index = 0; index < 4; index++) await actualInputs.nth(index).check();
-            assert.equal((await actualInstall.locator('pre code').textContent()).match(/implementation\(/g).length, 4);
+            assert.equal((await actualInstall.locator(':scope > pre code').textContent()).match(/implementation\(/g).length, 4);
             assert.equal(await actualInstall.locator('.library-install-selection-message').isVisible(), false);
-            assert.doesNotMatch(await actualInstall.locator('pre code').textContent(), /:samples:/);
+            assert.doesNotMatch(await actualInstall.locator(':scope > pre code').textContent(), /:samples:/);
             await actual.context.close();
             const renthyl = await open(JSON.parse(readFileSync(resolve(directory, 'renthyl.json'), 'utf8')));
             const instructions = renthyl.page.locator('.library-install-fallback a');

@@ -1323,6 +1323,9 @@
     const section = node("section", "library-moderation");
     section.append(node("h3", "", "Moderation"));
     section.append(node("p", "", `Current state: ${stateLabel(item)}.`));
+    if (item.sourceProvenanceVerified === false) {
+      section.append(node("p", "library-moderation-limit", "This snapshot is hidden until its source is reanalyzed. Listing it does not bypass this check; existing moderation is preserved."));
+    }
     const actions = node("div", "library-moderation-actions");
     const feedback = node("p", "library-moderation-status");
     feedback.setAttribute("role", "status");
@@ -1731,6 +1734,7 @@
     let options = Array.isArray(item.installationOptions) ? item.installationOptions : [];
     if (!options.length && item.gradleSnippet) options = [{
       artifact: item.rootArtifact || {}, gradleSnippet: item.gradleSnippet,
+      packageVerification: item.installation?.packageVerification,
       target: item.rootArtifact?.packaging === "aar" ? "ANDROID" : "JVM"
     }];
     const grouped = new Map();
@@ -1741,11 +1745,12 @@
       if (!snippet || !targets.length) continue;
       let recipe = grouped.get(snippet);
       if (!recipe) {
-        recipe = {gradleSnippet: snippet, targets: [], artifacts: []};
+        recipe = {gradleSnippet: snippet, targets: [], artifacts: [], packageVerification: []};
         grouped.set(snippet, recipe);
       }
       recipe.targets = [...new Set([...recipe.targets, ...targets])];
       recipe.artifacts.push(option.artifact);
+      if (Array.isArray(option.packageVerification)) recipe.packageVerification.push(...option.packageVerification);
     }
     const order = ["WINDOWS", "LINUX", "MACOS", "ANDROID", "IOS", "JVM"];
     const recipes = [...grouped.values()].map(recipe => ({...recipe,
@@ -1767,6 +1772,34 @@
     return recipe?.gradleSnippet?.includes("https://maven.pkg.github.com/")
       ? "GitHub Packages requires GITHUB_PACKAGES_USERNAME and GITHUB_PACKAGES_TOKEN (a classic token with read:packages access)."
       : "";
+  }
+
+  function packageVerificationFragment(recipes) {
+    const components = new Map();
+    for (const recipe of recipes) {
+      for (const entry of recipe.packageVerification || []) {
+        if (!entry || typeof entry.group !== "string" || typeof entry.name !== "string"
+            || typeof entry.version !== "string" || typeof entry.filename !== "string"
+            || typeof entry.sha256 !== "string"
+            || !/^[A-Za-z0-9_][A-Za-z0-9_.-]{0,254}$/.test(entry.group)
+            || !/^[A-Za-z0-9_][A-Za-z0-9_.-]{0,254}$/.test(entry.name)
+            || !/^[A-Za-z0-9_][A-Za-z0-9_.+-]{0,254}$/.test(entry.version)
+            || !/^[A-Za-z0-9_][A-Za-z0-9_.+-]{0,766}$/.test(entry.filename)
+            || !/^[a-fA-F0-9]{64}$/.test(entry.sha256)) return "";
+        const key = `${entry.group}:${entry.name}:${entry.version}`;
+        if (!components.has(key)) components.set(key, {entry, artifacts: new Map()});
+        const artifacts = components.get(key).artifacts;
+        const hash = entry.sha256.toLowerCase();
+        if (artifacts.has(entry.filename) && artifacts.get(entry.filename) !== hash) return "";
+        artifacts.set(entry.filename, hash);
+      }
+    }
+    return [...components.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([, component]) => {
+      const {group, name, version} = component.entry;
+      const artifacts = [...component.artifacts.entries()].sort(([a], [b]) => a.localeCompare(b))
+        .map(([filename, hash]) => `    <artifact name="${filename}">\n      <sha256 value="${hash}"/>\n    </artifact>`);
+      return `  <component group="${group}" name="${name}" version="${version}">\n${artifacts.join("\n")}\n  </component>`;
+    }).join("\n");
   }
 
   function installationRepositoryUrl(item) {
@@ -1856,6 +1889,20 @@
     const pre = node("pre", "library-code");
     pre.append(code);
     const copy = button("Copy Gradle snippet", "library-copy-button", async () => copyText(code.textContent, copy), "copy");
+    const verification = node("details", "library-package-verification");
+    verification.append(node("summary", "", "Verify GitHub Packages downloads"));
+    verification.append(node("p", "library-install-note", "Merge these entries into <components> in your project's gradle/verification-metadata.xml. If a component already exists, add its artifacts to that entry. Other dependencies and metadata need verification too."));
+    const verificationCode = node("code", "");
+    const verificationPre = node("pre", "library-code");
+    verificationPre.append(verificationCode);
+    const verificationCopy = button("Copy verification entries", "library-copy-button",
+      async () => copyText(verificationCode.textContent, verificationCopy), "copy");
+    verification.append(verificationPre, verificationCopy);
+    const updateVerification = selected => {
+      verificationCode.textContent = packageVerificationFragment(selected);
+      verification.hidden = !verificationCode.textContent;
+    };
+    updateVerification([recipes[0]]);
     const selectionMessage = node("p", "library-install-selection-message");
     selectionMessage.hidden = true;
     if (recipes.length > 1) {
@@ -1884,11 +1931,12 @@
           selectionMessage.hidden = !result.message;
           prerequisite.textContent = installationPrerequisite(result);
           prerequisite.hidden = !prerequisite.textContent;
+          updateVerification(result.gradleSnippet ? selected : []);
         });
       });
       install.append(choices);
     }
-    install.append(selectionMessage, prerequisite, pre, copy);
+    install.append(selectionMessage, prerequisite, pre, copy, verification);
     return install;
   }
 
