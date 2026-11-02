@@ -1,0 +1,13 @@
+{
+  
+  "title": "Chatter Games",
+  "summary": "Collection of 4 classic board games — Chess, Checkers, 4 In A Row and Othello — all in one cross-platform multiplayer package. Play against the AI opponent Derek, or challenge friends online. Features 15 different 3D environments to play, rotatable 360 degrees, with multiple piece styles and board materials.",
+  "images": ["/images/showcase/chatter-games/ss1.webp","/images/showcase/chatter-games/ss2.webp","/images/showcase/chatter-games/ss3.webp","/images/showcase/chatter-games/ss4.webp","/images/showcase/chatter-games/ss5.webp","/images/showcase/chatter-games/ss6.webp"],
+  "tags": ["showcase","indie"],
+  "authors": ["Anthony Wilshaw"],
+  "platforms": ["Windows","Mac","Linux","Android","iOS"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": "https://chatter-games.com",
+  "indiedb_link": null
+}
