@@ -1,0 +1,13 @@
+{
+  
+  "title": "CubeGate",
+  "summary": "CubeGate is a 3D puzzle game where you must escape test chambers full of dangers and hassles. Solve intricate puzzles by shooting portals, moving cubes, pressing buttons and more. But be careful — one wrong move and you fall to your death.",
+  "images": ["/images/showcase/cubegate/ss0.webp","/images/showcase/cubegate/ss2.webp","/images/showcase/cubegate/ss3.webp","/images/showcase/cubegate/ss6.webp","/images/showcase/cubegate/ss7.webp"],
+  "tags": ["showcase","indiedb"],
+  "authors": ["CubeGate"],
+  "platforms": ["Windows","Linux"],
+  "steam_link": null,
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": "https://www.indiedb.com/games/cubegate"
+}

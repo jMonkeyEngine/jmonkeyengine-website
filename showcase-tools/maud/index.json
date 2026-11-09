@@ -1,0 +1,12 @@
+{
+  
+  "title": "Maud",
+  "summary": "A dedicated editor for jMonkeyEngine 3D models, focused on inspecting and editing assets outside the game runtime.",
+  "images": [],
+  "tags": ["Editor","Models","Assets"],
+  "tool_type": "Editor",
+  "external_link": null,
+  "github_link": "https://github.com/stephengold/Maud",
+  "indiedb_link": null,
+  "website_link": null
+}
