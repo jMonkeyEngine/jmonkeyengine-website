@@ -1,0 +1,56 @@
+/* Unified frosted-glass button style for selected CTA-like buttons */
+.btn-ghost,
+.btn-outline,
+.btn-lg:not(.btn-primary),
+#qsbuttons .qsbtn,
+.highlightedCl,
+.special-support-btn,
+.stat-action {
+    .inline-center();
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    .focus-transition();
+    .frosted-pill();
+}
+
+.btn-ghost:hover,
+.btn-outline:hover,
+.btn-lg:not(.btn-primary):hover,
+#qsbuttons .qsbtn:hover,
+#qsbuttons .qsbtn.highlightedCl:hover,
+.special-support-btn:hover,
+.stat-action:hover {
+    transform: translateY(-1px);
+    background: @accent-dim !important;
+    border-color: @accent !important;
+    color: @accent !important;
+    text-decoration: none;
+    box-shadow: none !important;
+}
+
+.star-repo-memory--active,
+.star-repo-memory--active:hover,
+.star-repo-memory--active:focus-visible {
+    background: rgba(255, 208, 0, 0.08) !important;
+    border-color: rgba(255, 208, 0, 0.28) !important;
+    color: @accent !important;
+    box-shadow: none !important;
+}
+
+.btn-ghost,
+.btn-outline,
+.btn-lg:not(.btn-primary) {
+    border-radius: 10px;
+}
+
+.donate-btn,
+#qsbuttons .qsbtn,
+.highlightedCl,
+.special-support-btn,
+.hero-showcase-link,
+.stat-action {
+    border-radius: 999px;
+}

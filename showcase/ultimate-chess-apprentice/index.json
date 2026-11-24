@@ -1,0 +1,13 @@
+{
+  
+  "title": "Ultimate Chess Apprentice",
+  "summary": "A 3D chess game with very interactive AI opponents",
+  "images": ["/images/showcase/ultimate-chess-apprentice/00-cover.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-01.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-02.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-03.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-04.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-05.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-06.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-07.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-08.webp","/images/showcase/ultimate-chess-apprentice/ultimate-chess-apprentice-09.webp"],
+  "tags": ["showcase","3D","Board Game","Casual","Chess","Indie","Relaxing","Singleplayer","Turn-based"],
+  "authors": ["Vusumuzi Tshabangu"],
+  "platforms": ["Windows","Linux"],
+  "steam_link": null,
+  "itch_link": "https://ultimate-games-studios.itch.io/ultimate-chess-apprentice",
+  "publisher_link": null,
+  "indiedb_link": null
+}

@@ -1,0 +1,13 @@
+{
+  
+  "title": "High Impact",
+  "summary": "High Impact is a first-person shooter with very detailed worlds featuring platforming and puzzle rooms. Navigate through alien environments, fight spider monsters and golem bosses, jump between buildings, and solve underwater puzzles. Includes floating pole grabbing for vertical gameplay, slightly obscured targets to find, and an objective to reach the checkered finish line.",
+  "images": ["/images/showcase/high-impact/ss0.webp","/images/showcase/high-impact/ss1.webp","/images/showcase/high-impact/ss2.webp","/images/showcase/high-impact/ss3.webp","/images/showcase/high-impact/ss5.webp","/images/showcase/high-impact/ss6.webp"],
+  "tags": ["showcase","steam"],
+  "authors": ["pixelapp"],
+  "platforms": ["Windows"],
+  "steam_link": "https://store.steampowered.com/app/3059050/High_Impact/",
+  "itch_link": null,
+  "publisher_link": null,
+  "indiedb_link": null
+}

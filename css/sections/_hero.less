@@ -1,0 +1,207 @@
+// === HERO ===
+.hero {
+    position: relative; min-height: 585px;
+    display: block;
+    padding: 3.75rem ~"max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))" 3.35rem;
+    overflow: hidden;
+    background: @bg-primary;
+}
+.hero-bg {
+    position: absolute; inset: 0;
+    background:
+        radial-gradient(ellipse 76% 60% at 76% 42%, rgba(255,208,0,0.085) 0%, transparent 58%),
+        radial-gradient(circle at 15% 18%, rgba(255,208,0,0.040) 0%, transparent 34%),
+        linear-gradient(180deg, rgba(11,11,13,0.84) 0%, rgba(11,11,13,0.98) 100%);
+    z-index: 0;
+}
+.hero-bg::after,
+.hero-bg::before { content: none; }
+.hero-content { position: relative; z-index: 4; max-width: 600px; }
+.hero-badge {
+    .inline-center();
+    .accent-pill();
+    border-radius: 100px; padding: 0.4rem 1rem;
+    font-size: 0.8rem; font-weight: 500;
+    margin-bottom: 1.5rem; letter-spacing: 0.02em;
+}
+.badge-dot {
+    width: 6px; height: 6px; background: @accent;
+    border-radius: 50%; animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+}
+.hero-title {
+    display: inline-block;
+    max-width: max-content;
+    padding: 0 0.08em 0.10em 0;
+    font-size: clamp(3.25rem, 5.9vw, 5.35rem); font-weight: 900;
+    line-height: 1.08; letter-spacing: -0.035em;
+    color: @text-primary; margin-bottom: 1.05rem;
+    background: linear-gradient(110deg, #ffffff 0%, #fff7d0 50%, @accent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+}
+.hero-subtitle {
+    font-size: 1.08rem; color: @text-secondary;
+    margin-bottom: 1.7rem; line-height: 1.62; font-weight: 400;
+}
+.hero-actions { display: flex; gap: 0.9rem; margin-bottom: 1.55rem; flex-wrap: wrap; }
+.btn {
+    .inline-center();
+    padding: 0.85rem 1.75rem; border-radius: 10px;
+    font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    .focus-transition(); cursor: pointer; border: none;
+}
+.btn-primary {
+    background: @accent; color: #000;
+    box-shadow: 0 4px 20px rgba(255,208,0,0.25);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 35px rgba(255,208,0,0.4);
+}
+.btn-ghost {
+    background: transparent; color: @text-primary;
+    border: 1px solid @border;
+}
+.btn-ghost:hover { border-color: @accent; color: @accent; background: @accent-dim; }
+.btn-outline {
+    background: transparent; color: @accent; border: 1.5px solid @accent;
+}
+.btn-outline:hover { background: @accent-dim; }
+.btn-lg { padding: 1rem 2.5rem; font-size: 1.05rem; }
+.hero-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tech-tag {
+    background: @bg-card; border: 1px solid @border;
+    padding: 0.35rem 0.85rem; border-radius: 6px;
+    font-size: 0.78rem; color: @text-secondary; font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+}
+.hero-visual {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-showcase-shell {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    border-radius: 0;
+    border: 0;
+    overflow: hidden;
+    box-shadow: none;
+    background: transparent;
+    margin: 0;
+}
+
+.hero-showcase-shell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(11,11,13,0.88) 0%, rgba(11,11,13,0.52) 32%, rgba(11,11,13,0.04) 66%, rgba(11,11,13,0.18) 100%),
+        linear-gradient(180deg, rgba(11,11,13,0.03) 0%, rgba(11,11,13,0.18) 100%);
+}
+
+.hero-showcase-copy {
+    position: absolute;
+    right: ~"max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))";
+    bottom: 1.35rem;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: ~"min(510px, calc(100vw - 3rem))";
+    padding: 0.48rem 0.55rem 0.48rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(11,11,13,0.84);
+    border: 1px solid rgba(255,208,0,0.24);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.34);
+    backdrop-filter: blur(8px);
+    pointer-events: auto;
+}
+.hero-showcase-text {
+    min-width: 0;
+    color: @text-primary;
+    font-size: 0.76rem;
+    font-weight: 650;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.hero-showcase-kicker,
+.hero-showcase-copy strong { display: none; }
+.hero-showcase-link {
+    .inline-center(0.42rem);
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(255, 208, 0, 0.08) !important;
+    border: 1px solid rgba(255, 208, 0, 0.24) !important;
+    color: @accent !important;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.73rem;
+    line-height: 1;
+    white-space: nowrap;
+}
+.hero-showcase-link:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 208, 0, 0.12) !important;
+    border-color: rgba(255, 208, 0, 0.42) !important;
+    color: @accent !important;
+}
+
+.stats-bar {
+    background: @bg-secondary;
+    border-top: 1px solid rgba(255,208,0,0.08);
+    border-bottom: 1px solid rgba(255,208,0,0.08);
+    padding: 1.25rem ~"max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem))";
+}
+.stats-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    flex-wrap: wrap;
+}
+.stat { text-align: center; }
+.stat--github-action { min-width: 132px; }
+.stat-action {
+    .inline-center(0.45rem);
+    justify-content: center;
+    margin-top: 0.52rem;
+    padding: 0.36rem 0.76rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.06);
+    color: @text-primary;
+    text-decoration: none;
+    font-size: 0.74rem;
+    font-weight: 800;
+    line-height: 1;
+}
+.stat-action i {
+    width: 1em;
+    text-align: center;
+    line-height: 1;
+}
+.stat-action:hover { transform: translateY(-1px); }
+
+.stat-value {
+    display: block; font-size: 1.95rem; font-weight: 900;
+    color: @accent; line-height: 1.2; letter-spacing: -0.01em;
+}
+.stat-label {
+    display: block; font-size: 0.78rem; color: @text-muted;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem;
+}
+.stat-divider { width: 1px; height: 48px; background: @border; }

@@ -1,0 +1,59 @@
+// Shared LESS helpers. These compile into the existing selectors instead of
+// introducing presentation-only classes into templates.
+
+.flex-center() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inline-center(@gap: 0.5rem) {
+    display: inline-flex;
+    align-items: center;
+    gap: @gap;
+}
+
+.focus-transition(@duration: 0.25s) {
+    transition: all @duration cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accent-pill(@bg: @accent-dim, @border-color: @border-accent) {
+    color: @accent;
+    background: @bg;
+    border: 1px solid @border-color;
+}
+
+.frosted-pill() {
+    color: @text-primary !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    backdrop-filter: blur(14px) saturate(135%);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+
+.icon-tile(@size, @radius, @bg: @accent-dim, @border-color: @border-accent, @display: flex) {
+    width: @size;
+    height: @size;
+    border-radius: @radius;
+    display: @display;
+    align-items: center;
+    justify-content: center;
+    background: @bg;
+    border: 1px solid @border-color;
+}
+
+.card-top-rule(@opacity: 0.52, @height: 3px) {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: @height;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,208,0,0.34) 48%, transparent 100%);
+    opacity: @opacity;
+    pointer-events: none;
+}
+
+.media-cover() {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
